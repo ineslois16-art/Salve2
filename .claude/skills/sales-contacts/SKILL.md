@@ -166,8 +166,10 @@ Therefore:
   candidate champions** (see 2.2), each with a confidence level and the evidence.
 - Label every champion as a **hypothesis to validate**, not a finding.
 - A champion is only *confirmed* by behavior (they reply, engage, and confirm
-  the pain) or by an insider who knows the org. Prioritize human verification
-  (the user's network, a coach, a quick call) over any scraped signal.
+  the pain) or by a genuine insider. Use human verification only when a real warm
+  path exists (the user's own network, an existing relationship) — a stranger will
+  not name the champion to a cold vendor. Absent a warm path, confirm by behavior,
+  not by asking. See 2.3, Step 5.
 
 #### Technical Evaluator
 **Definition:** Assesses technical fit, integrations, security, and implementation complexity.
@@ -275,11 +277,29 @@ List 2-3 candidates with confidence + evidence, so the human chooses:
 Flag any contact whose role evidence is older than ~12 months or shows no recent
 activity as **"role unverified — confirm before outreach."**
 
-**Step 5 — Prefer human verification when available.**
-If the user has insider knowledge, a warm contact, or a coach inside the account,
-ask them FIRST — it is faster and more accurate than any scrape. When unavailable,
-treat the first outreach touch as champion-discovery: multi-thread lightly and ask
-the open question ("who owns [function] today?") rather than betting on one name.
+**Step 5 — Match the verification method to the access you ACTUALLY have.**
+Two regimes — do not confuse them. "Ask someone" is not a cold tactic: a stranger
+you cold-contact will not name the real decision-maker or champion to a vendor, so
+this step applies only when a genuine relationship exists.
+
+- **Warm path (a real relationship inside the account):** ask that trusted contact
+  first — but only when the relationship is real (the user is an ex-employee, a
+  personal connection, an existing customer contact, an introduction). This is the
+  fastest, most accurate route when it exists. It does NOT mean cold-asking a random
+  employee.
+
+- **Truly cold (no warm path):** you cannot verify the champion before contact, and
+  people will not reveal it on request. So:
+  - Keep the champion as an explicit hypothesis. Do not bet the sequence on one name.
+  - Confirm by **behavior, not by asking**: multi-thread 2-3 candidates with
+    role-tailored messages and let the *reply* reveal who owns the pain.
+  - Lean on **observable public ownership signals** (no insider needed): hiring
+    manager / reporting line on open job posts for that team, who signs release notes
+    or the status page, who responds to G2 / Trustpilot reviews, who presents at
+    webinars or is quoted in press, authorship of help-center / support docs.
+  - A routing question ("if this isn't you, who owns [function]?") only works AFTER
+    you have led with value, and silence is as likely as an answer. Never open cold
+    with "who is your decision-maker?".
 
 **Hard rule:** if you cannot reach Medium+ confidence on the champion, say so
 explicitly and present the candidate list with an explicit validation action. Do
