@@ -1,210 +1,210 @@
-# Profil Client Idéal (ICP) : Salverys — Télésecrétariat médical
+# Profil Client Idéal (ICP) : Salverys — Marque blanche (support applicatif N1 & télésecrétariat)
 
-> Généré le 2026-05-27 | Basé sur : Salverys, BPO francophone basé à Antananarivo (Madagascar), proposant du télésecrétariat médical externalisé à des professionnels de santé français. Fuseau horaire compatible France, français langue maternelle, coût ~40 % inférieur à un prestataire hexagonal.
+> Généré le 2026-05-27 | Modèle : Salverys fournit ses **ressources humaines francophones en marque blanche** à des **acteurs français déjà établis**. Le client garde sa marque, ses outils, sa relation client ; Salverys apporte la capacité de production (agents) depuis Antananarivo. Avantages : français langue maternelle, fuseau horaire compatible France, coût ~40 % inférieur à une équipe interne hexagonale.
 
 ## Synthèse ICP
 
-Le client idéal de Salverys est un **professionnel de santé libéral français à fort volume d'appels entrants** — typiquement un médecin spécialiste ou un cabinet de groupe de 2 à 6 praticiens — qui **perd des appels patients faute de pouvoir tous les traiter**, et pour qui une secrétaire physique en CDI est soit trop chère, soit introuvable (tension de recrutement forte sur le secrétariat médical en 2026). Ce prospect a déjà digitalisé une partie de son agenda (Doctolib, Maiia ou Clikodoc) mais reste submergé par le téléphone : appels d'urgence à filtrer, rappels de RDV, demandes administratives.
+Salverys ne vend pas au client final : Salverys vend de la **capacité de production en marque blanche** à des entreprises françaises établies qui ont déjà des clients, une marque et des process, mais qui **n'arrivent pas à recruter ou à scaler leurs équipes en France** à un coût soutenable. Le produit n'est pas « un service de support » ou « un secrétariat » — c'est **une équipe d'agents francophones, formés, pilotables, opérant sous la marque du client**.
 
-Le déclencheur le plus puissant est **opérationnel et émotionnel** : le praticien (ou son associé) est interrompu pendant les consultations, les patients se plaignent de ne jamais joindre le cabinet, et le no-show coûte cher. Salverys vend une **permanence téléphonique humaine, francophone et moins chère** — pas un standard automatique. La cible n'achète pas « Madagascar », elle achète « enfin un téléphone décroché correctement, à moitié prix, sans gérer un salarié ».
+**Priorité n°1 : le support applicatif N1 pour les éditeurs SaaS français.** Le marché est mûr et douloureux : **89 % des éditeurs de logiciels déclarent des difficultés de recrutement** (vs 78 % il y a deux ans), et le support N1 est un poste à fort turnover, coûteux à staffer en France, mais critique pour la rétention. Un éditeur en croissance qui voit ses tickets exploser sans pouvoir recruter assez vite est le prospect parfait : douleur aiguë, budget réel, décision rapide d'un COO / Head of Support.
 
-La priorité commerciale absolue est le **médecin spécialiste libéral et le cabinet de groupe** (volume d'appels élevé, douleur aiguë, capacité de paiement réelle), puis par extension les autres professions médicales et paramédicales à fort flux (radiologie, kiné de groupe, dentaire, sages-femmes, infirmiers libéraux structurés). Le négatif-ICP est tout aussi décisif : praticien à très faible volume, structure hospitalière publique (cycle de vente long et appel d'offres), ou prospect crispé sur la localisation offshore et la confidentialité RGPD sans budget pour être rassuré.
+**Priorité n°2 : le télésecrétariat médical en marque blanche** — non pas vers les cabinets directement, mais vers les **sociétés de télésecrétariat / permanence téléphonique médicale françaises déjà installées** qui ont besoin de capacité de débordement, d'extension horaire ou de réduction de coût sans recruter en France. Salverys devient leur back-office invisible.
+
+Le client idéal, dans les deux cas, c'est une structure qui **préfère acheter de la capacité pilotable plutôt que porter le risque RH**, qui valorise la **qualité francophone native** (vs offshore low-cost dégradé), et qui a assez de volume pour qu'une équipe dédiée ait du sens. Le négatif-ICP : trop petit (pas de volume récurrent), client final direct (hors modèle marque blanche au démarrage), ou acteur qui veut tout garder en interne par principe.
 
 ## Critères firmographiques
 
+### Pilier A — Éditeurs SaaS français (support applicatif N1) — PRIORITAIRE
+
 | Critère | Plage idéale | Pourquoi c'est important | Drapeau rouge si absent |
 |---|---|---|---|
-| Type de structure | Cabinet libéral individuel ou de groupe (2-6 praticiens), centre de santé privé | Décision rapide, budget propre, douleur directement ressentie par le décideur | Hôpital public / CHU = appel d'offres, cycle 12+ mois |
-| Volume d'appels entrants | 150 à 1 500 appels/mois | En dessous, le ROI est faible et le ticket trop petit ; au-dessus, ils ont déjà une solution interne | < 100 appels/mois = ticket non rentable |
-| Profession | Spécialistes (cardio, dermato, gynéco, ophtalmo, ORL, radiologie), généralistes à forte patientèle, dentaire, kiné de groupe | Volume téléphonique élevé + faible tolérance à l'interruption en consultation | Profession sans flux téléphonique (ex : biologie pure) |
-| Chiffre d'affaires du cabinet | 150 k€ à 1,5 M€/an | Capacité à payer 150-600 €/mois sans arbitrage douloureux | CA < 100 k€ = sensibilité prix extrême |
-| Zone géographique | France métropolitaine, zones tendues en secrétariat (grandes villes + déserts médicaux) | Tension recrutement = douleur maximale ; francophonie native = avantage Salverys | DOM-TOM (décalage horaire), pays non francophones |
-| Maturité numérique | Agenda en ligne déjà en place (Doctolib/Maiia) | Le télésecrétariat se branche dessus ; signe d'ouverture à l'externalisation | Cabinet 100 % papier, réfractaire au numérique |
-| Ancienneté / dynamique | Praticien < 50 ans OU cabinet en croissance (nouvel associé, agrandissement) | Adoption du télésecrétariat 2× plus forte chez les < 50 ans (+51 %) | Praticien proche retraite, en réduction d'activité |
+| Type | Éditeur SaaS B2B français, scale-up en croissance | Volume de tickets récurrent + tension RH = besoin structurel | Pure startup pré-revenu, pas de base clients |
+| Effectif | 20 à 300 salariés | Assez de clients pour générer du volume support, pas encore de centre de support offshore propre | < 15 = volume insuffisant ; > 500 = support déjà industrialisé |
+| ARR / CA | 2 M€ à 50 M€ | Capacité à payer une équipe dédiée + douleur de scale | < 1 M€ = budget instable |
+| Dynamique | Croissance > 30 %/an, levée récente, expansion | La croissance crée le débordement support = déclencheur | Décroissance, gel des embauches sans douleur support |
+| Volume support | > 300 tickets/mois OU équipe support ≥ 3 ETP | En dessous, une équipe dédiée n'a pas de sens | Volume faible et stable |
+| Géographie | France (clients finaux francophones) | Avantage Salverys = français natif | Marché 100 % anglophone (avantage neutralisé) |
+| Outillage | Zendesk, Intercom, Freshdesk, HubSpot Service | Marque blanche = on opère dans LEUR outil | Aucun outil de ticketing = maturité trop faible |
 
-**Exemple concret :** un cabinet de 3 dermatologues à Lyon, ~800 appels/mois, agenda Doctolib déjà en place, qui vient de perdre sa secrétaire et galère à recruter depuis 4 mois → cœur de cible A+.
+**Exemple A+ :** éditeur SaaS de gestion (RH, compta, retail) à Lyon/Paris, 80 salariés, 6 M€ ARR, +40 %/an, 1 500 tickets/mois, équipe support de 5 personnes qui ne suit plus, Zendesk en place, recrutement N1 ouvert depuis 3 mois.
+
+### Pilier B — Sociétés de télésecrétariat / permanence médicale françaises (capacité en marque blanche)
+
+| Critère | Plage idéale | Pourquoi c'est important | Drapeau rouge si absent |
+|---|---|---|---|
+| Type | Société de télésecrétariat médical / permanence téléphonique FR établie | A déjà les clients et la marque ; cherche de la capacité | Acteur déjà 100 % offshore intégré |
+| Effectif | 10 à 150 agents | Assez de volume pour justifier du débordement externalisé | Indépendant solo sans volume |
+| Besoin | Débordement, extension horaire, réduction de coût, croissance sans recruter en FR | Le cœur de la proposition marque blanche | Capacité interne sous-utilisée |
+| Géographie | France | Francophonie + fuseau | — |
+| Maturité outils | Logiciel de télésecrétariat / agenda partagé en place | Salverys s'y branche | 100 % artisanal |
+
+**Exemple A :** société française de permanence téléphonique médicale, 40 agents, qui refuse des contrats faute de capacité et veut ouvrir des plages horaires sans recruter en France.
 
 ## Profil technographique
 
-- **Agenda / RDV en ligne (signal d'entrée fort) :** Doctolib (dominant), Maiia, Clikodoc, Keldoc. La télésecrétaire doit pouvoir y accéder en délégation. **Doctolib = signal n°1 de prospect prêt.**
-- **Pile à éviter :** cabinet sans aucun outil de prise de RDV en ligne (maturité trop faible → vente longue et adoption fragile) OU structure dotée d'un standard interne complet avec ≥ 2 secrétaires salariées (besoin déjà couvert).
-- **Sophistication technique idéale (échelle 1-5) :** **3/5**. Assez digitalisé pour utiliser un agenda partagé, pas assez équipé pour avoir internalisé un standard pro.
-- **Besoins d'intégration :** accès agenda en ligne, messagerie sécurisée de santé (MSSanté) pour transmission de messages, téléphonie redirigée (numéro de cabinet basculé vers Salverys). Compatibilité **RGPD / hébergement de données de santé** = point dur à adresser commercialement.
-- **Indicateurs de maturité digitale :** fiche Google Business active avec avis patients (souvent : avis négatifs sur « impossible de joindre le secrétariat » = mine d'or de prospection), présence sur Doctolib, site web de cabinet.
+- **Pilier A — outils support :** Zendesk, Intercom, Freshdesk, Zoho Desk, HubSpot Service Hub, Jira Service Management. La marque blanche impose d'**opérer dans l'outil du client** : capacité à se connecter à leur ticketing, base de connaissance, SLA, macros.
+- **Pilier B — outils télésecrétariat :** logiciels métier (type Synaps, Telsi, ou agendas Doctolib/Maiia côté cabinets de leurs clients), téléphonie/IPBX à interconnecter.
+- **Sophistication idéale (1-5) :** **4/5**. Le client a des process et des outils matures — c'est ce qui rend la marque blanche possible. Trop bas (2/5) = pas de cadre à reprendre ; trop haut avec centre offshore propre = besoin déjà couvert.
+- **Besoins d'intégration :** accès sécurisé à leur ticketing/CRM, SSO, VPN, conformité données. Point dur commercial : **sécurité des données, RGPD, hébergement** (HDS côté santé). À adresser frontalement avec un volet conformité.
+- **Indicateurs de maturité :** existence d'une base de connaissance, de SLA documentés, d'un outil de QA / scoring qualité, d'une équipe support/ops structurée.
 
 ## Signaux comportementaux
 
-- **Consommation de contenu :** newsletters et syndicats médicaux (CSMF, MG France, Le Quotidien du Médecin, Egora), groupes Facebook de praticiens (« Médecins libéraux », « Jeunes médecins installés »), forums d'installation.
-- **Événements / salons :** congrès de spécialité (Journées Dermatologiques de Paris, congrès SFC cardiologie, etc.), salons de l'installation libérale, MEDEC, salons régionaux URPS.
-- **Communautés :** groupes Facebook et WhatsApp de praticiens par spécialité, réseaux d'anciens internes, associations de maisons de santé pluriprofessionnelles (MSP).
-- **Schémas d'achat :** décision **individuelle et rapide** (le praticien ou l'associé gérant décide), souvent déclenchée par une douleur aiguë (départ de secrétaire). Très sensible au **bouche-à-oreille entre confrères** — la recommandation d'un pair vaut dix arguments commerciaux.
-- **Signaux sociaux / avis :** avis Google/Doctolib mentionnant « secrétariat injoignable », « ne répond jamais au téléphone » = signal d'achat immédiat.
-- **Schémas de recrutement :** annonces de poste « secrétaire médical(e) » publiées depuis > 1 mois et toujours ouvertes = preuve de tension de recrutement = prospect chaud.
+- **Pilier A :** offres d'emploi « Support N1 / Customer Care / Technicien support SaaS » ouvertes depuis > 1 mois (signal de tension fort) ; levée de fonds récente ; annonces d'expansion ou de nouveaux modules ; posts LinkedIn du Head of Support/COO sur la charge ; avis clients (G2, Trustpilot) mentionnant des délais de réponse support.
+- **Pilier B :** sociétés de télésecrétariat qui recrutent en continu, communiquent sur des délais d'attente, ou affichent « nous rappelons sous X » dégradé.
+- **Consommation de contenu :** newsletters SaaS FR (Journal du SaaS, FrenchWeb, Maddyness), communautés Customer Success/Support (Le Support FR, groupes Slack CS, podcasts CX), événements (SaaS Connection, Customer Relationship & Marketing Meetings, salons CX/relation client).
+- **Schémas d'achat :** décision **B2B structurée mais accessible** — initiée par un Head of Support/Ops, validée par un COO/CEO. Cycle 1 à 3 mois. Très sensible à la **preuve (pilote, période d'essai sur un périmètre réduit)** et aux **références sectorielles**.
+- **Schémas de recrutement :** postes support/agents ouverts et persistants = preuve directe du besoin.
 
 ## Carte des points de douleur
 
 | # | Point de douleur | Sévérité | Comment ça se manifeste | Impact business | Déclencheurs | Solution actuelle | Angle Salverys |
 |---|---|---|---|---|---|---|---|
-| 1 | **Appels patients perdus** | Critique | Téléphone qui sonne dans le vide, patients qui partent à la concurrence, avis négatifs | Perte directe de patientèle et de CA, image dégradée | Départ de secrétaire, pic saisonnier (épidémies) | Répondeur, appels en consultation | Permanence humaine francophone, 0 appel perdu, à -40 % |
-| 2 | **Interruptions en consultation** | Haute | Le praticien décroche entre deux patients, perd en concentration et en qualité | Retard sur l'agenda, fatigue, erreurs | Absence de secrétaire, mono-praticien | Décrocher soi-même | Filtrage des urgences, le praticien n'est plus dérangé |
-| 3 | **Coût / impossibilité de recruter une secrétaire** | Critique | 3-6 mois sans candidat, charges salariales lourdes, turnover | 30-45 k€/an chargés pour un CDI vs 2-6 k€/an en télésecrétariat | Démission, congé maternité, ouverture de cabinet | Intérim, postes vacants | Diviser la facture par 2 à 3, sans gestion RH |
-| 4 | **No-shows (RDV non honorés)** | Haute | Créneaux perdus faute de rappel patient | 5 à 15 % de CA perdu sur créneaux vides | Forte patientèle, agenda saturé | Rappels manuels sporadiques | Rappels systématiques de RDV inclus |
-| 5 | **Surcharge administrative** | Moyenne | Demandes de documents, ordonnances, résultats à gérer entre les soins | Temps médical perdu en tâches non-médicales | Croissance de la patientèle | Faire soi-même le soir | Gestion des demandes courantes déléguée |
+| 1 | **Impossible de recruter assez vite (support N1)** | Critique | Postes ouverts 2-4 mois, backlog de tickets, équipe en surchauffe | Délais de réponse dégradés → churn clients | Croissance, levée, lancement produit | Intérim, heures sup, recrutement qui traîne | Équipe francophone opérationnelle en semaines, sans RH |
+| 2 | **Coût d'un support N1 interne en France** | Critique | Salaires chargés + management + locaux | Marge support négative, P&L sous pression | Pression investisseurs sur la rentabilité | Équipe interne coûteuse | -40 % vs interne, capacité variable |
+| 3 | **Débordement / pics non absorbés** | Haute | Files d'attente, abandons, SLA non tenus | Insatisfaction, pénalités SLA, mauvaise réputation | Saisonnalité, croissance, incident produit | Faire patienter, sous-traiter à la va-vite | Capacité élastique pilotable, marque blanche |
+| 4 | **Turnover et perte de qualité** | Haute | Réembauche permanente, montée en compétence sans fin | Coût caché, qualité en dents de scie | Métier N1 peu valorisé en interne | Tourner avec des juniors | Équipe dédiée stable, formée, pilotée |
+| 5 | **Difficulté à étendre les horaires / langues** | Moyenne | Pas de couverture en soirée / pics | Clients non servis hors heures | Demande clients d'amplitude | Limiter les horaires | Amplitude étendue sans recruter en FR |
 
-**Heat map de sévérité :** 🔴🔴 Critique (1, 3) → 🟠 Haute (2, 4) → 🟡 Moyenne (5). Le pitch d'ouverture doit toujours attaquer le point 1 ou le point 3.
+**Heat map :** 🔴🔴 Critique (1, 2) → 🟠 Haute (3, 4) → 🟡 Moyenne (5). Le pitch d'ouverture attaque le couple **recrutement impossible + coût** (1+2).
 
 ## Qualificateurs budgétaires
 
-- **Seuil de CA :** minimum ~150 k€/an de CA cabinet (en dessous, sensibilité prix trop forte) ; pas de plafond haut, mais > 2 M€ implique souvent un standard internalisé.
-- **Indicateur de dépense :** un cabinet dépense déjà 30-45 k€/an pour une secrétaire physique chargée → le télésecrétariat à 2-6 k€/an est un **no-brainer économique** une fois la qualité prouvée.
-- **Ticket idéal (ACV) :** **150 à 600 €/mois** soit ~1 800 à 7 200 €/an par cabinet. Ticket plancher viable : ~80-100 €/mois.
-- **Modèle de tarification du marché :** abonnement mensuel (50-150 € petits forfaits, 200-400 € moyens, 500 €+ gros volumes) + parfois prix/appel (0,79 € à 2,50 € l'appel traité). Salverys doit se positionner **clairement sous le tarif France** tout en évitant le low-cost qui inquiète sur la qualité.
-- **Sensibilité prix :** moyenne. Achète sur la **valeur (zéro appel perdu, qualité d'accueil)** plus que sur le prix seul — mais le -40 % est l'argument qui ouvre la porte.
-- **ROI attendu :** retour quasi immédiat (1 patient récupéré/mois ≈ couvre l'abonnement). Argumentaire ROI = « combien d'appels perdez-vous par jour ? ».
-- **Signaux de budget externes :** annonce de recrutement de secrétaire active, cabinet de groupe (mutualisation), agenda Doctolib premium = capacité de paiement.
+- **Logique d'achat :** le client compare au **coût complet d'une équipe interne en France** (salaire chargé N1 ~30-45 k€/an/agent + management + locaux + recrutement + turnover). Salverys se positionne à **~-40 %** sur ce coût complet, avec en plus la suppression du risque RH.
+- **Ticket idéal (ACV) :** modèle par **ETP dédié** ou par **forfait volume**. Cible : **3 à 15 ETP par client** au démarrage → contrats récurrents de plusieurs dizaines de k€/an, bien supérieurs à de la vente directe au cabinet. C'est le levier de scalabilité de Salverys.
+- **Seuil minimal :** un client qui ne justifie pas au moins **1,5-2 ETP dédiés** est trop petit (coût de pilotage/setup non amorti).
+- **Signaux de budget :** levée de fonds récente, postes support ouverts (ils ont déjà budgété des ETP qu'ils n'arrivent pas à pourvoir → budget transférable), croissance affichée.
+- **ROI attendu :** réduction de coût immédiate vs interne + accélération du time-to-staff (semaines vs 60-90 jours de recrutement) + capacité variable.
+- **Sensibilité prix :** moyenne. Achète sur **qualité + fiabilité + conformité**, pas sur le prix plancher. Le low-cost dégradé est un repoussoir (risque pour leur propre marque).
 
 ## Stratégie de canaux
 
-- **Canaux de recherche du prospect :** recommandations de confrères, Google (« télésecrétariat médical » + spécialité/ville), Doctolib, syndicats/URPS.
-- **Canaux de contact, par efficacité décroissante :**
-  1. **Recommandation / parrainage entre confrères** (le plus puissant — bâtir un programme de parrainage dès les 1ers clients)
-  2. **Cold email ciblé** (via Emelia) — personnalisé par spécialité, avec preuve sociale française
-  3. **Appel téléphonique** (cohérent : on vend du téléphone, démontrer la qualité d'accueil dès l'appel sortant)
-  4. LinkedIn (utile pour cabinets de groupe et centres de santé, moins pour libéraux isolés)
-- **Processus de décision :** initié et validé par le praticien lui-même (ou l'associé gérant). Cycle court (1 à 4 semaines) si la douleur est aiguë. Période d'essai = levier de closing majeur.
-- **Préférences de contenu :** témoignages vidéo de médecins français clients, essai gratuit / mois sans engagement, démonstration d'accueil téléphonique en direct, page rassurance RGPD/confidentialité.
-- **Cadence d'engagement :** 4 à 6 points de contact sur 2-3 semaines (voir séquence Emelia à construire ensuite). Espacement J+0, J+3, J+7, J+12.
-- **Signaux de confiance :** logos de cabinets clients français, témoignages nommés de confrères, conformité RGPD explicite, accroche « équipe francophone, fuseau horaire France », garantie d'essai.
+- **Canaux de contact, par efficacité :**
+  1. **Cold email ciblé (Emelia)** vers Head of Support / COO / fondateurs — personnalisé par secteur et signal (poste ouvert, levée).
+  2. **LinkedIn** (décideurs SaaS très présents) — connexion + contenu + DM.
+  3. **Recommandation / réseau** (investisseurs, communautés CS/Support, autres clients).
+  4. **Événements SaaS / relation client** (networking ciblé décideurs).
+- **Processus de décision :** Head of Support/Ops (initiateur, ressent la douleur) → COO/CEO (valide budget) → DSI/Sécurité (valide conformité données). Cycle 1-3 mois. **Le pilote sur périmètre réduit est le meilleur closer.**
+- **Préférences de contenu :** études de cas chiffrées (avant/après : délai de réponse, coût/ticket, CSAT), comparatif coût interne vs marque blanche, dossier conformité RGPD/sécurité, démonstration de qualité (échantillon d'agents, scripts, QA).
+- **Cadence :** 4-6 touches sur 3 semaines (séquence Emelia à construire).
+- **Signaux de confiance :** références sectorielles, process qualité/QA formalisé, conformité RGPD explicite, contrat de confidentialité (la marque blanche EST l'argument : « vos clients ne sauront jamais que ce n'est pas votre équipe »), flexibilité contractuelle (pilote, montée en charge).
 
 ## Négatif-ICP (à éviter)
 
 | # | Critère disqualifiant | Pourquoi ça disqualifie |
 |---|---|---|
-| 1 | **Volume < 100 appels/mois** | Ticket trop petit, ROI insuffisant des deux côtés, churn rapide |
-| 2 | **Hôpital public / CHU / clinique de grand groupe** | Appel d'offres, cycle 12+ mois, décision en comité — incompatible avec une équipe de 10 qui démarre |
-| 3 | **Cabinet sans aucun agenda en ligne et réfractaire au numérique** | Friction d'intégration énorme, adoption fragile, support coûteux |
-| 4 | **Structure avec ≥ 2 secrétaires salariées en place** | Besoin déjà couvert, faible urgence, switching cost élevé |
-| 5 | **Praticien proche de la retraite / en réduction d'activité** | Pas d'investissement dans l'amélioration du cabinet |
-| 6 | **Prospect bloqué sur l'offshore / RGPD sans vouloir être rassuré** | Cycle de vente épuisant, risque de churn dès le premier incident |
-| 7 | **Profession sans flux téléphonique** (biologie pure, certains paramédicaux à RDV planifiés en ligne uniquement) | Pas de douleur « téléphone » → pas de besoin |
-| 8 | **CA cabinet < 100 k€/an** | Sensibilité prix extrême, négociation permanente, marge faible |
-| 9 | **Demande de standard 24/7 médicalisé complexe (régulation, gardes)** | Hors périmètre d'une équipe de 10 au démarrage ; sur-promesse risquée |
-| 10 | **Prospect en litige connu avec un précédent télésecrétariat** | Attentes irréalistes, churn et réputation à risque |
+| 1 | **Volume < 1,5 ETP justifiable** | Setup et pilotage non amortis, contrat instable |
+| 2 | **Client final direct** (cabinet isolé, PME sans revente) | Hors modèle marque blanche au démarrage ; ticket trop petit |
+| 3 | **Acteur 100 % anglophone** | Neutralise l'avantage « français natif » |
+| 4 | **Structure déjà dotée d'un centre offshore intégré** | Besoin couvert, switching cost élevé |
+| 5 | **Refus de principe de l'externalisation / souveraineté stricte** | Cycle épuisant, échec probable |
+| 6 | **Pré-revenu / pas de base clients** | Pas de volume récurrent, budget instable |
+| 7 | **Décroissance + gel budgétaire sans douleur support** | Pas d'urgence, pas de budget |
+| 8 | **Exigence de certifications/HDS coûteuses dès J1 sans budget** | Investissement conformité non rentable au démarrage |
+| 9 | **Prospect échaudé par un précédent offshore raté, sans vouloir re-tester** | Attentes irréalistes, risque réputation |
+| 10 | **Besoin = expertise N2/N3 pointue uniquement** | Hors périmètre N1 d'une équipe qui démarre |
 
 ## Grille de scoring ICP (100 points)
 
 | Catégorie | Points max | Critères |
 |---|---|---|
-| Fit firmographique | 25 | Type de structure, profession, volume d'appels, CA, géo |
-| Fit technographique | 15 | Agenda en ligne, maturité, capacité d'intégration |
-| Alignement douleur | 20 | Sévérité, urgence, inadéquation de la solution actuelle |
-| Capacité budgétaire | 20 | CA, ticket cible, signaux de budget |
-| Accès au décideur | 10 | Décideur identifié, chemin chaud (parrainage) |
-| Signaux de timing | 10 | Déclencheurs (départ secrétaire, avis négatifs, recrutement ouvert) |
+| Fit firmographique | 25 | Type d'acteur, taille, secteur, dynamique de croissance |
+| Fit technographique | 15 | Outils (ticketing/téléphonie), maturité process, intégrabilité |
+| Alignement douleur | 20 | Tension recrutement, coût interne, débordement |
+| Capacité budgétaire | 20 | Volume ETP justifiable, budget existant, ACV cible |
+| Accès au décideur | 10 | Head of Support/COO identifié, chemin chaud |
+| Signaux de timing | 10 | Postes ouverts, levée récente, pic/incident |
 
-**Fit firmographique (25 pts) :**
-- **25 (100 %) :** spécialiste ou cabinet de groupe, 300-1 500 appels/mois, CA > 250 k€, zone tendue France, agenda en ligne.
-- **19 (75 %) :** 4 critères sur 5 ; un écart mineur (ex : volume un peu bas mais profession idéale).
-- **13 (50 %) :** 3 sur 5 ; fit correct à valider.
-- **6 (25 %) :** 1-2 critères ; marginal, faible priorité.
-- **0 :** aucun critère ; hôpital public ou volume dérisoire → disqualifié.
+**Fit firmographique (25) :** 25 = éditeur SaaS FR 20-300 salariés, croissance > 30 %, volume support clair ; 19 = 4/5 critères ; 13 = 3/5 ; 6 = 1-2/5 ; 0 = client final direct ou pré-revenu.
 
-**Fit technographique (15 pts) :** 15 = Doctolib/Maiia en place + ouverture à la délégation ; 11 = agenda en ligne mais frein d'accès ; 8 = numérique partiel ; 4 = quasi papier ; 0 = 100 % papier réfractaire.
+**Fit technographique (15) :** 15 = ticketing mature + ouverture à l'accès délégué ; 11 = outil en place, frein d'accès ; 8 = maturité partielle ; 4 = artisanal ; 0 = aucun outil.
 
-**Alignement douleur (20 pts) :** 20 = appels perdus avérés + secrétaire partie ; 15 = douleur claire non résolue ; 10 = gêne modérée ; 5 = douleur latente ; 0 = aucun problème téléphonique.
+**Alignement douleur (20) :** 20 = postes N1 ouverts + backlog + pression coût ; 15 = douleur claire ; 10 = gêne modérée ; 5 = latente ; 0 = aucun problème de capacité.
 
-**Capacité budgétaire (20 pts) :** 20 = CA > 250 k€ + dépense secrétaire actuelle ; 15 = budget plausible ; 10 = à valider ; 5 = sensibilité forte ; 0 = sous le seuil de rentabilité.
+**Capacité budgétaire (20) :** 20 = ≥ 3 ETP justifiables + budget déjà fléché ; 15 = 1,5-3 ETP ; 10 = à valider ; 5 = limite basse ; 0 = sous le seuil.
 
-**Accès au décideur (10 pts) :** 10 = praticien joignable + parrainage d'un confrère ; 7 = décideur identifié, contact froid ; 4 = seulement standard ; 0 = aucun chemin.
+**Accès au décideur (10) :** 10 = Head of Support/COO joignable + chemin chaud ; 7 = décideur identifié froid ; 4 = seulement contact opérationnel ; 0 = aucun chemin.
 
-**Signaux de timing (10 pts) :** 10 = déclencheur actif (départ secrétaire / annonce ouverte / avis négatifs récents) ; 6 = signaux modérés ; 3 = aucun signal mais fit ; 0 = momentum à la baisse.
+**Signaux de timing (10) :** 10 = poste ouvert / levée / incident récent ; 6 = signaux modérés ; 3 = fit sans signal ; 0 = momentum baissier.
 
-**Bandes de note :**
-- **A+ (90-100) :** prioriser sous 24 h, outreach personnalisé multi-canal.
-- **A (75-89) :** haute priorité, outreach personnalisé.
-- **B (60-74) :** bon fit, outreach semi-personnalisé, à surveiller.
-- **C (40-59) :** marginal, nurture automatisé seulement.
-- **D (0-39) :** hors ICP, ne pas démarcher.
+**Bandes :** A+ (90-100) prioriser sous 48 h · A (75-89) haute priorité · B (60-74) bon fit, semi-perso · C (40-59) nurture · D (0-39) hors ICP.
 
-**Checklist éclair (60 secondes) :**
-1. Profession à fort volume d'appels ? (O/N)
-2. Volume estimé > 150 appels/mois ? (O/N)
-3. Agenda en ligne déjà en place ? (O/N)
-4. Signal de douleur visible (avis négatifs, annonce secrétaire) ? (O/N)
-5. Praticien/décideur identifiable et joignable ? (O/N)
+**Checklist éclair (60 s) :**
+1. Acteur établi avec base clients (pas le client final) ? (O/N)
+2. Volume justifiant ≥ 1,5 ETP dédié ? (O/N)
+3. Clientèle francophone ? (O/N)
+4. Signal de tension (poste support ouvert / levée / backlog) ? (O/N)
+5. Décideur (Head of Support/COO) identifiable ? (O/N)
 
-5 Oui = A · 3-4 Oui = B · 1-2 Oui = C · 0 Oui = D.
+5 Oui = A · 3-4 = B · 1-2 = C · 0 = D.
 
 ## Personas acheteurs
 
-### Persona 1 : « Le spécialiste débordé » — Dr. Claire M., dermatologue, 42 ans
-- **Profil :** spécialiste libérale en cabinet de groupe (3 praticiens), grande ville, agenda Doctolib saturé, < 50 ans.
-- **Journée type :** consultations en flux tendu, téléphone qui sonne en permanence, secrétaire partie il y a 2 mois, ne tient plus son planning.
-- **Objectifs / KPIs :** voir ses patients sereinement, ne plus être interrompue, réduire les no-shows, préserver sa qualité de vie.
-- **Douleurs :** « Je décroche entre deux patients », « les gens n'arrivent jamais à nous joindre », « je passe mes soirées à rappeler ».
-- **Régime d'info :** groupes Facebook de consœurs, recommandations de confrères, Le Quotidien du Médecin.
-- **Objections :** « C'est à Madagascar, mes patients vont le sentir » (peur sur l'accent/qualité) ; « Et la confidentialité des données ? » ; « J'ai déjà essayé un télésecrétariat, c'était impersonnel ».
-- **Messages qui résonnent :** *Objet :* « Dr [Nom], combien d'appels perdez-vous chaque jour ? » — *Accroche :* « Une équipe francophone décroche pour vous, comme une secrétaire au cabinet, à moitié prix. »
-- **Ce qui la rebute :** jargon commercial, promesses de robot/IA, low-cost qui sent l'usine à appels.
-- **Comment la convaincre :** essai gratuit + écoute d'un appel réel + témoignage d'une consœur de la même spécialité.
+### Persona 1 : « Le Head of Support en surchauffe » — Julien, 36 ans, éditeur SaaS B2B
+- **Profil :** responsable support/CS d'un SaaS en hypercroissance, 5-15 agents, sous l'eau.
+- **Journée type :** firefighting, backlog qui monte, recrutements qui traînent, SLA qui glissent, reporting au COO.
+- **Objectifs / KPIs :** délai de première réponse, CSAT, taux de résolution, coût/ticket, tenue des SLA.
+- **Douleurs :** « Je n'arrive pas à recruter assez vite », « mon backlog explose à chaque pic », « je passe mon temps à former des juniors qui partent ».
+- **Régime d'info :** communautés CS/Support, LinkedIn, podcasts CX, pairs.
+- **Objections :** « La qualité va-t-elle suivre, c'est ma réputation » ; « Sécurité des données de mes clients ? » ; « Combien de temps pour être opérationnel ? » ; « Mes clients vont-ils sentir que c'est externalisé ? ».
+- **Messages qui résonnent :** *Objet :* « Votre support N1 sature et le recrutement ne suit pas ? » — *Accroche :* « Une équipe francophone formée, opérationnelle en quelques semaines, sous votre marque et dans votre Zendesk. »
+- **Ce qui le rebute :** promesses floues, offshore low-cost, absence de garanties qualité/SLA.
+- **Comment le convaincre :** pilote sur un périmètre réduit, échantillon de QA, références d'éditeurs similaires.
 
-### Persona 2 : « L'associé gérant » — Dr. Thomas R., cardiologue, 51 ans, gère un cabinet de groupe
-- **Profil :** praticien-décideur qui gère l'administratif et le budget pour 4-6 confrères ; raisonne coût/efficacité.
-- **Journée type :** soigne + arbitre les dépenses du cabinet ; agacé par le turnover des secrétaires et les charges.
-- **Objectifs / KPIs :** maîtriser les coûts de fonctionnement, fiabiliser l'accueil, éviter la galère RH.
-- **Douleurs :** « Recruter une secrétaire compétente est devenu impossible », « le coût chargé d'un CDI explose », « le turnover me coûte une fortune ».
-- **Régime d'info :** URPS, syndicats, comptable du cabinet, réseaux de confrères gérants.
-- **Objections :** « Quel est le vrai coût tout compris ? » ; « Que se passe-t-il si la qualité baisse ? » ; « Engagement et réversibilité ? ».
-- **Messages qui résonnent :** *Objet :* « Diviser par 2 le coût de votre secrétariat, sans gérer un salarié » — *Accroche :* « Permanence francophone, sans charges, sans RH, sans engagement long. »
-- **Ce qui le rebute :** flou sur les tarifs, engagement rigide, absence de chiffres.
-- **Comment le convaincre :** comparatif chiffré CDI vs Salverys, sans engagement / mois d'essai, garantie de qualité.
+### Persona 2 : « Le COO qui surveille le P&L » — Sophie, 44 ans, éditeur SaaS scale-up
+- **Profil :** dirige les opérations, arbitre coûts vs croissance, sous pression de rentabilité post-levée.
+- **Journée type :** pilotage des coûts, scalabilité des équipes, conformité, reporting investisseurs.
+- **Objectifs / KPIs :** marge brute, coût de service, scalabilité, time-to-staff, gross margin du support.
+- **Douleurs :** « Le support coûte trop cher en interne », « je ne peux pas scaler les effectifs au rythme de la croissance », « je dois améliorer la marge sans casser la qualité ».
+- **Régime d'info :** réseaux dirigeants, investisseurs, benchmarks SaaS.
+- **Objections :** « Quel est le vrai coût tout compris et l'engagement ? » ; « Réversibilité et dépendance ? » ; « Conformité RGPD/sécurité ? ».
+- **Messages qui résonnent :** *Objet :* « Diviser par ~2 le coût de votre support N1, sans toucher à la qualité » — *Accroche :* « Capacité francophone variable, en marque blanche, -40 % vs interne, sans risque RH. »
+- **Ce qui la rebute :** flou tarifaire, engagement rigide, opacité sur la conformité.
+- **Comment la convaincre :** business case chiffré interne vs marque blanche, pilote sans engagement long, dossier conformité.
 
-### Persona 3 : « Le jeune installé » — Dr. Léa B., généraliste, 34 ans, vient d'ouvrir
-- **Profil :** s'installe ou vient de s'installer, digital-native, patientèle en construction, budget serré mais ouverte aux solutions modernes.
-- **Journée type :** jongle entre patients, paperasse d'installation, et gestion du téléphone seule.
-- **Objectifs / KPIs :** se construire une patientèle, ne pas rater d'appels, paraître pro dès le départ.
-- **Douleurs :** « Je ne peux pas me payer une secrétaire tout de suite », « je rate des nouveaux patients quand je consulte ».
-- **Régime d'info :** groupes Facebook jeunes installés, Doctolib, conseils d'anciens internes.
-- **Objections :** « C'est dans mon budget ? » ; « Est-ce flexible si mon volume varie ? ».
-- **Messages qui résonnent :** *Objet :* « Un secrétariat pro dès le 1er jour, à partir de [X] €/mois » — *Accroche :* « Ne ratez plus un seul nouveau patient, sans embaucher. »
-- **Ce qui la rebute :** gros forfaits rigides, engagement long.
-- **Comment la convaincre :** petit forfait d'entrée, montée en charge progressive, sans engagement.
+### Persona 3 : « Le dirigeant de société de télésecrétariat » — Marc, 50 ans (Pilier B)
+- **Profil :** gère une société française de permanence téléphonique médicale, 20-80 agents, en tension de capacité.
+- **Journée type :** pilotage des plannings, qualité d'accueil, gestion des pics, refus de contrats faute de capacité.
+- **Objectifs / KPIs :** taux de décroché, qualité, marge, capacité à dire oui aux nouveaux contrats.
+- **Douleurs :** « Je refuse des clients faute d'agents », « recruter en France coûte cher et est lent », « je veux ouvrir des plages horaires sans alourdir ma masse salariale ».
+- **Objections :** « Mes clients médecins vont-ils sentir la différence ? » ; « Qualité de l'accueil francophone ? » ; « Confidentialité des données patients ? ».
+- **Messages qui résonnent :** *Objet :* « Ajoutez de la capacité francophone sans recruter en France » — *Accroche :* « Votre back-office invisible : agents formés, sous votre marque, fuseau France, -40 %. »
+- **Comment le convaincre :** test sur un volume de débordement, écoute d'appels, garantie qualité et confidentialité.
 
 ## Playbook de prospection
 
-- **Où les trouver :**
-  - **Doctolib / Maiia** : annuaire par spécialité + ville (lire les avis pour repérer « injoignable »).
-  - **Google Maps / Pages Jaunes** : cabinets par spécialité/ville, avec avis Google.
-  - **LinkedIn Sales Navigator** : centres de santé, cabinets de groupe, gérants.
-  - **Sites d'emploi** (Indeed, APEC, Leboncoin) : annonces « secrétaire médical(e) » ouvertes = prospects chauds.
-  - **URPS / annuaires de l'Ordre des médecins** par région.
-- **Requêtes de recherche (exemples) :**
-  - Google : `cabinet dermatologie [ville] avis` ; `"secrétaire médicale" CDI [ville] site:indeed.fr`
-  - LinkedIn Sales Nav : `Titre = "médecin"/"chirurgien-dentiste"/"gérant" + Secteur = Pratique médicale + Géo = France + Effectif 2-10`
-  - Indeed : `secrétaire médicale [ville]` filtré sur annonces de +30 jours.
-- **Surveillance de signaux :** alertes sur annonces de recrutement de secrétaire restées ouvertes ; nouveaux avis Google négatifs mentionnant le téléphone ; ouvertures de cabinets ; nouveaux associés.
-- **Priorisation (100 cabinets → top 10) :** 1) douleur visible (avis/annonce), 2) volume estimé, 3) spécialité à fort flux, 4) agenda en ligne présent, 5) accès à un décideur. Trier par score, attaquer les A+/A d'abord.
-- **Checklist d'enrichissement (avant outreach) :** 1) Nom du/des praticien(s) · 2) Spécialité · 3) Ville · 4) Volume d'appels estimé · 5) Agenda en ligne utilisé · 6) Avis Google pertinents · 7) Annonce secrétaire ouverte ? · 8) Email/téléphone du décideur · 9) Confrère en commun (chemin chaud) · 10) Déclencheur récent.
-- **Stratégies de chemin chaud :** parrainage par cabinets clients existants (programme de parrainage entre confrères), mention d'un confrère commun, recommandation via groupes de spécialité.
-- **Timing :** éviter les pics épidémiques (janvier/automne = surcharge → soit très réceptif, soit pas le temps) ; viser début de semaine, matin tôt ou fin de journée (hors consultations). Rentrée de septembre = budgets et réorganisations.
-- **Disqualification rapide (3 vérifs) :** 1) Hôpital public / grand groupe ? → stop. 2) Volume manifestement < 100/mois ? → stop. 3) Déjà ≥ 2 secrétaires en place ? → stop.
-- **Sources d'enrichissement :** Doctolib (volume/spécialité/avis), LinkedIn Sales Nav (décideur), Google Business (avis téléphone), Indeed/APEC (tension recrutement), Societe.com/Pappers (CA cabinet).
-- **Templates d'ouverture par persona :** voir « Messages qui résonnent » de chaque persona ci-dessus — à décliner dans la séquence Emelia.
+- **Pilier A — où les trouver :**
+  - **Classements éditeurs** : Top 250 éditeurs français (EY/Numeum), French Tech 120, annuaires SaaS FR (SaaSForge, Tool-Advisor).
+  - **LinkedIn Sales Navigator** : `Titre = "Head of Support"/"Customer Support Manager"/"COO"/"Directeur des opérations" + Secteur = Édition de logiciels + Géo = France + Effectif 11-200`.
+  - **Sites d'emploi** (Indeed, WelcomeToTheJungle, LinkedIn Jobs) : annonces « Support N1 / Technicien support SaaS / Customer Care » ouvertes → prospects chauds.
+  - **Bases de levées** : Maddyness, Eldorado, Crunchbase (levées récentes = budget + croissance).
+- **Pilier B — où les trouver :** annuaires de sociétés de télésecrétariat médical FR, Societe.com/Pappers (taille, CA), sites concurrents qui affichent « nous recrutons » en continu.
+- **Requêtes (exemples) :**
+  - Indeed : `"support N1" OR "technicien support" SaaS` filtré annonces > 30 jours.
+  - LinkedIn : éditeurs SaaS FR ayant levé < 18 mois + poste support ouvert.
+  - Google : `"nous recrutons" télésecrétariat médical France`.
+- **Surveillance de signaux :** alertes levées de fonds (éditeurs FR), nouvelles offres support persistantes, avis clients dégradés sur les délais de réponse, annonces de lancement produit/expansion.
+- **Priorisation (100 → top 10) :** 1) signal de douleur actif (poste ouvert/levée), 2) volume ETP justifiable, 3) secteur francophone, 4) outillage mature, 5) accès décideur. Trier par score, A+/A d'abord.
+- **Checklist d'enrichissement :** 1) Nom de la société · 2) Effectif/ARR · 3) Croissance/levée récente · 4) Volume support estimé · 5) Outil de ticketing/téléphonie · 6) Postes support ouverts ? · 7) Head of Support/COO (nom + contact) · 8) Avis clients sur le support · 9) Chemin chaud (investisseur, pair, communauté) · 10) Déclencheur récent.
+- **Chemins chauds :** introductions via fonds d'investissement, communautés Customer Success/Support, clients existants, événements SaaS.
+- **Timing :** post-levée (3-9 mois après, quand le scale crée la douleur), rentrée de septembre, début d'année (budgets). Éviter août.
+- **Disqualification rapide (3 vérifs) :** 1) Client final direct / pas de revente ? → reconsidérer. 2) Volume < 1,5 ETP ? → stop. 3) Déjà un centre offshore intégré ? → stop.
+- **Templates d'ouverture :** voir « Messages qui résonnent » par persona ci-dessus — à décliner dans la séquence Emelia.
 
 ## Contexte concurrentiel
 
-- **Concurrents 100 % France (premium) :** Medicall (leader, 20 ans, 100 % France), A3COM, Callmed, Accueilpro, Clicfone. Différenciateur : « tout France » rassurant, mais **plus cher**.
-- **Concurrents offshore Madagascar (frontaux) :** Téléservices.fr, Télésecrétariat-Madagascar (+ Maurice), Serenity Center. **Ce sont les vrais concurrents directs de Salverys** : même promesse géographique et tarifaire.
-- **Énoncé de positionnement :** *« Salverys offre la qualité d'accueil et la rigueur d'un secrétariat français, à un coût ~40 % inférieur — porté par une direction qui a déjà piloté 1 000 collaborateurs. »*
-- **Scénarios de déplacement :** les prospects quittent surtout (a) une secrétaire physique devenue impossible à recruter/financer, (b) un standard automatique impersonnel, ou (c) un télésecrétariat offshore décevant en qualité. **L'angle anti-offshore-bas-de-gamme** (français langue maternelle, encadrement senior, qualité) est le différenciateur clé face aux concurrents malgaches.
-- **Tendances marché favorables :** +27 % de recours au télésecrétariat 2019-2022, +51 % chez les < 50 ans ; pénurie aiguë de secrétaires médicales ; généralisation de Doctolib qui rend l'externalisation naturelle. Le marché est porteur et l'urgence réelle en 2026.
+- **Pilier A (support SaaS) :** BPO/outsourceurs francophones (acteurs au Maghreb, à Madagascar, à Maurice), centres de support internalisés, et solutions d'IA/automatisation du support (deflection). **Différenciateur Salverys :** marque blanche réellement invisible + français langue maternelle + fuseau France + qualité pilotée, vs offshore générique ou IA qui ne couvre pas le N1 complexe.
+- **Pilier B (télésecrétariat) :** sociétés FR (Medicall, A3COM, Callmed…) et offshore Madagascar/Maurice (Téléservices.fr, Serenity Center). **Positionnement Salverys = fournisseur de capacité, pas concurrent frontal** : on vend AUX acteurs FR, on ne leur prend pas leurs clients.
+- **Énoncé de positionnement :** *« Salverys est la capacité francophone invisible des acteurs français : une équipe formée et pilotée, sous votre marque, à -40 % du coût d'une équipe interne, sans le risque RH. »*
+- **Scénarios de déplacement :** les prospects quittent (a) un recrutement interne impossible/trop lent, (b) un offshore low-cost qui a dégradé leur marque, ou (c) une équipe interne trop chère. L'angle **« qualité française sans le coût français »** est le différenciateur clé.
+- **Tendances favorables :** 89 % des éditeurs en tension de recrutement (vs 78 % en 2 ans), récurrence SaaS = 64 % du CA (volume support pérenne), pression de rentabilité post-levées → externalisation du N1 en accélération. Marché porteur et urgent en 2026.
 
 ## Guide de maintenance de l'ICP
 
-- **Cadence de revue :** trimestrielle, ou après tout changement d'offre/tarif.
-- **Déclencheurs de mise à jour :** 3+ deals gagnés hors paramètres ICP actuels ; 3+ deals perdus sur la même objection (ex : RGPD/offshore) ; ajout d'une niche (support applicatif N1, helpdesk IT) ; changement de modèle tarifaire ; nouvel entrant offshore majeur.
-- **Boucle de feedback :** après analyse de 10+ cabinets via la prospection, comparer les scores aux issues réelles (signature/churn) et réajuster les pondérations.
-- **Versionnage :** dater chaque version de l'ICP et conserver les précédentes.
+- **Cadence :** trimestrielle, ou après changement d'offre/tarif/positionnement.
+- **Déclencheurs de mise à jour :** 3+ deals gagnés hors paramètres ; 3+ deals perdus sur la même objection (conformité, réversibilité) ; ajout d'une niche (helpdesk IT N1) ; bascule éventuelle vers de la vente directe ; nouvel entrant offshore majeur.
+- **Boucle de feedback :** après 10+ prospects qualifiés, comparer scores et issues réelles (signature/churn), réajuster les pondérations.
+- **Versionnage :** dater chaque version, conserver les précédentes.
 
 ---
 
