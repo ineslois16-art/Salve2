@@ -153,6 +153,22 @@ For each identified contact, classify them into one or more buying roles:
 - Without a champion, deals are 3x less likely to close
 - They provide insider intelligence on the buying process
 
+**CRITICAL — a champion cannot be confirmed from public data alone.**
+The champion is a *behavioral* role (someone who feels the pain AND advocates
+internally), not a job title. Public scraping can only surface a **likely
+functional owner** — the person whose title matches the function. Job titles on
+LinkedIn are frequently stale (someone keeps "Head of Support" after moving on,
+or the real owner has a generic title). Treating a scraped title-holder as a
+confirmed champion is the single most common error this skill makes.
+
+Therefore:
+- Never assert a single named champion as fact. Output a **ranked list of
+  candidate champions** (see 2.2), each with a confidence level and the evidence.
+- Label every champion as a **hypothesis to validate**, not a finding.
+- A champion is only *confirmed* by behavior (they reply, engage, and confirm
+  the pain) or by an insider who knows the org. Prioritize human verification
+  (the user's network, a coach, a quick call) over any scraped signal.
+
 #### Technical Evaluator
 **Definition:** Assesses technical fit, integrations, security, and implementation complexity.
 **Typical titles:** CTO, VP Engineering, IT Director, Solutions Architect, Security Officer
@@ -210,11 +226,17 @@ For each identified contact, classify them into one or more buying roles:
 
 ### 2.2 Role Assignment Matrix
 
-For each identified contact, assign roles using this matrix:
+For each identified contact, assign roles using this matrix. Every row MUST carry
+the evidence trail and a recency check — never a bare title-to-role guess:
 
-| Contact Name | Title | Primary Role | Secondary Role | Confidence |
-|-------------|-------|-------------|----------------|------------|
-| [name] | [title] | [Economic Buyer/Champion/etc.] | [optional second role] | [High/Medium/Low] |
+| Contact Name | Title | Primary Role | Confidence | Evidence (sources) | Recency check |
+|-------------|-------|-------------|------------|--------------------|---------------|
+| [name] | [title] | [role] | [High/Medium/Low] | [≥2 sources, or "single source"] | [role start date / last activity / "unverified"] |
+
+**Confidence rules (be honest — most will be Medium or Low):**
+- **High:** corroborated by 2+ independent sources AND a recency signal (recent post, role start date, quoted in a recent piece). Reserve for cases that are genuinely verified.
+- **Medium:** single credible source, or 2 sources but no recency confirmation. The default for most scraped contacts.
+- **Low:** inferred from title-matching only, or data older than ~12 months with no confirmation.
 
 **Assignment rules:**
 - One person can fill multiple roles (especially in smaller companies)
@@ -222,6 +244,46 @@ For each identified contact, assign roles using this matrix:
 - In companies under 50 people, expect 2-3 people in the buying committee
 - In companies 50-200, expect 3-5 people in the buying committee
 - In companies 200+, expect 5-8+ people in the buying committee
+
+### 2.3 Champion Validation Protocol
+
+The champion is the role most often gotten wrong. Apply this protocol before
+naming anyone — and never output a single asserted champion.
+
+**Step 1 — Distinguish functional owner from champion.**
+Public data yields, at best, a **functional owner hypothesis** (title matches the
+function). Record it as such. The champion (advocate who feels the pain) is only
+confirmed later, by behavior or by an insider.
+
+**Step 2 — Output ranked candidate champions, not one.**
+List 2-3 candidates with confidence + evidence, so the human chooses:
+
+| Rank | Candidate | Why they might be the champion | Confidence | What would confirm it |
+|------|-----------|--------------------------------|------------|------------------------|
+| 1 | [name, title] | [pain ownership / influence signal] | [H/M/L] | [validation action] |
+| 2 | [name, title] | [...] | [H/M/L] | [...] |
+| 3 | [name, title] | [...] | [H/M/L] | [...] |
+
+**Step 3 — Triangulate (need ≥2 corroborating signals to raise confidence):**
+- Company LinkedIn "People" filtered by the relevant function
+- Who is the **hiring manager / reporting line** on open job posts for that team
+- Who signs support/CS communications, release notes, or status pages
+- Who speaks publicly about the function (posts, webinars, podcasts)
+- Tenure and role **start date** (a recent start = likely current; an old title with no recent activity = suspect)
+
+**Step 4 — Recency / "is this still true?" check.**
+Flag any contact whose role evidence is older than ~12 months or shows no recent
+activity as **"role unverified — confirm before outreach."**
+
+**Step 5 — Prefer human verification when available.**
+If the user has insider knowledge, a warm contact, or a coach inside the account,
+ask them FIRST — it is faster and more accurate than any scrape. When unavailable,
+treat the first outreach touch as champion-discovery: multi-thread lightly and ask
+the open question ("who owns [function] today?") rather than betting on one name.
+
+**Hard rule:** if you cannot reach Medium+ confidence on the champion, say so
+explicitly and present the candidate list with an explicit validation action. Do
+not manufacture false precision.
 
 ---
 
@@ -455,13 +517,26 @@ who needs to know who to contact and in what order.]
 
 ## Buying Committee Map
 
-| Name | Title | Buying Role | Personalization Anchor | Approach Strategy | Priority |
-|------|-------|-------------|----------------------|-------------------|----------|
-| [name] | [title] | Economic Buyer | [best anchor] | [1-line strategy] | 1 |
-| [name] | [title] | Champion | [best anchor] | [1-line strategy] | 2 |
-| [name] | [title] | Technical Evaluator | [best anchor] | [1-line strategy] | 3 |
-| [name] | [title] | End User | [best anchor] | [1-line strategy] | 4 |
-| [name] | [title] | Potential Blocker | [best anchor] | [1-line strategy] | 5 |
+| Name | Title | Buying Role | Confidence | Anchor | Strategy | Priority |
+|------|-------|-------------|------------|--------|----------|----------|
+| [name] | [title] | Economic Buyer | [H/M/L] | [best anchor] | [1-line] | 1 |
+| [name] | [title] | Technical Evaluator | [H/M/L] | [best anchor] | [1-line] | 3 |
+| [name] | [title] | End User | [H/M/L] | [best anchor] | [1-line] | 4 |
+| [name] | [title] | Potential Blocker | [H/M/L] | [best anchor] | [1-line] | 5 |
+
+> Confidence reflects evidence quality (see 2.2). Default to Medium/Low unless verified by 2+ sources with a recency signal.
+
+## Candidate Champions (hypotheses — to validate, not assert)
+
+Per 2.3, never name a single champion as fact. List ranked candidates:
+
+| Rank | Candidate (name, title) | Why possibly the champion | Confidence | How to confirm |
+|------|-------------------------|---------------------------|------------|----------------|
+| 1 | [name] | [pain ownership / influence] | [H/M/L] | [validation action] |
+| 2 | [name] | [...] | [H/M/L] | [...] |
+| 3 | [name] | [...] | [H/M/L] | [...] |
+
+**Champion validation action:** [the single fastest way to confirm for THIS account — e.g. "ask the user's insider contact", "check hiring manager on the open Support role", "call reception", "confirm via first outreach question"]
 
 ---
 
@@ -589,9 +664,9 @@ Contact Access Score: [X]/100
   Warm Paths:          [XX]/25 █████░░░░░
 
 Buying Committee:
-  Economic Buyer:      [Name], [Title]
-  Champion:            [Name], [Title]
-  Technical Eval:      [Name], [Title]
+  Economic Buyer:      [Name], [Title] ([confidence])
+  Champion (candidate):[Name], [Title] ([confidence] — to validate)
+  Technical Eval:      [Name], [Title] ([confidence])
   End User:            [Name], [Title]
 
 Email Pattern: [pattern]
