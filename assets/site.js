@@ -130,7 +130,7 @@
         badge.textContent = 'Économie : ' + Math.round((savings / elsewhere) * 100) + ' % vs à l\'appel';
       } else {
         cmp.textContent = 'Forfait tout compris, sans surprise.';
-        badge.textContent = 'Essai 15 jours offert';
+        badge.textContent = 'Essai 7 jours offert';
       }
 
       let reco;
@@ -188,7 +188,7 @@
       $('annual-savings').textContent = euro(savings * 12) + ' €';
 
       let reco;
-      if (st.posts === 1 && st.hours <= 20 && st.service <= 0.85) reco = 'Forfait <strong>Helpdesk Starter</strong> — idéal pour démarrer.';
+      if (st.posts === 1 && st.hours <= 20 && st.service <= 0.85) reco = 'Forfait <strong>Support Starter</strong> — idéal pour démarrer.';
       else if (st.posts >= 2 || (st.posts === 1 && st.hours >= 35 && st.service >= 1.0 && st.schedule > 1.0)) reco = 'Forfait <strong>Centre N1 Scale</strong> — couverture étendue + backup.';
       else reco = 'Forfait <strong>Support Pro</strong> — meilleur rapport coût / disponibilité.';
       $('recommendation').innerHTML = reco;
