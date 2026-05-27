@@ -9,6 +9,43 @@ You are the decision maker intelligence engine for `/sales contacts <url>`. You 
 
 ---
 
+## Phase 0: ICP Gate (do this BEFORE any research)
+
+Do not spend research effort on a target before checking it is worth it. This is
+the most common waste in practice: producing a polished dossier on a company that
+was never a fit.
+
+1. **Read `IDEAL-CUSTOMER-PROFILE.md`** if it exists in the working directory. If it
+   does not, ask the user for the ICP in one line, or proceed with an explicit
+   "no ICP on file" caveat.
+2. **Make a fast go / no-go call** on the target against the ICP's core criteria
+   (sector, geography, size, business model). Use one or two quick web searches —
+   just enough to classify, not a full profile.
+3. **State the verdict at the very top of the output:**
+   - **In-ICP →** proceed with the full procedure below.
+   - **Off-ICP →** STOP after a short note explaining which criteria fail. Do not
+     build a full buying-committee dossier on a company that does not fit. If the
+     user explicitly wants it anyway (e.g. a test), proceed but keep the off-ICP
+     flag prominent.
+
+A well-documented target is not the same as a high-potential one. The ICP gate
+decides whether the rest of this skill should run at all.
+
+---
+
+## Privacy / GDPR note (applies throughout)
+
+This skill assembles dossiers on **named individuals** and writes them to disk. In
+an EU/French context this is personal-data processing under GDPR:
+- Collect only what serves the prospecting purpose (no hobbies/family/sensitive data).
+- Prefer professional, public sources; never scrape gated or private data.
+- Treat the output file as containing personal data: don't over-retain, and don't
+  commit real individuals' dossiers to a shared repo longer than needed.
+- A lawful basis (legitimate interest for B2B prospecting) and an opt-out in any
+  outreach are expected. Flag this to the user rather than ignoring it.
+
+---
+
 ## Phase 1: Contact Identification
 
 ### 1.1 Team Page Analysis
@@ -44,16 +81,21 @@ Search 6: "[company name] Director [relevant function] LinkedIn"
 Search 7: "[company name] [specific title from team page] LinkedIn"
 ```
 
-**For each person found, capture:**
+**Reality check on what you can actually get.** LinkedIn profile pages and many
+corporate sites are auth-walled or block automated fetching (expect HTTP 403). In
+practice you will get **search-result snippets**, not full profiles. Do not pretend
+to have read a profile you could only see as a snippet, and never invent posts,
+connections, or endorsements to fill the fields below. Capture what the snippet
+genuinely shows; mark the rest "not available from public search".
+
+**For each person found, capture what is genuinely visible (typically from snippets):**
 - Full name
-- Current title and tenure (when they started)
-- Previous companies and roles
-- Education (university, degree)
-- Location
-- LinkedIn headline (often reveals priorities)
-- Recent posts or articles (last 3-6 months)
-- Shared connections or groups (if visible)
-- Skills and endorsements (reveals expertise areas)
+- Current title — and flag it "as listed, unverified" unless a date or recent activity confirms it is current
+- Previous companies / role history (if shown)
+- Location (if shown)
+- LinkedIn headline (often in the snippet)
+- Anything else only if actually visible — recent posts, shared connections, skills
+  and endorsements usually require being logged in, so treat them as bonus, not expected
 
 ### 1.3 Org Chart Mapping
 
@@ -412,15 +454,21 @@ Calculate across 4 sub-dimensions, each scored 0-25:
 
 #### Decision Makers Identified (0-25)
 
+Points are weighted by confidence (see 2.2). A guessed name scores far less than a
+verified one — do not reward false precision.
+
 | Criteria | Points |
 |----------|--------|
-| Economic buyer identified by name | +8 |
-| Champion identified by name | +6 |
-| Technical evaluator identified by name | +4 |
+| Economic buyer identified by name | +8 (×1.0 High / ×0.5 Medium / ×0.25 Low confidence) |
+| Champion CANDIDATE identified (hypothesis, per 2.3) | +6 (×1.0 High / ×0.5 Medium / ×0.25 Low) |
+| Technical evaluator identified by name | +4 (same confidence weighting) |
 | 3+ buying committee members found | +4 |
 | Full buying committee mapped (all relevant roles) | +3 |
 | Only CEO/founder identified (SMB single-decision) | +10 (replaces above) |
 | No decision makers found | 0 |
+
+> A Low-confidence champion candidate scores ~1.5, not 6. Asserting a single
+> unverified champion as fact earns no bonus — it is the error 2.3 forbids.
 
 #### Contact Info Accessibility (0-25)
 
@@ -482,10 +530,17 @@ Multi-threading means engaging multiple stakeholders within the prospect organiz
 
 ### 5.3 Multi-Threading Sequence
 
-**Step 1 (Day 0-1): Engage the Champion**
-- Start with the person most likely to feel the pain
-- Use the most personalized message
-- Goal: Get a response and establish a dialogue
+> Note: the champion is a hypothesis (per 2.3), not a confirmed person. Multi-threading
+> is precisely how you confirm it: contact the lead candidate(s), and let the reply
+> reveal who actually owns the pain. Where confidence is Low, engage the top 2 candidate
+> champions in parallel rather than betting on one. "[Champion]" below means "lead
+> candidate champion — to be confirmed by response", not an established fact.
+
+**Step 1 (Day 0-1): Engage the lead candidate champion(s)**
+- Start with the person most likely to feel the pain (highest-confidence candidate)
+- If champion confidence is Low, engage the top 2 candidates in parallel
+- Use the most personalized message; include a soft routing line ("if this isn't your area, who owns it?") so a wrong guess self-corrects
+- Goal: get a response that confirms (or redirects to) the real champion
 
 **Step 2 (Day 2-3): Connect with the Economic Buyer**
 - LinkedIn connection request with custom note
@@ -514,12 +569,18 @@ Multi-threading means engaging multiple stakeholders within the prospect organiz
 
 ## Output Format: DECISION-MAKERS.md
 
+**Write the deliverable in the user's / prospect's language.** The template below is
+an English *structure guide*, not text to copy verbatim. For a French user or French
+targets (check CLAUDE.md / project context), write the whole report in French. Keep
+the section structure; translate the labels.
+
 Write the full output to `DECISION-MAKERS.md` in the current directory:
 
 ```markdown
 # Decision Maker Intelligence: [Company Name]
 **URL:** [url]
 **Date:** [current date]
+**ICP verdict:** [In-ICP / Off-ICP — one line on fit, per Phase 0]
 **Contact Access Score: [X]/100**
 **Buying Committee Size:** [estimated number of people involved in decision]
 **Email Pattern:** [detected pattern or "Unknown"]
@@ -632,12 +693,17 @@ Include channel, messaging angle, and expected response.]
 
 ### Messaging by Role
 
-| Role | Primary Message | Content to Share | CTA |
+Adapt the "content to share" and CTA to what is actually being sold. The defaults
+below assume a self-serve software product; for a **service / outsourcing / white-label**
+offer, there is no "trial", "product tour" or "API docs" — substitute the service
+equivalents (shown in the right-hand notes).
+
+| Role | Primary Message | Content to Share (service equivalent) | CTA |
 |------|----------------|-----------------|-----|
-| Economic Buyer | ROI and strategic impact | ROI calculator, executive summary | 15-min strategic call |
-| Champion | Solve their daily pain | Product demo video, how-to guide | Quick demo or trial |
-| Technical Evaluator | Integration and security | API docs, security whitepaper, case study | Technical deep dive |
-| End User | Make their job easier | Product tour, quick start guide | Self-serve trial |
+| Economic Buyer | ROI and strategic impact | Cost/ROI comparison, executive one-pager | 15-min strategic call |
+| Champion | Solve their daily pain | Capability overview, relevant reference (case if available) | Quick exploratory call |
+| Technical Evaluator | Integration, security, compliance | Security/compliance brief (e.g. GDPR/HDS), process doc | Technical / compliance review |
+| End User | Make their job easier | How-it-works walkthrough, sample workflow | Scoped pilot on a small perimeter |
 
 ---
 
