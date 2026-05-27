@@ -122,6 +122,8 @@ img { display: block; max-width: 100%; }
 .btn-ghost:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
 .btn-outline { background: transparent; color: var(--primary); border: 1.6px solid var(--primary); }
 .btn-outline:hover { background: var(--primary); color: #fff; }
+.btn-it { background: #013C58; color: #FFD35B; box-shadow: var(--shadow-md); }
+.btn-it:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 
 /* ================= HERO ================= */
 .hero { position: relative; overflow: hidden; padding: 72px 0 84px; }
