@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Salverys — comparaison des deux chartes</title>
+<title>Salverys — thème principal vs secondaire</title>
 <style>
   :root{
     --ink:#20303F; --muted:#7c7468; --line:#E7DFD1;
@@ -33,14 +33,14 @@
     border:1px solid #e6e6e6; box-shadow:var(--shadow-md);
     display:flex;flex-direction:column;
   }
-  .panel.reco{border:3px solid var(--gold);box-shadow:var(--shadow-lg)}
+  .panel.reco{border:3px solid var(--accent);box-shadow:var(--shadow-lg)}
   .panel .topbar{height:8px;background:var(--primary)}
   .panel .phead{padding:22px 26px 0;text-align:center}
   .panel .phead h2{font-size:24px;color:var(--primary);letter-spacing:-.01em}
   .panel .phead .sub{color:var(--muted);font-size:15px;margin-top:4px}
   .badge{display:inline-block;margin-top:12px;padding:7px 16px;border-radius:var(--pill);
     font-size:13px;font-weight:800;letter-spacing:.02em}
-  .badge.on{background:var(--gold);color:#1b1b1b}
+  .badge.on{background:var(--accent);color:#F6F2EA}
   .badge.off{background:#9AA0A6;color:#fff}
 
   /* hero mock */
@@ -60,6 +60,10 @@
   .hero h3 .hl{color:var(--accent-ink);box-shadow:inset 0 -.5em 0 var(--accent-soft)}
   .hero .lead{color:#54525b;font-size:16px;margin-bottom:18px}
   .descr{font-family:var(--font-head);font-size:15px;color:var(--primary);opacity:.85}
+
+  /* badge "Essai 7 jours" sur aplat d'accent — texte crème #F6F2EA */
+  .chip-accent{display:inline-block;background:var(--accent);color:#F6F2EA;font-weight:800;
+    font-size:14px;padding:10px 18px;border-radius:var(--pill);margin:0 0 16px}
 
   .btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:var(--pill);
@@ -81,53 +85,55 @@
   /* métier card */
   .mcard{margin:8px 26px 26px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
   .mcard .ctop{height:84px;background:linear-gradient(135deg,var(--primary),var(--primary-deep));position:relative}
-  .mcard .tag{position:absolute;top:12px;left:12px;background:var(--gold);color:#1b1b1b;
+  .mcard .tag{position:absolute;top:12px;left:12px;background:var(--accent);color:#F6F2EA;
     font-size:12px;font-weight:800;padding:5px 12px;border-radius:var(--pill)}
   .mcard .cbody{padding:16px 18px}
   .mcard .cbody h5{font-family:var(--font-head);font-weight:var(--head-w);font-size:19px;color:var(--primary);margin-bottom:6px}
   .mcard .cbody p{font-size:14px;color:#666}
   .mcard .clink{color:var(--accent-ink);font-weight:700;font-size:14px;margin-top:10px;display:inline-block}
 
-  .foot{text-align:center;color:#555;margin-top:30px;font-size:16px;max-width:820px;margin-left:auto;margin-right:auto}
+  .note{margin:0 26px 24px;font-size:13px;color:#8a5a00;background:#FFF6DF;border:1px solid #F1D98A;
+    border-radius:12px;padding:12px 14px}
+  .foot{text-align:center;color:#555;margin-top:30px;font-size:16px;max-width:860px;margin-left:auto;margin-right:auto}
   .foot .pill{display:inline-block;background:#fff;border:1px solid #e3e3e3;border-radius:var(--pill);padding:12px 22px;box-shadow:var(--shadow-md)}
 
-  /* ===== THEME A : Navy + Doré (IT) — RETENUE ===== */
-  .opt-a{
-    --primary:#013C58; --primary-deep:#012C42;
-    --accent:#FFD35B; --accent-soft:#FFE9A8; --accent-tint:#FFF7E0; --accent-ink:#013C58;
-    --gold:#FFD35B; --cta:#FFD35B; --cta-text:#013C58; --bg-soft:#F4F8FB;
-    --font-head:'Inter',sans-serif; --head-w:800; --word-w:800;
-  }
-  /* ===== THEME B : Bleu + Sauge (médical) — DÉFAUT ACTUEL ===== */
-  .opt-b{
+  /* ===== PRINCIPAL : Bleu + Sauge (médical, thème par défaut du site) ===== */
+  .opt-principal{
     --primary:#2E3B4E; --primary-deep:#222C3B;
     --accent:#6F8770; --accent-soft:#C5D2C5; --accent-tint:#EAF0EA; --accent-ink:#46604a;
     --gold:#B89968; --cta:#2E3B4E; --cta-text:#FFFFFF; --bg-soft:#F6F2EA;
     --font-head:'Georgia','Times New Roman',serif; --head-w:600; --word-w:700;
+  }
+  /* ===== SECONDAIRE : Navy + Doré (IT, .theme-it) ===== */
+  .opt-secondaire{
+    --primary:#013C58; --primary-deep:#012C42;
+    --accent:#FFD35B; --accent-soft:#FFE9A8; --accent-tint:#FFF7E0; --accent-ink:#013C58;
+    --gold:#FFD35B; --cta:#FFD35B; --cta-text:#F6F2EA; --bg-soft:#F4F8FB;
+    --font-head:'Inter',sans-serif; --head-w:800; --word-w:800;
   }
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="page-head">
-    <h1>Salverys — comparaison des deux chartes</h1>
-    <p>Quelle identité retenir comme thème principal du site&nbsp;?</p>
+    <h1>Salverys — thème principal vs secondaire</h1>
+    <p>Décision révisée : <b>sauge = principal</b>, navy + doré = secondaire (pages IT).</p>
   </div>
   <div class="legend">
-    <span><b>Diffèrent sur :</b> la couleur ET la typographie</span>
-    <span><b>Option A</b> · Inter sans-serif, navy + jaune</span>
-    <span><b>Option B</b> · Georgia serif, bleu + sauge + or chaud</span>
+    <span><b>Règle appliquée :</b> texte sur aplat d'accent = #F6F2EA (fond doux)</span>
+    <span><b>Principal</b> · Georgia serif, bleu + sauge</span>
+    <span><b>Secondaire</b> · Inter sans-serif, navy + doré</span>
   </div>
 
   <div class="grid">
 
-    <!-- ============ OPTION A ============ -->
-    <section class="panel reco opt-a">
+    <!-- ============ PRINCIPAL (SAUGE) ============ -->
+    <section class="panel reco opt-principal">
       <div class="topbar"></div>
       <div class="phead">
-        <h2>Option A — Navy + Doré</h2>
-        <div class="sub">version « Support IT &amp; Applicatif »</div>
-        <span class="badge on">RETENUE · logo maître</span>
+        <h2>Principal — Bleu + Sauge</h2>
+        <div class="sub">version « Télésecrétariat Médical »</div>
+        <span class="badge on">RETENU · logo maître</span>
       </div>
 
       <div class="hero">
@@ -138,50 +144,7 @@
         <span class="eyebrow"><span class="pulse"></span> BPO francophone · Antananarivo → France</span>
         <h3>Votre relation client, <span class="hl">en français</span>, à 40&nbsp;% du coût.</h3>
         <p class="lead">Appels, télésecrétariat et support — équipes francophones, à vos horaires.</p>
-        <div class="btns">
-          <button class="btn btn-primary">Réserver un appel →</button>
-          <button class="btn btn-outline">Voir les métiers</button>
-        </div>
-        <div class="trust"><span><b>Français</b> impeccable</span><span><b>8h–20h</b> en direct</span><span><b>−40 %</b> vs la France</span></div>
-        <div class="descr" style="margin-top:14px">Télésecrétariat Médical · Support IT &amp; Applicatif</div>
-      </div>
-
-      <div class="block">
-        <h4>Palette</h4>
-        <div class="swatches">
-          <div class="sw"><div class="chip" style="background:#013C58"></div><div class="hex">#013C58</div><div class="role">navy maître</div></div>
-          <div class="sw"><div class="chip" style="background:#FFD35B"></div><div class="hex">#FFD35B</div><div class="role">doré / jaune</div></div>
-          <div class="sw"><div class="chip" style="background:#F4F8FB;border:1px solid #e2e2e2"></div><div class="hex">#F4F8FB</div><div class="role">fond doux</div></div>
-        </div>
-      </div>
-
-      <div class="mcard">
-        <div class="ctop"><span class="tag">Priorité</span></div>
-        <div class="cbody">
-          <h5>Télésecrétariat médical</h5>
-          <p>Prise d'appels et gestion d'agendas pour praticiens. Dès 350&nbsp;€/mois.</p>
-          <span class="clink">Simuler mon forfait →</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ OPTION B ============ -->
-    <section class="panel opt-b">
-      <div class="topbar"></div>
-      <div class="phead">
-        <h2>Option B — Bleu + Sauge</h2>
-        <div class="sub">thème par défaut actuel du site</div>
-        <span class="badge off">ACTUELLE · à réserver santé</span>
-      </div>
-
-      <div class="hero">
-        <div class="lockup">
-          <div class="mark"><span>S</span><i class="dot"></i></div>
-          <div class="word">Salverys<span class="pt">.</span></div>
-        </div>
-        <span class="eyebrow"><span class="pulse"></span> BPO francophone · Antananarivo → France</span>
-        <h3>Votre relation client, <span class="hl">en français</span>, à 40&nbsp;% du coût.</h3>
-        <p class="lead">Appels, télésecrétariat et support — équipes francophones, à vos horaires.</p>
+        <div class="chip-accent">Essai 7 jours offert</div>
         <div class="btns">
           <button class="btn btn-primary">Réserver un appel →</button>
           <button class="btn btn-outline">Voir les métiers</button>
@@ -194,11 +157,13 @@
         <h4>Palette</h4>
         <div class="swatches">
           <div class="sw"><div class="chip" style="background:#2E3B4E"></div><div class="hex">#2E3B4E</div><div class="role">bleu profond</div></div>
-          <div class="sw"><div class="chip" style="background:#6F8770"></div><div class="hex">#6F8770</div><div class="role">sauge</div></div>
+          <div class="sw"><div class="chip" style="background:#6F8770"></div><div class="hex">#6F8770</div><div class="role">sauge (accent)</div></div>
           <div class="sw"><div class="chip" style="background:#B89968"></div><div class="hex">#B89968</div><div class="role">or chaud</div></div>
-          <div class="sw"><div class="chip" style="background:#F6F2EA;border:1px solid #e2e2e2"></div><div class="hex">#F6F2EA</div><div class="role">greige</div></div>
+          <div class="sw"><div class="chip" style="background:#F6F2EA;border:1px solid #e2e2e2"></div><div class="hex">#F6F2EA</div><div class="role">fond doux / texte</div></div>
         </div>
       </div>
+
+      <div class="note">✓ Texte crème <b>#F6F2EA</b> sur sauge <b>#6F8770</b> : bien lisible.</div>
 
       <div class="mcard">
         <div class="ctop"><span class="tag">Priorité</span></div>
@@ -210,10 +175,57 @@
       </div>
     </section>
 
+    <!-- ============ SECONDAIRE (NAVY + DORÉ) ============ -->
+    <section class="panel opt-secondaire">
+      <div class="topbar"></div>
+      <div class="phead">
+        <h2>Secondaire — Navy + Doré</h2>
+        <div class="sub">version « Support IT &amp; Applicatif »</div>
+        <span class="badge off">SECONDAIRE · pages IT</span>
+      </div>
+
+      <div class="hero">
+        <div class="lockup">
+          <div class="mark"><span>S</span><i class="dot"></i></div>
+          <div class="word">Salverys<span class="pt">.</span></div>
+        </div>
+        <span class="eyebrow"><span class="pulse"></span> BPO francophone · Antananarivo → France</span>
+        <h3>Votre relation client, <span class="hl">en français</span>, à 40&nbsp;% du coût.</h3>
+        <p class="lead">Appels, télésecrétariat et support — équipes francophones, à vos horaires.</p>
+        <div class="chip-accent">Essai 7 jours offert</div>
+        <div class="btns">
+          <button class="btn btn-primary">Réserver un appel →</button>
+          <button class="btn btn-outline">Voir les métiers</button>
+        </div>
+        <div class="trust"><span><b>Français</b> impeccable</span><span><b>8h–20h</b> en direct</span><span><b>−40 %</b> vs la France</span></div>
+        <div class="descr" style="margin-top:14px">Télésecrétariat Médical · Support IT &amp; Applicatif</div>
+      </div>
+
+      <div class="block">
+        <h4>Palette</h4>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#013C58"></div><div class="hex">#013C58</div><div class="role">navy</div></div>
+          <div class="sw"><div class="chip" style="background:#FFD35B"></div><div class="hex">#FFD35B</div><div class="role">doré (accent)</div></div>
+          <div class="sw"><div class="chip" style="background:#F4F8FB;border:1px solid #e2e2e2"></div><div class="hex">#F4F8FB</div><div class="role">fond doux</div></div>
+        </div>
+      </div>
+
+      <div class="note">⚠ Texte crème <b>#F6F2EA</b> sur jaune vif <b>#FFD35B</b> : contraste faible, peu lisible → à arbitrer (nuance dorée plus profonde&nbsp;?).</div>
+
+      <div class="mcard">
+        <div class="ctop"><span class="tag">Support fonctionnel</span></div>
+        <div class="cbody">
+          <h5>Support applicatif N1</h5>
+          <p>Premier niveau pour vos utilisateurs : tickets, appels, escalade cadrée.</p>
+          <span class="clink">Simuler mon équipe →</span>
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <div class="foot">
-    <span class="pill"><b>Recommandation :</b> faire de <b>Navy + Doré</b> le thème principal · garder la <b>sauge</b> pour les blocs santé uniquement.</span>
+    <span class="pill"><b>Décision :</b> sauge = principal · navy + doré = secondaire (IT) · texte d'accent en #F6F2EA.</span>
   </div>
 </div>
 </body>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Salverys — thème secondaire : quelle nuance de bleu ?</title>
+<style>
+  :root{
+    --ink:#20303F; --muted:#7c7468; --line:#E7DFD1;
+    --radius:16px; --radius-lg:26px; --pill:100px;
+    --shadow-md:0 10px 28px rgba(32,48,63,.10), 0 3px 8px rgba(32,48,63,.06);
+    --shadow-lg:0 24px 60px rgba(32,48,63,.16), 0 8px 20px rgba(32,48,63,.08);
+    --cream:#F6F2EA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    color:var(--ink); background:#F0F1F4; line-height:1.55; padding:32px 18px 60px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1300px;margin:0 auto}
+
+  /* ---- Header ---- */
+  .page-head{text-align:center;margin-bottom:8px}
+  .page-head h1{font-size:clamp(24px,3.5vw,36px);letter-spacing:-.02em}
+  .page-head p{color:var(--muted);margin-top:8px;font-size:16px}
+  .context{max-width:760px;margin:14px auto 28px;background:#fff;border:1px solid #e2e2e2;
+    border-radius:var(--radius);padding:16px 22px;font-size:14px;color:#555;text-align:center}
+  .context b{color:var(--ink)}
+
+  /* ---- Grid ---- */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+
+  /* ---- Panel ---- */
+  .panel{background:#fff;border-radius:var(--radius-lg);overflow:hidden;
+    border:1px solid #e0e0e0;box-shadow:var(--shadow-md);display:flex;flex-direction:column}
+  .topbar{height:8px;background:var(--p)}
+  .phead{padding:22px 26px 0;text-align:center}
+  .phead h2{font-size:22px;color:var(--p);letter-spacing:-.01em}
+  .phead .sub{color:var(--muted);font-size:14px;margin-top:4px}
+  .badge{display:inline-block;margin-top:12px;padding:6px 16px;border-radius:var(--pill);
+    font-size:12px;font-weight:800;letter-spacing:.04em;background:var(--a);color:var(--cream)}
+
+  /* ---- Hero mock ---- */
+  .hero{margin:18px 22px 0;padding:22px 20px;border-radius:var(--radius);background:var(--bg-s)}
+  .lockup{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .mark{position:relative;width:58px;height:58px;border-radius:16px;background:var(--p);
+    display:grid;place-items:center;flex:none}
+  .mark span{color:#fff;font-weight:800;font-size:34px;line-height:1}
+  .mark .dot{position:absolute;top:-5px;right:-7px;width:18px;height:18px;border-radius:50%;background:var(--a)}
+  .word{font-weight:800;font-size:40px;color:var(--p);letter-spacing:-.02em;line-height:1}
+  .word .pt{color:var(--a)}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;
+    color:var(--p);background:var(--a-tint);padding:6px 12px;border-radius:var(--pill);margin-bottom:12px}
+  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--a)}
+  .hero h3{font-weight:800;font-size:26px;line-height:1.1;color:var(--p);margin-bottom:10px}
+  .hero .lead{color:#54525b;font-size:15px;margin-bottom:16px}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:12px 22px;border-radius:var(--pill);
+    font-size:14px;font-weight:700;border:0;cursor:pointer}
+  .btn-p{background:var(--cta);color:var(--cta-t);box-shadow:var(--shadow-md)}
+  .btn-o{background:transparent;color:var(--p);border:1.6px solid var(--p)}
+
+  /* ---- Key focus: "Essai 7 jours" chip variants ---- */
+  .chip-section{margin:0 22px;padding:20px;border-radius:var(--radius);
+    background:var(--bg-s);border:1px dashed var(--a)}
+  .chip-section h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--muted);margin-bottom:14px}
+  .chip-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+  .chip-label{font-size:12px;color:var(--muted);min-width:110px}
+
+  /* chip variants */
+  .chip{display:inline-block;padding:10px 20px;border-radius:var(--pill);font-weight:800;font-size:14px}
+  .chip-jaune-cream{background:#FFD35B;color:var(--cream)}
+  .chip-jaune-dark {background:#FFD35B;color:#013C58}
+  .chip-dore-cream {background:#C8960C;color:var(--cream)}
+  .chip-dore-dark  {background:#C8960C;color:#fff}
+
+  .verdict{font-size:12px;padding:4px 10px;border-radius:8px;display:inline-block;font-weight:700}
+  .v-ok  {background:#DCF5E7;color:#1a7a3c}
+  .v-ko  {background:#FDECEA;color:#b92b2b}
+  .v-mid {background:#FFF3CD;color:#7a5900}
+
+  /* ---- Palettes ---- */
+  .block{padding:20px 26px 0}
+  .block h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px}
+  .swatches{display:flex;gap:12px;flex-wrap:wrap}
+  .sw{flex:1;min-width:80px}
+  .sw .chip-s{height:54px;border-radius:10px;border:1px solid rgba(0,0,0,.07)}
+  .sw .hex{font-weight:800;font-size:13px;margin-top:7px;color:var(--p)}
+  .sw .role{font-size:11px;color:var(--muted)}
+
+  /* ---- Context card (nav, footer) ---- */
+  .ctx-card{margin:16px 22px 24px;border:1px solid var(--a);border-radius:var(--radius);overflow:hidden}
+  .ctx-nav{background:var(--p);padding:10px 18px;display:flex;align-items:center;gap:16px}
+  .ctx-brand{color:#fff;font-weight:800;font-size:18px;letter-spacing:-.01em}
+  .ctx-brand .pt{color:var(--a)}
+  .ctx-nav-links{display:flex;gap:14px;font-size:13px}
+  .ctx-nav-links a{color:rgba(255,255,255,.7);text-decoration:none}
+  .ctx-nav-cta{margin-left:auto;background:var(--a);color:var(--cream);padding:7px 16px;
+    border-radius:var(--pill);font-size:12px;font-weight:700}
+  .ctx-footer{background:var(--p);padding:14px 18px;color:rgba(255,255,255,.55);font-size:12px}
+
+  /* ---- Notes ---- */
+  .note{margin:12px 22px 0;font-size:13px;padding:12px 16px;border-radius:12px}
+  .note-ok{background:#DCF5E7;color:#1a5c32;border:1px solid #a8dfc0}
+  .note-warn{background:#FFF3CD;color:#7a5900;border:1px solid #f0d060}
+  .note-info{background:#E8F1FB;color:#1a3a6b;border:1px solid #a0beec}
+
+  .foot{text-align:center;margin-top:36px;font-size:15px;color:#555;max-width:860px;
+    margin-left:auto;margin-right:auto}
+  .pill{display:inline-block;background:#fff;border:1px solid #ddd;border-radius:var(--pill);
+    padding:12px 24px;box-shadow:var(--shadow-md)}
+
+  /* =========== OPTION A : #2E3B4E (bleu profond) =========== */
+  .opt-a{
+    --p:#2E3B4E; --p-deep:#222C3B;
+    --a:#FFD35B; --a-tint:#FFF7E0;
+    --cta:#FFD35B; --cta-t:var(--cream); --bg-s:#F4F8FB;
+  }
+  /* =========== OPTION B : #013C58 (navy) =========== */
+  .opt-b{
+    --p:#013C58; --p-deep:#012C42;
+    --a:#FFD35B; --a-tint:#FFF7E0;
+    --cta:#FFD35B; --cta-t:var(--cream); --bg-s:#F4F8FB;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <h1>Thème secondaire (IT) — quelle nuance de bleu foncé&nbsp;?</h1>
+    <p>Les deux blues du fichier CSS mis en compétition, avec le doré <b>#FFD35B</b> comme accent.</p>
+  </div>
+
+  <div class="context">
+    <b>Contexte :</b> le thème principal (médical) est acté — bleu profond <b>#2E3B4E</b> + sauge <b>#6F8770</b>.
+    Pour le thème secondaire (pages IT), deux blues coexistent dans <code>assets/site.css</code>&nbsp;:
+    <b>#2E3B4E</b> (thème par défaut / bleu profond) et <b>#013C58</b> (navy plus intense, actuellement dans <code>.theme-it</code>).
+    Laquelle retenir comme base du thème secondaire&nbsp;?
+  </div>
+
+  <div class="grid">
+
+    <!-- ========== OPTION A : #2E3B4E ========== -->
+    <section class="panel opt-a">
+      <div class="topbar"></div>
+      <div class="phead">
+        <h2>Option A — Bleu profond</h2>
+        <div class="sub">même bleu que le thème principal (médical)</div>
+        <span class="badge">#2E3B4E + #FFD35B</span>
+      </div>
+
+      <div class="hero">
+        <div class="lockup">
+          <div class="mark"><span>S</span><i class="dot"></i></div>
+          <div class="word">Salverys<span class="pt">.</span></div>
+        </div>
+        <span class="eyebrow"><span class="pulse"></span> Support IT &amp; Applicatif</span>
+        <h3>Votre support externalisé, en français.</h3>
+        <p class="lead">Premier niveau pour vos utilisateurs — tickets, appels, escalade cadrée.</p>
+        <div class="btns">
+          <button class="btn btn-p">Réserver un appel →</button>
+          <button class="btn btn-o">Simuler mon équipe</button>
+        </div>
+      </div>
+
+      <div class="chip-section">
+        <h4>Visibilité — "Essai 7 jours offert"</h4>
+        <div class="chip-row">
+          <span class="chip-label">Jaune + crème :</span>
+          <span class="chip chip-jaune-cream">Essai 7 jours offert</span>
+          <span class="verdict v-ko">contraste faible</span>
+        </div>
+        <div class="chip-row">
+          <span class="chip-label">Jaune + navy :</span>
+          <span class="chip chip-jaune-dark">Essai 7 jours offert</span>
+          <span class="verdict v-ok">lisible mais règle cassée</span>
+        </div>
+        <div class="chip-row">
+          <span class="chip-label">Or profond + crème :</span>
+          <span class="chip chip-dore-cream">Essai 7 jours offert</span>
+          <span class="verdict v-ok">✓ lisible + règle OK</span>
+        </div>
+      </div>
+
+      <div class="note note-warn">
+        ⚠ Même bleu que le thème médical (#2E3B4E) — les deux thèmes risquent d'être trop proches visuellement. Difficile de distinguer les deux services en un coup d'œil.
+      </div>
+
+      <div class="block">
+        <h4>Palette</h4>
+        <div class="swatches">
+          <div class="sw"><div class="chip-s" style="background:#2E3B4E"></div><div class="hex">#2E3B4E</div><div class="role">bleu profond</div></div>
+          <div class="sw"><div class="chip-s" style="background:#FFD35B"></div><div class="hex">#FFD35B</div><div class="role">jaune vif</div></div>
+          <div class="sw"><div class="chip-s" style="background:#C8960C"></div><div class="hex">#C8960C</div><div class="role">or profond (alt.)</div></div>
+        </div>
+      </div>
+
+      <div class="ctx-card" style="margin-top:18px">
+        <div class="ctx-nav">
+          <span class="ctx-brand">Sal<b>verys</b><span class="pt">.</span></span>
+          <div class="ctx-nav-links">
+            <a href="#">Télésecrétariat</a>
+            <a href="#" style="color:#fff;font-weight:700">Support IT</a>
+          </div>
+          <span class="ctx-nav-cta">Réserver un appel</span>
+        </div>
+        <div class="ctx-footer">© Salverys — Support IT &amp; Applicatif — Antananarivo → France</div>
+      </div>
+    </section>
+
+    <!-- ========== OPTION B : #013C58 ========== -->
+    <section class="panel opt-b">
+      <div class="topbar"></div>
+      <div class="phead">
+        <h2>Option B — Navy</h2>
+        <div class="sub">bleu plus intense, déjà dans .theme-it</div>
+        <span class="badge">#013C58 + #FFD35B</span>
+      </div>
+
+      <div class="hero">
+        <div class="lockup">
+          <div class="mark"><span>S</span><i class="dot"></i></div>
+          <div class="word">Salverys<span class="pt">.</span></div>
+        </div>
+        <span class="eyebrow"><span class="pulse"></span> Support IT &amp; Applicatif</span>
+        <h3>Votre support externalisé, en français.</h3>
+        <p class="lead">Premier niveau pour vos utilisateurs — tickets, appels, escalade cadrée.</p>
+        <div class="btns">
+          <button class="btn btn-p">Réserver un appel →</button>
+          <button class="btn btn-o">Simuler mon équipe</button>
+        </div>
+      </div>
+
+      <div class="chip-section">
+        <h4>Visibilité — "Essai 7 jours offert"</h4>
+        <div class="chip-row">
+          <span class="chip-label">Jaune + crème :</span>
+          <span class="chip chip-jaune-cream">Essai 7 jours offert</span>
+          <span class="verdict v-ko">contraste faible</span>
+        </div>
+        <div class="chip-row">
+          <span class="chip-label">Jaune + navy :</span>
+          <span class="chip chip-jaune-dark">Essai 7 jours offert</span>
+          <span class="verdict v-ok">lisible mais règle cassée</span>
+        </div>
+        <div class="chip-row">
+          <span class="chip-label">Or profond + crème :</span>
+          <span class="chip chip-dore-cream">Essai 7 jours offert</span>
+          <span class="verdict v-ok">✓ lisible + règle OK</span>
+        </div>
+      </div>
+
+      <div class="note note-ok">
+        ✓ Navy #013C58 est clairement distinct du bleu médical #2E3B4E : les deux thèmes sont immédiatement différenciables. C'est déjà la valeur dans <code>.theme-it</code>.
+      </div>
+
+      <div class="block">
+        <h4>Palette</h4>
+        <div class="swatches">
+          <div class="sw"><div class="chip-s" style="background:#013C58"></div><div class="hex">#013C58</div><div class="role">navy</div></div>
+          <div class="sw"><div class="chip-s" style="background:#FFD35B"></div><div class="hex">#FFD35B</div><div class="role">jaune vif</div></div>
+          <div class="sw"><div class="chip-s" style="background:#C8960C"></div><div class="hex">#C8960C</div><div class="role">or profond (alt.)</div></div>
+        </div>
+      </div>
+
+      <div class="ctx-card" style="margin-top:18px">
+        <div class="ctx-nav">
+          <span class="ctx-brand">Sal<b>verys</b><span class="pt">.</span></span>
+          <div class="ctx-nav-links">
+            <a href="#">Télésecrétariat</a>
+            <a href="#" style="color:#fff;font-weight:700">Support IT</a>
+          </div>
+          <span class="ctx-nav-cta">Réserver un appel</span>
+        </div>
+        <div class="ctx-footer">© Salverys — Support IT &amp; Applicatif — Antananarivo → France</div>
+      </div>
+    </section>
+
+  </div><!-- /grid -->
+
+  <!-- ===== Bonus : comparaison de l'accent doré ===== -->
+  <div style="margin-top:36px;background:#fff;border-radius:var(--radius-lg);border:1px solid #e0e0e0;
+    box-shadow:var(--shadow-md);padding:28px 32px">
+    <div style="text-align:center;margin-bottom:22px">
+      <h2 style="font-size:22px;letter-spacing:-.01em">Bonus — quel accent doré pour le thème secondaire&nbsp;?</h2>
+      <p style="color:var(--muted);font-size:14px;margin-top:6px">
+        Le jaune vif <b>#FFD35B</b> (actuel) pose un problème de lisibilité avec le texte crème <b>#F6F2EA</b>.
+        Option : passer à un or plus profond.
+      </p>
+    </div>
+    <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:flex-start">
+
+      <div style="text-align:center;min-width:200px">
+        <div style="height:72px;background:#FFD35B;border-radius:14px;display:flex;align-items:center;
+          justify-content:center;font-size:18px;font-weight:800;color:var(--cream);letter-spacing:.01em;
+          border:1px solid rgba(0,0,0,.06)">Essai 7 jours offert</div>
+        <div style="margin-top:10px;font-weight:800;font-size:16px">#FFD35B</div>
+        <div style="font-size:13px;color:var(--muted)">jaune vif (actuel)</div>
+        <div style="margin-top:6px;display:inline-block;background:#FDECEA;color:#b92b2b;
+          font-size:12px;font-weight:800;padding:4px 10px;border-radius:8px">contraste insuffisant</div>
+      </div>
+
+      <div style="text-align:center;min-width:200px">
+        <div style="height:72px;background:#C8960C;border-radius:14px;display:flex;align-items:center;
+          justify-content:center;font-size:18px;font-weight:800;color:var(--cream);letter-spacing:.01em;
+          border:1px solid rgba(0,0,0,.06)">Essai 7 jours offert</div>
+        <div style="margin-top:10px;font-weight:800;font-size:16px">#C8960C</div>
+        <div style="font-size:13px;color:var(--muted)">or profond</div>
+        <div style="margin-top:6px;display:inline-block;background:#DCF5E7;color:#1a7a3c;
+          font-size:12px;font-weight:800;padding:4px 10px;border-radius:8px">✓ lisible</div>
+      </div>
+
+      <div style="text-align:center;min-width:200px">
+        <div style="height:72px;background:#E6A817;border-radius:14px;display:flex;align-items:center;
+          justify-content:center;font-size:18px;font-weight:800;color:var(--cream);letter-spacing:.01em;
+          border:1px solid rgba(0,0,0,.06)">Essai 7 jours offert</div>
+        <div style="margin-top:10px;font-weight:800;font-size:16px">#E6A817</div>
+        <div style="font-size:13px;color:var(--muted)">or intermédiaire</div>
+        <div style="margin-top:6px;display:inline-block;background:#FFF3CD;color:#7a5900;
+          font-size:12px;font-weight:800;padding:4px 10px;border-radius:8px">limite — à tester</div>
+      </div>
+
+      <div style="text-align:center;min-width:200px">
+        <div style="height:72px;background:#B8860B;border-radius:14px;display:flex;align-items:center;
+          justify-content:center;font-size:18px;font-weight:800;color:var(--cream);letter-spacing:.01em;
+          border:1px solid rgba(0,0,0,.06)">Essai 7 jours offert</div>
+        <div style="margin-top:10px;font-weight:800;font-size:16px">#B8860B</div>
+        <div style="font-size:13px;color:var(--muted)">or chaud foncé</div>
+        <div style="margin-top:6px;display:inline-block;background:#DCF5E7;color:#1a7a3c;
+          font-size:12px;font-weight:800;padding:4px 10px;border-radius:8px">✓ très lisible</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="foot" style="margin-top:32px">
+    <span class="pill">
+      <b>Recommandé :</b> Option B (navy #013C58) — plus distinct du thème médical.
+      Pour l'accent : remplacer #FFD35B par <b>#C8960C</b> ou <b>#B8860B</b> pour garantir la lisibilité crème.
+    </span>
+  </div>
+
+</div>
+</body>
+</html>

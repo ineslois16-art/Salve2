@@ -78,38 +78,48 @@ ligne pour rester lisible) :
 
 ## 5. Identité visuelle
 
-### Logo principal de référence
-Le logo **bleu marine foncé + points dorés/jaunes** (version Support IT &
-Applicatif, la plus aboutie) devient la **référence visuelle maître** de toute
-la marque, **y compris pour le métier médical**.
+> **Décision (révisée) :** le thème **bleu profond + sauge** est l'identité
+> **principale** ; le thème **navy + doré** devient l'identité **secondaire**.
+> Bonne nouvelle : c'est déjà l'état du site — le thème **par défaut** de
+> `assets/site.css` est le sauge (médical), et `.theme-it` (navy + doré) est
+> appliqué aux pages IT. Aucun renversement de thème à coder.
 
-### Déclinaison médicale
-La version au pictogramme « caducée-casque » teinte **sauge/vert** reste
-utilisable **uniquement** comme déclinaison sectorielle sur les supports
-strictement santé (ex. plaquette cabinets médicaux). Elle ne remplace pas le
-logo maître et doit garder le **même logotype** « Salverys. ».
+### Logo principal de référence
+Le logo **médical** — pictogramme « caducée-casque » teinte **sauge/vert** —
+est la **référence visuelle maître** de la marque. Cohérent avec la priorité
+commerciale n°1 (télésecrétariat médical) et avec le thème par défaut du site.
+
+### Déclinaison secondaire
+Le logo **bleu marine foncé + points dorés/jaunes** (version Support IT &
+Applicatif) reste l'identité **secondaire**, utilisée sur les supports et pages
+**IT** (`.theme-it`). Elle garde le **même logotype** « Salverys. » et ne
+remplace pas le logo maître.
 
 ### Palette
-La référence de couleur fait foi à partir du **fichier logo maître** (navy +
-doré). Les jetons CSS du site doivent s'aligner dessus.
 
-| Rôle | Valeur actuelle dans le site | Statut |
+| Rôle | Valeur dans le site | Statut |
 |---|---|---|
-| Navy maître | `#013C58` (`.theme-it`) | À confirmer comme couleur primaire globale |
-| Doré / jaune | `#FFD35B` (`.theme-it`) | Accent maître |
-| Bleu profond (thème par défaut) | `#2E3B4E` | Variante — à harmoniser |
-| Sauge | `#6F8770` | **Réserver** à la déclinaison santé uniquement |
+| Bleu profond (primaire) | `#2E3B4E` (`:root`) | **Couleur primaire principale** |
+| Sauge (accent) | `#6F8770` (`:root`) | **Accent principal** |
+| Or chaud | `#B89968` (`:root`) | Accent secondaire / détails |
+| Greige (fond doux) | `#F6F2EA` (`:root`) | Fond doux **et** texte sur aplats d'accent |
+| Navy (secondaire) | `#013C58` (`.theme-it`) | Réservé aux supports / pages **IT** |
+| Doré / jaune (secondaire) | `#FFD35B` (`.theme-it`) | Accent du thème IT uniquement |
 
-> ⚠️ **Incohérence à arbitrer** : aujourd'hui le thème **par défaut** du site
-> (`assets/site.css`) utilise le bleu profond + **sauge verte** comme accent et
-> des titres en **serif (Georgia)**, alors que la décision désigne le **navy +
-> doré** (titres **Inter** sans-serif) comme identité principale. Action
-> recommandée : faire du couple **navy + doré** le thème par défaut, et ne garder
-> la sauge que pour les blocs explicitement « santé ». Voir §7.
+### Règle de lisibilité — texte sur aplat d'accent
+Tout **texte posé sur un aplat d'accent** (sauge, doré/jaune) s'écrit en
+**`#F6F2EA` (fond doux)**, pas en couleur foncée. Objectif : que les éléments
+type badge « Essai 7 jours offert » ressortent nettement.
+
+> ⚠️ **Limite de contraste à valider** : sur le **jaune vif `#FFD35B`** (thème
+> secondaire), le texte crème `#F6F2EA` a un contraste faible et reste peu
+> lisible. C'est l'objet de l'arbitrage en cours sur la nuance dorée du thème
+> secondaire (voir comparaison dédiée). Sur la **sauge `#6F8770`**, le texte
+> crème passe bien.
 
 > 👁️ **Pour comparer visuellement** : ouvrir `comparaison-charte-salverys.html`
-> dans un navigateur (les deux chartes côte à côte, couleur + typo + composants
-> réels). Aperçu rapide aussi dans `comparaison-charte-salverys.png`.
+> dans un navigateur (principal sauge vs secondaire navy, couleur + typo +
+> composants réels). Aperçu rapide aussi dans `comparaison-charte-salverys.png`.
 
 ---
 
@@ -135,11 +145,15 @@ doré). Les jetons CSS du site doivent s'aligner dessus.
 - [x] Site (`index.html`, simulateurs) en marque **Salverys**.
 - [x] CRM (`CRM_Salverys.html`) en marque **Salverys** côté affichage.
 - [x] Aucun **Nesvalo/Vinlo** visible côté client (uniquement clés `localStorage`).
-- [ ] **Harmoniser la charte couleur** : passer le thème par défaut du site sur
-      **navy + doré** (aujourd'hui bleu profond + sauge). Réserver la sauge aux
-      blocs santé. — *décision produit à confirmer avant exécution.*
-- [ ] **Verrouiller les hex définitifs** depuis le fichier logo maître (navy +
-      doré) et les reporter dans `assets/site.css` comme source unique de vérité.
+- [x] **Charte couleur cohérente** : thème par défaut = sauge (principal),
+      `.theme-it` = navy + doré (secondaire). Conforme à la décision révisée,
+      aucun renversement à coder.
+- [ ] **Appliquer la règle de lisibilité** : texte en `#F6F2EA` sur tout aplat
+      d'accent (sauge, doré) dans `assets/site.css` — typiquement les badges sur
+      fond d'accent.
+- [ ] **Trancher la nuance dorée du thème secondaire** (jaune vif `#FFD35B` vs
+      doré plus profond) pour que le texte crème reste lisible. Comparaison à
+      ouvrir dans le navigateur.
 - [ ] **Décliner le lockup** « Salverys. — Télésecrétariat Médical · Support IT
       & Applicatif » sur : footer du site, signature Emelia, cartes de visite,
       en-tête des propositions commerciales.
