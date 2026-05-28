@@ -1053,9 +1053,9 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
         sourceUrl:'https://www.imro-radiologie-rennes.fr/mentions-l%C3%A9gales/'};})();
     // ── Enrichissement décideurs Groupe 2 ──────────────────────
     (function(){var l=d.leads.find(function(x){return x.id==='l082';});if(!l)return;
-        l.decideur={statut:'trouvé',nom:'Dr Ari Elhyani',titre:'Fondateur',
-        linkedin:'',emailPro:'',anciennete:'Fondateur (ancienneté non précisée)',
-        signauxAchat:'Clinique premium Paris 16 - chirurgie esthétique haute gamme, BPO/concierge quasi-certain',
+        l.decideur={statut:'trouvé',nom:'Dr Ari Elhyani',titre:'Chirurgien-Dentiste / Fondateur',
+        linkedin:'',emailPro:'',anciennete:'Fondateur Elone Clinic (chirurgien-dentiste, non chirurgien plasticien)',
+        signauxAchat:'Clinique dentisterie esthétique / implantologie premium Paris 16 — BPO télésec quasi-certain',
         sourceUrl:'https://www.elone-clinic.com'};})();
     (function(){var l=d.leads.find(function(x){return x.id==='l151';});if(!l)return;
         l.decideur={statut:'trouvé',nom:'Olivier Rico',titre:'Directeur Général',
@@ -1173,12 +1173,14 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
         if(l.decideur2.statut==='')l.decideur2.statut='non_trouvé';
     });})();
     // ── Décideurs Groupe 1 — Chaînes dentaires ─────────────────
-    // Dentego (8 centres) : James Cohen (Co-Fondateur)
+    // Dentego (8 centres) : Caroline Baert (Directrice Exploitation) — correction 2026-05-28
+    // ⚠️ James Cohen (co-fondateur) = figurehead, pas le bon interlocuteur.
+    // ⚠️ CONFLIT : Adental Groupe (filiale Dentego) gère le télésecrétariat en interne → approcher en débordement uniquement.
     (function(){
-        var _d={statut:'trouvé',nom:'James Cohen',titre:'Co-Fondateur',linkedin:'https://www.linkedin.com/in/james-cohen-dentego/',emailPro:'',
-            anciennete:'Co-fondateur Dentego (2013) — avec Raphaël Tapiero & Benjamin Tapiero',
-            signauxAchat:"80+ centres Dentego France, centres gérés via Adental Groupe (télésecrétariat externalisé) — BPO certain",
-            sourceUrl:'https://web.archive.org/web/20251208002141/https://dentego.fr/qui-sommes-nous/'};
+        var _d={statut:'trouvé',nom:'Caroline Baert',titre:'Directrice Exploitation',linkedin:'',emailPro:'',
+            anciennete:'Directrice Exploitation Adental Groupe (structure opérationnelle Dentego)',
+            signauxAchat:"⚠️ CONFLIT COMMERCIAL : Adental Groupe (filiale Dentego) dispose déjà d'un télésecrétariat internalisé. Angle = débordement/overflow uniquement. 80+ centres Dentego France.",
+            sourceUrl:''};
         ['l051','l055','l056','l057','l058','l059','l060','l061'].forEach(function(id){
             var l=d.leads.find(function(x){return x.id===id;});if(!l)return;
             l.decideur=JSON.parse(JSON.stringify(_d));
@@ -1195,21 +1197,22 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
             l.decideur=JSON.parse(JSON.stringify(_d));
         });
     })();
-    // Dentelia / Colosseum France : Claude Streit (CEO UK & France)
+    // Dentelia / Colosseum France : Cyrille Duboc (DG France) — correction 2026-05-28
+    // Claude Streit = CEO principalement UK, pas le décideur opérationnel France.
     (function(){
-        var _d={statut:'trouvé',nom:'Claude Streit',titre:'CEO France (Colosseum Dental)',linkedin:'https://www.linkedin.com/in/claude-streit/',emailPro:'',
-            anciennete:'CEO Colosseum UK depuis 2019, CEO France depuis 2024',
-            signauxAchat:'Colosseum Dental France (Dentelia) — réseau en croissance — BPO centralisé certain',
+        var _d={statut:'trouvé',nom:'Cyrille Duboc',titre:'Directeur Général France',linkedin:'',emailPro:'',
+            anciennete:'Managing Director / DG France Colosseum Dental (Dentelia)',
+            signauxAchat:'Colosseum Dental France (Dentelia) — réseau en croissance — BPO centralisé certain. Claude Streit = CEO UK (non opérationnel France — à éviter).',
             sourceUrl:'https://www.colosseumdental.com/who-we-are/meet-our-team'};
         ['l053','l054','l062'].forEach(function(id){
             var l=d.leads.find(function(x){return x.id===id;});if(!l)return;
             l.decideur=JSON.parse(JSON.stringify(_d));
         });
     })();
-    // Dentylis : Jean-Jacques Israël (Directeur Général)
+    // Dentylis : Jean-Jacques Israël (Fondateur) — correction 2026-05-28 (titre DG incorrect)
     (function(){var l=d.leads.find(function(x){return x.id==='l079';});if(!l)return;
-        l.decideur={statut:'trouvé',nom:'Jean-Jacques Israël',titre:'Directeur Général',linkedin:'',emailPro:'',
-        anciennete:'Directeur de la publication Dentylis (RCS PARIS B 453 987 976)',
+        l.decideur={statut:'trouvé',nom:'Jean-Jacques Israël',titre:'Fondateur',linkedin:'',emailPro:'',
+        anciennete:'Fondateur Dentylis — directeur de publication (RCS PARIS B 453 987 976). DG opérationnel non confirmé.',
         signauxAchat:'40+ centres de santé pluridisciplinaires France entière — BPO centralisé certain',
         sourceUrl:'https://dentylis.fr/informations-legales/'};})();
     // ── Décideurs Groupe 3 — Bailleurs sociaux ─────────────────
@@ -1293,7 +1296,7 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
                 anciennete:'Gérant CDBN - Cabinet Dentaire Bordeaux Nord (SIREN via SIRENE)',
                 signauxAchat:'CDBN Bordeaux Nord - cabinet dentaire multi-praticiens, 7j/7 - BPO télésec présumé',
                 sourceUrl:'https://recherche-entreprises.api.gouv.fr'}},
-            {id:'l089',d:{statut:'trouvé',nom:'Dr Mahdhaoui',titre:'Chirurgien-Dentiste / Propriétaire',linkedin:'',emailPro:'',
+            {id:'l089',d:{statut:'trouvé',nom:'Dr Kods Mahdhaoui',titre:'Chirurgien-Dentiste / Propriétaire',linkedin:'',emailPro:'',
                 anciennete:'Praticien titulaire Cabinet Dentaire Paris Monceau',
                 signauxAchat:'Cabinet Paris 17 / Monceau - dentisterie générale, amplitude horaire - BPO télésec présumé',
                 sourceUrl:''}},
@@ -1399,9 +1402,9 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
             linkedin:'',emailPro:'',anciennete:'SELARL immatriculée ~2015 (SIREN 824311039)',
             signauxAchat:'8 radiologues 2 sites Rennes, BPO radiologie quasi-systématique en radiologie multi-sites',
             sourceUrl:'https://www.imro-radiologie-rennes.fr/mentions-l%C3%A9gales/'}},
-        {ids:['l082'],d:{statut:'trouvé',nom:'Dr Ari Elhyani',titre:'Fondateur',linkedin:'',emailPro:'',
-            anciennete:'Fondateur (ancienneté non précisée)',
-            signauxAchat:'Clinique premium Paris 16 - chirurgie esthétique haute gamme, BPO/concierge quasi-certain',
+        {ids:['l082'],d:{statut:'trouvé',nom:'Dr Ari Elhyani',titre:'Chirurgien-Dentiste / Fondateur',linkedin:'',emailPro:'',
+            anciennete:'Fondateur Elone Clinic (chirurgien-dentiste, non chirurgien plasticien)',
+            signauxAchat:'Clinique dentisterie esthétique / implantologie premium Paris 16 — BPO télésec quasi-certain',
             sourceUrl:'https://www.elone-clinic.com'}},
         {ids:['l151'],d:{statut:'trouvé',nom:'Olivier Rico',titre:'Directeur Général',linkedin:'',emailPro:'',
             anciennete:'DG Action Logement Services',
@@ -1456,24 +1459,24 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
             signauxAchat:'MdM - 6 000 bénévoles, présence 40+ pays, coordination médicale internationale - BPO présumé',
             sourceUrl:'https://www.medecinsdumonde.org/medecins-du-monde/notre-organisation/'}},
         // ── G1 chaînes dentaires (v3) ──
-        {ids:['l051','l055','l056','l057','l058','l059','l060','l061'],d:{statut:'trouvé',nom:'James Cohen',titre:'Co-Fondateur',
-            linkedin:'https://www.linkedin.com/in/james-cohen-dentego/',emailPro:'',
-            anciennete:'Co-fondateur Dentego (2013) — avec Raphaël Tapiero & Benjamin Tapiero',
-            signauxAchat:"80+ centres Dentego France, centres gérés via Adental Groupe (télésecrétariat externalisé) — BPO certain",
-            sourceUrl:'https://web.archive.org/web/20251208002141/https://dentego.fr/qui-sommes-nous/'}},
+        {ids:['l051','l055','l056','l057','l058','l059','l060','l061'],d:{statut:'trouvé',nom:'Caroline Baert',titre:'Directrice Exploitation',
+            linkedin:'',emailPro:'',
+            anciennete:'Directrice Exploitation Adental Groupe (structure opérationnelle Dentego)',
+            signauxAchat:"⚠️ CONFLIT COMMERCIAL : Adental Groupe (filiale Dentego) dispose déjà d'un télésecrétariat internalisé. Angle = débordement/overflow uniquement. 80+ centres Dentego France.",
+            sourceUrl:''}},
         {ids:['l052','l084'],d:{statut:'trouvé',nom:'Mathias Bensimon',titre:'Fondateur / Dirigeant',
             linkedin:'',emailPro:'',
             anciennete:'Fondateur Paris Dental Studios (France Dental Services, SIREN 950865550, créé 2020)',
             signauxAchat:'3 centres Paris/Lyon/Aix — dentisterie esthétique premium — BPO/concierge certain',
             sourceUrl:'https://parisdentalstudios.com/mentions-legales-paris-dental-studios/'}},
-        {ids:['l053','l054','l062'],d:{statut:'trouvé',nom:'Claude Streit',titre:'CEO France (Colosseum Dental)',
-            linkedin:'https://www.linkedin.com/in/claude-streit/',emailPro:'',
-            anciennete:'CEO Colosseum UK depuis 2019, CEO France depuis 2024',
-            signauxAchat:'Colosseum Dental France (Dentelia) — réseau en croissance — BPO centralisé certain',
-            sourceUrl:'https://www.colosseumdental.com/who-we-are/meet-our-team'}},
-        {ids:['l079'],d:{statut:'trouvé',nom:'Jean-Jacques Israël',titre:'Directeur Général',
+        {ids:['l053','l054','l062'],d:{statut:'trouvé',nom:'Cyrille Duboc',titre:'Directeur Général France',
             linkedin:'',emailPro:'',
-            anciennete:'Directeur de la publication Dentylis (RCS PARIS B 453 987 976)',
+            anciennete:'Managing Director / DG France Colosseum Dental (Dentelia)',
+            signauxAchat:'Colosseum Dental France (Dentelia) — réseau en croissance — BPO centralisé certain. Claude Streit = CEO UK (non opérationnel France — à éviter).',
+            sourceUrl:'https://www.colosseumdental.com/who-we-are/meet-our-team'}},
+        {ids:['l079'],d:{statut:'trouvé',nom:'Jean-Jacques Israël',titre:'Fondateur',
+            linkedin:'',emailPro:'',
+            anciennete:'Fondateur Dentylis — directeur de publication (RCS PARIS B 453 987 976). DG opérationnel non confirmé.',
             signauxAchat:'40+ centres de santé pluridisciplinaires France entière — BPO centralisé certain',
             sourceUrl:'https://dentylis.fr/informations-legales/'}}
     ];
