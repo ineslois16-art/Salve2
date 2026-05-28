@@ -101,10 +101,15 @@ doré). Les jetons CSS du site doivent s'aligner dessus.
 | Sauge | `#6F8770` | **Réserver** à la déclinaison santé uniquement |
 
 > ⚠️ **Incohérence à arbitrer** : aujourd'hui le thème **par défaut** du site
-> (`assets/site.css`) utilise le bleu profond + **sauge verte** comme accent,
-> alors que la décision désigne le **navy + doré** comme identité principale.
-> Action recommandée : faire du couple **navy + doré** le thème par défaut, et
-> ne garder la sauge que pour les blocs explicitement « santé ». Voir §7.
+> (`assets/site.css`) utilise le bleu profond + **sauge verte** comme accent et
+> des titres en **serif (Georgia)**, alors que la décision désigne le **navy +
+> doré** (titres **Inter** sans-serif) comme identité principale. Action
+> recommandée : faire du couple **navy + doré** le thème par défaut, et ne garder
+> la sauge que pour les blocs explicitement « santé ». Voir §7.
+
+> 👁️ **Pour comparer visuellement** : ouvrir `comparaison-charte-salverys.html`
+> dans un navigateur (les deux chartes côte à côte, couleur + typo + composants
+> réels). Aperçu rapide aussi dans `comparaison-charte-salverys.png`.
 
 ---
 
