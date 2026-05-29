@@ -45,6 +45,8 @@
   /* ---- Hero mock ---- */
   .hero{margin:18px 22px 0;padding:22px 20px;border-radius:var(--radius);background:var(--bg-s)}
   .lockup{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .logo-img{height:64px;width:auto;display:block}
+  .logo-fallback{display:none;align-items:center;gap:12px}
   .mark{position:relative;width:58px;height:58px;border-radius:16px;background:var(--p);
     display:grid;place-items:center;flex:none}
   .mark span{color:#fff;font-weight:800;font-size:34px;line-height:1}
@@ -155,8 +157,12 @@
 
       <div class="hero">
         <div class="lockup">
-          <div class="mark"><span>S</span><i class="dot"></i></div>
-          <div class="word">Salverys<span class="pt">.</span></div>
+          <img class="logo-img" src="assets/logo-salverys.png" alt="Salverys."
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <span class="logo-fallback">
+            <span class="mark"><span>S</span><i class="dot"></i></span>
+            <span class="word">Salverys<span class="pt">.</span></span>
+          </span>
         </div>
         <span class="eyebrow"><span class="pulse"></span> Support IT &amp; Applicatif</span>
         <h3>Votre support externalisé, en français.</h3>
@@ -223,8 +229,12 @@
 
       <div class="hero">
         <div class="lockup">
-          <div class="mark"><span>S</span><i class="dot"></i></div>
-          <div class="word">Salverys<span class="pt">.</span></div>
+          <img class="logo-img" src="assets/logo-salverys.png" alt="Salverys."
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <span class="logo-fallback">
+            <span class="mark"><span>S</span><i class="dot"></i></span>
+            <span class="word">Salverys<span class="pt">.</span></span>
+          </span>
         </div>
         <span class="eyebrow"><span class="pulse"></span> Support IT &amp; Applicatif</span>
         <h3>Votre support externalisé, en français.</h3>

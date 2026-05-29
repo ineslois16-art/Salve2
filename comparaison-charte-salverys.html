@@ -46,6 +46,8 @@
   /* hero mock */
   .hero{margin:20px 22px 0;padding:26px 24px;border-radius:var(--radius);background:var(--bg-soft)}
   .lockup{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .logo-img{height:74px;width:auto;display:block}
+  .logo-fallback{display:none;align-items:center;gap:14px}
   .mark{position:relative;width:64px;height:64px;border-radius:18px;background:var(--primary);
     display:grid;place-items:center;flex:none}
   .mark span{color:#fff;font-weight:800;font-size:38px;line-height:1}
@@ -146,8 +148,12 @@
 
       <div class="hero">
         <div class="lockup">
-          <div class="mark"><span>S</span><i class="dot"></i></div>
-          <div class="word">Salverys<span class="pt">.</span></div>
+          <img class="logo-img" src="assets/logo-salverys.png" alt="Salverys."
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <span class="logo-fallback">
+            <span class="mark"><span>S</span><i class="dot"></i></span>
+            <span class="word">Salverys<span class="pt">.</span></span>
+          </span>
         </div>
         <span class="eyebrow"><span class="pulse"></span> BPO francophone · Antananarivo → France</span>
         <h3>Votre relation client, <span class="hl">en français</span>, à 40&nbsp;% du coût.</h3>
@@ -194,8 +200,12 @@
 
       <div class="hero">
         <div class="lockup">
-          <div class="mark"><span>S</span><i class="dot"></i></div>
-          <div class="word">Salverys<span class="pt">.</span></div>
+          <img class="logo-img" src="assets/logo-salverys.png" alt="Salverys."
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <span class="logo-fallback">
+            <span class="mark"><span>S</span><i class="dot"></i></span>
+            <span class="word">Salverys<span class="pt">.</span></span>
+          </span>
         </div>
         <span class="eyebrow"><span class="pulse"></span> BPO francophone · Antananarivo → France</span>
         <h3>Votre relation client, <span class="hl">en français</span>, à 40&nbsp;% du coût.</h3>
