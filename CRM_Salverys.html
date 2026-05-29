@@ -807,7 +807,7 @@ const C_PROSP = { planifie:'#3B82F6', 'en-cours':'#F59E0B', fait:'#10B981' };
 const C_OPER  = { planifie:'#8B5CF6', 'en-cours':'#F59E0B', fait:'#10B981' };
 
 // ─── STORAGE ─────────────────────────────────────────────────
-const LS_KEYS = { leads:'vinlo_leads_v4', tp:'vinlo_tp_v4', to:'vinlo_to_v4' };
+const LS_KEYS = { leads:'salverys_leads_v4', tp:'salverys_tp_v4', to:'salverys_to_v4' };
 
 function load() {
     return {
@@ -1053,9 +1053,9 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
         sourceUrl:'https://www.imro-radiologie-rennes.fr/mentions-l%C3%A9gales/'};})();
     // ── Enrichissement décideurs Groupe 2 ──────────────────────
     (function(){var l=d.leads.find(function(x){return x.id==='l082';});if(!l)return;
-        l.decideur={statut:'trouvé',nom:'Dr Ari Elhyani',titre:'Fondateur',
-        linkedin:'',emailPro:'',anciennete:'Fondateur (ancienneté non précisée)',
-        signauxAchat:'Clinique premium Paris 16 - chirurgie esthétique haute gamme, BPO/concierge quasi-certain',
+        l.decideur={statut:'trouvé',nom:'Dr Ari Elhyani',titre:'Chirurgien-Dentiste / Fondateur',
+        linkedin:'',emailPro:'',anciennete:'Fondateur Elone Clinic (chirurgien-dentiste, non chirurgien plasticien)',
+        signauxAchat:'Clinique dentisterie esthétique / implantologie premium Paris 16 — BPO télésec quasi-certain',
         sourceUrl:'https://www.elone-clinic.com'};})();
     (function(){var l=d.leads.find(function(x){return x.id==='l151';});if(!l)return;
         l.decideur={statut:'trouvé',nom:'Olivier Rico',titre:'Directeur Général',
@@ -1173,12 +1173,14 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
         if(l.decideur2.statut==='')l.decideur2.statut='non_trouvé';
     });})();
     // ── Décideurs Groupe 1 — Chaînes dentaires ─────────────────
-    // Dentego (8 centres) : James Cohen (Co-Fondateur)
+    // Dentego (8 centres) : Caroline Baert (Directrice Exploitation) — correction 2026-05-28
+    // ⚠️ James Cohen (co-fondateur) = figurehead, pas le bon interlocuteur.
+    // ⚠️ CONFLIT : Adental Groupe (filiale Dentego) gère le télésecrétariat en interne → approcher en débordement uniquement.
     (function(){
-        var _d={statut:'trouvé',nom:'James Cohen',titre:'Co-Fondateur',linkedin:'https://www.linkedin.com/in/james-cohen-dentego/',emailPro:'',
-            anciennete:'Co-fondateur Dentego (2013) — avec Raphaël Tapiero & Benjamin Tapiero',
-            signauxAchat:"80+ centres Dentego France, centres gérés via Adental Groupe (télésecrétariat externalisé) — BPO certain",
-            sourceUrl:'https://web.archive.org/web/20251208002141/https://dentego.fr/qui-sommes-nous/'};
+        var _d={statut:'trouvé',nom:'Caroline Baert',titre:'Directrice Exploitation',linkedin:'',emailPro:'',
+            anciennete:'Directrice Exploitation Adental Groupe (structure opérationnelle Dentego)',
+            signauxAchat:"⚠️ CONFLIT COMMERCIAL : Adental Groupe (filiale Dentego) dispose déjà d'un télésecrétariat internalisé. Angle = débordement/overflow uniquement. 80+ centres Dentego France.",
+            sourceUrl:''};
         ['l051','l055','l056','l057','l058','l059','l060','l061'].forEach(function(id){
             var l=d.leads.find(function(x){return x.id===id;});if(!l)return;
             l.decideur=JSON.parse(JSON.stringify(_d));
@@ -1195,21 +1197,22 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
             l.decideur=JSON.parse(JSON.stringify(_d));
         });
     })();
-    // Dentelia / Colosseum France : Claude Streit (CEO UK & France)
+    // Dentelia / Colosseum France : Cyrille Duboc (DG France) — correction 2026-05-28
+    // Claude Streit = CEO principalement UK, pas le décideur opérationnel France.
     (function(){
-        var _d={statut:'trouvé',nom:'Claude Streit',titre:'CEO France (Colosseum Dental)',linkedin:'https://www.linkedin.com/in/claude-streit/',emailPro:'',
-            anciennete:'CEO Colosseum UK depuis 2019, CEO France depuis 2024',
-            signauxAchat:'Colosseum Dental France (Dentelia) — réseau en croissance — BPO centralisé certain',
+        var _d={statut:'trouvé',nom:'Cyrille Duboc',titre:'Directeur Général France',linkedin:'',emailPro:'',
+            anciennete:'Managing Director / DG France Colosseum Dental (Dentelia)',
+            signauxAchat:'Colosseum Dental France (Dentelia) — réseau en croissance — BPO centralisé certain. Claude Streit = CEO UK (non opérationnel France — à éviter).',
             sourceUrl:'https://www.colosseumdental.com/who-we-are/meet-our-team'};
         ['l053','l054','l062'].forEach(function(id){
             var l=d.leads.find(function(x){return x.id===id;});if(!l)return;
             l.decideur=JSON.parse(JSON.stringify(_d));
         });
     })();
-    // Dentylis : Jean-Jacques Israël (Directeur Général)
+    // Dentylis : Jean-Jacques Israël (Fondateur) — correction 2026-05-28 (titre DG incorrect)
     (function(){var l=d.leads.find(function(x){return x.id==='l079';});if(!l)return;
-        l.decideur={statut:'trouvé',nom:'Jean-Jacques Israël',titre:'Directeur Général',linkedin:'',emailPro:'',
-        anciennete:'Directeur de la publication Dentylis (RCS PARIS B 453 987 976)',
+        l.decideur={statut:'trouvé',nom:'Jean-Jacques Israël',titre:'Fondateur',linkedin:'',emailPro:'',
+        anciennete:'Fondateur Dentylis — directeur de publication (RCS PARIS B 453 987 976). DG opérationnel non confirmé.',
         signauxAchat:'40+ centres de santé pluridisciplinaires France entière — BPO centralisé certain',
         sourceUrl:'https://dentylis.fr/informations-legales/'};})();
     // ── Décideurs Groupe 3 — Bailleurs sociaux ─────────────────
@@ -1293,7 +1296,7 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
                 anciennete:'Gérant CDBN - Cabinet Dentaire Bordeaux Nord (SIREN via SIRENE)',
                 signauxAchat:'CDBN Bordeaux Nord - cabinet dentaire multi-praticiens, 7j/7 - BPO télésec présumé',
                 sourceUrl:'https://recherche-entreprises.api.gouv.fr'}},
-            {id:'l089',d:{statut:'trouvé',nom:'Dr Mahdhaoui',titre:'Chirurgien-Dentiste / Propriétaire',linkedin:'',emailPro:'',
+            {id:'l089',d:{statut:'trouvé',nom:'Dr Kods Mahdhaoui',titre:'Chirurgien-Dentiste / Propriétaire',linkedin:'',emailPro:'',
                 anciennete:'Praticien titulaire Cabinet Dentaire Paris Monceau',
                 signauxAchat:'Cabinet Paris 17 / Monceau - dentisterie générale, amplitude horaire - BPO télésec présumé',
                 sourceUrl:''}},
@@ -1375,9 +1378,9 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
 // ─── MIGRATION DÉCIDEURS v3 ────────────────────────────────────
 // v3: adds G1 dental chains (Dentego, PDS, Dentelia, Dentylis)
 (function migrateDecideurs_v2() {
-    if (localStorage.getItem('vinlo_dec_v') === '3') return;
+    if (localStorage.getItem('salverys_dec_v') === '3') return;
     var d = load();
-    if (!d.leads || d.leads.length === 0) { localStorage.setItem('vinlo_dec_v','3'); return; }
+    if (!d.leads || d.leads.length === 0) { localStorage.setItem('salverys_dec_v','3'); return; }
     var changed = false;
     var _IK = {statut:'trouvé',nom:'Charlotte de Mourgues-de Rivière',titre:'Directrice Générale',
         linkedin:'https://www.linkedin.com/in/charlotte-de-mourgues-de-rivi%C3%A8re-62146620/',
@@ -1399,9 +1402,9 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
             linkedin:'',emailPro:'',anciennete:'SELARL immatriculée ~2015 (SIREN 824311039)',
             signauxAchat:'8 radiologues 2 sites Rennes, BPO radiologie quasi-systématique en radiologie multi-sites',
             sourceUrl:'https://www.imro-radiologie-rennes.fr/mentions-l%C3%A9gales/'}},
-        {ids:['l082'],d:{statut:'trouvé',nom:'Dr Ari Elhyani',titre:'Fondateur',linkedin:'',emailPro:'',
-            anciennete:'Fondateur (ancienneté non précisée)',
-            signauxAchat:'Clinique premium Paris 16 - chirurgie esthétique haute gamme, BPO/concierge quasi-certain',
+        {ids:['l082'],d:{statut:'trouvé',nom:'Dr Ari Elhyani',titre:'Chirurgien-Dentiste / Fondateur',linkedin:'',emailPro:'',
+            anciennete:'Fondateur Elone Clinic (chirurgien-dentiste, non chirurgien plasticien)',
+            signauxAchat:'Clinique dentisterie esthétique / implantologie premium Paris 16 — BPO télésec quasi-certain',
             sourceUrl:'https://www.elone-clinic.com'}},
         {ids:['l151'],d:{statut:'trouvé',nom:'Olivier Rico',titre:'Directeur Général',linkedin:'',emailPro:'',
             anciennete:'DG Action Logement Services',
@@ -1456,24 +1459,24 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
             signauxAchat:'MdM - 6 000 bénévoles, présence 40+ pays, coordination médicale internationale - BPO présumé',
             sourceUrl:'https://www.medecinsdumonde.org/medecins-du-monde/notre-organisation/'}},
         // ── G1 chaînes dentaires (v3) ──
-        {ids:['l051','l055','l056','l057','l058','l059','l060','l061'],d:{statut:'trouvé',nom:'James Cohen',titre:'Co-Fondateur',
-            linkedin:'https://www.linkedin.com/in/james-cohen-dentego/',emailPro:'',
-            anciennete:'Co-fondateur Dentego (2013) — avec Raphaël Tapiero & Benjamin Tapiero',
-            signauxAchat:"80+ centres Dentego France, centres gérés via Adental Groupe (télésecrétariat externalisé) — BPO certain",
-            sourceUrl:'https://web.archive.org/web/20251208002141/https://dentego.fr/qui-sommes-nous/'}},
+        {ids:['l051','l055','l056','l057','l058','l059','l060','l061'],d:{statut:'trouvé',nom:'Caroline Baert',titre:'Directrice Exploitation',
+            linkedin:'',emailPro:'',
+            anciennete:'Directrice Exploitation Adental Groupe (structure opérationnelle Dentego)',
+            signauxAchat:"⚠️ CONFLIT COMMERCIAL : Adental Groupe (filiale Dentego) dispose déjà d'un télésecrétariat internalisé. Angle = débordement/overflow uniquement. 80+ centres Dentego France.",
+            sourceUrl:''}},
         {ids:['l052','l084'],d:{statut:'trouvé',nom:'Mathias Bensimon',titre:'Fondateur / Dirigeant',
             linkedin:'',emailPro:'',
             anciennete:'Fondateur Paris Dental Studios (France Dental Services, SIREN 950865550, créé 2020)',
             signauxAchat:'3 centres Paris/Lyon/Aix — dentisterie esthétique premium — BPO/concierge certain',
             sourceUrl:'https://parisdentalstudios.com/mentions-legales-paris-dental-studios/'}},
-        {ids:['l053','l054','l062'],d:{statut:'trouvé',nom:'Claude Streit',titre:'CEO France (Colosseum Dental)',
-            linkedin:'https://www.linkedin.com/in/claude-streit/',emailPro:'',
-            anciennete:'CEO Colosseum UK depuis 2019, CEO France depuis 2024',
-            signauxAchat:'Colosseum Dental France (Dentelia) — réseau en croissance — BPO centralisé certain',
-            sourceUrl:'https://www.colosseumdental.com/who-we-are/meet-our-team'}},
-        {ids:['l079'],d:{statut:'trouvé',nom:'Jean-Jacques Israël',titre:'Directeur Général',
+        {ids:['l053','l054','l062'],d:{statut:'trouvé',nom:'Cyrille Duboc',titre:'Directeur Général France',
             linkedin:'',emailPro:'',
-            anciennete:'Directeur de la publication Dentylis (RCS PARIS B 453 987 976)',
+            anciennete:'Managing Director / DG France Colosseum Dental (Dentelia)',
+            signauxAchat:'Colosseum Dental France (Dentelia) — réseau en croissance — BPO centralisé certain. Claude Streit = CEO UK (non opérationnel France — à éviter).',
+            sourceUrl:'https://www.colosseumdental.com/who-we-are/meet-our-team'}},
+        {ids:['l079'],d:{statut:'trouvé',nom:'Jean-Jacques Israël',titre:'Fondateur',
+            linkedin:'',emailPro:'',
+            anciennete:'Fondateur Dentylis — directeur de publication (RCS PARIS B 453 987 976). DG opérationnel non confirmé.',
             signauxAchat:'40+ centres de santé pluridisciplinaires France entière — BPO centralisé certain',
             sourceUrl:'https://dentylis.fr/informations-legales/'}}
     ];
@@ -1484,7 +1487,7 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
         });
     });
     if(changed)save(d);
-    localStorage.setItem('vinlo_dec_v','3');
+    localStorage.setItem('salverys_dec_v','3');
 })();
 
 // ─── MIGRATION DÉCIDEURS v4 ────────────────────────────────────
@@ -1492,9 +1495,9 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
 //     + associations humanitaires (Secours Catholique, Populaire, Restos, Emmaüs France, Aurore, France Horizon, URSSAF, Habitat & Humanisme, UNHAJ)
 //     + petites cliniques G3 (CDBN, Dr Mahdhaoui)
 (function migrateDecideurs_v4() {
-    if (localStorage.getItem('vinlo_dec_v') === '4') return;
+    if (localStorage.getItem('salverys_dec_v') === '4') return;
     var d = load();
-    if (!d.leads || d.leads.length === 0) { localStorage.setItem('vinlo_dec_v','4'); return; }
+    if (!d.leads || d.leads.length === 0) { localStorage.setItem('salverys_dec_v','4'); return; }
     var changed = false;
     var _d4=[
         {ids:['l155'],d:{statut:'trouvé',nom:'Emmanuel Ballu',titre:'Directeur Général',linkedin:'',emailPro:'',
@@ -1573,7 +1576,290 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
         });
     });
     if(changed)save(d);
-    localStorage.setItem('vinlo_dec_v','4');
+    localStorage.setItem('salverys_dec_v','4');
+})();
+
+// ─── MIGRATION DÉCIDEURS v5 ────────────────────────────────────
+// v5 (2026-05-29) : corrections vérifiées — FORCE overwrite (une seule fois via flag).
+//   Nécessaire car les migrations précédentes sont conditionnelles (n'écrasent pas
+//   un décideur déjà saisi) et seedIfEmpty ne tourne que sur stockage vide.
+//   Médical/dentaire : Dentego→Caroline Baert (+conflit Adental Groupe), Dentelia→Cyrille Duboc,
+//     Dentylis titre Fondateur, Elone dentisterie esthétique (pas chirurgie), Monceau→Dr Kods Mahdhaoui.
+//   Bailleurs : viser le décideur RELATION CLIENT/LOCATAIRES, pas le DG (decideur2 = DG en escalade).
+//     CDC Habitat→Brigitte Laurent, Erilia→Antoine Jeandet, Domofrance→J-B Desanlis,
+//     Vilogia→Gaëlle Velay, Plurial Novilia→Laurent Monclin, ICF Habitat→Olivier Sicard,
+//     Aiguillon→Mickaël Lehardy, 1001 Vies Habitat→Claude Knapik.
+//     Solendi (l164) déqualifié : collecteur Action Logement, sans parc locatif.
+(function migrateDecideurs_v5() {
+    if (localStorage.getItem('salverys_dec_v') === '5') return;
+    var d = load();
+    if (!d.leads || d.leads.length === 0) { localStorage.setItem('salverys_dec_v','5'); return; }
+    var changed = false;
+    var _fix=[
+        // ── Médical / dentaire ──
+        {ids:['l051','l055','l056','l057','l058','l059','l060','l061'],
+         d:{statut:'trouvé',nom:'Caroline Baert',titre:'Directrice Exploitation',linkedin:'',emailPro:'',
+            anciennete:'Directrice Exploitation Adental Groupe (structure opérationnelle Dentego)',
+            signauxAchat:'⚠️ CONFLIT : Adental Groupe (filiale Dentego) gère déjà le télésecrétariat en interne. Angle = débordement/overflow uniquement. 80+ centres. James Cohen (co-fondateur) = figurehead, pas le bon interlocuteur.',
+            sourceUrl:''}},
+        {ids:['l053','l054','l062'],
+         d:{statut:'trouvé',nom:'Cyrille Duboc',titre:'Directeur Général France',linkedin:'',emailPro:'',
+            anciennete:'Managing Director / DG France Colosseum Dental (Dentelia)',
+            signauxAchat:'Colosseum Dental France (Dentelia) — réseau en croissance. Claude Streit = CEO UK (non opérationnel France — à éviter).',
+            sourceUrl:'https://www.colosseumdental.com/who-we-are/meet-our-team'}},
+        {ids:['l079'],
+         d:{statut:'trouvé',nom:'Jean-Jacques Israël',titre:'Fondateur',linkedin:'',emailPro:'',
+            anciennete:'Fondateur Dentylis — directeur de publication (RCS PARIS B 453 987 976). DG opérationnel non confirmé.',
+            signauxAchat:'40+ centres de santé pluridisciplinaires France entière — centralisation certaine.',
+            sourceUrl:'https://dentylis.fr/informations-legales/'}},
+        {ids:['l082'],
+         d:{statut:'trouvé',nom:'Dr Ari Elhyani',titre:'Chirurgien-Dentiste / Fondateur',linkedin:'',emailPro:'',
+            anciennete:'Fondateur Elone Clinic (chirurgien-dentiste, non chirurgien plasticien)',
+            signauxAchat:'Clinique dentisterie esthétique / implantologie premium Paris 16 — télésec quasi-certain.',
+            sourceUrl:'https://www.elone-clinic.com'}},
+        {ids:['l089'],
+         d:{statut:'trouvé',nom:'Dr Kods Mahdhaoui',titre:'Chirurgien-Dentiste / Propriétaire',linkedin:'',emailPro:'',
+            anciennete:'Praticien titulaire Cabinet Dentaire Paris Monceau',
+            signauxAchat:'Cabinet Paris 8 / Monceau — dentisterie générale, amplitude horaire — télésec présumé.',
+            sourceUrl:''}},
+        // ── Bailleurs : décideur RELATION CLIENT/LOCATAIRES (decideur2 = DG en escalade) ──
+        {ids:['l154'],
+         d:{statut:'trouvé',nom:'Brigitte Laurent',titre:'Directrice Clients, Gestion Locative et Numérique',linkedin:'https://fr.linkedin.com/in/brigitte-laurent-a6a80449',emailPro:'',
+            anciennete:'Nommée avr. 2023 — périmètre clients + gestion locative (CDC Habitat)',
+            signauxAchat:'CDC Habitat 540 000 logements. Décideur opérationnel relation client le plus pertinent. À confirmer toujours en poste.',
+            sourceUrl:'https://acteurspublics.fr/nomination/brigitte-laurent-rejoint-cdc-habitat'},
+         d2:{statut:'trouvé',nom:'Clément Lecuivre',titre:'Président du Directoire (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://groupe-cdc-habitat.com/groupe/gouvernance/cdc-habitat/'}},
+        {ids:['l162'],
+         d:{statut:'trouvé',nom:'Antoine Jeandet',titre:'Directeur Général Délégué Territoires et Clients',linkedin:'https://fr.linkedin.com/in/antoine-jeandet-65b412a4',emailPro:'',
+            anciennete:'DGD Territoires et Clients Erilia (ex-DGA relation client depuis 2019)',
+            signauxAchat:'Erilia ~55 000 logements PACA/Occitanie. LE décideur clients du groupe (confirmé).',
+            sourceUrl:'https://gomet.net/antoine-jeandet-direction-derilia/'},
+         d2:{statut:'trouvé',nom:'Frédéric Lavergne',titre:'Directeur Général (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.erilia.fr/decouvrir-erilia/notre-gouvernance'}},
+        {ids:['l160'],
+         d:{statut:'trouvé',nom:'Jean-Baptiste Desanlis',titre:'Directeur Général Délégué Territoires et Clients',linkedin:'',emailPro:'',
+            anciennete:'DGD Territoires et Clients Domofrance',
+            signauxAchat:'Domofrance ~50 000 logements N-Aquitaine. CRC "Domo@Contact" (Pau) — identifier le Responsable du CRC sous Desanlis pour l\'opérationnel.',
+            sourceUrl:'https://www.domofrance.fr/Nos-actus/Domofrance-inaugure-son-Centre-de-Relation-Client-a-Pau'},
+         d2:{statut:'trouvé',nom:'Francis Stéphan',titre:'Directeur Général (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.domofrance.fr/a-propos/qui-sommes-nous'}},
+        {ids:['l161'],
+         d:{statut:'trouvé',nom:'Gaëlle Velay',titre:'Directrice Opérationnelle (parcours client)',linkedin:'',emailPro:'',
+            anciennete:'Nommée Directrice Opérationnelle Vilogia 06/01/2025 (parcours client + politiques sociales)',
+            signauxAchat:'Vilogia ~92 000 logements. CRC à Villeneuve-d\'Ascq (~50 pers., 300 000 appels/an). ⚠️ David Loy (ex-Dir. Relation Clients) parti diriger le territoire IDF — ne plus le cibler.',
+            sourceUrl:'https://www.vilogia.fr/gaelle-velay-est-nommee-directrice-operationnelle-de-vilogia'},
+         d2:{statut:'trouvé',nom:'Philippe Rémignon',titre:'Président du Directoire (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.vilogia.fr'}},
+        {ids:['l157'],
+         d:{statut:'trouvé',nom:'Laurent Monclin',titre:'Directeur Adjoint Relation Clientèle (offre locative)',linkedin:'https://www.linkedin.com/in/laurent-monclin-80306114b/',emailPro:'',
+            anciennete:'Chez Plurial Novilia depuis 2010 (source : LinkedIn, à confirmer)',
+            signauxAchat:'Plurial Novilia ~43 000 logements Grand Est. Le Directeur titulaire (N+1 des adjoints) non identifié publiquement — à chercher.',
+            sourceUrl:'https://www.plurial-novilia.fr/metiers-la-relation-clients-et-la-proximite/'},
+         d2:{statut:'trouvé',nom:'Johnny Huat',titre:'Directeur Général (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.plurialnovilia.fr'}},
+        {ids:['l158'],
+         d:{statut:'trouvé',nom:'Olivier Sicard',titre:'Responsable du Centre de Relation Clients',linkedin:'https://fr.linkedin.com/in/olivier-sicard-25964b26',emailPro:'',
+            anciennete:'Responsable CRC ICF Habitat La Sablière (cité dans com. officielle, recert. AFNOR)',
+            signauxAchat:'ICF Habitat (SNCF) ~95 000 logements. Contact opérationnel CRC. N+1 = Mathilde Jourdan (Dir. Gestion Locative Groupe).',
+            sourceUrl:'https://www.icfhabitat.fr/groupe/le-centre-de-relation-clients-dicf-habitat-la-sabliere-nouveau-recompense-pour-son-ecoute-et'},
+         d2:{statut:'trouvé',nom:'Mathilde Jourdan',titre:'Directrice de la Gestion Locative Groupe (validation/escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.icfhabitat.fr'}},
+        {ids:['l163'],
+         d:{statut:'trouvé',nom:'Mickaël Lehardy',titre:'DGA Gestion Locative et Sociale / Dir. adjoint Relation Client',linkedin:'https://www.linkedin.com/in/micka%C3%ABl-lehardy-110902167/',emailPro:'',
+            anciennete:'Gestion locative + relation client + prévention impayés (Aiguillon Construction)',
+            signauxAchat:'Aiguillon Construction ~37 000 logements Grand Ouest. Meilleur contact opérationnel. Titre exact à confirmer.',
+            sourceUrl:'https://www.aiguillon-construction.fr'},
+         d2:{statut:'trouvé',nom:'Thierry Heyvang',titre:'Directeur Général (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.aiguillon-construction.fr'}},
+        {ids:['l156'],
+         d:{statut:'trouvé',nom:'Claude Knapik',titre:'Président du Directoire',linkedin:'',emailPro:'',
+            anciennete:'Président du Directoire 1001 Vies Habitat depuis le 01/01/2026',
+            signauxAchat:'1001 Vies Habitat (Action Logement Immobilier). Réorg post-fusion : décideur relation locataires non public — point d\'entrée régional possible Stéphane Boubennec (Dir. IDF).',
+            sourceUrl:'https://www.1001vieshabitat.fr/claude-knapik-nouveau-president-du-directoire-de-1001-vies-habitat/'}},
+        // ── Bailleurs : DG conservé + note (décideur opérationnel non identifié publiquement) ──
+        {ids:['l151'],
+         d:{statut:'trouvé',nom:'Olivier Rico',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG Action Logement Services',
+            signauxAchat:'⚠️ DG = mauvais interlocuteur direct. Décideur CRC non identifié publiquement. Point d\'entrée opérationnel = David Delage (DGA, en decideur2). Chercher "Responsable CRC" via offres d\'emploi/standard.',
+            sourceUrl:'https://groupe.actionlogement.fr/notre-organisation'}},
+        {ids:['l152'],
+         d:{statut:'trouvé',nom:'Eric Balci',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG in\'li',
+            signauxAchat:'⚠️ DG = mauvais interlocuteur. Dir. Relation Locataires non identifié publiquement. Chercher "Responsable Service Relation Client in\'li" (LinkedIn/standard).',
+            sourceUrl:'https://www.inli.com/en/inli/gouvernance'}},
+        {ids:['l153'],
+         d:{statut:'trouvé',nom:'Olivier Rico',titre:'Directeur Général (Action Logement Services)',linkedin:'',emailPro:'',
+            anciennete:'AL\'in = plateforme digitale opérée par ALS (pas d\'entité autonome)',
+            signauxAchat:'⚠️ Pas de direction propre. Remonter via David Delage (DGA ALS) et demander qui pilote la relation usagers de la plateforme.',
+            sourceUrl:'https://al-in.fr/'}},
+        {ids:['l155'],
+         d:{statut:'trouvé',nom:'Emmanuel Ballu',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG Adoma (filiale CDC Habitat)',
+            signauxAchat:'⚠️ Structure très décentralisée (6 DI régionales). Relation clients portée au niveau groupe CDC Habitat (Brigitte Laurent). Piste : appel d\'offres BOAMP/UGAP "centre d\'appels Adoma".',
+            sourceUrl:'https://www.adoma.cdc-habitat.fr/adoma/notre-gouvernance/'}},
+        {ids:['l165'],
+         d:{statut:'trouvé',nom:'Eric Gimer',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG Habitat 76 (OPH Seine-Maritime)',
+            signauxAchat:'⚠️ DG = repli. "Service Gestion de la Relation Locataires" interne structuré (CRM Coheris) mais responsable non public. Chercher offre "Responsable Relation Locataires Habitat 76".',
+            sourceUrl:'https://habitat76.fr'}},
+    ];
+    _fix.forEach(function(e){
+        if(!e.d||!e.d.nom)return; // skip placeholder
+        e.ids.forEach(function(id){
+            var l=d.leads.find(function(x){return x.id===id;});if(!l)return;
+            l.decideur=JSON.parse(JSON.stringify(e.d));changed=true;
+            if(e.d2){
+                if(!l.decideur2)l.decideur2={};
+                l.decideur2=JSON.parse(JSON.stringify(e.d2));
+            }
+        });
+    });
+    // Solendi (l164) : déqualifié — pas un bailleur (collecteur Action Logement, sans parc locatif)
+    (function(){var l=d.leads.find(function(x){return x.id==='l164';});if(!l)return;
+        if(l.notes.indexOf('DÉQUALIFIÉ')===-1){
+            l.notes='⚠️ DÉQUALIFIÉ : Solendi n\'est pas un bailleur (collecteur Action Logement fusionné dans AL Services, sans parc locatif) — aucun centre de relation locataires à externaliser. | '+l.notes;
+            changed=true;}
+        l.decideur={statut:'non_trouvé',nom:'',titre:'',linkedin:'',emailPro:'',anciennete:'',
+            signauxAchat:'Hors cible "relation locataires". Re-qualifier sur services salariés/entreprises ou retirer du pipeline.',sourceUrl:''};})();
+    if(changed)save(d);
+    localStorage.setItem('salverys_dec_v','5');
+})();
+
+// ─── MIGRATION DÉCIDEURS v6 ────────────────────────────────────
+// v6 (2026-05-29) : contacts vérifiés par agents de recherche — FORCE overwrite.
+//   MSP médicaux : Laurence Foschia (l006), Lionel Cervera (l037), Dr Michaël Loeb (l039).
+//   Dentaire/ostéo non_trouvés : Shana Aiach (l081), Pierre de Chauvigny (l087, ⚠️ sorti ~2020),
+//     Dr Antoine Leuret (l090), Romain Sevignac (l091), Jeanne-Marie Serot (l092), Matthieu Denquin (l102).
+//   Associations humanitaires — corrections dirigeants :
+//     Secours Pop.→Thierry Robert (l171), Aurore→Marie Degrand-Guillaud (l175),
+//     France Horizon→Nabil Neffati (l176), Fondation Abbé Pierre→Michel Raynaud (l177, 🏆 meilleure cible),
+//     Médecins du Monde→Joël Weiler (l180).
+//   Organismes publics — contacts opérationnels + 🚫 NO-GO (marchés publics, volumes hors capacité) :
+//     CNAF→Nicolas Grivel (l166), France Travail→Thibault Romatet (l167), URSSAF→Julie Aubertie (l168).
+//   Annuaires/ordres (l142-l150) : marqués N/A — sources de prospection, non leads.
+(function migrateDecideurs_v6() {
+    if (localStorage.getItem('salverys_dec_v') === '6') return;
+    var d = load();
+    if (!d.leads || d.leads.length === 0) { localStorage.setItem('salverys_dec_v','6'); return; }
+    var changed = false;
+    var _fix6=[
+        // ── MSP médicaux — contacts coordinateurs ──
+        {ids:['l006'],
+         d:{statut:'trouvé',nom:'Laurence Foschia',titre:'Coordinatrice administrative',linkedin:'',emailPro:'',
+            anciennete:'Coordinatrice Centre de Santé La Roseraie — Anjou Accompagnement (Angers)',
+            signauxAchat:'Centre santé associatif pluridisciplinaire — secrétariat centralisé, BPO débordement probable',
+            sourceUrl:'https://www.anjouaccompagnement.fr'}},
+        {ids:['l037'],
+         d:{statut:'trouvé',nom:'Lionel Cervera',titre:'Coordinateur médecin',linkedin:'',emailPro:'',
+            anciennete:'Coordinateur MSP Toulouse Constellation (Route de Bayonne)',
+            signauxAchat:'MSP multi-médecins Toulouse — secrétariat partagé large amplitude — BPO probable',
+            sourceUrl:'https://annuaire.sante.fr'}},
+        {ids:['l039'],
+         d:{statut:'trouvé',nom:'Dr Michaël Loeb',titre:'Médecin coordinateur',linkedin:'',emailPro:'',
+            anciennete:'Médecin coordinateur Centre Médical Toulouse (4 médecins : Bilfeld, Lartiguevieille, Martin, Thomas)',
+            signauxAchat:'Centre 4 médecins Toulouse — infrastructure secrétariat, BPO débordement probable',
+            sourceUrl:'https://annuaire.sante.fr'}},
+        // ── Dentaire / ostéo — contacts trouvés ──
+        {ids:['l081'],
+         d:{statut:'trouvé',nom:'Shana Aiach',titre:'Co-fondatrice & Directrice Générale',
+            linkedin:'https://www.linkedin.com/in/shana-aiach/',emailPro:'',
+            anciennete:'Co-fondatrice Sana Oris Paris (Paris 8, centre dentaire premium international)',
+            signauxAchat:'Centre dentaire premium multilangue Paris 8 — clientèle internationale — BPO/concierge quasi-certain',
+            sourceUrl:'https://www.linkedin.com/in/shana-aiach/'}},
+        {ids:['l087'],
+         d:{statut:'trouvé',nom:'Pierre de Chauvigny',titre:'Fondateur',linkedin:'',emailPro:'',
+            anciennete:'Fondateur Clinic Osteo — sorti ~2020 (direction actuelle non identifiée publiquement)',
+            signauxAchat:"⚠️ Contact incertain : fondateur sorti ~2020. Chaîne multi-sites Paris/Lyon — BPO central quasi-certain si direction active. Vérifier direction actuelle via standard avant contact.",
+            sourceUrl:'https://www.clinicosteo.fr'}},
+        {ids:['l090'],
+         d:{statut:'trouvé',nom:'Dr Antoine Leuret',titre:'Chirurgien-Dentiste / Responsable',linkedin:'',emailPro:'',
+            anciennete:'Clinique Esthétique Dentaire Bordeaux (05 47 74 29 90)',
+            signauxAchat:'Clinique esthétique dentaire Bordeaux — BPO télésec quasi-certain',
+            sourceUrl:'https://annuaire.sante.fr'}},
+        {ids:['l091'],
+         d:{statut:'trouvé',nom:'Romain Sevignac',titre:'Ostéopathe / Co-fondateur',linkedin:'',emailPro:'',
+            anciennete:'Co-fondateur Cabinet Ostéopathie des Arènes Toulouse (3 ostéos, amplitude 7h-21h)',
+            signauxAchat:'Amplitude 7h-21h — permanence téléphonique externe quasi-certaine',
+            sourceUrl:'https://www.arenes-osteopathie.fr'}},
+        {ids:['l092'],
+         d:{statut:'trouvé',nom:'Jeanne-Marie Serot',titre:'Co-gérante',linkedin:'',emailPro:'',
+            anciennete:"Co-gérante Cabinet Dentaire Tête d'Or Lyon (avec Yasmine Kedous et J-F Costemale-Lacoste)",
+            signauxAchat:"Cabinet implantologie/chirurgie Lyon Tête d'Or — flux RDV élevé, télésec quasi-certain",
+            sourceUrl:'https://annuaire.sante.fr'}},
+        {ids:['l102'],
+         d:{statut:'trouvé',nom:'Matthieu Denquin',titre:'Ostéopathe / Responsable',linkedin:'',emailPro:'',
+            anciennete:'Responsable Cabinet Capitole Toulouse (ostéo + psy + thérapies, 2 sites : Rémusat + Mirepoix)',
+            signauxAchat:'Cabinet pluri 2 sites Toulouse — secrétariat centralisé probable, BPO possible',
+            sourceUrl:'https://annuaire.sante.fr'}},
+        // ── Associations humanitaires — corrections dirigeants ──
+        {ids:['l171'],
+         d:{statut:'trouvé',nom:'Thierry Robert',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG Secours Populaire Français (remplace Henriette Steinberg, Secrétaire générale)',
+            signauxAchat:'Secours Populaire - 1M+ bénéficiaires/an. Cible FAIBLE : modèle bénévole, accueil présentiel, budget serré — BPO non prioritaire.',
+            sourceUrl:'https://www.secourspopulaire.fr'}},
+        {ids:['l175'],
+         d:{statut:'trouvé',nom:'Marie Degrand-Guillaud',titre:'Directrice Générale',linkedin:'',emailPro:'',
+            anciennete:'DG Association Aurore depuis 14/02/2026 (remplace Florian Guyot)',
+            signauxAchat:'Aurore - 80+ établissements hébergement/insertion. Cible MOYENNE : standard accueil structuré, BPO sur débordement possible.',
+            sourceUrl:'https://www.aurore-asso.fr'}},
+        {ids:['l176'],
+         d:{statut:'trouvé',nom:'Nabil Neffati',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG France Horizon (remplace Hubert Valade, Président)',
+            signauxAchat:'France Horizon - 9 000 personnes/an accueillies. Cible FAIBLE : CHRS/réfugiés, accueil primaire, budget associatif contraint.',
+            sourceUrl:'https://www.france-horizon.org'}},
+        {ids:['l177'],
+         d:{statut:'trouvé',nom:'Michel Raynaud',titre:'Directeur Développement Ressources et Donateurs',linkedin:'',emailPro:'',
+            anciennete:'Dir. Développement Ressources et Donateurs — Fondation pour le Logement des Défavorisés (Fondation Abbé Pierre)',
+            signauxAchat:"🏆 MEILLEURE CIBLE asso. : centre relation donateurs structuré — BPO/télésec quasi-certain. Interlocuteur direct : Michel Raynaud. Christophe Robert (DG délégué) = escalade uniquement.",
+            sourceUrl:'https://www.fondation-abbe-pierre.fr'},
+         d2:{statut:'trouvé',nom:'Christophe Robert',titre:'Délégué Général (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://fr.wikipedia.org/wiki/Fondation_Abb%C3%A9_Pierre'}},
+        {ids:['l180'],
+         d:{statut:'trouvé',nom:'Joël Weiler',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG Médecins du Monde France (remplace Helena Ranchal, DG par intérim)',
+            signauxAchat:'MdM - ONG internationale. Cible FAIBLE : coordination terrain bénévole, modèle humanitaire, budget dédié terrain — BPO non prioritaire.',
+            sourceUrl:'https://www.medecinsdumonde.org/medecins-du-monde/notre-organisation/'}},
+        // ── Organismes publics — contacts opérationnels + flag NO-GO ──
+        {ids:['l166'],
+         d:{statut:'trouvé',nom:'Nicolas Grivel',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG CNAF (remplace Constance Bensussan). Contact opérationnel helpdesk non identifié publiquement.',
+            signauxAchat:"🚫 NO-GO : Marchés publics obligatoires (BOAMP). Budget helpdesk CNAF réservé aux grands opérateurs nationaux. Volumes exigent 200+ positions. Retirer du pipeline actif.",
+            sourceUrl:'https://www.caf.fr/partenaires/cnaf/notre-organisation'}},
+        {ids:['l167'],
+         d:{statut:'trouvé',nom:'Thibault Romatet',titre:'DGA Stratégie, Innovation et Expérience Usagers',linkedin:'',emailPro:'',
+            anciennete:'DGA France Travail — périmètre expérience usagers (contact plus pertinent que DG pour un BPO)',
+            signauxAchat:"🚫 NO-GO : Appels d'offres UGAP/BOAMP obligatoires. 55 000 agents France Travail, volumes exigent 200+ positions BPO. Hors capacité Salverys (10 agents). Retirer du pipeline actif.",
+            sourceUrl:'https://www.francetravail.fr/nous-connaitre/qui-sommes-nous/gouvernance/'}},
+        {ids:['l168'],
+         d:{statut:'trouvé',nom:'Julie Aubertie',titre:'Directrice des Usagers',linkedin:'',emailPro:'',
+            anciennete:'Directrice des Usagers URSSAF Caisse Nationale (contact le plus pertinent côté relation client)',
+            signauxAchat:"🚫 NO-GO : Marchés publics obligatoires. Helpdesk URSSAF passé en appels d'offres BOAMP, volumes nécessitent 100+ agents. Hors capacité Salverys. Retirer du pipeline actif.",
+            sourceUrl:'https://www.urssaf.org/portail/home/nous-connaitre/nos-engagements/notre-organisation.html'}},
+    ];
+    _fix6.forEach(function(e){
+        if(!e.d||!e.d.nom)return;
+        e.ids.forEach(function(id){
+            var l=d.leads.find(function(x){return x.id===id;});if(!l)return;
+            l.decideur=JSON.parse(JSON.stringify(e.d));changed=true;
+            if(e.d2){
+                if(!l.decideur2)l.decideur2={};
+                l.decideur2=JSON.parse(JSON.stringify(e.d2));
+            }
+        });
+    });
+    // ── Annuaires / ordres — marquer N/A (sources prospection, non leads) ──
+    ['l142','l143','l144','l145','l146','l147','l148','l149','l150'].forEach(function(id){
+        var l=d.leads.find(function(x){return x.id===id;});if(!l)return;
+        if(!l.decideur)l.decideur={};
+        if(l.decideur.statut!=='N/A'){
+            l.decideur={statut:'N/A',nom:'',titre:'',linkedin:'',emailPro:'',anciennete:'',
+                signauxAchat:'Source de prospection (annuaire/ordre professionnel) — ne pas prospecter directement. Utiliser comme source de leads cabinets.',sourceUrl:''};
+            changed=true;
+        }
+    });
+    if(changed)save(d);
+    localStorage.setItem('salverys_dec_v','6');
 })();
 
 // ─── NAVIGATION ───────────────────────────────────────────────
@@ -2881,7 +3167,7 @@ function nextStepBtn() {
 }
 
 // ─── TEMPLATES STORAGE ────────────────────────────────────────
-const CUSTOM_TEMPLATES_KEY = 'nesvalo_custom_templates_v1';
+const CUSTOM_TEMPLATES_KEY = 'salverys_custom_templates_v1';
 
 function getCustomTemplates() {
     const raw = localStorage.getItem(CUSTOM_TEMPLATES_KEY);

@@ -9,6 +9,43 @@ You are the decision maker intelligence engine for `/sales contacts <url>`. You 
 
 ---
 
+## Phase 0: ICP Gate (do this BEFORE any research)
+
+Do not spend research effort on a target before checking it is worth it. This is
+the most common waste in practice: producing a polished dossier on a company that
+was never a fit.
+
+1. **Read `IDEAL-CUSTOMER-PROFILE.md`** if it exists in the working directory. If it
+   does not, ask the user for the ICP in one line, or proceed with an explicit
+   "no ICP on file" caveat.
+2. **Make a fast go / no-go call** on the target against the ICP's core criteria
+   (sector, geography, size, business model). Use one or two quick web searches —
+   just enough to classify, not a full profile.
+3. **State the verdict at the very top of the output:**
+   - **In-ICP →** proceed with the full procedure below.
+   - **Off-ICP →** STOP after a short note explaining which criteria fail. Do not
+     build a full buying-committee dossier on a company that does not fit. If the
+     user explicitly wants it anyway (e.g. a test), proceed but keep the off-ICP
+     flag prominent.
+
+A well-documented target is not the same as a high-potential one. The ICP gate
+decides whether the rest of this skill should run at all.
+
+---
+
+## Privacy / GDPR note (applies throughout)
+
+This skill assembles dossiers on **named individuals** and writes them to disk. In
+an EU/French context this is personal-data processing under GDPR:
+- Collect only what serves the prospecting purpose (no hobbies/family/sensitive data).
+- Prefer professional, public sources; never scrape gated or private data.
+- Treat the output file as containing personal data: don't over-retain, and don't
+  commit real individuals' dossiers to a shared repo longer than needed.
+- A lawful basis (legitimate interest for B2B prospecting) and an opt-out in any
+  outreach are expected. Flag this to the user rather than ignoring it.
+
+---
+
 ## Phase 1: Contact Identification
 
 ### 1.1 Team Page Analysis
@@ -44,16 +81,21 @@ Search 6: "[company name] Director [relevant function] LinkedIn"
 Search 7: "[company name] [specific title from team page] LinkedIn"
 ```
 
-**For each person found, capture:**
+**Reality check on what you can actually get.** LinkedIn profile pages and many
+corporate sites are auth-walled or block automated fetching (expect HTTP 403). In
+practice you will get **search-result snippets**, not full profiles. Do not pretend
+to have read a profile you could only see as a snippet, and never invent posts,
+connections, or endorsements to fill the fields below. Capture what the snippet
+genuinely shows; mark the rest "not available from public search".
+
+**For each person found, capture what is genuinely visible (typically from snippets):**
 - Full name
-- Current title and tenure (when they started)
-- Previous companies and roles
-- Education (university, degree)
-- Location
-- LinkedIn headline (often reveals priorities)
-- Recent posts or articles (last 3-6 months)
-- Shared connections or groups (if visible)
-- Skills and endorsements (reveals expertise areas)
+- Current title — and flag it "as listed, unverified" unless a date or recent activity confirms it is current
+- Previous companies / role history (if shown)
+- Location (if shown)
+- LinkedIn headline (often in the snippet)
+- Anything else only if actually visible — recent posts, shared connections, skills
+  and endorsements usually require being logged in, so treat them as bonus, not expected
 
 ### 1.3 Org Chart Mapping
 
@@ -153,6 +195,24 @@ For each identified contact, classify them into one or more buying roles:
 - Without a champion, deals are 3x less likely to close
 - They provide insider intelligence on the buying process
 
+**CRITICAL — a champion cannot be confirmed from public data alone.**
+The champion is a *behavioral* role (someone who feels the pain AND advocates
+internally), not a job title. Public scraping can only surface a **likely
+functional owner** — the person whose title matches the function. Job titles on
+LinkedIn are frequently stale (someone keeps "Head of Support" after moving on,
+or the real owner has a generic title). Treating a scraped title-holder as a
+confirmed champion is the single most common error this skill makes.
+
+Therefore:
+- Never assert a single named champion as fact. Output a **ranked list of
+  candidate champions** (see 2.2), each with a confidence level and the evidence.
+- Label every champion as a **hypothesis to validate**, not a finding.
+- A champion is only *confirmed* by behavior (they reply, engage, and confirm
+  the pain) or by a genuine insider. Use human verification only when a real warm
+  path exists (the user's own network, an existing relationship) — a stranger will
+  not name the champion to a cold vendor. Absent a warm path, confirm by behavior,
+  not by asking. See 2.3, Step 5.
+
 #### Technical Evaluator
 **Definition:** Assesses technical fit, integrations, security, and implementation complexity.
 **Typical titles:** CTO, VP Engineering, IT Director, Solutions Architect, Security Officer
@@ -210,11 +270,17 @@ For each identified contact, classify them into one or more buying roles:
 
 ### 2.2 Role Assignment Matrix
 
-For each identified contact, assign roles using this matrix:
+For each identified contact, assign roles using this matrix. Every row MUST carry
+the evidence trail and a recency check — never a bare title-to-role guess:
 
-| Contact Name | Title | Primary Role | Secondary Role | Confidence |
-|-------------|-------|-------------|----------------|------------|
-| [name] | [title] | [Economic Buyer/Champion/etc.] | [optional second role] | [High/Medium/Low] |
+| Contact Name | Title | Primary Role | Confidence | Evidence (sources) | Recency check |
+|-------------|-------|-------------|------------|--------------------|---------------|
+| [name] | [title] | [role] | [High/Medium/Low] | [≥2 sources, or "single source"] | [role start date / last activity / "unverified"] |
+
+**Confidence rules (be honest — most will be Medium or Low):**
+- **High:** corroborated by 2+ independent sources AND a recency signal (recent post, role start date, quoted in a recent piece). Reserve for cases that are genuinely verified.
+- **Medium:** single credible source, or 2 sources but no recency confirmation. The default for most scraped contacts.
+- **Low:** inferred from title-matching only, or data older than ~12 months with no confirmation.
 
 **Assignment rules:**
 - One person can fill multiple roles (especially in smaller companies)
@@ -222,6 +288,64 @@ For each identified contact, assign roles using this matrix:
 - In companies under 50 people, expect 2-3 people in the buying committee
 - In companies 50-200, expect 3-5 people in the buying committee
 - In companies 200+, expect 5-8+ people in the buying committee
+
+### 2.3 Champion Validation Protocol
+
+The champion is the role most often gotten wrong. Apply this protocol before
+naming anyone — and never output a single asserted champion.
+
+**Step 1 — Distinguish functional owner from champion.**
+Public data yields, at best, a **functional owner hypothesis** (title matches the
+function). Record it as such. The champion (advocate who feels the pain) is only
+confirmed later, by behavior or by an insider.
+
+**Step 2 — Output ranked candidate champions, not one.**
+List 2-3 candidates with confidence + evidence, so the human chooses:
+
+| Rank | Candidate | Why they might be the champion | Confidence | What would confirm it |
+|------|-----------|--------------------------------|------------|------------------------|
+| 1 | [name, title] | [pain ownership / influence signal] | [H/M/L] | [validation action] |
+| 2 | [name, title] | [...] | [H/M/L] | [...] |
+| 3 | [name, title] | [...] | [H/M/L] | [...] |
+
+**Step 3 — Triangulate (need ≥2 corroborating signals to raise confidence):**
+- Company LinkedIn "People" filtered by the relevant function
+- Who is the **hiring manager / reporting line** on open job posts for that team
+- Who signs support/CS communications, release notes, or status pages
+- Who speaks publicly about the function (posts, webinars, podcasts)
+- Tenure and role **start date** (a recent start = likely current; an old title with no recent activity = suspect)
+
+**Step 4 — Recency / "is this still true?" check.**
+Flag any contact whose role evidence is older than ~12 months or shows no recent
+activity as **"role unverified — confirm before outreach."**
+
+**Step 5 — Match the verification method to the access you ACTUALLY have.**
+Two regimes — do not confuse them. "Ask someone" is not a cold tactic: a stranger
+you cold-contact will not name the real decision-maker or champion to a vendor, so
+this step applies only when a genuine relationship exists.
+
+- **Warm path (a real relationship inside the account):** ask that trusted contact
+  first — but only when the relationship is real (the user is an ex-employee, a
+  personal connection, an existing customer contact, an introduction). This is the
+  fastest, most accurate route when it exists. It does NOT mean cold-asking a random
+  employee.
+
+- **Truly cold (no warm path):** you cannot verify the champion before contact, and
+  people will not reveal it on request. So:
+  - Keep the champion as an explicit hypothesis. Do not bet the sequence on one name.
+  - Confirm by **behavior, not by asking**: multi-thread 2-3 candidates with
+    role-tailored messages and let the *reply* reveal who owns the pain.
+  - Lean on **observable public ownership signals** (no insider needed): hiring
+    manager / reporting line on open job posts for that team, who signs release notes
+    or the status page, who responds to G2 / Trustpilot reviews, who presents at
+    webinars or is quoted in press, authorship of help-center / support docs.
+  - A routing question ("if this isn't you, who owns [function]?") only works AFTER
+    you have led with value, and silence is as likely as an answer. Never open cold
+    with "who is your decision-maker?".
+
+**Hard rule:** if you cannot reach Medium+ confidence on the champion, say so
+explicitly and present the candidate list with an explicit validation action. Do
+not manufacture false precision.
 
 ---
 
@@ -330,15 +454,21 @@ Calculate across 4 sub-dimensions, each scored 0-25:
 
 #### Decision Makers Identified (0-25)
 
+Points are weighted by confidence (see 2.2). A guessed name scores far less than a
+verified one — do not reward false precision.
+
 | Criteria | Points |
 |----------|--------|
-| Economic buyer identified by name | +8 |
-| Champion identified by name | +6 |
-| Technical evaluator identified by name | +4 |
+| Economic buyer identified by name | +8 (×1.0 High / ×0.5 Medium / ×0.25 Low confidence) |
+| Champion CANDIDATE identified (hypothesis, per 2.3) | +6 (×1.0 High / ×0.5 Medium / ×0.25 Low) |
+| Technical evaluator identified by name | +4 (same confidence weighting) |
 | 3+ buying committee members found | +4 |
 | Full buying committee mapped (all relevant roles) | +3 |
 | Only CEO/founder identified (SMB single-decision) | +10 (replaces above) |
 | No decision makers found | 0 |
+
+> A Low-confidence champion candidate scores ~1.5, not 6. Asserting a single
+> unverified champion as fact earns no bonus — it is the error 2.3 forbids.
 
 #### Contact Info Accessibility (0-25)
 
@@ -400,10 +530,17 @@ Multi-threading means engaging multiple stakeholders within the prospect organiz
 
 ### 5.3 Multi-Threading Sequence
 
-**Step 1 (Day 0-1): Engage the Champion**
-- Start with the person most likely to feel the pain
-- Use the most personalized message
-- Goal: Get a response and establish a dialogue
+> Note: the champion is a hypothesis (per 2.3), not a confirmed person. Multi-threading
+> is precisely how you confirm it: contact the lead candidate(s), and let the reply
+> reveal who actually owns the pain. Where confidence is Low, engage the top 2 candidate
+> champions in parallel rather than betting on one. "[Champion]" below means "lead
+> candidate champion — to be confirmed by response", not an established fact.
+
+**Step 1 (Day 0-1): Engage the lead candidate champion(s)**
+- Start with the person most likely to feel the pain (highest-confidence candidate)
+- If champion confidence is Low, engage the top 2 candidates in parallel
+- Use the most personalized message; include a soft routing line ("if this isn't your area, who owns it?") so a wrong guess self-corrects
+- Goal: get a response that confirms (or redirects to) the real champion
 
 **Step 2 (Day 2-3): Connect with the Economic Buyer**
 - LinkedIn connection request with custom note
@@ -432,12 +569,18 @@ Multi-threading means engaging multiple stakeholders within the prospect organiz
 
 ## Output Format: DECISION-MAKERS.md
 
+**Write the deliverable in the user's / prospect's language.** The template below is
+an English *structure guide*, not text to copy verbatim. For a French user or French
+targets (check CLAUDE.md / project context), write the whole report in French. Keep
+the section structure; translate the labels.
+
 Write the full output to `DECISION-MAKERS.md` in the current directory:
 
 ```markdown
 # Decision Maker Intelligence: [Company Name]
 **URL:** [url]
 **Date:** [current date]
+**ICP verdict:** [In-ICP / Off-ICP — one line on fit, per Phase 0]
 **Contact Access Score: [X]/100**
 **Buying Committee Size:** [estimated number of people involved in decision]
 **Email Pattern:** [detected pattern or "Unknown"]
@@ -455,13 +598,26 @@ who needs to know who to contact and in what order.]
 
 ## Buying Committee Map
 
-| Name | Title | Buying Role | Personalization Anchor | Approach Strategy | Priority |
-|------|-------|-------------|----------------------|-------------------|----------|
-| [name] | [title] | Economic Buyer | [best anchor] | [1-line strategy] | 1 |
-| [name] | [title] | Champion | [best anchor] | [1-line strategy] | 2 |
-| [name] | [title] | Technical Evaluator | [best anchor] | [1-line strategy] | 3 |
-| [name] | [title] | End User | [best anchor] | [1-line strategy] | 4 |
-| [name] | [title] | Potential Blocker | [best anchor] | [1-line strategy] | 5 |
+| Name | Title | Buying Role | Confidence | Anchor | Strategy | Priority |
+|------|-------|-------------|------------|--------|----------|----------|
+| [name] | [title] | Economic Buyer | [H/M/L] | [best anchor] | [1-line] | 1 |
+| [name] | [title] | Technical Evaluator | [H/M/L] | [best anchor] | [1-line] | 3 |
+| [name] | [title] | End User | [H/M/L] | [best anchor] | [1-line] | 4 |
+| [name] | [title] | Potential Blocker | [H/M/L] | [best anchor] | [1-line] | 5 |
+
+> Confidence reflects evidence quality (see 2.2). Default to Medium/Low unless verified by 2+ sources with a recency signal.
+
+## Candidate Champions (hypotheses — to validate, not assert)
+
+Per 2.3, never name a single champion as fact. List ranked candidates:
+
+| Rank | Candidate (name, title) | Why possibly the champion | Confidence | How to confirm |
+|------|-------------------------|---------------------------|------------|----------------|
+| 1 | [name] | [pain ownership / influence] | [H/M/L] | [validation action] |
+| 2 | [name] | [...] | [H/M/L] | [...] |
+| 3 | [name] | [...] | [H/M/L] | [...] |
+
+**Champion validation action:** [the single fastest way to confirm for THIS account — e.g. "ask the user's insider contact", "check hiring manager on the open Support role", "call reception", "confirm via first outreach question"]
 
 ---
 
@@ -537,12 +693,17 @@ Include channel, messaging angle, and expected response.]
 
 ### Messaging by Role
 
-| Role | Primary Message | Content to Share | CTA |
+Adapt the "content to share" and CTA to what is actually being sold. The defaults
+below assume a self-serve software product; for a **service / outsourcing / white-label**
+offer, there is no "trial", "product tour" or "API docs" — substitute the service
+equivalents (shown in the right-hand notes).
+
+| Role | Primary Message | Content to Share (service equivalent) | CTA |
 |------|----------------|-----------------|-----|
-| Economic Buyer | ROI and strategic impact | ROI calculator, executive summary | 15-min strategic call |
-| Champion | Solve their daily pain | Product demo video, how-to guide | Quick demo or trial |
-| Technical Evaluator | Integration and security | API docs, security whitepaper, case study | Technical deep dive |
-| End User | Make their job easier | Product tour, quick start guide | Self-serve trial |
+| Economic Buyer | ROI and strategic impact | Cost/ROI comparison, executive one-pager | 15-min strategic call |
+| Champion | Solve their daily pain | Capability overview, relevant reference (case if available) | Quick exploratory call |
+| Technical Evaluator | Integration, security, compliance | Security/compliance brief (e.g. GDPR/HDS), process doc | Technical / compliance review |
+| End User | Make their job easier | How-it-works walkthrough, sample workflow | Scoped pilot on a small perimeter |
 
 ---
 
@@ -589,9 +750,9 @@ Contact Access Score: [X]/100
   Warm Paths:          [XX]/25 █████░░░░░
 
 Buying Committee:
-  Economic Buyer:      [Name], [Title]
-  Champion:            [Name], [Title]
-  Technical Eval:      [Name], [Title]
+  Economic Buyer:      [Name], [Title] ([confidence])
+  Champion (candidate):[Name], [Title] ([confidence] — to validate)
+  Technical Eval:      [Name], [Title] ([confidence])
   End User:            [Name], [Title]
 
 Email Pattern: [pattern]
