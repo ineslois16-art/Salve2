@@ -95,6 +95,9 @@ img { display: block; max-width: 100%; }
 .brand b { color: inherit; font-weight: inherit; }
 .theme-it .brand b { background: none; color: inherit; padding: 0; border-radius: 0; }
 .brand::after { content: "."; color: var(--accent); margin-left: 1px; }
+.brand-logo { display: block; height: 40px; width: auto; }
+.brand:has(.brand-logo) { display: inline-flex; align-items: center; }
+.brand:has(.brand-logo)::after { content: none; }
 .nav-links { display: flex; gap: 24px; margin-left: 14px; flex: 1; }
 .nav-links a { font-size: 14.5px; font-weight: 600; color: var(--text-soft); padding: 8px 0; position: relative; }
 .nav-links a::after { content:""; position:absolute; left:0; right:100%; bottom:2px; height:2px; background: var(--accent); transition: right .25s var(--ease); }
