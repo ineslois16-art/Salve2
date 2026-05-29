@@ -1579,6 +1579,153 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
     localStorage.setItem('vinlo_dec_v','4');
 })();
 
+// ─── MIGRATION DÉCIDEURS v5 ────────────────────────────────────
+// v5 (2026-05-29) : corrections vérifiées — FORCE overwrite (une seule fois via flag).
+//   Nécessaire car les migrations précédentes sont conditionnelles (n'écrasent pas
+//   un décideur déjà saisi) et seedIfEmpty ne tourne que sur stockage vide.
+//   Médical/dentaire : Dentego→Caroline Baert (+conflit Adental Groupe), Dentelia→Cyrille Duboc,
+//     Dentylis titre Fondateur, Elone dentisterie esthétique (pas chirurgie), Monceau→Dr Kods Mahdhaoui.
+//   Bailleurs : viser le décideur RELATION CLIENT/LOCATAIRES, pas le DG (decideur2 = DG en escalade).
+//     CDC Habitat→Brigitte Laurent, Erilia→Antoine Jeandet, Domofrance→J-B Desanlis,
+//     Vilogia→Gaëlle Velay, Plurial Novilia→Laurent Monclin, ICF Habitat→Olivier Sicard,
+//     Aiguillon→Mickaël Lehardy, 1001 Vies Habitat→Claude Knapik.
+//     Solendi (l164) déqualifié : collecteur Action Logement, sans parc locatif.
+(function migrateDecideurs_v5() {
+    if (localStorage.getItem('vinlo_dec_v') === '5') return;
+    var d = load();
+    if (!d.leads || d.leads.length === 0) { localStorage.setItem('vinlo_dec_v','5'); return; }
+    var changed = false;
+    var _fix=[
+        // ── Médical / dentaire ──
+        {ids:['l051','l055','l056','l057','l058','l059','l060','l061'],
+         d:{statut:'trouvé',nom:'Caroline Baert',titre:'Directrice Exploitation',linkedin:'',emailPro:'',
+            anciennete:'Directrice Exploitation Adental Groupe (structure opérationnelle Dentego)',
+            signauxAchat:'⚠️ CONFLIT : Adental Groupe (filiale Dentego) gère déjà le télésecrétariat en interne. Angle = débordement/overflow uniquement. 80+ centres. James Cohen (co-fondateur) = figurehead, pas le bon interlocuteur.',
+            sourceUrl:''}},
+        {ids:['l053','l054','l062'],
+         d:{statut:'trouvé',nom:'Cyrille Duboc',titre:'Directeur Général France',linkedin:'',emailPro:'',
+            anciennete:'Managing Director / DG France Colosseum Dental (Dentelia)',
+            signauxAchat:'Colosseum Dental France (Dentelia) — réseau en croissance. Claude Streit = CEO UK (non opérationnel France — à éviter).',
+            sourceUrl:'https://www.colosseumdental.com/who-we-are/meet-our-team'}},
+        {ids:['l079'],
+         d:{statut:'trouvé',nom:'Jean-Jacques Israël',titre:'Fondateur',linkedin:'',emailPro:'',
+            anciennete:'Fondateur Dentylis — directeur de publication (RCS PARIS B 453 987 976). DG opérationnel non confirmé.',
+            signauxAchat:'40+ centres de santé pluridisciplinaires France entière — centralisation certaine.',
+            sourceUrl:'https://dentylis.fr/informations-legales/'}},
+        {ids:['l082'],
+         d:{statut:'trouvé',nom:'Dr Ari Elhyani',titre:'Chirurgien-Dentiste / Fondateur',linkedin:'',emailPro:'',
+            anciennete:'Fondateur Elone Clinic (chirurgien-dentiste, non chirurgien plasticien)',
+            signauxAchat:'Clinique dentisterie esthétique / implantologie premium Paris 16 — télésec quasi-certain.',
+            sourceUrl:'https://www.elone-clinic.com'}},
+        {ids:['l089'],
+         d:{statut:'trouvé',nom:'Dr Kods Mahdhaoui',titre:'Chirurgien-Dentiste / Propriétaire',linkedin:'',emailPro:'',
+            anciennete:'Praticien titulaire Cabinet Dentaire Paris Monceau',
+            signauxAchat:'Cabinet Paris 8 / Monceau — dentisterie générale, amplitude horaire — télésec présumé.',
+            sourceUrl:''}},
+        // ── Bailleurs : décideur RELATION CLIENT/LOCATAIRES (decideur2 = DG en escalade) ──
+        {ids:['l154'],
+         d:{statut:'trouvé',nom:'Brigitte Laurent',titre:'Directrice Clients, Gestion Locative et Numérique',linkedin:'https://fr.linkedin.com/in/brigitte-laurent-a6a80449',emailPro:'',
+            anciennete:'Nommée avr. 2023 — périmètre clients + gestion locative (CDC Habitat)',
+            signauxAchat:'CDC Habitat 540 000 logements. Décideur opérationnel relation client le plus pertinent. À confirmer toujours en poste.',
+            sourceUrl:'https://acteurspublics.fr/nomination/brigitte-laurent-rejoint-cdc-habitat'},
+         d2:{statut:'trouvé',nom:'Clément Lecuivre',titre:'Président du Directoire (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://groupe-cdc-habitat.com/groupe/gouvernance/cdc-habitat/'}},
+        {ids:['l162'],
+         d:{statut:'trouvé',nom:'Antoine Jeandet',titre:'Directeur Général Délégué Territoires et Clients',linkedin:'https://fr.linkedin.com/in/antoine-jeandet-65b412a4',emailPro:'',
+            anciennete:'DGD Territoires et Clients Erilia (ex-DGA relation client depuis 2019)',
+            signauxAchat:'Erilia ~55 000 logements PACA/Occitanie. LE décideur clients du groupe (confirmé).',
+            sourceUrl:'https://gomet.net/antoine-jeandet-direction-derilia/'},
+         d2:{statut:'trouvé',nom:'Frédéric Lavergne',titre:'Directeur Général (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.erilia.fr/decouvrir-erilia/notre-gouvernance'}},
+        {ids:['l160'],
+         d:{statut:'trouvé',nom:'Jean-Baptiste Desanlis',titre:'Directeur Général Délégué Territoires et Clients',linkedin:'',emailPro:'',
+            anciennete:'DGD Territoires et Clients Domofrance',
+            signauxAchat:'Domofrance ~50 000 logements N-Aquitaine. CRC "Domo@Contact" (Pau) — identifier le Responsable du CRC sous Desanlis pour l\'opérationnel.',
+            sourceUrl:'https://www.domofrance.fr/Nos-actus/Domofrance-inaugure-son-Centre-de-Relation-Client-a-Pau'},
+         d2:{statut:'trouvé',nom:'Francis Stéphan',titre:'Directeur Général (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.domofrance.fr/a-propos/qui-sommes-nous'}},
+        {ids:['l161'],
+         d:{statut:'trouvé',nom:'Gaëlle Velay',titre:'Directrice Opérationnelle (parcours client)',linkedin:'',emailPro:'',
+            anciennete:'Nommée Directrice Opérationnelle Vilogia 06/01/2025 (parcours client + politiques sociales)',
+            signauxAchat:'Vilogia ~92 000 logements. CRC à Villeneuve-d\'Ascq (~50 pers., 300 000 appels/an). ⚠️ David Loy (ex-Dir. Relation Clients) parti diriger le territoire IDF — ne plus le cibler.',
+            sourceUrl:'https://www.vilogia.fr/gaelle-velay-est-nommee-directrice-operationnelle-de-vilogia'},
+         d2:{statut:'trouvé',nom:'Philippe Rémignon',titre:'Président du Directoire (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.vilogia.fr'}},
+        {ids:['l157'],
+         d:{statut:'trouvé',nom:'Laurent Monclin',titre:'Directeur Adjoint Relation Clientèle (offre locative)',linkedin:'https://www.linkedin.com/in/laurent-monclin-80306114b/',emailPro:'',
+            anciennete:'Chez Plurial Novilia depuis 2010 (source : LinkedIn, à confirmer)',
+            signauxAchat:'Plurial Novilia ~43 000 logements Grand Est. Le Directeur titulaire (N+1 des adjoints) non identifié publiquement — à chercher.',
+            sourceUrl:'https://www.plurial-novilia.fr/metiers-la-relation-clients-et-la-proximite/'},
+         d2:{statut:'trouvé',nom:'Johnny Huat',titre:'Directeur Général (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.plurialnovilia.fr'}},
+        {ids:['l158'],
+         d:{statut:'trouvé',nom:'Olivier Sicard',titre:'Responsable du Centre de Relation Clients',linkedin:'https://fr.linkedin.com/in/olivier-sicard-25964b26',emailPro:'',
+            anciennete:'Responsable CRC ICF Habitat La Sablière (cité dans com. officielle, recert. AFNOR)',
+            signauxAchat:'ICF Habitat (SNCF) ~95 000 logements. Contact opérationnel CRC. N+1 = Mathilde Jourdan (Dir. Gestion Locative Groupe).',
+            sourceUrl:'https://www.icfhabitat.fr/groupe/le-centre-de-relation-clients-dicf-habitat-la-sabliere-nouveau-recompense-pour-son-ecoute-et'},
+         d2:{statut:'trouvé',nom:'Mathilde Jourdan',titre:'Directrice de la Gestion Locative Groupe (validation/escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.icfhabitat.fr'}},
+        {ids:['l163'],
+         d:{statut:'trouvé',nom:'Mickaël Lehardy',titre:'DGA Gestion Locative et Sociale / Dir. adjoint Relation Client',linkedin:'https://www.linkedin.com/in/micka%C3%ABl-lehardy-110902167/',emailPro:'',
+            anciennete:'Gestion locative + relation client + prévention impayés (Aiguillon Construction)',
+            signauxAchat:'Aiguillon Construction ~37 000 logements Grand Ouest. Meilleur contact opérationnel. Titre exact à confirmer.',
+            sourceUrl:'https://www.aiguillon-construction.fr'},
+         d2:{statut:'trouvé',nom:'Thierry Heyvang',titre:'Directeur Général (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://www.aiguillon-construction.fr'}},
+        {ids:['l156'],
+         d:{statut:'trouvé',nom:'Claude Knapik',titre:'Président du Directoire',linkedin:'',emailPro:'',
+            anciennete:'Président du Directoire 1001 Vies Habitat depuis le 01/01/2026',
+            signauxAchat:'1001 Vies Habitat (Action Logement Immobilier). Réorg post-fusion : décideur relation locataires non public — point d\'entrée régional possible Stéphane Boubennec (Dir. IDF).',
+            sourceUrl:'https://www.1001vieshabitat.fr/claude-knapik-nouveau-president-du-directoire-de-1001-vies-habitat/'}},
+        // ── Bailleurs : DG conservé + note (décideur opérationnel non identifié publiquement) ──
+        {ids:['l151'],
+         d:{statut:'trouvé',nom:'Olivier Rico',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG Action Logement Services',
+            signauxAchat:'⚠️ DG = mauvais interlocuteur direct. Décideur CRC non identifié publiquement. Point d\'entrée opérationnel = David Delage (DGA, en decideur2). Chercher "Responsable CRC" via offres d\'emploi/standard.',
+            sourceUrl:'https://groupe.actionlogement.fr/notre-organisation'}},
+        {ids:['l152'],
+         d:{statut:'trouvé',nom:'Eric Balci',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG in\'li',
+            signauxAchat:'⚠️ DG = mauvais interlocuteur. Dir. Relation Locataires non identifié publiquement. Chercher "Responsable Service Relation Client in\'li" (LinkedIn/standard).',
+            sourceUrl:'https://www.inli.com/en/inli/gouvernance'}},
+        {ids:['l153'],
+         d:{statut:'trouvé',nom:'Olivier Rico',titre:'Directeur Général (Action Logement Services)',linkedin:'',emailPro:'',
+            anciennete:'AL\'in = plateforme digitale opérée par ALS (pas d\'entité autonome)',
+            signauxAchat:'⚠️ Pas de direction propre. Remonter via David Delage (DGA ALS) et demander qui pilote la relation usagers de la plateforme.',
+            sourceUrl:'https://al-in.fr/'}},
+        {ids:['l155'],
+         d:{statut:'trouvé',nom:'Emmanuel Ballu',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG Adoma (filiale CDC Habitat)',
+            signauxAchat:'⚠️ Structure très décentralisée (6 DI régionales). Relation clients portée au niveau groupe CDC Habitat (Brigitte Laurent). Piste : appel d\'offres BOAMP/UGAP "centre d\'appels Adoma".',
+            sourceUrl:'https://www.adoma.cdc-habitat.fr/adoma/notre-gouvernance/'}},
+        {ids:['l165'],
+         d:{statut:'trouvé',nom:'Eric Gimer',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG Habitat 76 (OPH Seine-Maritime)',
+            signauxAchat:'⚠️ DG = repli. "Service Gestion de la Relation Locataires" interne structuré (CRM Coheris) mais responsable non public. Chercher offre "Responsable Relation Locataires Habitat 76".',
+            sourceUrl:'https://habitat76.fr'}},
+    ];
+    _fix.forEach(function(e){
+        if(!e.d||!e.d.nom)return; // skip placeholder
+        e.ids.forEach(function(id){
+            var l=d.leads.find(function(x){return x.id===id;});if(!l)return;
+            l.decideur=JSON.parse(JSON.stringify(e.d));changed=true;
+            if(e.d2){
+                if(!l.decideur2)l.decideur2={};
+                l.decideur2=JSON.parse(JSON.stringify(e.d2));
+            }
+        });
+    });
+    // Solendi (l164) : déqualifié — pas un bailleur (collecteur Action Logement, sans parc locatif)
+    (function(){var l=d.leads.find(function(x){return x.id==='l164';});if(!l)return;
+        if(l.notes.indexOf('DÉQUALIFIÉ')===-1){
+            l.notes='⚠️ DÉQUALIFIÉ : Solendi n\'est pas un bailleur (collecteur Action Logement fusionné dans AL Services, sans parc locatif) — aucun centre de relation locataires à externaliser. | '+l.notes;
+            changed=true;}
+        l.decideur={statut:'non_trouvé',nom:'',titre:'',linkedin:'',emailPro:'',anciennete:'',
+            signauxAchat:'Hors cible "relation locataires". Re-qualifier sur services salariés/entreprises ou retirer du pipeline.',sourceUrl:''};})();
+    if(changed)save(d);
+    localStorage.setItem('vinlo_dec_v','5');
+})();
+
 // ─── NAVIGATION ───────────────────────────────────────────────
 let currentSec = 'dashboard';
 
