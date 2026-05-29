@@ -807,7 +807,7 @@ const C_PROSP = { planifie:'#3B82F6', 'en-cours':'#F59E0B', fait:'#10B981' };
 const C_OPER  = { planifie:'#8B5CF6', 'en-cours':'#F59E0B', fait:'#10B981' };
 
 // ─── STORAGE ─────────────────────────────────────────────────
-const LS_KEYS = { leads:'vinlo_leads_v4', tp:'vinlo_tp_v4', to:'vinlo_to_v4' };
+const LS_KEYS = { leads:'salverys_leads_v4', tp:'salverys_tp_v4', to:'salverys_to_v4' };
 
 function load() {
     return {
@@ -1378,9 +1378,9 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
 // ─── MIGRATION DÉCIDEURS v3 ────────────────────────────────────
 // v3: adds G1 dental chains (Dentego, PDS, Dentelia, Dentylis)
 (function migrateDecideurs_v2() {
-    if (localStorage.getItem('vinlo_dec_v') === '3') return;
+    if (localStorage.getItem('salverys_dec_v') === '3') return;
     var d = load();
-    if (!d.leads || d.leads.length === 0) { localStorage.setItem('vinlo_dec_v','3'); return; }
+    if (!d.leads || d.leads.length === 0) { localStorage.setItem('salverys_dec_v','3'); return; }
     var changed = false;
     var _IK = {statut:'trouvé',nom:'Charlotte de Mourgues-de Rivière',titre:'Directrice Générale',
         linkedin:'https://www.linkedin.com/in/charlotte-de-mourgues-de-rivi%C3%A8re-62146620/',
@@ -1487,7 +1487,7 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
         });
     });
     if(changed)save(d);
-    localStorage.setItem('vinlo_dec_v','3');
+    localStorage.setItem('salverys_dec_v','3');
 })();
 
 // ─── MIGRATION DÉCIDEURS v4 ────────────────────────────────────
@@ -1495,9 +1495,9 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
 //     + associations humanitaires (Secours Catholique, Populaire, Restos, Emmaüs France, Aurore, France Horizon, URSSAF, Habitat & Humanisme, UNHAJ)
 //     + petites cliniques G3 (CDBN, Dr Mahdhaoui)
 (function migrateDecideurs_v4() {
-    if (localStorage.getItem('vinlo_dec_v') === '4') return;
+    if (localStorage.getItem('salverys_dec_v') === '4') return;
     var d = load();
-    if (!d.leads || d.leads.length === 0) { localStorage.setItem('vinlo_dec_v','4'); return; }
+    if (!d.leads || d.leads.length === 0) { localStorage.setItem('salverys_dec_v','4'); return; }
     var changed = false;
     var _d4=[
         {ids:['l155'],d:{statut:'trouvé',nom:'Emmanuel Ballu',titre:'Directeur Général',linkedin:'',emailPro:'',
@@ -1576,7 +1576,7 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
         });
     });
     if(changed)save(d);
-    localStorage.setItem('vinlo_dec_v','4');
+    localStorage.setItem('salverys_dec_v','4');
 })();
 
 // ─── MIGRATION DÉCIDEURS v5 ────────────────────────────────────
@@ -1591,9 +1591,9 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
 //     Aiguillon→Mickaël Lehardy, 1001 Vies Habitat→Claude Knapik.
 //     Solendi (l164) déqualifié : collecteur Action Logement, sans parc locatif.
 (function migrateDecideurs_v5() {
-    if (localStorage.getItem('vinlo_dec_v') === '5') return;
+    if (localStorage.getItem('salverys_dec_v') === '5') return;
     var d = load();
-    if (!d.leads || d.leads.length === 0) { localStorage.setItem('vinlo_dec_v','5'); return; }
+    if (!d.leads || d.leads.length === 0) { localStorage.setItem('salverys_dec_v','5'); return; }
     var changed = false;
     var _fix=[
         // ── Médical / dentaire ──
@@ -1723,7 +1723,7 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
         l.decideur={statut:'non_trouvé',nom:'',titre:'',linkedin:'',emailPro:'',anciennete:'',
             signauxAchat:'Hors cible "relation locataires". Re-qualifier sur services salariés/entreprises ou retirer du pipeline.',sourceUrl:''};})();
     if(changed)save(d);
-    localStorage.setItem('vinlo_dec_v','5');
+    localStorage.setItem('salverys_dec_v','5');
 })();
 
 // ─── NAVIGATION ───────────────────────────────────────────────
@@ -3031,7 +3031,7 @@ function nextStepBtn() {
 }
 
 // ─── TEMPLATES STORAGE ────────────────────────────────────────
-const CUSTOM_TEMPLATES_KEY = 'nesvalo_custom_templates_v1';
+const CUSTOM_TEMPLATES_KEY = 'salverys_custom_templates_v1';
 
 function getCustomTemplates() {
     const raw = localStorage.getItem(CUSTOM_TEMPLATES_KEY);
