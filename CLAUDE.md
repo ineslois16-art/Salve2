@@ -25,9 +25,10 @@ avec une équipe de **10 personnes**.
 l'instant). Remplace les anciens noms **Nesvalo** et **Vinlo**, qui ne doivent
 plus apparaître dans aucun livrable, séquence, CRM ou support client.
 
-> Note technique : dans le CRM (`CRM_Salverys.html`), les clés de stockage
-> `localStorage` restent préfixées `vinlo_` pour ne pas effacer les données
-> déjà saisies. C'est interne et invisible côté client.
+> Note technique : depuis le 2026-05-29, les clés `localStorage` du CRM
+> (`CRM_Salverys.html`) sont préfixées `salverys_`. L'ancien stockage `vinlo_`/
+> `nesvalo_` a été abandonné ; les CRM ouverts après cette date repartent du
+> seed (180 leads + décideurs vérifiés sont définis dans le code).
 
 ## Outils retenus
 - **Cold mailing : Emelia** (outil de prospection email retenu)
