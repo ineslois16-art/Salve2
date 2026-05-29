@@ -74,6 +74,41 @@ ligne pour rester lisible) :
 - Le descripteur s'écrit toujours **après** le nom, jamais à la place.
 - Jamais de logo « Salverys Médical » ou « Salverys IT » isolé.
 
+### Déclinaisons concrètes (prêtes à copier)
+
+**Footer du site** — ✅ appliqué : descripteur sous la marque (`.brand-desc`).
+- `index.html` → forme longue
+- `simulateur-salverys.html` → « Télésecrétariat Médical »
+- `simulateur-informatique.html` → « Support IT & Applicatif »
+
+**Signature email (Emelia)** — bloc texte, cible **santé** :
+
+```
+Prénom NOM
+Salverys. — Télésecrétariat Médical
+contact@salverys.fr · salverys.fr
+Antananarivo → France · 8h–20h
+```
+
+Cible **éditeurs / IT** : remplacer la 2ᵉ ligne par
+`Salverys. — Support IT & Applicatif`.
+
+**Carte de visite** — recto :
+- Nom + fonction
+- Logotype `Salverys.` (logo `assets/logo-salverys.png`)
+- Sous le logo : `Télésecrétariat Médical · Support IT & Applicatif`
+- Coordonnées : `contact@salverys.fr · salverys.fr`
+
+**En-tête de proposition commerciale** :
+
+```
+Salverys. — Télésecrétariat Médical · Support IT & Applicatif
+Proposition commerciale — [Nom du client] — [Date]
+```
+
+> En contexte mono-cible (proposition uniquement santé ou uniquement IT),
+> utiliser la **forme courte** correspondante.
+
 ---
 
 ## 5. Identité visuelle
@@ -147,9 +182,10 @@ Tout **texte posé sur un aplat d'accent** (sauge, doré) s'écrit en
       dans `assets/site.css` — `--cta-text: #F6F2EA` sur les deux thèmes.
 - [x] **Nuance dorée du thème secondaire tranchée** : `#B8860B` (doré profond)
       retenu. Texte crème lisible, arbitrage clos.
-- [ ] **Décliner le lockup** « Salverys. — Télésecrétariat Médical · Support IT
-      & Applicatif » sur : footer du site, signature Emelia, cartes de visite,
-      en-tête des propositions commerciales.
+- [x] **Lockup décliné sur le footer du site** (forme longue sur l'accueil,
+      formes courtes par contexte sur les simulateurs).
+- [ ] **Appliquer le lockup hors-site** : signature Emelia, cartes de visite,
+      en-tête des propositions (blocs prêts à copier au §4).
 - [ ] *(optionnel, interne)* tracer / planifier le sort de la clé
       `nesvalo_custom_templates_v1` dans le CRM.
 
