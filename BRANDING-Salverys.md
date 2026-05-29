@@ -104,18 +104,13 @@ remplace pas le logo maître.
 | Or chaud | `#B89968` (`:root`) | Accent secondaire / détails |
 | Greige (fond doux) | `#F6F2EA` (`:root`) | Fond doux **et** texte sur aplats d'accent |
 | Navy (secondaire) | `#013C58` (`.theme-it`) | Réservé aux supports / pages **IT** |
-| Doré / jaune (secondaire) | `#FFD35B` (`.theme-it`) | Accent du thème IT uniquement |
+| Doré profond (secondaire) | `#B8860B` (`.theme-it`) | Accent du thème IT — **décision finale** |
 
 ### Règle de lisibilité — texte sur aplat d'accent
-Tout **texte posé sur un aplat d'accent** (sauge, doré/jaune) s'écrit en
-**`#F6F2EA` (fond doux)**, pas en couleur foncée. Objectif : que les éléments
-type badge « Essai 7 jours offert » ressortent nettement.
-
-> ⚠️ **Limite de contraste à valider** : sur le **jaune vif `#FFD35B`** (thème
-> secondaire), le texte crème `#F6F2EA` a un contraste faible et reste peu
-> lisible. C'est l'objet de l'arbitrage en cours sur la nuance dorée du thème
-> secondaire (voir comparaison dédiée). Sur la **sauge `#6F8770`**, le texte
-> crème passe bien.
+Tout **texte posé sur un aplat d'accent** (sauge, doré) s'écrit en
+**`#F6F2EA` (fond doux)**. Validé sur les deux accents retenus :
+- Sauge `#6F8770` → texte crème `#F6F2EA` ✓
+- Doré profond `#B8860B` → texte crème `#F6F2EA` ✓ (arbitrage clos)
 
 > 👁️ **Pour comparer visuellement** : ouvrir `comparaison-charte-salverys.html`
 > dans un navigateur (principal sauge vs secondaire navy, couleur + typo +
@@ -148,12 +143,10 @@ type badge « Essai 7 jours offert » ressortent nettement.
 - [x] **Charte couleur cohérente** : thème par défaut = sauge (principal),
       `.theme-it` = navy + doré (secondaire). Conforme à la décision révisée,
       aucun renversement à coder.
-- [ ] **Appliquer la règle de lisibilité** : texte en `#F6F2EA` sur tout aplat
-      d'accent (sauge, doré) dans `assets/site.css` — typiquement les badges sur
-      fond d'accent.
-- [ ] **Trancher la nuance dorée du thème secondaire** (jaune vif `#FFD35B` vs
-      doré plus profond) pour que le texte crème reste lisible. Comparaison à
-      ouvrir dans le navigateur.
+- [x] **Appliquer la règle de lisibilité** : texte `#F6F2EA` sur aplat d'accent
+      dans `assets/site.css` — `--cta-text: #F6F2EA` sur les deux thèmes.
+- [x] **Nuance dorée du thème secondaire tranchée** : `#B8860B` (doré profond)
+      retenu. Texte crème lisible, arbitrage clos.
 - [ ] **Décliner le lockup** « Salverys. — Télésecrétariat Médical · Support IT
       & Applicatif » sur : footer du site, signature Emelia, cartes de visite,
       en-tête des propositions commerciales.
