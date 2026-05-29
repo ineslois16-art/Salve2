@@ -1726,6 +1726,142 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
     localStorage.setItem('salverys_dec_v','5');
 })();
 
+// ─── MIGRATION DÉCIDEURS v6 ────────────────────────────────────
+// v6 (2026-05-29) : contacts vérifiés par agents de recherche — FORCE overwrite.
+//   MSP médicaux : Laurence Foschia (l006), Lionel Cervera (l037), Dr Michaël Loeb (l039).
+//   Dentaire/ostéo non_trouvés : Shana Aiach (l081), Pierre de Chauvigny (l087, ⚠️ sorti ~2020),
+//     Dr Antoine Leuret (l090), Romain Sevignac (l091), Jeanne-Marie Serot (l092), Matthieu Denquin (l102).
+//   Associations humanitaires — corrections dirigeants :
+//     Secours Pop.→Thierry Robert (l171), Aurore→Marie Degrand-Guillaud (l175),
+//     France Horizon→Nabil Neffati (l176), Fondation Abbé Pierre→Michel Raynaud (l177, 🏆 meilleure cible),
+//     Médecins du Monde→Joël Weiler (l180).
+//   Organismes publics — contacts opérationnels + 🚫 NO-GO (marchés publics, volumes hors capacité) :
+//     CNAF→Nicolas Grivel (l166), France Travail→Thibault Romatet (l167), URSSAF→Julie Aubertie (l168).
+//   Annuaires/ordres (l142-l150) : marqués N/A — sources de prospection, non leads.
+(function migrateDecideurs_v6() {
+    if (localStorage.getItem('salverys_dec_v') === '6') return;
+    var d = load();
+    if (!d.leads || d.leads.length === 0) { localStorage.setItem('salverys_dec_v','6'); return; }
+    var changed = false;
+    var _fix6=[
+        // ── MSP médicaux — contacts coordinateurs ──
+        {ids:['l006'],
+         d:{statut:'trouvé',nom:'Laurence Foschia',titre:'Coordinatrice administrative',linkedin:'',emailPro:'',
+            anciennete:'Coordinatrice Centre de Santé La Roseraie — Anjou Accompagnement (Angers)',
+            signauxAchat:'Centre santé associatif pluridisciplinaire — secrétariat centralisé, BPO débordement probable',
+            sourceUrl:'https://www.anjouaccompagnement.fr'}},
+        {ids:['l037'],
+         d:{statut:'trouvé',nom:'Lionel Cervera',titre:'Coordinateur médecin',linkedin:'',emailPro:'',
+            anciennete:'Coordinateur MSP Toulouse Constellation (Route de Bayonne)',
+            signauxAchat:'MSP multi-médecins Toulouse — secrétariat partagé large amplitude — BPO probable',
+            sourceUrl:'https://annuaire.sante.fr'}},
+        {ids:['l039'],
+         d:{statut:'trouvé',nom:'Dr Michaël Loeb',titre:'Médecin coordinateur',linkedin:'',emailPro:'',
+            anciennete:'Médecin coordinateur Centre Médical Toulouse (4 médecins : Bilfeld, Lartiguevieille, Martin, Thomas)',
+            signauxAchat:'Centre 4 médecins Toulouse — infrastructure secrétariat, BPO débordement probable',
+            sourceUrl:'https://annuaire.sante.fr'}},
+        // ── Dentaire / ostéo — contacts trouvés ──
+        {ids:['l081'],
+         d:{statut:'trouvé',nom:'Shana Aiach',titre:'Co-fondatrice & Directrice Générale',
+            linkedin:'https://www.linkedin.com/in/shana-aiach/',emailPro:'',
+            anciennete:'Co-fondatrice Sana Oris Paris (Paris 8, centre dentaire premium international)',
+            signauxAchat:'Centre dentaire premium multilangue Paris 8 — clientèle internationale — BPO/concierge quasi-certain',
+            sourceUrl:'https://www.linkedin.com/in/shana-aiach/'}},
+        {ids:['l087'],
+         d:{statut:'trouvé',nom:'Pierre de Chauvigny',titre:'Fondateur',linkedin:'',emailPro:'',
+            anciennete:'Fondateur Clinic Osteo — sorti ~2020 (direction actuelle non identifiée publiquement)',
+            signauxAchat:"⚠️ Contact incertain : fondateur sorti ~2020. Chaîne multi-sites Paris/Lyon — BPO central quasi-certain si direction active. Vérifier direction actuelle via standard avant contact.",
+            sourceUrl:'https://www.clinicosteo.fr'}},
+        {ids:['l090'],
+         d:{statut:'trouvé',nom:'Dr Antoine Leuret',titre:'Chirurgien-Dentiste / Responsable',linkedin:'',emailPro:'',
+            anciennete:'Clinique Esthétique Dentaire Bordeaux (05 47 74 29 90)',
+            signauxAchat:'Clinique esthétique dentaire Bordeaux — BPO télésec quasi-certain',
+            sourceUrl:'https://annuaire.sante.fr'}},
+        {ids:['l091'],
+         d:{statut:'trouvé',nom:'Romain Sevignac',titre:'Ostéopathe / Co-fondateur',linkedin:'',emailPro:'',
+            anciennete:'Co-fondateur Cabinet Ostéopathie des Arènes Toulouse (3 ostéos, amplitude 7h-21h)',
+            signauxAchat:'Amplitude 7h-21h — permanence téléphonique externe quasi-certaine',
+            sourceUrl:'https://www.arenes-osteopathie.fr'}},
+        {ids:['l092'],
+         d:{statut:'trouvé',nom:'Jeanne-Marie Serot',titre:'Co-gérante',linkedin:'',emailPro:'',
+            anciennete:"Co-gérante Cabinet Dentaire Tête d'Or Lyon (avec Yasmine Kedous et J-F Costemale-Lacoste)",
+            signauxAchat:"Cabinet implantologie/chirurgie Lyon Tête d'Or — flux RDV élevé, télésec quasi-certain",
+            sourceUrl:'https://annuaire.sante.fr'}},
+        {ids:['l102'],
+         d:{statut:'trouvé',nom:'Matthieu Denquin',titre:'Ostéopathe / Responsable',linkedin:'',emailPro:'',
+            anciennete:'Responsable Cabinet Capitole Toulouse (ostéo + psy + thérapies, 2 sites : Rémusat + Mirepoix)',
+            signauxAchat:'Cabinet pluri 2 sites Toulouse — secrétariat centralisé probable, BPO possible',
+            sourceUrl:'https://annuaire.sante.fr'}},
+        // ── Associations humanitaires — corrections dirigeants ──
+        {ids:['l171'],
+         d:{statut:'trouvé',nom:'Thierry Robert',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG Secours Populaire Français (remplace Henriette Steinberg, Secrétaire générale)',
+            signauxAchat:'Secours Populaire - 1M+ bénéficiaires/an. Cible FAIBLE : modèle bénévole, accueil présentiel, budget serré — BPO non prioritaire.',
+            sourceUrl:'https://www.secourspopulaire.fr'}},
+        {ids:['l175'],
+         d:{statut:'trouvé',nom:'Marie Degrand-Guillaud',titre:'Directrice Générale',linkedin:'',emailPro:'',
+            anciennete:'DG Association Aurore depuis 14/02/2026 (remplace Florian Guyot)',
+            signauxAchat:'Aurore - 80+ établissements hébergement/insertion. Cible MOYENNE : standard accueil structuré, BPO sur débordement possible.',
+            sourceUrl:'https://www.aurore-asso.fr'}},
+        {ids:['l176'],
+         d:{statut:'trouvé',nom:'Nabil Neffati',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG France Horizon (remplace Hubert Valade, Président)',
+            signauxAchat:'France Horizon - 9 000 personnes/an accueillies. Cible FAIBLE : CHRS/réfugiés, accueil primaire, budget associatif contraint.',
+            sourceUrl:'https://www.france-horizon.org'}},
+        {ids:['l177'],
+         d:{statut:'trouvé',nom:'Michel Raynaud',titre:'Directeur Développement Ressources et Donateurs',linkedin:'',emailPro:'',
+            anciennete:'Dir. Développement Ressources et Donateurs — Fondation pour le Logement des Défavorisés (Fondation Abbé Pierre)',
+            signauxAchat:"🏆 MEILLEURE CIBLE asso. : centre relation donateurs structuré — BPO/télésec quasi-certain. Interlocuteur direct : Michel Raynaud. Christophe Robert (DG délégué) = escalade uniquement.",
+            sourceUrl:'https://www.fondation-abbe-pierre.fr'},
+         d2:{statut:'trouvé',nom:'Christophe Robert',titre:'Délégué Général (escalade)',linkedin:'',emailPro:'',
+            sourceUrl:'https://fr.wikipedia.org/wiki/Fondation_Abb%C3%A9_Pierre'}},
+        {ids:['l180'],
+         d:{statut:'trouvé',nom:'Joël Weiler',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG Médecins du Monde France (remplace Helena Ranchal, DG par intérim)',
+            signauxAchat:'MdM - ONG internationale. Cible FAIBLE : coordination terrain bénévole, modèle humanitaire, budget dédié terrain — BPO non prioritaire.',
+            sourceUrl:'https://www.medecinsdumonde.org/medecins-du-monde/notre-organisation/'}},
+        // ── Organismes publics — contacts opérationnels + flag NO-GO ──
+        {ids:['l166'],
+         d:{statut:'trouvé',nom:'Nicolas Grivel',titre:'Directeur Général',linkedin:'',emailPro:'',
+            anciennete:'DG CNAF (remplace Constance Bensussan). Contact opérationnel helpdesk non identifié publiquement.',
+            signauxAchat:"🚫 NO-GO : Marchés publics obligatoires (BOAMP). Budget helpdesk CNAF réservé aux grands opérateurs nationaux. Volumes exigent 200+ positions. Retirer du pipeline actif.",
+            sourceUrl:'https://www.caf.fr/partenaires/cnaf/notre-organisation'}},
+        {ids:['l167'],
+         d:{statut:'trouvé',nom:'Thibault Romatet',titre:'DGA Stratégie, Innovation et Expérience Usagers',linkedin:'',emailPro:'',
+            anciennete:'DGA France Travail — périmètre expérience usagers (contact plus pertinent que DG pour un BPO)',
+            signauxAchat:"🚫 NO-GO : Appels d'offres UGAP/BOAMP obligatoires. 55 000 agents France Travail, volumes exigent 200+ positions BPO. Hors capacité Salverys (10 agents). Retirer du pipeline actif.",
+            sourceUrl:'https://www.francetravail.fr/nous-connaitre/qui-sommes-nous/gouvernance/'}},
+        {ids:['l168'],
+         d:{statut:'trouvé',nom:'Julie Aubertie',titre:'Directrice des Usagers',linkedin:'',emailPro:'',
+            anciennete:'Directrice des Usagers URSSAF Caisse Nationale (contact le plus pertinent côté relation client)',
+            signauxAchat:"🚫 NO-GO : Marchés publics obligatoires. Helpdesk URSSAF passé en appels d'offres BOAMP, volumes nécessitent 100+ agents. Hors capacité Salverys. Retirer du pipeline actif.",
+            sourceUrl:'https://www.urssaf.org/portail/home/nous-connaitre/nos-engagements/notre-organisation.html'}},
+    ];
+    _fix6.forEach(function(e){
+        if(!e.d||!e.d.nom)return;
+        e.ids.forEach(function(id){
+            var l=d.leads.find(function(x){return x.id===id;});if(!l)return;
+            l.decideur=JSON.parse(JSON.stringify(e.d));changed=true;
+            if(e.d2){
+                if(!l.decideur2)l.decideur2={};
+                l.decideur2=JSON.parse(JSON.stringify(e.d2));
+            }
+        });
+    });
+    // ── Annuaires / ordres — marquer N/A (sources prospection, non leads) ──
+    ['l142','l143','l144','l145','l146','l147','l148','l149','l150'].forEach(function(id){
+        var l=d.leads.find(function(x){return x.id===id;});if(!l)return;
+        if(!l.decideur)l.decideur={};
+        if(l.decideur.statut!=='N/A'){
+            l.decideur={statut:'N/A',nom:'',titre:'',linkedin:'',emailPro:'',anciennete:'',
+                signauxAchat:'Source de prospection (annuaire/ordre professionnel) — ne pas prospecter directement. Utiliser comme source de leads cabinets.',sourceUrl:''};
+            changed=true;
+        }
+    });
+    if(changed)save(d);
+    localStorage.setItem('salverys_dec_v','6');
+})();
+
 // ─── NAVIGATION ───────────────────────────────────────────────
 let currentSec = 'dashboard';
 
