@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Salverys — Aperçu des 3 footers (lockup)</title>
+<link rel="stylesheet" href="assets/site.css" />
+<style>
+  body { background:#ECE8E1; padding:32px 0 64px; }
+  .preview-head { max-width:1180px; margin:0 auto 8px; padding:0 24px; }
+  .preview-head h1 { font-family:'Georgia',serif; font-size:24px; color:#2E3B4E; }
+  .preview-head p { color:#5C5448; font-size:14px; margin-top:6px; }
+  .preview-block { max-width:1180px; margin:34px auto 0; padding:0 24px; }
+  .preview-label { font-size:13px; font-weight:700; color:#5C5448; margin-bottom:10px; letter-spacing:.02em; }
+  .preview-frame { border-radius:14px; overflow:hidden; box-shadow:0 10px 28px rgba(32,48,63,.12); }
+  /* le footer occupe toute la largeur du cadre */
+  .preview-frame .footer { padding:48px 0 36px; }
+</style>
+</head>
+<body>
+
+<div class="preview-head">
+  <h1>Salverys — déclinaison du lockup dans les 3 footers</h1>
+  <p>Rendu réel via <code>assets/site.css</code>. Forme longue sur l'accueil, formes courtes par contexte sur les simulateurs.</p>
+</div>
+
+<!-- 1. Accueil : forme longue -->
+<div class="preview-block">
+  <div class="preview-label">index.html — accueil (forme longue, thème principal sauge)</div>
+  <div class="preview-frame">
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <a class="brand" href="index.html">Sal<b>verys</b></a>
+            <p class="brand-desc">Télésecrétariat Médical <span class="sep">·</span> Support IT &amp; Applicatif</p>
+            <p style="max-width:280px;margin-top:12px;font-size:14px;">Externalisation francophone : télésecrétariat médical &amp; support IT, depuis Antananarivo vers la France.</p>
+          </div>
+          <div class="footer-cols">
+            <div class="footer-col">
+              <h5>Métiers</h5>
+              <a href="simulateur-salverys.html">Télésecrétariat médical</a>
+              <a href="simulateur-informatique.html">Support applicatif N1</a>
+              <a href="simulateur-informatique.html">Technicien Support N1 (H/F)</a>
+            </div>
+            <div class="footer-col">
+              <h5>Contact</h5>
+              <a href="mailto:contact@salverys.fr">contact@salverys.fr</a>
+              <a href="#contact">Réserver un appel</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <span>© Salverys — Antananarivo → France</span>
+          <span>Montants indicatifs · devis personnalisé sur demande</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- 2. Médical : forme courte -->
+<div class="preview-block">
+  <div class="preview-label">simulateur-salverys.html — médical (forme courte, thème principal sauge)</div>
+  <div class="preview-frame">
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <a class="brand" href="index.html">Sal<b>verys</b></a>
+            <p class="brand-desc">Télésecrétariat Médical</p>
+            <p style="max-width:280px;margin-top:12px;font-size:14px;">Télésecrétariat médical francophone, depuis Antananarivo vers la France.</p>
+          </div>
+          <div class="footer-cols">
+            <div class="footer-col">
+              <h5>Métiers</h5>
+              <a href="simulateur-salverys.html">Télésecrétariat médical</a>
+              <a href="simulateur-informatique.html">Support &amp; assistance IT</a>
+            </div>
+            <div class="footer-col">
+              <h5>Contact</h5>
+              <a href="mailto:contact@salverys.fr">contact@salverys.fr</a>
+              <a href="#contact">Réserver un appel</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <span>© Salverys — Antananarivo → France</span>
+          <span>Montants indicatifs · devis personnalisé sur demande</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- 3. IT : forme courte, thème navy + doré -->
+<div class="preview-block theme-it">
+  <div class="preview-label">simulateur-informatique.html — IT (forme courte, thème secondaire navy + doré #B8860B)</div>
+  <div class="preview-frame">
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <a class="brand" href="index.html">Sal<b>verys</b></a>
+            <p class="brand-desc">Support IT &amp; Applicatif</p>
+            <p style="max-width:280px;margin-top:12px;font-size:14px;">Support applicatif &amp; assistance IT francophone, depuis Antananarivo vers la France.</p>
+          </div>
+          <div class="footer-cols">
+            <div class="footer-col">
+              <h5>Métiers</h5>
+              <a href="simulateur-informatique.html">Support applicatif N1</a>
+              <a href="simulateur-informatique.html">Technicien Support N1 (H/F)</a>
+            </div>
+            <div class="footer-col">
+              <h5>Contact</h5>
+              <a href="mailto:contact@salverys.fr">contact@salverys.fr</a>
+              <a href="#contact">Réserver un appel</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <span>© Salverys — Antananarivo → France</span>
+          <span>Montants indicatifs · devis personnalisé sur demande</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+</body>
+</html>
