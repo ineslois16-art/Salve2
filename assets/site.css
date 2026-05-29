@@ -1,7 +1,7 @@
 /* =========================================================
    Salverys — design system (site vivant)
    Thème par défaut = médical (greige / sauge / bleu / or)
-   Thème IT = .theme-it (teal #013C58 + jaune doux #FFD35B)
+   Thème IT = .theme-it (navy #013C58 + doré profond #B8860B)
    ========================================================= */
 
 :root {
@@ -41,19 +41,19 @@
   --ease: cubic-bezier(.22,.61,.36,1);
 }
 
-/* ----- Thème IT : teal + jaune doux ----- */
+/* ----- Thème IT : navy + doré profond ----- */
 .theme-it {
   --bg-deep: #013C58;
   --primary: #013C58;
   --primary-deep: #012C42;
-  --accent: #FFD35B;       /* jaune doux */
-  --accent-soft: #FFE9A8;
-  --accent-tint: #FFF7E0;
-  --gold: #FFD35B;
-  --gold-soft: #FFE9A8;
-  --cta: #FFD35B;
-  --cta-text: #013C58;
-  --halo: rgba(255,211,91,0.34);
+  --accent: #B8860B;       /* doré profond */
+  --accent-soft: #D4A840;
+  --accent-tint: #F5EDD6;
+  --gold: #B8860B;
+  --gold-soft: #D4A840;
+  --cta: #B8860B;
+  --cta-text: #F6F2EA;
+  --halo: rgba(184,134,11,0.34);
   --ok: #1E9E6A;
 }
 
@@ -212,7 +212,7 @@ img { display: block; max-width: 100%; }
 .ncard .photo-wrap::after { background: linear-gradient(180deg, transparent 45%, rgba(20,28,40,.5)); }
 .ncard-tag { position: absolute; top: 14px; left: 14px; z-index: 3; font-size: 11.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 6px 12px; border-radius: var(--radius-pill); background: #fff; color: var(--primary); }
 .ncard.med .ncard-tag { background: var(--accent); color: #fff; }
-.ncard.it .ncard-tag { background: #013C58; color: #FFD35B; }
+.ncard.it .ncard-tag { background: #013C58; color: #B8860B; }
 .ncard-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
 .ncard-body h3 { font-family: 'Georgia', serif; font-size: 22px; font-weight: 600; color: var(--primary); margin-bottom: 10px; }
 .ncard-body p { font-size: 14.5px; color: var(--text-soft); margin-bottom: 18px; flex: 1; }
@@ -340,6 +340,8 @@ input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; background: v
 .footer { background: var(--primary-deep); color: rgba(255,255,255,.7); padding: 56px 0 40px; }
 .footer-top { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; margin-bottom: 36px; }
 .footer .brand { color: #fff; }
+.footer .brand-desc { margin-top: 8px; font-size: 13px; font-weight: 600; letter-spacing: .03em; color: rgba(255,255,255,.82); }
+.footer .brand-desc .sep { color: var(--accent); margin: 0 6px; font-weight: 700; }
 .footer-cols { display: flex; gap: 56px; flex-wrap: wrap; }
 .footer-col h5 { color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
 .footer-col a { display: block; font-size: 14px; padding: 5px 0; transition: color .15s; }

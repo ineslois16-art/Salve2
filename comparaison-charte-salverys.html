@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Salverys — thème principal vs secondaire</title>
+<style>
+  :root{
+    --ink:#20303F; --muted:#7c7468; --line:#E7DFD1;
+    --radius:16px; --radius-lg:26px; --pill:100px;
+    --shadow-md:0 10px 28px rgba(32,48,63,.10), 0 3px 8px rgba(32,48,63,.06);
+    --shadow-lg:0 24px 60px rgba(32,48,63,.16), 0 8px 20px rgba(32,48,63,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    color:var(--ink); background:#F3F4F6; line-height:1.55; padding:32px 18px 60px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1280px;margin:0 auto}
+  .page-head{text-align:center;margin-bottom:10px}
+  .page-head h1{font-size:clamp(26px,4vw,38px);letter-spacing:-.02em}
+  .page-head p{color:var(--muted);margin-top:8px;font-size:17px}
+  .legend{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:18px 0 28px;color:var(--muted);font-size:14px}
+  .legend b{color:var(--ink)}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+  /* ---- panel ---- */
+  .panel{
+    background:#fff;border-radius:var(--radius-lg);overflow:hidden;
+    border:1px solid #e6e6e6; box-shadow:var(--shadow-md);
+    display:flex;flex-direction:column;
+  }
+  .panel.reco{border:3px solid var(--accent);box-shadow:var(--shadow-lg)}
+  .panel .topbar{height:8px;background:var(--primary)}
+  .panel .phead{padding:22px 26px 0;text-align:center}
+  .panel .phead h2{font-size:24px;color:var(--primary);letter-spacing:-.01em}
+  .panel .phead .sub{color:var(--muted);font-size:15px;margin-top:4px}
+  .badge{display:inline-block;margin-top:12px;padding:7px 16px;border-radius:var(--pill);
+    font-size:13px;font-weight:800;letter-spacing:.02em}
+  .badge.on{background:var(--accent);color:#F6F2EA}
+  .badge.off{background:#9AA0A6;color:#fff}
+
+  /* hero mock */
+  .hero{margin:20px 22px 0;padding:26px 24px;border-radius:var(--radius);background:var(--bg-soft)}
+  .lockup{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .logo-img{height:74px;width:auto;display:block}
+  .logo-fallback{display:none;align-items:center;gap:14px}
+  .mark{position:relative;width:64px;height:64px;border-radius:18px;background:var(--primary);
+    display:grid;place-items:center;flex:none}
+  .mark span{color:#fff;font-weight:800;font-size:38px;line-height:1}
+  .mark .dot{position:absolute;top:-5px;right:-7px;width:20px;height:20px;border-radius:50%;background:var(--gold)}
+  .word{font-family:var(--font-head);font-weight:var(--word-w);font-size:46px;color:var(--primary);letter-spacing:-.02em}
+  .word .pt{color:var(--gold)}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;
+    color:var(--primary);background:var(--accent-tint);padding:7px 14px;border-radius:var(--pill);margin-bottom:14px}
+  .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .hero h3{font-family:var(--font-head);font-weight:var(--head-w);font-size:30px;line-height:1.1;
+    color:var(--primary);letter-spacing:-.01em;margin-bottom:12px}
+  .hero h3 .hl{color:var(--accent-ink);box-shadow:inset 0 -.5em 0 var(--accent-soft)}
+  .hero .lead{color:#54525b;font-size:16px;margin-bottom:18px}
+  .descr{font-family:var(--font-head);font-size:15px;color:var(--primary);opacity:.85}
+
+  /* badge "Essai 7 jours" sur aplat d'accent — texte crème #F6F2EA */
+  .chip-accent{display:inline-block;background:var(--accent);color:#F6F2EA;font-weight:800;
+    font-size:14px;padding:10px 18px;border-radius:var(--pill);margin:0 0 16px}
+
+  .btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:var(--pill);
+    font-size:15px;font-weight:700;border:0;cursor:pointer}
+  .btn-primary{background:var(--cta);color:var(--cta-text);box-shadow:var(--shadow-md)}
+  .btn-outline{background:transparent;color:var(--primary);border:1.6px solid var(--primary)}
+  .trust{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:#6b6960}
+  .trust b{color:var(--primary)}
+
+  /* palette */
+  .block{padding:22px 26px 0}
+  .block h4{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px}
+  .swatches{display:flex;gap:14px;flex-wrap:wrap}
+  .sw{flex:1;min-width:90px}
+  .sw .chip{height:62px;border-radius:12px;border:1px solid rgba(0,0,0,.06)}
+  .sw .hex{font-weight:800;font-size:14px;margin-top:8px;color:var(--primary)}
+  .sw .role{font-size:12px;color:var(--muted)}
+
+  /* métier card */
+  .mcard{margin:8px 26px 26px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .mcard .ctop{height:84px;background:linear-gradient(135deg,var(--primary),var(--primary-deep));position:relative}
+  .mcard .tag{position:absolute;top:12px;left:12px;background:var(--accent);color:#F6F2EA;
+    font-size:12px;font-weight:800;padding:5px 12px;border-radius:var(--pill)}
+  .mcard .cbody{padding:16px 18px}
+  .mcard .cbody h5{font-family:var(--font-head);font-weight:var(--head-w);font-size:19px;color:var(--primary);margin-bottom:6px}
+  .mcard .cbody p{font-size:14px;color:#666}
+  .mcard .clink{color:var(--accent-ink);font-weight:700;font-size:14px;margin-top:10px;display:inline-block}
+
+  .note{margin:0 26px 24px;font-size:13px;color:#8a5a00;background:#FFF6DF;border:1px solid #F1D98A;
+    border-radius:12px;padding:12px 14px}
+  .foot{text-align:center;color:#555;margin-top:30px;font-size:16px;max-width:860px;margin-left:auto;margin-right:auto}
+  .foot .pill{display:inline-block;background:#fff;border:1px solid #e3e3e3;border-radius:var(--pill);padding:12px 22px;box-shadow:var(--shadow-md)}
+
+  /* ===== PRINCIPAL : Bleu + Sauge (médical, thème par défaut du site) ===== */
+  .opt-principal{
+    --primary:#2E3B4E; --primary-deep:#222C3B;
+    --accent:#6F8770; --accent-soft:#C5D2C5; --accent-tint:#EAF0EA; --accent-ink:#46604a;
+    --gold:#6F8770; --cta:#2E3B4E; --cta-text:#FFFFFF; --bg-soft:#F6F2EA;
+    --font-head:'Georgia','Times New Roman',serif; --head-w:600; --word-w:700;
+  }
+  /* Texte sur fond sauge = blanc */
+  .opt-principal .chip-accent,
+  .opt-principal .mcard .tag,
+  .opt-principal .badge.on { color: #FFFFFF; }
+
+  /* ===== SECONDAIRE : Navy + Doré (IT, .theme-it) ===== */
+  .opt-secondaire{
+    --primary:#013C58; --primary-deep:#012C42;
+    --accent:#FFD35B; --accent-soft:#FFE9A8; --accent-tint:#FFF7E0; --accent-ink:#013C58;
+    --gold:#FFD35B; --cta:#FFD35B; --cta-text:#013C58; --bg-soft:#F4F8FB;
+    --font-head:'Inter',sans-serif; --head-w:800; --word-w:800;
+  }
+  /* Texte sur fond jaune = #013C58 */
+  .opt-secondaire .chip-accent,
+  .opt-secondaire .mcard .tag { color: #013C58; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-head">
+    <h1>Salverys — thème principal vs secondaire</h1>
+    <p>Décision révisée : <b>sauge = principal</b>, navy + doré = secondaire (pages IT).</p>
+  </div>
+  <div class="legend">
+    <span><b>Règle :</b> fond sauge → texte blanc · fond jaune → texte #013C58</span>
+    <span><b>Principal</b> · Georgia serif, bleu + sauge · point logo = sauge</span>
+    <span><b>Secondaire</b> · Inter sans-serif, navy + doré</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- ============ PRINCIPAL (SAUGE) ============ -->
+    <section class="panel reco opt-principal">
+      <div class="topbar"></div>
+      <div class="phead">
+        <h2>Principal — Bleu + Sauge</h2>
+        <div class="sub">version « Télésecrétariat Médical »</div>
+        <span class="badge on">RETENU · logo maître</span>
+      </div>
+
+      <div class="hero">
+        <div class="lockup">
+          <img class="logo-img" src="assets/logo-salverys.png" alt="Salverys."
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <span class="logo-fallback">
+            <span class="mark"><span>S</span><i class="dot"></i></span>
+            <span class="word">Salverys<span class="pt">.</span></span>
+          </span>
+        </div>
+        <span class="eyebrow"><span class="pulse"></span> BPO francophone · Antananarivo → France</span>
+        <h3>Votre relation client, <span class="hl">en français</span>, à 40&nbsp;% du coût.</h3>
+        <p class="lead">Appels, télésecrétariat et support — équipes francophones, à vos horaires.</p>
+        <div class="chip-accent">Essai 7 jours offert</div>
+        <div class="btns">
+          <button class="btn btn-primary">Réserver un appel →</button>
+          <button class="btn btn-outline">Voir les métiers</button>
+        </div>
+        <div class="trust"><span><b>Français</b> impeccable</span><span><b>8h–20h</b> en direct</span><span><b>−40 %</b> vs la France</span></div>
+        <div class="descr" style="margin-top:14px">Télésecrétariat Médical · Support IT &amp; Applicatif</div>
+      </div>
+
+      <div class="block">
+        <h4>Palette</h4>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#2E3B4E"></div><div class="hex">#2E3B4E</div><div class="role">bleu profond</div></div>
+          <div class="sw"><div class="chip" style="background:#6F8770"></div><div class="hex">#6F8770</div><div class="role">sauge (accent)</div></div>
+          <div class="sw"><div class="chip" style="background:#B89968"></div><div class="hex">#B89968</div><div class="role">or chaud</div></div>
+          <div class="sw"><div class="chip" style="background:#F6F2EA;border:1px solid #e2e2e2"></div><div class="hex">#F6F2EA</div><div class="role">fond doux / texte</div></div>
+        </div>
+      </div>
+
+      <div class="note">✓ Texte crème <b>#F6F2EA</b> sur sauge <b>#6F8770</b> : bien lisible.</div>
+
+      <div class="mcard">
+        <div class="ctop"><span class="tag">Priorité</span></div>
+        <div class="cbody">
+          <h5>Télésecrétariat médical</h5>
+          <p>Prise d'appels et gestion d'agendas pour praticiens. Dès 350&nbsp;€/mois.</p>
+          <span class="clink">Simuler mon forfait →</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECONDAIRE (NAVY + DORÉ) ============ -->
+    <section class="panel opt-secondaire">
+      <div class="topbar"></div>
+      <div class="phead">
+        <h2>Secondaire — Navy + Doré</h2>
+        <div class="sub">version « Support IT &amp; Applicatif »</div>
+        <span class="badge off">SECONDAIRE · pages IT</span>
+      </div>
+
+      <div class="hero">
+        <div class="lockup">
+          <img class="logo-img" src="assets/logo-salverys.png" alt="Salverys."
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <span class="logo-fallback">
+            <span class="mark"><span>S</span><i class="dot"></i></span>
+            <span class="word">Salverys<span class="pt">.</span></span>
+          </span>
+        </div>
+        <span class="eyebrow"><span class="pulse"></span> BPO francophone · Antananarivo → France</span>
+        <h3>Votre relation client, <span class="hl">en français</span>, à 40&nbsp;% du coût.</h3>
+        <p class="lead">Appels, télésecrétariat et support — équipes francophones, à vos horaires.</p>
+        <div class="chip-accent">Essai 7 jours offert</div>
+        <div class="btns">
+          <button class="btn btn-primary">Réserver un appel →</button>
+          <button class="btn btn-outline">Voir les métiers</button>
+        </div>
+        <div class="trust"><span><b>Français</b> impeccable</span><span><b>8h–20h</b> en direct</span><span><b>−40 %</b> vs la France</span></div>
+        <div class="descr" style="margin-top:14px">Télésecrétariat Médical · Support IT &amp; Applicatif</div>
+      </div>
+
+      <div class="block">
+        <h4>Palette</h4>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#013C58"></div><div class="hex">#013C58</div><div class="role">navy</div></div>
+          <div class="sw"><div class="chip" style="background:#FFD35B"></div><div class="hex">#FFD35B</div><div class="role">doré (accent)</div></div>
+          <div class="sw"><div class="chip" style="background:#F4F8FB;border:1px solid #e2e2e2"></div><div class="hex">#F4F8FB</div><div class="role">fond doux</div></div>
+        </div>
+      </div>
+
+      <div class="note">⚠ Texte crème <b>#F6F2EA</b> sur jaune vif <b>#FFD35B</b> : contraste faible, peu lisible → à arbitrer (nuance dorée plus profonde&nbsp;?).</div>
+
+      <div class="mcard">
+        <div class="ctop"><span class="tag">Support fonctionnel</span></div>
+        <div class="cbody">
+          <h5>Support applicatif N1</h5>
+          <p>Premier niveau pour vos utilisateurs : tickets, appels, escalade cadrée.</p>
+          <span class="clink">Simuler mon équipe →</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">
+    <span class="pill"><b>Décision :</b> sauge = principal · navy + doré = secondaire · fond sauge → texte blanc · fond jaune → texte #013C58.</span>
+  </div>
+</div>
+</body>
+</html>
