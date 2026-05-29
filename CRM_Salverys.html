@@ -46,8 +46,11 @@
             border-bottom: 1px solid rgba(255,255,255,0.07);
         }
 
+        .sidebar-logo-brand { display: flex; align-items: center; gap: 10px; }
+        .sidebar-logo .logo-icon { flex-shrink: 0; color: #6F8770; }
         .sidebar-logo h1 { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -0.3px; }
-        .sidebar-logo span { font-size: 11px; color: var(--sidebar-text); }
+        .sidebar-logo h1 .brand-dot { color: #6F8770; }
+        .sidebar-logo span { display: block; font-size: 11px; color: var(--sidebar-text); margin-top: 2px; }
 
         .sidebar-nav { flex: 1; padding: 10px 8px; overflow-y: auto; }
 
@@ -396,8 +399,13 @@
     <!-- SIDEBAR -->
     <nav class="sidebar">
         <div class="sidebar-logo">
-            <h1>Salverys</h1>
-            <span>Mini CRM · Madagascar</span>
+            <div class="sidebar-logo-brand">
+                <svg class="logo-icon" width="36" height="36" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="34" height="34" rx="8" fill="#2E3B4E"/><path d="M7 19 C7 10 27 10 27 19" stroke="white" stroke-width="2.3" fill="none" stroke-linecap="round"/><rect x="5" y="16.5" width="4.5" height="7" rx="2.25" fill="white"/><rect x="24.5" y="16.5" width="4.5" height="7" rx="2.25" fill="white"/><path d="M27 23 Q27 27.5 23 27.5" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="22.5" cy="27.5" r="1.8" fill="white"/><circle cx="29" cy="5.5" r="3" fill="currentColor"/></svg>
+                <div>
+                    <h1>Salverys<span class="brand-dot">.</span></h1>
+                    <span>Mini CRM · Madagascar</span>
+                </div>
+            </div>
         </div>
         <div class="sidebar-nav">
             <div class="nav-section">Vue d'ensemble</div>
