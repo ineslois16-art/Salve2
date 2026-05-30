@@ -17,7 +17,12 @@
   qu'en référence interne de coût.
 - **-40 %** = claim public **conservateur et défendable** (cf. §5). L'économie réelle
   vs un ETP interne plein est supérieure, mais on annonce -40 % pour rester crédible.
-- **Marque blanche systématique** : l'équipe répond sous le nom du client.
+- **Marque blanche systématique** : l'équipe répond sous le nom du client. Deux
+  go-to-market chiffrés : **en direct** (client final) ou **en marque blanche** comme
+  sous-traitant d'un acteur déjà établi (ESN, prestataire BPO) — qui prend une marge de
+  **~25-35 %**, donc on capte moins par unité mais avec un coût d'acquisition ~nul.
+- **Modèles de tarification retenus (par ordre de préférence)** : **1) ETP par position ·
+  2) à l'heure · 3) à l'interaction**. (Le forfait médical public est un packaging d'ETP.)
 - **SaaS-first** : aucun encaissement maison. Outil de facturation à trancher (§6).
 
 ---
@@ -50,40 +55,61 @@ sont adressés par l'offre de lancement (-50 % le 1er mois) plutôt qu'un prix p
 
 ---
 
-## 3. Bailleurs sociaux & grandes structures (priorité 2) — **INTERNE**
+## 3. Support N1 SaaS & Helpdesk IT (priorité 2) — **INTERNE**
 
-> Ne pas publier. Positionnement = **capacité d'appoint** (débordement du CRC), pas
-> remplacement. Toujours présenté en sur-devis dans la copy commerciale.
+> Ne pas publier. Deux GTM : **en direct** (client final) ou **en marque blanche**
+> (sous-traitant d'un acteur établi). Modèle **ETP dédié** en marque blanche.
 
-- **Modèle** : forfait mensuel de **capacité réservée** (enveloppe d'appels de
-  débordement) OU **ETP mutualisé** dédié aux pics.
-- **Références internes de chiffrage** (plancher de négociation, ne pas descendre en dessous) :
-  - Tarif de référence : **~1,20 à 1,80 €/appel traité** (selon complexité/horaires).
-  - Forfait capacité dédiée : **~1 800 à 3 500 €/mois** par tranche d'ETP réservé.
-- **Pilote** : sur **1 pic prévisible** (rentrée, hiver, période de charges), facturé
-  au forfait selon l'enveloppe — **pas de pilote gratuit** sur ce segment (volumes trop
-  lourds pour 10 agents).
-- **KPI engagés** : taux de décroché, taux d'abandon, délai moyen, NPS.
+**Modèles de tarification retenus (par ordre de préférence)**
+1. **ETP par position** (seat dédié) — modèle principal.
+2. **À l'heure** — périmètres variables / débordement.
+3. **À l'interaction** (par ticket) — volumes mesurables.
+
+**Tarif ETP par position (référence interne, €/mois/ETP)**
+
+| Segment | En direct | En marque blanche (sous-traitant)* |
+|---|---|---|
+| Support N1 SaaS | 1 900 - 2 400 € | 1 350 - 1 700 € |
+| Helpdesk IT N1 (ITIL) | 2 200 - 2 800 € | 1 550 - 2 000 € |
+
+\* Le donneur d'ordre établi prend ~25-35 % de marge : on capte moins par ETP, mais le
+coût d'acquisition est ~nul et le volume est apporté. **Plancher absolu** : jamais sous
+le coût chargé agent + ~20 % (cf. §7).
+
+- **À l'heure** : ~12-15 €/h (direct) · ~8-11 €/h (marque blanche).
+- **À l'interaction** : ~2,5-4 €/ticket N1 (direct) · ~1,8-2,8 € (marque blanche).
+- **Benchmark interne (coût à battre côté client)** : un CDI FR chargé = ~38-46 k€/an,
+  soit **~3 200-3 800 €/mois** (cf. §5). Notre ETP **direct** vise **-40 % minimum**.
+- **Durée de contrat (révisée)** : engagement initial **3 mois**, puis **12 mois
+  renouvelable** ; 24-36 mois réservés aux grands comptes avec dégressif.
+  ⚠️ La copy dit « contrats 12 à 36 mois » → reformuler en « dès 3 mois, puis 12 mois ».
+- **Pilote** : 15 j cadré (~80 tickets) → repositionner en « 1er mois -50 % » si validé.
 
 ---
 
-## 4. Support N1 SaaS & Helpdesk IT (priorité 3) — **INTERNE**
+## 4. Bailleurs sociaux & grandes structures (priorité 3) — **INTERNE**
 
-> Ne pas publier. Modèle **ETP dédié** en marque blanche.
+> Ne pas publier. Positionnement = **capacité d'appoint** (débordement du CRC), pas
+> remplacement. Toujours présenté en sur-devis. Deux GTM : direct ou marque blanche.
 
-- **Tarif ETP dédié (référence interne)** :
-  - Support N1 SaaS : **~1 900 à 2 400 €/mois par ETP** (≈ 90-115 €/jour).
-  - Helpdesk IT N1 (profils ITIL) : **~2 200 à 2 800 €/mois par ETP** (≈ 105-135 €/jour).
-  - Cohérent avec **-40 %** vs un CDI FR chargé (~3 200-3 800 €/mois — cf. §5).
-- **Durée de contrat (révisée pour réduire la friction d'entrée)** :
-  - **Engagement initial 3 mois** (cadrage + montée en charge), puis **12 mois
-    renouvelable**.
-  - 24-36 mois réservés aux grands comptes **avec dégressif tarifaire** négocié.
-  - ⚠️ La copy actuelle dit « contrats 12 à 36 mois » → à reformuler en « à partir de
-    3 mois, puis 12 mois renouvelable » pour abaisser la barrière.
-- **Pilote** : 15 jours sur périmètre cadré (~80 tickets) — **à repositionner** comme
-  « 1er mois à -50 % » si l'étude §7 le valide aussi sur ce segment (sinon pilote court
-  facturé symboliquement).
+**Modèles de tarification retenus (même ordre de préférence)**
+1. **ETP par position** (mutualisé sur les pics).
+2. **À l'heure**.
+3. **À l'interaction** (par appel traité).
+
+**Références internes de chiffrage**
+
+| Modèle | En direct | En marque blanche (sous-traitant)* |
+|---|---|---|
+| ETP / capacité réservée (€/mois) | 1 800 - 3 500 € | 1 300 - 2 500 € |
+| À l'appel traité | 1,20 - 1,80 € | 0,90 - 1,40 € |
+
+\* Marge donneur d'ordre ~25-35 %. **Plancher** : coût chargé agent + ~20 %.
+
+- **Pilote** : sur **1 pic prévisible** (rentrée, hiver, période de charges), facturé
+  au forfait selon l'enveloppe — **pas de pilote gratuit** (volumes trop lourds pour
+  10 agents).
+- **KPI engagés** : taux de décroché, taux d'abandon, délai moyen, NPS.
 
 ---
 
@@ -177,3 +203,6 @@ basculer sur le repli « 7 jours offerts, périmètre limité ».
 | Grille médical | « indicatifs à valider » | **prix fermes** (350/590/950 + sur-devis) |
 | Contrats helpdesk | « 12 à 36 mois » | **« dès 3 mois, puis 12 mois renouvelable »** |
 | Grilles bailleurs / SaaS-helpdesk | éparses en email | **centralisées ici (interne)** |
+| Priorités niches | Bailleurs n°2, SaaS/Helpdesk n°3 | **SaaS/Helpdesk n°2, Bailleurs n°3** |
+| Modèles de tarification | implicites | **ETP/position > à l'heure > à l'interaction** |
+| Go-to-market | direct uniquement | **direct + marque blanche (sous-traitance)** |
