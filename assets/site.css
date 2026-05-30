@@ -1,7 +1,7 @@
 /* =========================================================
    Salverys — design system (site vivant)
    Thème par défaut = médical (greige / sauge / bleu / or)
-   Thème IT = .theme-it (navy #013C58 + doré profond #B8860B)
+   Thème IT = .theme-it (navy #013C58 + doré profond #F7E75A)
    ========================================================= */
 
 :root {
@@ -46,14 +46,14 @@
   --bg-deep: #013C58;
   --primary: #013C58;
   --primary-deep: #012C42;
-  --accent: #B8860B;       /* doré profond */
-  --accent-soft: #D4A840;
-  --accent-tint: #F5EDD6;
-  --gold: #B8860B;
-  --gold-soft: #D4A840;
-  --cta: #B8860B;
-  --cta-text: #F6F2EA;
-  --halo: rgba(184,134,11,0.34);
+  --accent: #F7E75A;       /* doré profond */
+  --accent-soft: #FBF3A0;
+  --accent-tint: #FEFDE8;
+  --gold: #F7E75A;
+  --gold-soft: #FBF3A0;
+  --cta: #F7E75A;
+  --cta-text: #013C58;
+  --halo: rgba(247,231,90,0.34);
   --ok: #1E9E6A;
 }
 
@@ -218,7 +218,7 @@ img { display: block; max-width: 100%; }
 .ncard .photo-wrap::after { background: linear-gradient(180deg, transparent 45%, rgba(20,28,40,.5)); }
 .ncard-tag { position: absolute; top: 14px; left: 14px; z-index: 3; font-size: 11.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 6px 12px; border-radius: var(--radius-pill); background: #fff; color: var(--primary); }
 .ncard.med .ncard-tag { background: var(--accent); color: #fff; }
-.ncard.it .ncard-tag { background: #013C58; color: #B8860B; }
+.ncard.it .ncard-tag { background: #013C58; color: #F7E75A; }
 .ncard-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
 .ncard-body h3 { font-family: 'Georgia', serif; font-size: 22px; font-weight: 600; color: var(--primary); margin-bottom: 10px; }
 .ncard-body p { font-size: 14.5px; color: var(--text-soft); margin-bottom: 18px; flex: 1; }
