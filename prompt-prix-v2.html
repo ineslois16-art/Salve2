@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt prix v2 — Challenger l'offre Salverys</title>
+<style>
+    :root {
+        --bg: #FAFAF7;
+        --surface: #FFFFFF;
+        --ink: #1F2937;
+        --muted: #64748B;
+        --line: #E5E7EB;
+        --accent: #B8860B;
+        --accent-soft: #FBF5E3;
+        --code-bg: #F3F4F6;
+        --success: #10B981;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.55;
+    }
+    .container {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+    }
+    .header {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 28px;
+    }
+    h1 {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0;
+        color: var(--ink);
+    }
+    .subtitle {
+        color: var(--muted);
+        font-size: 14px;
+    }
+    .tag {
+        display: inline-block;
+        background: var(--accent-soft);
+        color: var(--accent);
+        border: 1px solid #E8D9A8;
+        padding: 2px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        width: fit-content;
+    }
+    .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--bg);
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+    }
+    .copy-btn {
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s ease, transform 0.05s ease;
+        font-family: inherit;
+    }
+    .copy-btn:hover { background: #9F750A; }
+    .copy-btn:active { transform: scale(0.98); }
+    .copy-btn.copied { background: var(--success); }
+    .word-count { color: var(--muted); font-size: 13px; }
+    .prompt {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 32px;
+    }
+    .prompt h2 {
+        font-size: 17px;
+        font-weight: 700;
+        margin: 28px 0 12px;
+        color: var(--ink);
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 6px;
+    }
+    .prompt h2:first-child { margin-top: 0; }
+    .prompt h3 {
+        font-size: 15px;
+        font-weight: 700;
+        margin: 20px 0 8px;
+        color: var(--ink);
+    }
+    .prompt p { margin: 10px 0; }
+    .prompt ul { margin: 8px 0; padding-left: 24px; }
+    .prompt li { margin: 4px 0; }
+    .prompt code {
+        background: var(--code-bg);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 13px;
+        color: #374151;
+    }
+    .prompt strong { color: var(--ink); }
+    .prompt hr { border: none; border-top: 1px solid var(--line); margin: 24px 0; }
+    .footer { margin-top: 32px; color: var(--muted); font-size: 13px; text-align: center; }
+    @media (max-width: 600px) {
+        .container { padding: 20px 16px 60px; }
+        .prompt { padding: 22px; }
+        h1 { font-size: 20px; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <span class="tag">v2 · offre post-refonte</span>
+        <h1>Prompt prix v2 — Challenger l'offre Salverys</h1>
+        <div class="subtitle">À coller au début d'une nouvelle conversation Claude pour <strong>stress-tester</strong> la grille et le modèle d'offre figés le 2026-05-30. Source de vérité : <code>PRICING.md</code>.</div>
+    </div>
+
+    <div class="toolbar">
+        <span class="word-count" id="word-count"></span>
+        <button class="copy-btn" id="copy-btn" type="button">📋 Tout copier</button>
+    </div>
+
+    <div class="prompt" id="prompt-display">
+        <p><strong>Contexte Salverys</strong> (depuis <code>CLAUDE.md</code>) : BPO francophone à Antananarivo, <strong>10 agents</strong>, cible clients français. Marque : <strong>Salverys</strong>. Avantage transverse : fuseau FR, français langue maternelle, <strong>~40 % moins cher qu'un prestataire hexagonal</strong>. Cold mailing via <strong>Emelia</strong>. Règle d'arbitrage : <strong>SaaS-first</strong> avant code maison. Toujours répondre en français, direct et opérationnel.</p>
+
+        <p><strong>Tâche : challenger l'offre actuelle (figée le 2026-05-30) et proposer des ajustements défendables — sans rien casser tant qu'une décision n'est pas validée.</strong> La grille a déjà été refondue une fois ; ce prompt sert à la remettre à l'épreuve avec du recul et, idéalement, des données terrain.</p>
+
+        <hr>
+
+        <h2>État actuel de l'offre (post-refonte — <code>PRICING.md</code> fait foi)</h2>
+
+        <h3>Médical — télésecrétariat (priorité 1) — grille PUBLIQUE</h3>
+        <ul>
+            <li>Forfait au volume d'appels, <strong>prix fermes</strong> : Essentiel 350 € (~250 appels) · Confort 590 € (~500) · Intensif 950 € (~900) · Sur-mesure &gt; 900.</li>
+            <li>Offre de lancement : <strong>1er mois à -50 %</strong> (remplace l'essai gratuit ; validé par étude de rentabilité). Repli : 7 j offerts, périmètre limité.</li>
+            <li>Benchmark interne révisé : secrétaire médicale ~<strong>33-40 k€/an</strong> chargé.</li>
+            <li>Claim public : <strong>-40 %</strong> (conservateur, défendable).</li>
+        </ul>
+
+        <h3>Support N1 SaaS &amp; Helpdesk IT (priorité 2) — INTERNE</h3>
+        <ul>
+            <li>Modèles retenus par préférence : <strong>1) ETP par position · 2) à l'heure · 3) à l'interaction</strong>.</li>
+            <li>ETP/position — <strong>en direct</strong> : N1 SaaS 1 900-2 400 €/mois · Helpdesk ITIL 2 200-2 800 €/mois.</li>
+            <li>ETP/position — <strong>en marque blanche</strong> (sous-traitance) : N1 1 350-1 700 € · ITIL 1 550-2 000 € (marge donneur d'ordre ~25-35 %).</li>
+            <li>À l'heure : 12-15 € (direct) / 8-11 € (marque blanche). À l'interaction : 2,5-4 € / 1,8-2,8 €/ticket.</li>
+            <li>Contrats : <strong>dès 3 mois, puis 12 mois renouvelable</strong> (24-36 mois grands comptes avec dégressif).</li>
+            <li>Benchmark interne : CDI FR chargé ~<strong>38-46 k€/an</strong> ≈ 3 200-3 800 €/mois.</li>
+        </ul>
+
+        <h3>Bailleurs sociaux &amp; grandes structures (priorité 3) — INTERNE</h3>
+        <ul>
+            <li>Positionnement : <strong>capacité d'appoint, pas remplacement</strong> du CRC.</li>
+            <li>ETP / capacité réservée : 1 800-3 500 €/mois (direct) / 1 300-2 500 € (marque blanche).</li>
+            <li>À l'appel traité : 1,20-1,80 € (direct) / 0,90-1,40 € (marque blanche).</li>
+            <li>Pilote sur 1 pic, <strong>facturé</strong> (pas de pilote gratuit sur ce segment).</li>
+        </ul>
+
+        <h3>Cross-cutting toutes niches</h3>
+        <ul>
+            <li><strong>Marque blanche systématique</strong> + deux go-to-market chiffrés : <strong>en direct</strong> (client final) et <strong>en marque blanche</strong> (sous-traitant d'un acteur établi).</li>
+            <li><strong>Plancher absolu</strong> : jamais sous le coût chargé agent (~700 €/mois) + ~20 %.</li>
+            <li>Facturation : <strong>non tranchée</strong> (Stripe Billing+SEPA / GoCardless / Pennylane).</li>
+        </ul>
+
+        <hr>
+
+        <h2>Fichiers à connaître</h2>
+        <ul>
+            <li><code>PRICING.md</code> : <strong>source unique de vérité</strong> (grilles, benchmarks, modèles, étude de rentabilité). En cas de divergence, ce fichier fait foi.</li>
+            <li><code>RAPPORT-PRIX.html</code> : raisonnement complet, recherche marché, comparatif facturation, étude de rentabilité du 1er mois -50 %.</li>
+            <li><code>OUTREACH-SEQUENCE.md</code>, <code>OUTREACH-cabinets-medicaux.md</code> : copy cold mail (déjà alignée).</li>
+            <li><code>CRM_Salverys.html</code> : <code>CALL_SCRIPTS</code> + objections (déjà alignés). <code>simulateur-salverys.html</code>, <code>index.html</code> : front public.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Hypothèses à remettre à l'épreuve (le cœur du challenge)</h2>
+        <ul>
+            <li><strong>Conversion du 1er mois -50 %</strong> : convertit-il vraiment mieux qu'un essai gratuit en cold réel ? Vérifier le taux réponse→souscription une fois des données dispo ; sinon activer le repli.</li>
+            <li><strong>Grille 350/590/950</strong> : tient-elle un test <strong>Van Westendorp</strong> sur un panel de cabinets ? Y a-t-il de la marge laissée sur la table (prix trop bas) ?</li>
+            <li><strong>Fourchettes marque blanche</strong> : la marge donneur d'ordre de 25-35 % est-elle réaliste vs ce que les ESN/primes acceptent réellement de reverser ?</li>
+            <li><strong>Coût de service réel</strong> : l'étude suppose ~6 cabinets/agent et ~700 €/mois de coût agent chargé — à valider en production (impacte directement le plancher et la rentabilité du -50 %).</li>
+            <li><strong>Plancher « coût agent + 20 % »</strong> : bon seuil, ou trop bas pour préserver une marge saine ?</li>
+            <li><strong>Priorité 2 = Support/Helpdesk</strong> : la prospection doit-elle vraiment passer devant les bailleurs vu le pipeline et la capacité actuels ?</li>
+            <li><strong>Contrats « dès 3 mois »</strong> : assez pour amortir l'onboarding ? Risque de churn précoce ?</li>
+            <li><strong>-40 % public</strong> : trop conservateur (sous-vente) ou bien calibré face à un prospect qui compare à un appoint plutôt qu'à un ETP plein ?</li>
+            <li><strong>Facturation</strong> : trancher Stripe Billing+SEPA vs GoCardless vs Pennylane (cf. <code>RAPPORT-PRIX.html</code> §8).</li>
+        </ul>
+
+        <p><strong>Workflow</strong> : créer une nouvelle branche <code>claude/...</code> pour toute modif prix, ne pas développer sur main. Mettre à jour <code>PRICING.md</code> en premier (la vérité), puis propager. Demander avant d'installer un outil/repo.</p>
+    </div>
+
+    <div class="footer">
+        Salverys — prompt prix v2 · généré le 2026-05-30
+    </div>
+</div>
+
+<script id="prompt-raw" type="text/plain">**Contexte Salverys** (depuis `CLAUDE.md`) : BPO francophone à Antananarivo, **10 agents**, cible clients français. Marque : **Salverys**. Avantage transverse : fuseau FR, français langue maternelle, **~40 % moins cher qu'un prestataire hexagonal**. Cold mailing via **Emelia**. Règle d'arbitrage : **SaaS-first** avant code maison. Toujours répondre en français, direct et opérationnel.
+
+**Tâche : challenger l'offre actuelle (figée le 2026-05-30) et proposer des ajustements défendables — sans rien casser tant qu'une décision n'est pas validée.** La grille a déjà été refondue une fois ; ce prompt sert à la remettre à l'épreuve avec du recul et, idéalement, des données terrain.
+
+---
+
+**État actuel de l'offre (post-refonte — `PRICING.md` fait foi)**
+
+**Médical — télésecrétariat (priorité 1) — grille PUBLIQUE**
+- Forfait au volume d'appels, **prix fermes** : Essentiel 350 € (~250 appels) · Confort 590 € (~500) · Intensif 950 € (~900) · Sur-mesure > 900.
+- Offre de lancement : **1er mois à -50 %** (remplace l'essai gratuit ; validé par étude de rentabilité). Repli : 7 j offerts, périmètre limité.
+- Benchmark interne révisé : secrétaire médicale ~**33-40 k€/an** chargé.
+- Claim public : **-40 %** (conservateur, défendable).
+
+**Support N1 SaaS & Helpdesk IT (priorité 2) — INTERNE**
+- Modèles retenus par préférence : **1) ETP par position · 2) à l'heure · 3) à l'interaction**.
+- ETP/position — **en direct** : N1 SaaS 1 900-2 400 €/mois · Helpdesk ITIL 2 200-2 800 €/mois.
+- ETP/position — **en marque blanche** (sous-traitance) : N1 1 350-1 700 € · ITIL 1 550-2 000 € (marge donneur d'ordre ~25-35 %).
+- À l'heure : 12-15 € (direct) / 8-11 € (marque blanche). À l'interaction : 2,5-4 € / 1,8-2,8 €/ticket.
+- Contrats : **dès 3 mois, puis 12 mois renouvelable** (24-36 mois grands comptes avec dégressif).
+- Benchmark interne : CDI FR chargé ~**38-46 k€/an** ≈ 3 200-3 800 €/mois.
+
+**Bailleurs sociaux & grandes structures (priorité 3) — INTERNE**
+- Positionnement : **capacité d'appoint, pas remplacement** du CRC.
+- ETP / capacité réservée : 1 800-3 500 €/mois (direct) / 1 300-2 500 € (marque blanche).
+- À l'appel traité : 1,20-1,80 € (direct) / 0,90-1,40 € (marque blanche).
+- Pilote sur 1 pic, **facturé** (pas de pilote gratuit sur ce segment).
+
+**Cross-cutting toutes niches**
+- **Marque blanche systématique** + deux go-to-market chiffrés : **en direct** (client final) et **en marque blanche** (sous-traitant d'un acteur établi).
+- **Plancher absolu** : jamais sous le coût chargé agent (~700 €/mois) + ~20 %.
+- Facturation : **non tranchée** (Stripe Billing+SEPA / GoCardless / Pennylane).
+
+---
+
+**Fichiers à connaître**
+- `PRICING.md` : **source unique de vérité** (grilles, benchmarks, modèles, étude de rentabilité). En cas de divergence, ce fichier fait foi.
+- `RAPPORT-PRIX.html` : raisonnement complet, recherche marché, comparatif facturation, étude de rentabilité du 1er mois -50 %.
+- `OUTREACH-SEQUENCE.md`, `OUTREACH-cabinets-medicaux.md` : copy cold mail (déjà alignée).
+- `CRM_Salverys.html` : `CALL_SCRIPTS` + objections (déjà alignés). `simulateur-salverys.html`, `index.html` : front public.
+
+---
+
+**Hypothèses à remettre à l'épreuve (le cœur du challenge)**
+- **Conversion du 1er mois -50 %** : convertit-il vraiment mieux qu'un essai gratuit en cold réel ? Vérifier le taux réponse→souscription une fois des données dispo ; sinon activer le repli.
+- **Grille 350/590/950** : tient-elle un test **Van Westendorp** sur un panel de cabinets ? Y a-t-il de la marge laissée sur la table (prix trop bas) ?
+- **Fourchettes marque blanche** : la marge donneur d'ordre de 25-35 % est-elle réaliste vs ce que les ESN/primes acceptent réellement de reverser ?
+- **Coût de service réel** : l'étude suppose ~6 cabinets/agent et ~700 €/mois de coût agent chargé — à valider en production (impacte le plancher et la rentabilité du -50 %).
+- **Plancher « coût agent + 20 % »** : bon seuil, ou trop bas pour préserver une marge saine ?
+- **Priorité 2 = Support/Helpdesk** : la prospection doit-elle vraiment passer devant les bailleurs vu le pipeline et la capacité actuels ?
+- **Contrats « dès 3 mois »** : assez pour amortir l'onboarding ? Risque de churn précoce ?
+- **-40 % public** : trop conservateur (sous-vente) ou bien calibré face à un prospect qui compare à un appoint plutôt qu'à un ETP plein ?
+- **Facturation** : trancher Stripe Billing+SEPA vs GoCardless vs Pennylane (cf. `RAPPORT-PRIX.html` §8).
+
+**Workflow** : créer une nouvelle branche `claude/...` pour toute modif prix, ne pas développer sur main. Mettre à jour `PRICING.md` en premier (la vérité), puis propager. Demander avant d'installer un outil/repo.</script>
+
+<script>
+(function() {
+    var raw = document.getElementById('prompt-raw').textContent.trim();
+    var btn = document.getElementById('copy-btn');
+    var wc = document.getElementById('word-count');
+    wc.textContent = raw.split(/\s+/).length + ' mots · ' + raw.length + ' caractères';
+
+    btn.addEventListener('click', function() {
+        var fallback = function() {
+            var ta = document.createElement('textarea');
+            ta.value = raw;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+        };
+        var done = function() {
+            btn.textContent = '✓ Copié !';
+            btn.classList.add('copied');
+            setTimeout(function() {
+                btn.textContent = '📋 Tout copier';
+                btn.classList.remove('copied');
+            }, 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(raw).then(done).catch(function() { fallback(); done(); });
+        } else {
+            fallback();
+            done();
+        }
+    });
+})();
+</script>
+</body>
+</html>
