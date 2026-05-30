@@ -104,16 +104,14 @@
     <h3>Modèles de tarification BPO (état de l'art)</h3>
     <p>Cinq grands modèles coexistent dans l'outsourcing centre d'appels :</p>
     <table>
-      <tr><th>Modèle</th><th>Principe</th><th>Repère de prix</th></tr>
-      <tr><td>À l'heure</td><td>Taux horaire par agent</td><td class="num">Offshore 6-15 $/h · Onshore 40-60 $/h</td></tr>
-      <tr><td>Par ETP / seat</td><td>Forfait mensuel par agent dédié</td><td class="num">Offshore ~1 200-2 800 $ · Onshore ~4 000-7 500 $</td></tr>
-      <tr><td>À la minute</td><td>Temps d'interaction réel</td><td class="num">0,02-0,10 $/min</td></tr>
-      <tr><td>À l'interaction</td><td>Par ticket / appel / chat</td><td class="num">1-5 $/ticket</td></tr>
-      <tr><td>À l'outcome / hybride</td><td>Au résultat ou mix</td><td class="num">variable</td></tr>
+      <tr><th>Modèle</th><th>Principe</th><th>Retenu par Salverys ?</th></tr>
+      <tr><td>ETP par position</td><td>Forfait mensuel par agent dédié</td><td>✅ <strong>n°1</strong> — 1 900-2 800 €/mois (cf. §7)</td></tr>
+      <tr><td>À l'heure</td><td>Taux horaire par agent</td><td>✅ n°2 — 12-15 €/h</td></tr>
+      <tr><td>À l'interaction</td><td>Par ticket / appel / chat</td><td>✅ n°3 — 2,5-4 €/ticket</td></tr>
+      <tr><td>À la minute</td><td>Temps d'interaction réel</td><td>non retenu</td></tr>
+      <tr><td>À l'outcome / hybride</td><td>Au résultat ou mix</td><td>non retenu</td></tr>
     </table>
-    <p>Règle de choix : volume <strong>stable et élevé</strong> → usage (appel/minute) ; volume <strong>imprévisible</strong> → forfait (ETP/heure) pour garantir la couverture. La main-d'œuvre pèse <strong>60-75 %</strong> du coût.</p>
-    <div class="callout warn"><strong>Lecture du « par ETP » (et d'où venait le 7 500 $) :</strong> la fourchette est <strong>mondiale</strong>. Le haut (~7 500 $/mois) = un agent dédié <strong>onshore</strong> (US / Europe de l'Ouest), soit ~45 $/h × ~165 h — <strong>rien à voir avec Salverys</strong>. Le bas (~1 200-2 800 $) = l'<strong>offshore</strong>, la zone de Salverys. Notre ETP direct (1 900-2 400 € ≈ 2 100-2 600 $) se place en haut de l'offshore (premium francophone), <strong>jamais</strong> au niveau onshore.</div>
-    <div class="callout"><strong>Modèles retenus par Salverys, par préférence :</strong> 1) <strong>ETP par position</strong> · 2) <strong>à l'heure</strong> · 3) <strong>à l'interaction</strong>. Le forfait médical public est un packaging d'ETP.</div>
+    <p>Règle de choix : volume <strong>stable et élevé</strong> → usage à l'interaction ; volume <strong>imprévisible</strong> → ETP/heure pour garantir la couverture. La main-d'œuvre pèse <strong>60-75 %</strong> du coût.</p>
 
     <h3>Marché français du télésecrétariat médical (2025)</h3>
     <ul>
@@ -142,7 +140,6 @@
       <tr><td><a href="https://github.com/max-alletsee/pricesensitivitymeter">max-alletsee/pricesensitivitymeter</a> · <a href="https://github.com/vivianamarquez/Van-Westendorp-Price-Sensitivity-Meter">vivianamarquez/Van-Westendorp</a></td><td>Méthode <strong>Van Westendorp</strong> : fixer le prix psychologiquement acceptable via 4 questions clients. À utiliser quand on aura un panel de cabinets pour valider 350/590/950.</td></tr>
       <tr><td><a href="https://github.com/flexprice/flexprice">flexprice/flexprice</a></td><td>Billing usage-based self-host — <em>à connaître mais non retenu</em> (règle SaaS-first : on n'auto-héberge pas l'encaissement).</td></tr>
     </table>
-    <div class="callout"><strong>Compétences pricing clés</strong> mobilisées : segmentation de l'offre (good-better-best), <strong>value-based pricing</strong> (vendre l'économie vs coût interne, pas le coût de production), <strong>price anchoring</strong> (ancrer sur le coût d'un ETP), et <strong>gestion de la capacité</strong> comme contrainte (le vrai sujet à 10 agents).</div>
   </section>
 
   <section id="decisions">
