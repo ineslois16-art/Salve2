@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Charte graphique — Salverys</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Georgia:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+/* ─── Reset ─────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:#F8F5F0;color:#2A2620;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ─── Tokens (miroir site.css) ───────────────────────── */
+:root{
+  --bg:#FFFFFF;
+  --bg-soft:#F6F2EA;
+  --bg-deep:#2E3B4E;
+  --ink:#20303F;
+  --text:#2A2620;
+  --text-soft:#5C5448;
+  --text-mute:#8A8275;
+  --line:#E7DFD1;
+  --line-soft:#F0EADE;
+  --primary:#2E3B4E;
+  --primary-deep:#222C3B;
+  --accent:#6F8770;
+  --accent-soft:#C5D2C5;
+  --accent-tint:#EAF0EA;
+  --gold:#B89968;
+  --gold-soft:#D4B98A;
+  --cta:#2E3B4E;
+  --cta-text:#FFFFFF;
+  --danger:#B6604D;
+  --ok:#6F8770;
+  --shadow-sm:0 1px 2px rgba(32,48,63,.06),0 1px 3px rgba(32,48,63,.05);
+  --shadow-md:0 10px 28px rgba(32,48,63,.10),0 3px 8px rgba(32,48,63,.06);
+  --shadow-lg:0 24px 60px rgba(32,48,63,.16),0 8px 20px rgba(32,48,63,.08);
+  --radius:16px;
+  --radius-lg:26px;
+  --radius-pill:100px;
+  --maxw:1100px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ─── Layout ─────────────────────────────────────────── */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* ─── Cover ──────────────────────────────────────────── */
+.cover{
+  background:var(--primary-deep);
+  color:#fff;
+  padding:80px 28px 72px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.cover::before{
+  content:'';position:absolute;width:700px;height:700px;
+  border-radius:50%;background:radial-gradient(circle,rgba(111,135,112,.25),transparent 68%);
+  top:-200px;left:50%;transform:translateX(-50%);pointer-events:none;
+}
+.cover-logo{height:56px;width:auto;margin:0 auto 32px}
+.cover h1{font-family:'Georgia',serif;font-size:clamp(32px,5vw,52px);font-weight:600;letter-spacing:-.02em;line-height:1.1;margin-bottom:14px;position:relative}
+.cover h1 span{color:#6F8770}
+.cover p{font-size:16px;color:rgba(255,255,255,.7);position:relative}
+.cover-meta{margin-top:36px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.5);position:relative}
+.cover-meta b{color:rgba(255,255,255,.85);display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+
+/* ─── Nav (sticky) ───────────────────────────────────── */
+.sidenav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.9);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  padding:0 28px;
+  overflow-x:auto;
+  white-space:nowrap;
+}
+.sidenav ul{display:flex;gap:0;list-style:none;max-width:var(--maxw);margin:0 auto}
+.sidenav a{
+  display:block;padding:16px 18px;
+  font-size:13px;font-weight:600;color:var(--text-soft);
+  border-bottom:2px solid transparent;
+  transition:color .15s,border-color .15s;
+}
+.sidenav a:hover{color:var(--primary);border-bottom-color:var(--accent)}
+
+/* ─── Section layout ─────────────────────────────────── */
+.chapter{padding:72px 0}
+.chapter + .chapter{border-top:1px solid var(--line)}
+.chapter-head{margin-bottom:48px}
+.chapter-num{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent-tint);color:var(--primary);
+  padding:5px 12px;border-radius:var(--radius-pill);
+  font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.chapter-head h2{font-family:'Georgia',serif;font-size:clamp(24px,3vw,34px);font-weight:600;color:var(--primary);letter-spacing:-.01em;margin-bottom:10px}
+.chapter-head p{font-size:16px;color:var(--text-soft);max-width:660px}
+
+/* ─── Helpers ────────────────────────────────────────── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:780px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+@media(max-width:900px){.grid3{grid-template-columns:1fr 1fr}}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-mute);margin-bottom:8px}
+.value{font-size:14px;color:var(--text);font-weight:600}
+.mono{font-family:'SFMono-Regular',Consolas,monospace;font-size:13px;background:var(--bg-soft);padding:2px 6px;border-radius:4px;color:var(--primary)}
+
+/* règle usage */
+.rule{
+  display:flex;gap:12px;padding:14px 18px;
+  border-radius:12px;font-size:14px;color:var(--text);
+  margin-bottom:8px;
+}
+.rule.do{background:#EAF5EC;border-left:3px solid #3C8A54}
+.rule.dont{background:#FAEAEA;border-left:3px solid #B6604D}
+.rule-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+
+/* tag */
+.tag{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--radius-pill);font-size:12px;font-weight:700}
+.tag-primary{background:var(--accent-tint);color:var(--primary)}
+.tag-it{background:#E0F0F8;color:#013C58}
+
+/* table */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;padding:10px 14px;background:var(--bg-soft);font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--text-mute);border-bottom:1px solid var(--line)}
+td{padding:12px 14px;border-bottom:1px solid var(--line-soft);color:var(--text)}
+tr:last-child td{border-bottom:0}
+tr:hover td{background:var(--bg-soft)}
+
+/* ─── § 1 Logo ───────────────────────────────────────── */
+.logo-stage{
+  border-radius:var(--radius-lg);display:flex;
+  align-items:center;justify-content:center;
+  padding:40px;min-height:160px;
+}
+.logo-stage.light{background:var(--bg-soft);border:1px solid var(--line)}
+.logo-stage.dark{background:#222C3B}
+.logo-stage.navy{background:#012C42}
+.logo-stage img{height:52px;width:auto}
+
+.logo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:600px){.logo-grid{grid-template-columns:1fr}}
+
+.logo-label{margin-top:12px;font-size:13px;font-weight:600;color:var(--text-soft);text-align:center}
+.logo-sublabel{font-size:11px;color:var(--text-mute);text-align:center;margin-top:3px}
+
+/* exclusion zone diagram */
+.excl-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:32px;background:var(--bg-soft);border:1px dashed var(--accent-soft);border-radius:var(--radius)}
+.excl-wrap img{height:44px;width:auto}
+.excl-line-h,.excl-line-v{position:absolute;background:rgba(111,135,112,.35)}
+.excl-line-h{height:1px;left:0;right:0}
+.excl-line-h.top{top:16px}.excl-line-h.bot{bottom:16px}
+.excl-line-v{width:1px;top:0;bottom:0}
+.excl-line-v.lft{left:16px}.excl-line-v.rgt{right:16px}
+
+/* ─── § 2 Couleurs ───────────────────────────────────── */
+.swatch-block{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.swatch-color{height:100px;display:flex;align-items:flex-end;padding:12px 14px}
+.swatch-hex{font-family:'SFMono-Regular',Consolas,monospace;font-size:13px;font-weight:700}
+.swatch-info{background:#fff;padding:14px;border:1px solid var(--line);border-top:0}
+.swatch-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.swatch-role{font-size:12px;color:var(--text-mute)}
+.swatch-var{font-size:11px;font-family:'SFMono-Regular',Consolas,monospace;color:var(--accent);margin-top:4px}
+
+.contrast-row{
+  display:flex;gap:0;border-radius:8px;overflow:hidden;
+  border:1px solid var(--line);margin-bottom:10px;
+  font-size:13px;font-weight:600;
+}
+.contrast-bg{flex:1;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.contrast-ratio{font-size:11px;padding:3px 8px;border-radius:100px;font-weight:700}
+.contrast-pass{background:#E4F3E8;color:#2B6B3E}
+.contrast-warn{background:#FDF3E0;color:#7A5C00}
+
+/* ─── § 3 Typo ───────────────────────────────────────── */
+.type-specimen{padding:28px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);margin-bottom:16px}
+.type-specimen + .type-specimen{margin-top:0}
+
+.typo-scale tr td:first-child{font-weight:700;color:var(--primary)}
+
+/* ─── § 4 Espacements ────────────────────────────────── */
+.space-row{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--line-soft)}
+.space-bar{background:var(--accent-tint);height:16px;border-radius:4px;flex-shrink:0}
+.space-label{font-family:'SFMono-Regular',Consolas,monospace;font-size:13px;color:var(--primary);min-width:40px}
+.space-desc{font-size:13px;color:var(--text-soft)}
+
+/* ─── § 5 Composants ─────────────────────────────────── */
+.comp-stage{
+  background:var(--bg-soft);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:36px;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;
+}
+.comp-stage.dark{background:var(--bg-deep)}
+.comp-stage.navy{background:#012C42}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:100px;font-size:15px;font-weight:700;cursor:pointer;border:0;font-family:'Inter',sans-serif;transition:transform .18s,box-shadow .22s}
+.btn-primary{background:#2E3B4E;color:#fff;box-shadow:var(--shadow-md)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn-outline{background:transparent;color:#2E3B4E;border:1.6px solid #2E3B4E}
+
+.btn-it-primary{background:#B8860B;color:#F6F2EA;box-shadow:var(--shadow-md)}
+.btn-it-outline{background:transparent;color:#013C58;border:1.6px solid #013C58}
+
+/* Nav preview */
+.nav-preview{
+  background:rgba(255,255,255,.9);backdrop-filter:blur(8px);
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:0 20px;display:flex;align-items:center;gap:20px;height:60px;
+}
+.nav-preview img{height:32px;width:auto}
+.nav-preview-links{display:flex;gap:20px;flex:1;font-size:13px;font-weight:600;color:var(--text-soft)}
+.nav-preview-links span{color:var(--primary);border-bottom:2px solid var(--accent);padding-bottom:2px}
+.nav-preview-cta{background:#2E3B4E;color:#fff;padding:8px 16px;border-radius:100px;font-size:13px;font-weight:700}
+
+/* eyebrow */
+.eyebrow-demo{display:inline-flex;align-items:center;gap:8px;background:var(--accent-tint);color:var(--primary);padding:7px 15px;border-radius:100px;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.eyebrow-it{background:#E0F0F8;color:#013C58}
+.eyebrow-it .pulse-dot{background:#B8860B}
+
+/* pill */
+.pill-demo{display:inline-flex;gap:8px;flex-wrap:wrap}
+.pill{padding:10px 18px;background:#fff;border:1.5px solid var(--line);border-radius:100px;font-size:13px;font-weight:600;color:var(--text-soft)}
+.pill.active{background:#6F8770;border-color:#6F8770;color:#fff}
+.pill-it.active{background:#013C58;border-color:#013C58;color:#fff}
+
+/* cards */
+.ncard-demo{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;max-width:280px}
+.ncard-demo-img{height:120px;background:linear-gradient(135deg,#2E3B4E,#6F8770);display:flex;align-items:center;justify-content:center;font-size:32px}
+.ncard-demo-body{padding:18px}
+.ncard-demo-body h4{font-family:'Georgia',serif;font-size:18px;color:#2E3B4E;margin-bottom:6px}
+.ncard-demo-body p{font-size:13px;color:var(--text-soft);margin-bottom:12px}
+.ncard-link-demo{font-size:13px;font-weight:700;color:#6F8770}
+
+/* pkg */
+.pkg-demo{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 20px;max-width:220px;position:relative}
+.pkg-demo.feat{background:#222C3B;color:#fff}
+.pkg-badge-demo{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#B89968;color:#fff;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:.05em;white-space:nowrap}
+.pkg-demo-name{font-family:'Georgia',serif;font-size:20px;font-weight:600;color:#2E3B4E;margin-bottom:4px}
+.pkg-demo.feat .pkg-demo-name{color:#fff}
+.pkg-demo-price{font-family:'Georgia',serif;font-size:36px;font-weight:700;color:#2E3B4E;line-height:1}
+.pkg-demo.feat .pkg-demo-price{color:#fff}
+
+/* tag badge */
+.ncard-tag-demo{display:inline-block;padding:5px 10px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.med-tag{background:#6F8770;color:#fff}
+.it-tag{background:#013C58;color:#B8860B}
+
+/* tick */
+.tick-demo{list-style:none}
+.tick-demo li{display:flex;gap:10px;padding:6px 0;font-size:14px;color:var(--text-soft)}
+.tick-demo li::before{content:'✓';color:#6F8770;font-weight:800;flex-shrink:0}
+
+/* step */
+.step-demo{display:flex;gap:14px;align-items:flex-start}
+.sn-demo{width:44px;height:44px;border-radius:12px;background:var(--accent-tint);color:#2E3B4E;display:flex;align-items:center;justify-content:center;font-family:'Georgia',serif;font-size:20px;font-weight:700;flex-shrink:0}
+
+/* stat */
+.stat-demo{text-align:center}
+.stat-num{font-family:'Georgia',serif;font-size:48px;font-weight:700;color:#2E3B4E;line-height:1}
+.stat-lab{margin-top:8px;font-size:13px;color:var(--text-soft)}
+
+/* kicker */
+.kicker-demo{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6F8770}
+.kicker-it{color:#013C58}
+
+/* section backgrounds */
+.bg-swatch{height:80px;border-radius:var(--radius);border:1px solid var(--line);margin-bottom:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600}
+
+/* marquee preview */
+.marquee-demo{background:#2E3B4E;border-radius:var(--radius);padding:16px 20px;display:flex;gap:10px;flex-wrap:wrap}
+.marquee-item-demo{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid rgba(255,255,255,.18);border-radius:100px;font-size:14px;font-weight:700;color:#fff}
+.marquee-item-demo::before{content:'';width:6px;height:6px;border-radius:50%;background:#6F8770;flex-shrink:0}
+
+/* ─── § 6 Iconographie ───────────────────────────────── */
+.icon-box{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.icon-box .ic{font-size:28px}
+.icon-box span{font-size:12px;color:var(--text-mute)}
+
+/* ─── § 7 Lockup texte ───────────────────────────────── */
+.lockup-block{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 28px;margin-bottom:12px;
+}
+.lockup-text{font-family:'Georgia',serif;font-size:22px;font-weight:600;color:#2E3B4E;line-height:1.3}
+.lockup-text .dot{color:#6F8770}
+.lockup-text .sep{color:#6F8770;font-weight:700}
+.lockup-context{margin-top:8px;font-size:13px;color:var(--text-mute)}
+
+/* ─── § 8 Thème IT ───────────────────────────────────── */
+.it-palette{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:700px){.it-palette{grid-template-columns:1fr 1fr}}
+
+/* ─── § 9 Signatures / supports ─────────────────────── */
+.sig-block{background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;font-family:Arial,sans-serif;font-size:14px;color:#2A2620;line-height:1.7}
+.sig-name{font-weight:700;font-size:15px}
+.sig-brand{font-weight:700;color:#2E3B4E}
+.sig-sep{color:#6F8770;font-weight:700}
+
+/* ─── Footer ─────────────────────────────────────────── */
+.doc-footer{
+  background:var(--primary-deep);color:rgba(255,255,255,.55);
+  text-align:center;padding:32px 24px;font-size:13px;margin-top:72px;
+}
+.doc-footer b{color:rgba(255,255,255,.85)}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ COVER ═══════════════════ -->
+<div class="cover">
+  <img class="cover-logo" src="assets/logo-salverys-blanc.svg" alt="Salverys" />
+  <h1>Charte graphique<br><span>Salverys</span></h1>
+  <p>Document de référence — identité visuelle, composants & règles d'usage</p>
+  <div class="cover-meta">
+    <div><b>Version</b>1.0</div>
+    <div><b>Date</b>Mai 2026</div>
+    <div><b>Statut</b>Production</div>
+    <div><b>Marque</b>Salverys (unique)</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ NAV INTERNE ═══════════════════ -->
+<nav class="sidenav">
+  <ul>
+    <li><a href="#logo">1. Logo</a></li>
+    <li><a href="#couleurs">2. Couleurs</a></li>
+    <li><a href="#typo">3. Typographie</a></li>
+    <li><a href="#espacement">4. Espacement</a></li>
+    <li><a href="#composants">5. Composants</a></li>
+    <li><a href="#icones">6. Iconographie</a></li>
+    <li><a href="#lockup">7. Lockup texte</a></li>
+    <li><a href="#theme-it">8. Thème IT</a></li>
+    <li><a href="#supports">9. Supports off-site</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════ 1. LOGO ═══════════════════ -->
+<section id="logo" class="chapter">
+<div class="wrap">
+  <div class="chapter-head">
+    <div class="chapter-num">01</div>
+    <h2>Logo</h2>
+    <p>Un seul logo, pictogramme « casque-caducée » + wordmark Salverys. Deux variantes chromatiques (médical / IT) et deux variantes de contraste (sombre / clair).</p>
+  </div>
+
+  <!-- Variantes principales -->
+  <h3 style="font-size:16px;font-weight:700;color:var(--primary);margin-bottom:16px">Variantes principales</h3>
+  <div class="logo-grid" style="margin-bottom:40px">
+    <div>
+      <div class="logo-stage light">
+        <img src="assets/logo-salverys.svg" alt="Logo Salverys — thème médical, fond clair" />
+      </div>
+      <div class="logo-label">Médical — fond clair <span class="tag tag-primary" style="margin-left:6px">Principal</span></div>
+      <div class="logo-sublabel">assets/logo-salverys.svg</div>
+    </div>
+    <div>
+      <div class="logo-stage dark">
+        <img src="assets/logo-salverys-blanc.svg" alt="Logo Salverys — blanc, fond sombre" />
+      </div>
+      <div class="logo-label">Médical — fond sombre</div>
+      <div class="logo-sublabel">assets/logo-salverys-blanc.svg</div>
+    </div>
+    <div>
+      <div class="logo-stage light" style="background:#F5EDD6">
+        <img src="assets/logo-salverys-it.svg" alt="Logo Salverys — thème IT, fond clair" />
+      </div>
+      <div class="logo-label">IT — fond clair <span class="tag tag-it" style="margin-left:6px">Secondaire</span></div>
+      <div class="logo-sublabel">assets/logo-salverys-it.svg</div>
+    </div>
+    <div>
+      <div class="logo-stage navy">
+        <img src="assets/logo-salverys-blanc-it.svg" alt="Logo Salverys — IT blanc, fond navy" />
+      </div>
+      <div class="logo-label">IT — fond sombre</div>
+      <div class="logo-sublabel">assets/logo-salverys-blanc-it.svg</div>
+    </div>
+  </div>
+
+  <!-- Formats disponibles -->
+  <h3 style="font-size:16px;font-weight:700;color:var(--primary);margin-bottom:16px">Formats disponibles</h3>
+  <div class="card" style="margin-bottom:40px">
+    <table>
+      <thead><tr><th>Fichier</th><th>Format</th><th>Dimensions natives</th><th>Usage recommandé</th></tr></thead>
+      <tbody>
+        <tr><td><span class="mono">logo-salverys.svg</span></td><td>SVG vectoriel</td><td>765 × 195 px (viewBox)</td><td>Web, impression, toutes tailles</td></tr>
+        <tr><td><span class="mono">logo-salverys.png</span></td><td>PNG RGBA</td><td>3 060 × 780 px (HD)</td><td>Supports impression, présentations</td></tr>
+        <tr><td><span class="mono">logo-salverys-it.svg</span></td><td>SVG vectoriel</td><td>765 × 195 px</td><td>Pages & supports IT uniquement</td></tr>
+        <tr><td><span class="mono">logo-salverys-blanc.svg</span></td><td>SVG vectoriel</td><td>765 × 195 px</td><td>Fond sombre (footer, aplat navy)</td></tr>
+        <tr><td><span class="mono">logo-salverys-blanc-it.svg</span></td><td>SVG vectoriel</td><td>765 × 195 px</td><td>Footer page IT</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Zone d'exclusion -->
+  <h3 style="font-size:16px;font-weight:700;color:var(--primary);margin-bottom:16px">Zone d'exclusion</h3>
+  <div class="grid2" style="margin-bottom:40px;align-items:center">
+    <div>
+      <div style="text-align:center">
+        <div class="excl-wrap">
+          <img src="assets/logo-salverys.svg" alt="" />
+          <div class="excl-line-h top"></div>
+          <div class="excl-line-h bot"></div>
+          <div class="excl-line-v lft"></div>
+          <div class="excl-line-v rgt"></div>
+        </div>
+        <p style="font-size:12px;color:var(--text-mute);margin-top:10px">Marge minimum = hauteur du point « . » du logotype</p>
+      </div>
+    </div>
+    <div>
+      <div class="rule do"><span class="rule-icon">✓</span>Respecter une zone vide autour du logo égale à la hauteur du point de marque</div>
+      <div class="rule dont"><span class="rule-icon">✗</span>Ne jamais coller le logo contre un bord ou un autre élément graphique</div>
+      <div class="rule dont"><span class="rule-icon">✗</span>Ne jamais déformer, étirer ou modifier les proportions (ratio 765:195 verrouillé)</div>
+      <div class="rule dont"><span class="rule-icon">✗</span>Ne jamais recréer le logo en texte ou changer sa couleur manuellement</div>
+      <div class="rule dont"><span class="rule-icon">✗</span>Ne jamais utiliser le logo médical (sauge) sur des supports IT, et inversement</div>
+    </div>
+  </div>
+
+  <!-- Taille minimale -->
+  <h3 style="font-size:16px;font-weight:700;color:var(--primary);margin-bottom:16px">Taille minimale</h3>
+  <div class="grid3" style="margin-bottom:8px">
+    <div class="card" style="text-align:center">
+      <div class="label">Web — nav</div>
+      <img src="assets/logo-salverys.svg" alt="" style="height:40px;width:auto;margin:12px auto" />
+      <div class="value">40 px de hauteur</div>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="label">Web — footer</div>
+      <img src="assets/logo-salverys.svg" alt="" style="height:36px;width:auto;margin:12px auto" />
+      <div class="value">36 px de hauteur</div>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="label">Minimum absolu</div>
+      <img src="assets/logo-salverys.svg" alt="" style="height:24px;width:auto;margin:12px auto" />
+      <div class="value">24 px — en dessous : wordmark seul</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════ 2. COULEURS ═══════════════════ -->
+<section id="couleurs" class="chapter">
+<div class="wrap">
+  <div class="chapter-head">
+    <div class="chapter-num">02</div>
+    <h2>Palette de couleurs</h2>
+    <p>Thème médical (défaut) = bleu profond + sauge. Thème IT (secondaire, classe <span class="mono">.theme-it</span>) = navy + doré profond. Les deux thèmes partagent les neutres.</p>
+  </div>
+
+  <!-- Thème médical -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:20px;text-transform:uppercase;letter-spacing:.06em;font-size:13px">Thème principal — Médical</h3>
+  <div class="grid4" style="margin-bottom:40px">
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#2E3B4E"><span class="swatch-hex" style="color:#fff">#2E3B4E</span></div>
+      <div class="swatch-info"><div class="swatch-name">Bleu profond</div><div class="swatch-role">Couleur primaire — textes, fonds de section</div><div class="swatch-var">--primary</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#222C3B"><span class="swatch-hex" style="color:#fff">#222C3B</span></div>
+      <div class="swatch-info"><div class="swatch-name">Bleu nuit</div><div class="swatch-role">Footer, fonds profonds</div><div class="swatch-var">--primary-deep</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#6F8770"><span class="swatch-hex" style="color:#fff">#6F8770</span></div>
+      <div class="swatch-info"><div class="swatch-name">Sauge</div><div class="swatch-role">Accent principal — CTA, checks, soulignements</div><div class="swatch-var">--accent</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#C5D2C5"><span class="swatch-hex" style="color:#fff">#C5D2C5</span></div>
+      <div class="swatch-info"><div class="swatch-name">Sauge doux</div><div class="swatch-role">Bordures, éléments secondaires</div><div class="swatch-var">--accent-soft</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#EAF0EA"><span class="swatch-hex" style="color:#2E3B4E">#EAF0EA</span></div>
+      <div class="swatch-info"><div class="swatch-name">Sauge teinté</div><div class="swatch-role">Fonds d'eyebrow, badges, tints</div><div class="swatch-var">--accent-tint</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#B89968"><span class="swatch-hex" style="color:#fff">#B89968</span></div>
+      <div class="swatch-info"><div class="swatch-name">Or chaud</div><div class="swatch-role">Badges "recommandé", accents décoratifs</div><div class="swatch-var">--gold</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#F6F2EA"><span class="swatch-hex" style="color:#2E3B4E">#F6F2EA</span></div>
+      <div class="swatch-info"><div class="swatch-name">Greige</div><div class="swatch-role">Fond doux, texte sur aplat d'accent</div><div class="swatch-var">--bg-soft</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#FFFFFF;border:1px solid #E7DFD1"><span class="swatch-hex" style="color:#2E3B4E">#FFFFFF</span></div>
+      <div class="swatch-info"><div class="swatch-name">Blanc</div><div class="swatch-role">Fond principal des pages</div><div class="swatch-var">--bg</div></div>
+    </div>
+  </div>
+
+  <!-- Neutres -->
+  <h3 style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:20px;text-transform:uppercase;letter-spacing:.06em">Neutres partagés</h3>
+  <div class="grid4" style="margin-bottom:40px">
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#2A2620"><span class="swatch-hex" style="color:#fff">#2A2620</span></div>
+      <div class="swatch-info"><div class="swatch-name">Encre</div><div class="swatch-role">Corps de texte principal</div><div class="swatch-var">--text</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#5C5448"><span class="swatch-hex" style="color:#fff">#5C5448</span></div>
+      <div class="swatch-info"><div class="swatch-name">Texte doux</div><div class="swatch-role">Sous-titres, descriptions</div><div class="swatch-var">--text-soft</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#8A8275"><span class="swatch-hex" style="color:#fff">#8A8275</span></div>
+      <div class="swatch-info"><div class="swatch-name">Texte muet</div><div class="swatch-role">Labels, mentions légales</div><div class="swatch-var">--text-mute</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#E7DFD1"><span class="swatch-hex" style="color:#2E3B4E">#E7DFD1</span></div>
+      <div class="swatch-info"><div class="swatch-name">Ligne</div><div class="swatch-role">Séparateurs, bordures de cartes</div><div class="swatch-var">--line</div></div>
+    </div>
+  </div>
+
+  <!-- États fonctionnels -->
+  <h3 style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:20px;text-transform:uppercase;letter-spacing:.06em">États fonctionnels</h3>
+  <div class="grid4" style="margin-bottom:40px">
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#B6604D"><span class="swatch-hex" style="color:#fff">#B6604D</span></div>
+      <div class="swatch-info"><div class="swatch-name">Danger / Erreur</div><div class="swatch-role">Alertes, prix barrés</div><div class="swatch-var">--danger</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#6F8770"><span class="swatch-hex" style="color:#fff">#6F8770</span></div>
+      <div class="swatch-info"><div class="swatch-name">OK / Succès</div><div class="swatch-role">Indicateurs positifs (= accent)</div><div class="swatch-var">--ok</div></div>
+    </div>
+  </div>
+
+  <!-- Règle lisibilité -->
+  <h3 style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:20px;text-transform:uppercase;letter-spacing:.06em">Règle de lisibilité — texte sur aplat</h3>
+  <div class="grid2" style="margin-bottom:24px">
+    <div>
+      <div class="contrast-row">
+        <div class="contrast-bg" style="background:#2E3B4E">
+          <span style="color:#ffffff;font-weight:700">Aa</span>
+          <span style="color:rgba(255,255,255,.7);font-size:13px">Texte blanc sur --primary</span>
+        </div>
+        <div style="padding:12px 14px;background:#f0f0f0;display:flex;align-items:center;gap:6px;font-size:13px">
+          <span class="contrast-ratio contrast-pass">8.6:1 ✓</span>
+        </div>
+      </div>
+      <div class="contrast-row">
+        <div class="contrast-bg" style="background:#6F8770">
+          <span style="color:#F6F2EA;font-weight:700">Aa</span>
+          <span style="color:rgba(246,242,234,.8);font-size:13px">Greige #F6F2EA sur sauge</span>
+        </div>
+        <div style="padding:12px 14px;background:#f0f0f0;display:flex;align-items:center;gap:6px;font-size:13px">
+          <span class="contrast-ratio contrast-pass">4.6:1 ✓</span>
+        </div>
+      </div>
+      <div class="contrast-row">
+        <div class="contrast-bg" style="background:#B8860B">
+          <span style="color:#F6F2EA;font-weight:700">Aa</span>
+          <span style="color:rgba(246,242,234,.8);font-size:13px">Greige #F6F2EA sur doré profond</span>
+        </div>
+        <div style="padding:12px 14px;background:#f0f0f0;display:flex;align-items:center;gap:6px;font-size:13px">
+          <span class="contrast-ratio contrast-pass">4.5:1 ✓</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="rule do"><span class="rule-icon">✓</span>Texte blanc sur <span class="mono">#2E3B4E</span> ou <span class="mono">#222C3B</span></div>
+      <div class="rule do"><span class="rule-icon">✓</span>Texte <span class="mono">#F6F2EA</span> (greige) sur aplat sauge ou doré — seule combinaison valide</div>
+      <div class="rule dont"><span class="rule-icon">✗</span>Texte noir sur sauge ou doré</div>
+      <div class="rule dont"><span class="rule-icon">✗</span>Texte blanc sur greige <span class="mono">#F6F2EA</span></div>
+      <div class="rule dont"><span class="rule-icon">✗</span>Combiner les accents sauge et doré sur un même composant</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════ 3. TYPOGRAPHIE ═══════════════════ -->
+<section id="typo" class="chapter">
+<div class="wrap">
+  <div class="chapter-head">
+    <div class="chapter-num">03</div>
+    <h2>Typographie</h2>
+    <p>Deux familles : <strong>Georgia</strong> (sérif) pour les titres — confiance, ancrage — et <strong>Inter</strong> (sans-sérif) pour les corps et UI. Le thème IT utilise Inter exclusivement (plus technique, moins institutionnel).</p>
+  </div>
+
+  <!-- Familles -->
+  <div class="grid2" style="margin-bottom:40px">
+    <div class="card">
+      <div class="label">Titres — Thème médical</div>
+      <div style="font-family:'Georgia',serif;font-size:36px;font-weight:600;color:var(--primary);margin:12px 0;letter-spacing:-.01em">Georgia</div>
+      <div style="font-family:'Georgia',serif;font-size:16px;color:var(--text-soft);margin-bottom:16px;font-style:italic">Regular 400 · Bold 700</div>
+      <div class="rule do" style="margin-bottom:0"><span class="rule-icon">✓</span>H1, H2, H3, prix, chiffres-clés, wordmark texte</div>
+    </div>
+    <div class="card">
+      <div class="label">Corps & UI — Tous thèmes</div>
+      <div style="font-family:'Inter',sans-serif;font-size:36px;font-weight:700;color:var(--primary);margin:12px 0;letter-spacing:-.02em">Inter</div>
+      <div style="font-family:'Inter',sans-serif;font-size:16px;color:var(--text-soft);margin-bottom:16px">400 · 500 · 600 · 700 · 800</div>
+      <div class="rule do" style="margin-bottom:0"><span class="rule-icon">✓</span>Corps, nav, boutons, labels, eyebrow. Tous titres en thème IT.</div>
+    </div>
+  </div>
+
+  <!-- Échelle typographique -->
+  <h3 style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em">Échelle typographique (site)</h3>
+  <div class="card" style="margin-bottom:40px">
+    <table class="typo-scale">
+      <thead><tr><th>Nom</th><th>Taille</th><th>Graisse</th><th>Famille</th><th>Interligne</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td>H1 Hero</td><td>clamp(38px, 5.4vw, 62px)</td><td>600</td><td>Georgia</td><td>1.05</td><td>Titre principal de page</td></tr>
+        <tr><td>H2 Section</td><td>clamp(28px, 3.6vw, 40px)</td><td>600</td><td>Georgia</td><td>1.15</td><td>Titres de sections</td></tr>
+        <tr><td>H3 Feature</td><td>27px</td><td>600</td><td>Georgia</td><td>1.3</td><td>Titres zigzag, cartes</td></tr>
+        <tr><td>H4 Step</td><td>17px</td><td>700</td><td>Inter</td><td>1.4</td><td>Étapes, sous-titres</td></tr>
+        <tr><td>Lead</td><td>19px</td><td>400</td><td>Inter</td><td>1.55</td><td>Paragraphe d'accroche</td></tr>
+        <tr><td>Body</td><td>16px</td><td>400</td><td>Inter</td><td>1.55</td><td>Corps de texte courant</td></tr>
+        <tr><td>Small</td><td>14–14.5px</td><td>400–600</td><td>Inter</td><td>1.5</td><td>Descriptions secondaires</td></tr>
+        <tr><td>Label / Kicker</td><td>12–12.5px</td><td>700–800</td><td>Inter</td><td>—</td><td>Étiquettes, eyebrow, badges</td></tr>
+        <tr><td>Stat chiffre</td><td>clamp(40px, 5vw, 56px)</td><td>700</td><td>Georgia</td><td>1</td><td>Chiffres clés, prix</td></tr>
+        <tr><td>Prix simulateur</td><td>56px</td><td>700</td><td>Georgia</td><td>1</td><td>Résultat simulateur</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Spécimens -->
+  <h3 style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em">Spécimens</h3>
+  <div class="type-specimen">
+    <div style="font-family:'Georgia',serif;font-size:clamp(32px,5vw,54px);font-weight:600;color:#2E3B4E;letter-spacing:-.02em;line-height:1.08">Votre secrétariat médical<br>externalisé, <span style="color:#6F8770">sans contrainte</span></div>
+    <div style="margin-top:8px;font-size:13px;color:var(--text-mute)">H1 Hero — Georgia 600 — thème médical</div>
+  </div>
+  <div class="type-specimen" style="margin-top:16px">
+    <div style="font-family:'Georgia',serif;font-size:clamp(24px,3vw,36px);font-weight:600;color:#2E3B4E;letter-spacing:-.01em">Pourquoi Salverys ?</div>
+    <div style="margin-top:8px;font-size:13px;color:var(--text-mute)">H2 Section — Georgia 600</div>
+  </div>
+  <div class="type-specimen" style="margin-top:16px">
+    <div style="font-family:'Inter',sans-serif;font-size:19px;color:#5C5448;max-width:580px;line-height:1.55">Agenda médical géré 24/7, en français, depuis Antananarivo — 40 % moins cher qu'un prestataire hexagonal, avec la même qualité de service.</div>
+    <div style="margin-top:8px;font-size:13px;color:var(--text-mute)">Lead — Inter 400 19px</div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════ 4. ESPACEMENT ═══════════════════ -->
+<section id="espacement" class="chapter">
+<div class="wrap">
+  <div class="chapter-head">
+    <div class="chapter-num">04</div>
+    <h2>Espacement & grille</h2>
+    <p>Système basé sur un multiple de 4 px. Conteneur max : 1 180 px avec padding latéral de 24 px.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="label">Échelle d'espacement</div>
+      <div style="margin-top:16px">
+        <div class="space-row"><div class="space-bar" style="width:4px"></div><span class="space-label">4px</span><span class="space-desc">Micro — gap interne d'icône</span></div>
+        <div class="space-row"><div class="space-bar" style="width:8px"></div><span class="space-label">8px</span><span class="space-desc">Très petit — gap de pill</span></div>
+        <div class="space-row"><div class="space-bar" style="width:12px"></div><span class="space-label">12px</span><span class="space-desc">Petit — padding badge/label</span></div>
+        <div class="space-row"><div class="space-bar" style="width:16px"></div><span class="space-label">16px</span><span class="space-desc">Base — gap de composant</span></div>
+        <div class="space-row"><div class="space-bar" style="width:24px"></div><span class="space-label">24px</span><span class="space-desc">Moyen — padding card, gap nav</span></div>
+        <div class="space-row"><div class="space-bar" style="width:32px"></div><span class="space-label">32px</span><span class="space-desc">Large — padding card desktop</span></div>
+        <div class="space-row"><div class="space-bar" style="width:56px"></div><span class="space-label">56px</span><span class="space-desc">Section — gap feature-row</span></div>
+        <div class="space-row"><div class="space-bar" style="width:72px"></div><span class="space-label">72px</span><span class="space-desc">Section — padding vertical</span></div>
+        <div class="space-row"><div class="space-bar" style="width:92px"></div><span class="space-label">92px</span><span class="space-desc">Maxi — sections principales</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">Rayons de bordure</div>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:64px;height:32px;background:var(--accent-tint);border-radius:4px;flex-shrink:0"></div>
+          <span class="space-desc"><span class="mono">4px</span> — micro éléments (lignes, sous-textes)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:64px;height:32px;background:var(--accent-tint);border-radius:8px;flex-shrink:0"></div>
+          <span class="space-desc"><span class="mono">8px</span> — éléments inline</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:64px;height:32px;background:var(--accent-tint);border-radius:12px;flex-shrink:0"></div>
+          <span class="space-desc"><span class="mono">12px</span> — cartes internes, steps</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:64px;height:32px;background:var(--accent-tint);border-radius:16px;flex-shrink:0"></div>
+          <span class="space-desc"><span class="mono">16px</span> — <span class="mono">--radius</span> — cartes standard</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:64px;height:32px;background:var(--accent-tint);border-radius:26px;flex-shrink:0"></div>
+          <span class="space-desc"><span class="mono">26px</span> — <span class="mono">--radius-lg</span> — grandes cartes</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:64px;height:32px;background:var(--accent-tint);border-radius:100px;flex-shrink:0"></div>
+          <span class="space-desc"><span class="mono">100px</span> — <span class="mono">--radius-pill</span> — boutons, pills</span>
+        </div>
+      </div>
+      <div style="margin-top:24px">
+        <div class="label">Breakpoints</div>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;font-size:13px">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line-soft)"><span class="mono">≤780px</span><span>Mobile — burger, stack</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line-soft)"><span class="mono">≤820px</span><span>Stats 2 colonnes</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line-soft)"><span class="mono">≤880px</span><span>Features / Steps stack</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line-soft)"><span class="mono">≤900px</span><span>Cards 1 colonne</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0"><span class="mono">≤920px</span><span>Hero stack 1 colonne</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════ 5. COMPOSANTS ═══════════════════ -->
+<section id="composants" class="chapter">
+<div class="wrap">
+  <div class="chapter-head">
+    <div class="chapter-num">05</div>
+    <h2>Bibliothèque de composants</h2>
+    <p>Tous les composants du design system, dans leur état thème médical (défaut) et leur correspondant IT si applicable.</p>
+  </div>
+
+  <!-- Boutons -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Boutons</h3>
+  <div class="grid2" style="margin-bottom:32px">
+    <div>
+      <div class="label" style="margin-bottom:12px">Thème médical</div>
+      <div class="comp-stage" style="flex-direction:column;align-items:flex-start;gap:12px">
+        <button class="btn btn-primary">Réserver un appel <span>→</span></button>
+        <button class="btn btn-outline">En savoir plus <span>→</span></button>
+        <button class="btn btn-ghost" style="background:#2E3B4E">Voir les tarifs <span>→</span></button>
+      </div>
+    </div>
+    <div>
+      <div class="label" style="margin-bottom:12px">Thème IT</div>
+      <div class="comp-stage navy" style="flex-direction:column;align-items:flex-start;gap:12px">
+        <button class="btn btn-it-primary">Simuler mon équipe <span>→</span></button>
+        <button class="btn btn-it-outline" style="color:#B8860B;border-color:#B8860B">En savoir plus <span>→</span></button>
+        <button class="btn btn-ghost">Voir les tarifs <span>→</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:40px">
+    <table>
+      <thead><tr><th>Classe</th><th>Background</th><th>Texte</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td><span class="mono">.btn-primary</span></td><td><span class="mono">--cta</span> (#2E3B4E)</td><td><span class="mono">--cta-text</span> (#fff)</td><td>Action principale</td></tr>
+        <tr><td><span class="mono">.btn-outline</span></td><td>transparent</td><td><span class="mono">--primary</span></td><td>Action secondaire</td></tr>
+        <tr><td><span class="mono">.btn-ghost</span></td><td>rgba(255,255,255,.12)</td><td>#fff</td><td>Sur fond sombre uniquement</td></tr>
+        <tr><td>IT primary</td><td><span class="mono">--cta</span> (#B8860B)</td><td><span class="mono">--cta-text</span> (#F6F2EA)</td><td>CTA sur pages IT</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Nav -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Navigation</h3>
+  <div class="nav-preview" style="margin-bottom:12px">
+    <img src="assets/logo-salverys.svg" alt="Salverys" />
+    <div class="nav-preview-links">
+      <span>Télésecrétariat médical</span>
+      <a href="#">Support IT &amp; Applicatif</a>
+    </div>
+    <div class="nav-preview-cta">Réserver un appel</div>
+  </div>
+  <p style="font-size:13px;color:var(--text-mute);margin-bottom:32px">Hauteur fixe 70 px — sticky — fond blanc semi-transparent avec blur — CTA replié dans le burger sous 780 px</p>
+
+  <!-- Eyebrow -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Eyebrow / Kicker</h3>
+  <div class="comp-stage" style="margin-bottom:32px;flex-direction:column;gap:16px;align-items:flex-start">
+    <div>
+      <span class="eyebrow-demo"><span class="pulse-dot"></span>Télésecrétariat Médical</span>
+      <div style="margin-top:6px;font-size:12px;color:var(--text-mute)">Eyebrow — fond teinté sauge — thème médical</div>
+    </div>
+    <div>
+      <span class="eyebrow-demo eyebrow-it"><span class="pulse-dot"></span>Support IT &amp; Applicatif</span>
+      <div style="margin-top:6px;font-size:12px;color:var(--text-mute)">Eyebrow — fond teinté doré — thème IT</div>
+    </div>
+    <div>
+      <span class="kicker-demo">Nos métiers</span>
+      <div style="margin-top:6px;font-size:12px;color:var(--text-mute)">Kicker — texte seul — sauge / navy selon thème</div>
+    </div>
+  </div>
+
+  <!-- Pills -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Pills de sélection</h3>
+  <div class="comp-stage" style="margin-bottom:32px">
+    <div class="pill-demo">
+      <div class="pill active">Mensuel</div>
+      <div class="pill">Horaire</div>
+      <div class="pill">À l'interaction</div>
+    </div>
+  </div>
+
+  <!-- Cards métier -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Cartes métier</h3>
+  <div class="comp-stage" style="margin-bottom:32px;flex-wrap:wrap;gap:20px;align-items:flex-start">
+    <div class="ncard-demo">
+      <div class="ncard-demo-img">🩺</div>
+      <div class="ncard-demo-body">
+        <div style="margin-bottom:8px"><span class="ncard-tag-demo med-tag">Médical</span></div>
+        <h4>Télésecrétariat médical</h4>
+        <p>Gestion d'agenda, accueil téléphonique, prise de rendez-vous 24/7.</p>
+        <div class="ncard-link-demo">Découvrir → </div>
+      </div>
+    </div>
+    <div class="ncard-demo">
+      <div class="ncard-demo-img" style="background:linear-gradient(135deg,#013C58,#B8860B)">💻</div>
+      <div class="ncard-demo-body">
+        <div style="margin-bottom:8px"><span class="ncard-tag-demo it-tag">IT</span></div>
+        <h4>Support IT &amp; Applicatif</h4>
+        <p>Helpdesk N1, support SaaS, assistance technique francophone.</p>
+        <div class="ncard-link-demo" style="color:#013C58">Découvrir →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Cartes forfait</h3>
+  <div class="comp-stage" style="margin-bottom:32px;flex-wrap:wrap;gap:20px;align-items:flex-start">
+    <div class="pkg-demo">
+      <div class="pkg-demo-name">Starter</div>
+      <div style="font-size:12px;color:var(--text-mute);margin-bottom:12px">Moins de 20h/mois</div>
+      <div class="pkg-demo-price">490 <span style="font-size:16px;color:var(--text-mute);font-family:'Inter',sans-serif;font-weight:400">€/mois</span></div>
+    </div>
+    <div class="pkg-demo feat" style="margin-top:0">
+      <div class="pkg-badge-demo">Recommandé</div>
+      <div class="pkg-demo-name">Business</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:12px">20–40h/mois</div>
+      <div class="pkg-demo-price" style="color:#B89968">890 <span style="font-size:16px;color:rgba(255,255,255,.5);font-family:'Inter',sans-serif;font-weight:400">€/mois</span></div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Bande de statistiques</h3>
+  <div class="comp-stage" style="margin-bottom:32px;justify-content:space-around">
+    <div class="stat-demo"><div class="stat-num">40<span style="font-size:.5em">%</span></div><div class="stat-lab">d'économie vs France</div></div>
+    <div class="stat-demo"><div class="stat-num">10</div><div class="stat-lab">collaborateurs formés</div></div>
+    <div class="stat-demo"><div class="stat-num">8h–20h</div><div class="stat-lab">plage horaire couverte</div></div>
+    <div class="stat-demo"><div class="stat-num">J+15</div><div class="stat-lab">démarrage opérationnel</div></div>
+  </div>
+
+  <!-- Steps -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Étapes (steps)</h3>
+  <div class="comp-stage" style="margin-bottom:32px;gap:24px">
+    <div class="step-demo"><div class="sn-demo">1</div><div><div style="font-size:15px;font-weight:700;color:#2E3B4E;margin-bottom:4px">Appel de découverte</div><div style="font-size:13px;color:var(--text-soft)">30 min pour qualifier le besoin</div></div></div>
+    <div class="step-demo"><div class="sn-demo">2</div><div><div style="font-size:15px;font-weight:700;color:#2E3B4E;margin-bottom:4px">Proposition tarifée</div><div style="font-size:13px;color:var(--text-soft)">Sous 48h, sans engagement</div></div></div>
+    <div class="step-demo"><div class="sn-demo">3</div><div><div style="font-size:15px;font-weight:700;color:#2E3B4E;margin-bottom:4px">Onboarding J+15</div><div style="font-size:13px;color:var(--text-soft)">Formation équipe incluse</div></div></div>
+  </div>
+
+  <!-- Tick list -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Liste à coches</h3>
+  <div class="comp-stage" style="margin-bottom:32px">
+    <ul class="tick-demo">
+      <li>Prise en charge immédiate des appels entrants</li>
+      <li>Gestion d'agenda multi-praticiens</li>
+      <li>Compte-rendu quotidien par email</li>
+      <li>Confidentialité RGPD assurée</li>
+    </ul>
+  </div>
+
+  <!-- Marquee -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Bandeau défilant (marquee)</h3>
+  <div class="marquee-demo" style="margin-bottom:32px">
+    <div class="marquee-item-demo">Doctolib</div>
+    <div class="marquee-item-demo">Maiia</div>
+    <div class="marquee-item-demo">Outlook 365</div>
+    <div class="marquee-item-demo">Salesforce</div>
+    <div class="marquee-item-demo">Zendesk</div>
+    <div class="marquee-item-demo">HubSpot</div>
+  </div>
+
+  <!-- Fonds de section -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Fonds de section</h3>
+  <div class="grid3" style="margin-bottom:8px">
+    <div>
+      <div class="bg-swatch" style="background:#FFFFFF;border:1px solid var(--line)"><span style="color:#8A8275">--bg — blanc</span></div>
+      <div style="font-size:12px;color:var(--text-mute)"><span class="mono">.section</span> — défaut</div>
+    </div>
+    <div>
+      <div class="bg-swatch" style="background:#F6F2EA"><span style="color:#5C5448">--bg-soft — greige</span></div>
+      <div style="font-size:12px;color:var(--text-mute)"><span class="mono">.section.soft</span></div>
+    </div>
+    <div>
+      <div class="bg-swatch" style="background:#2E3B4E"><span style="color:rgba(255,255,255,.7)">--bg-deep — bleu profond</span></div>
+      <div style="font-size:12px;color:var(--text-mute)"><span class="mono">.section.deep</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════ 6. ICONOGRAPHIE ═══════════════════ -->
+<section id="icones" class="chapter">
+<div class="wrap">
+  <div class="chapter-head">
+    <div class="chapter-num">06</div>
+    <h2>Iconographie & ton</h2>
+    <p>Le site utilise des émojis et caractères Unicode comme icônes légères, sans dépendance à une librairie externe. Cohérence de registre : professionnel et chaleureux, jamais corporate froid.</p>
+  </div>
+
+  <div class="grid4" style="margin-bottom:32px">
+    <div class="icon-box"><div class="ic">🩺</div><span>Médical — santé</span></div>
+    <div class="icon-box"><div class="ic">📅</div><span>Agenda / planning</span></div>
+    <div class="icon-box"><div class="ic">📞</div><span>Appel / téléphonie</span></div>
+    <div class="icon-box"><div class="ic">💻</div><span>Support IT</span></div>
+    <div class="icon-box"><div class="ic">⚙️</div><span>Technique / config</span></div>
+    <div class="icon-box"><div class="ic">✓</div><span>Validation / tick</span></div>
+    <div class="icon-box"><div class="ic">→</div><span>Action / lien</span></div>
+    <div class="icon-box"><div class="ic">☰</div><span>Menu burger mobile</span></div>
+  </div>
+
+  <div class="rule do"><span class="rule-icon">✓</span>Ton : direct, rassurant, sans jargon. Toujours en français. Tutoiement possible sur les CTAs impactants uniquement.</div>
+  <div class="rule do"><span class="rule-icon">✓</span>Photographies : personnes réelles, sourire naturel, ambiance bureau moderne — pas de stock photo générique</div>
+  <div class="rule dont"><span class="rule-icon">✗</span>Pas d'illustrations vectorielles génériques (type undraw) — la marque mise sur la réalité des personnes</div>
+  <div class="rule dont"><span class="rule-icon">✗</span>Pas de flags nationalistes — préférer "francophone" à un drapeau français</div>
+</div>
+</section>
+
+<!-- ═══════════════════ 7. LOCKUP TEXTE ═══════════════════ -->
+<section id="lockup" class="chapter">
+<div class="wrap">
+  <div class="chapter-head">
+    <div class="chapter-num">07</div>
+    <h2>Lockup texte & naming</h2>
+    <p>Quand l'image logo n'est pas disponible (email texte, SMS, documents Word), on utilise le lockup typographique officiel.</p>
+  </div>
+
+  <h3 style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em">Formes officielles</h3>
+
+  <div class="lockup-block">
+    <div class="lockup-text">Salverys<span class="dot">.</span> — Télésecrétariat Médical <span class="sep">·</span> Support IT &amp; Applicatif</div>
+    <div class="lockup-context">Forme longue — site, page d'accueil, signature institutionnelle, cartes de visite</div>
+  </div>
+  <div class="lockup-block">
+    <div class="lockup-text">Salverys<span class="dot">.</span> — Télésecrétariat Médical</div>
+    <div class="lockup-context">Forme courte — cible santé : cabinets médicaux, cliniques, pharmacies</div>
+  </div>
+  <div class="lockup-block">
+    <div class="lockup-text">Salverys<span class="dot">.</span> — Support IT &amp; Applicatif</div>
+    <div class="lockup-context">Forme courte — cible éditeurs SaaS, DSI, helpdesk IT</div>
+  </div>
+
+  <div style="margin-top:32px">
+    <div class="rule do"><span class="rule-icon">✓</span>Le point final « . » fait partie du logotype — toujours présent après "Salverys"</div>
+    <div class="rule do"><span class="rule-icon">✓</span>Le descripteur s'écrit toujours <em>après</em> le nom, jamais à la place</div>
+    <div class="rule dont"><span class="rule-icon">✗</span>Ne jamais écrire « Salverys Médical » ou « Salverys IT » comme une marque autonome</div>
+    <div class="rule dont"><span class="rule-icon">✗</span>Ne jamais utiliser les anciens noms Nesvalo ou Vinlo dans un livrable client</div>
+    <div class="rule dont"><span class="rule-icon">✗</span>Ne jamais omettre le point de marque : « Salverys » sans « . » n'est pas le lockup officiel</div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════ 8. THÈME IT ═══════════════════ -->
+<section id="theme-it" class="chapter">
+<div class="wrap">
+  <div class="chapter-head">
+    <div class="chapter-num">08</div>
+    <h2>Thème IT — variante secondaire</h2>
+    <p>Appliqué via la classe <span class="mono">.theme-it</span> sur <span class="mono">&lt;body&gt;</span>. Remplace l'accent sauge par le doré profond et le primaire par le navy. Typographie Inter exclusive.</p>
+  </div>
+
+  <div class="it-palette" style="margin-bottom:32px">
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#013C58"><span class="swatch-hex" style="color:#fff">#013C58</span></div>
+      <div class="swatch-info"><div class="swatch-name">Navy</div><div class="swatch-role">Primaire IT</div><div class="swatch-var">--primary (IT)</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#012C42"><span class="swatch-hex" style="color:#fff">#012C42</span></div>
+      <div class="swatch-info"><div class="swatch-name">Navy profond</div><div class="swatch-role">Footer IT</div><div class="swatch-var">--primary-deep (IT)</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#B8860B"><span class="swatch-hex" style="color:#fff">#B8860B</span></div>
+      <div class="swatch-info"><div class="swatch-name">Doré profond</div><div class="swatch-role">Accent IT — CTA, checks, accents</div><div class="swatch-var">--accent (IT)</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#F5EDD6"><span class="swatch-hex" style="color:#2E3B4E">#F5EDD6</span></div>
+      <div class="swatch-info"><div class="swatch-name">Doré teinté</div><div class="swatch-role">Fonds badges IT</div><div class="swatch-var">--accent-tint (IT)</div></div>
+    </div>
+    <div class="swatch-block">
+      <div class="swatch-color" style="background:#F6F2EA"><span class="swatch-hex" style="color:#2E3B4E">#F6F2EA</span></div>
+      <div class="swatch-info"><div class="swatch-name">Crème</div><div class="swatch-role">Texte sur CTA doré</div><div class="swatch-var">--cta-text (IT)</div></div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="label">Overrides clés</div>
+      <table style="margin-top:12px">
+        <thead><tr><th>Variable</th><th>Thème médical</th><th>Thème IT</th></tr></thead>
+        <tbody>
+          <tr><td><span class="mono">--primary</span></td><td>#2E3B4E</td><td>#013C58</td></tr>
+          <tr><td><span class="mono">--accent</span></td><td>#6F8770</td><td>#B8860B</td></tr>
+          <tr><td><span class="mono">--cta</span></td><td>#2E3B4E</td><td>#B8860B</td></tr>
+          <tr><td><span class="mono">--cta-text</span></td><td>#FFFFFF</td><td>#F6F2EA</td></tr>
+          <tr><td>H1/H2/H3</td><td>Georgia serif</td><td>Inter 800</td></tr>
+          <tr><td>Kicker</td><td>color: --accent</td><td>color: --primary</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="label">Règles d'application</div>
+      <div style="margin-top:12px">
+        <div class="rule do"><span class="rule-icon">✓</span>Utiliser <span class="mono">.theme-it</span> sur <span class="mono">&lt;body&gt;</span> des pages IT uniquement</div>
+        <div class="rule do"><span class="rule-icon">✓</span>Logo : utiliser <span class="mono">logo-salverys-it.svg</span> en nav et <span class="mono">logo-salverys-blanc-it.svg</span> en footer</div>
+        <div class="rule dont"><span class="rule-icon">✗</span>Ne jamais mélanger accent sauge et accent doré sur la même page</div>
+        <div class="rule dont"><span class="rule-icon">✗</span>Ne pas appliquer <span class="mono">.theme-it</span> sur les pages santé</div>
+        <div class="rule dont"><span class="rule-icon">✗</span>Le thème IT est <em>secondaire</em> : il ne remplace pas le thème médical comme identité principale</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════ 9. SUPPORTS OFF-SITE ═══════════════════ -->
+<section id="supports" class="chapter">
+<div class="wrap">
+  <div class="chapter-head">
+    <div class="chapter-num">09</div>
+    <h2>Supports off-site</h2>
+    <p>Gabarits prêts à copier pour les signatures, propositions et cartes de visite.</p>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Signature email — Cible santé</h3>
+  <div class="sig-block" style="margin-bottom:24px">
+    <div class="sig-name">Prénom NOM</div>
+    <div>Chargé(e) de compte</div>
+    <div style="margin-top:6px"><span class="sig-brand">Salverys.</span> — <span>Télésecrétariat Médical</span></div>
+    <div style="margin-top:4px">contact@salverys.fr &nbsp;·&nbsp; salverys.fr</div>
+    <div>Antananarivo → France &nbsp;·&nbsp; 8h–20h</div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Signature email — Cible IT / SaaS</h3>
+  <div class="sig-block" style="margin-bottom:32px">
+    <div class="sig-name">Prénom NOM</div>
+    <div>Chargé(e) de compte</div>
+    <div style="margin-top:6px"><span class="sig-brand">Salverys.</span> — <span>Support IT &amp; Applicatif</span></div>
+    <div style="margin-top:4px">contact@salverys.fr &nbsp;·&nbsp; salverys.fr</div>
+    <div>Antananarivo → France &nbsp;·&nbsp; 8h–20h</div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">En-tête proposition commerciale</h3>
+  <div class="lockup-block" style="margin-bottom:24px">
+    <div class="lockup-text">Salverys<span class="dot">.</span> — Télésecrétariat Médical · Support IT &amp; Applicatif</div>
+    <div style="margin-top:6px;font-size:15px;color:var(--text-soft)">Proposition commerciale — [Nom du client] — [Date]</div>
+    <div class="lockup-context">Mono-cible : utiliser la forme courte correspondante</div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Carte de visite — recto</h3>
+  <div style="max-width:380px;background:#2E3B4E;border-radius:16px;padding:28px 32px;color:#fff;margin-bottom:32px">
+    <img src="assets/logo-salverys-blanc.svg" alt="Salverys" style="height:36px;width:auto;margin-bottom:20px" />
+    <div style="font-size:18px;font-weight:700;margin-bottom:4px">Prénom NOM</div>
+    <div style="font-size:14px;color:rgba(255,255,255,.7);margin-bottom:16px">Directeur(trice) de compte</div>
+    <div style="font-size:13px;color:var(--accent-soft);font-weight:600;letter-spacing:.02em">Télésecrétariat Médical · Support IT &amp; Applicatif</div>
+    <div style="margin-top:16px;font-size:13px;color:rgba(255,255,255,.6)">contact@salverys.fr<br>salverys.fr<br>Antananarivo, Madagascar</div>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px">Cold email Emelia — bloc signature</h3>
+  <div class="sig-block">
+    <div style="font-size:13px;color:var(--text-mute);margin-bottom:12px">— (séparateur)</div>
+    <div class="sig-name">Prénom NOM</div>
+    <div><span class="sig-brand">Salverys</span> &nbsp;|&nbsp; Télésecrétariat Médical francophone</div>
+    <div style="margin-top:4px">📞 [numéro] &nbsp;·&nbsp; 🌐 salverys.fr</div>
+    <div style="font-size:12px;color:var(--text-mute);margin-top:8px">BPO francophone depuis Antananarivo — équipe formée, fuseau compatible France</div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════ FOOTER DOC ═══════════════════ -->
+<div class="doc-footer">
+  <b>Salverys — Charte graphique v1.0</b> · Document interne de référence<br>
+  Toute décision visuelle ou de naming s'aligne sur ce document.<br>
+  <span style="margin-top:8px;display:block">Anciens noms (Nesvalo, Vinlo) — ne pas utiliser dans aucun livrable client.</span>
+</div>
+
+</body>
+</html>
