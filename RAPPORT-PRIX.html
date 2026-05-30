@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salverys — Rapport de refonte tarifaire</title>
+<style>
+  :root{
+    --bg:#FFFFFF; --bg-soft:#F6F2EA; --bg-deep:#2E3B4E; --ink:#20303F;
+    --text:#2A2620; --text-soft:#5C5448; --text-mute:#8A8275;
+    --line:#E7DFD1; --line-soft:#F0EADE;
+    --primary:#2E3B4E; --accent:#6F8770; --accent-tint:#EAF0EA;
+    --gold:#B89968; --danger:#B6604D; --ok:#6F8770;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);background:var(--bg-soft);line-height:1.6;font-size:16px}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header.hero{background:linear-gradient(135deg,var(--primary),var(--bg-deep));color:#fff;padding:54px 0 46px}
+  header.hero .wrap{display:block}
+  .kicker{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--accent-tint);opacity:.9}
+  h1{font-size:34px;line-height:1.15;margin:10px 0 12px;font-weight:700}
+  header.hero p{color:#E7E2D8;max-width:680px}
+  .meta{margin-top:18px;font-size:13px;color:#C9D2C9}
+  .badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+    padding:3px 10px;border-radius:999px;font-size:12px;margin-right:6px}
+  main{padding:36px 0 60px}
+  section{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin:18px 0;
+    box-shadow:0 1px 2px rgba(32,48,63,.04)}
+  h2{font-size:22px;color:var(--primary);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;
+    background:var(--accent-tint);color:var(--accent);font-size:15px;font-weight:700;flex:0 0 auto}
+  h3{font-size:16px;color:var(--ink);margin:18px 0 8px}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0 8px 22px}
+  li{margin:4px 0}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--bg-soft);color:var(--ink);font-weight:600}
+  td.num{text-align:right;white-space:nowrap}
+  .lead{font-size:17px;color:var(--text-soft)}
+  .pill{display:inline-block;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600}
+  .pill.pub{background:var(--accent-tint);color:var(--accent)}
+  .pill.int{background:#F3E7E3;color:var(--danger)}
+  .callout{border-left:4px solid var(--accent);background:var(--accent-tint);padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0}
+  .callout.warn{border-color:var(--gold);background:#FBF4E6}
+  .callout.ok{border-color:var(--ok);background:var(--accent-tint)}
+  .old{color:var(--danger);text-decoration:line-through}
+  .new{color:var(--ok);font-weight:700}
+  a{color:var(--accent);font-weight:600}
+  code{background:var(--bg-soft);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:13px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}h1{font-size:27px}}
+  footer{color:var(--text-mute);font-size:13px;text-align:center;padding:24px 0 40px}
+  .toc{font-size:14px;columns:2}
+  .toc a{display:block;margin:3px 0;font-weight:500}
+  @media(max-width:680px){.toc{columns:1}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Salverys · BPO francophone · Antananarivo → France</div>
+    <h1>Refonte de la grille tarifaire & du modèle d'offre</h1>
+    <p class="lead">Formalisation d'une source unique de prix, alignement de toute la copy commerciale, et arbitrage des décisions tarifaires implicites — calé sur le marché français 2025.</p>
+    <div class="meta">
+      <span class="badge">30 mai 2026</span>
+      <span class="badge">branche claude/salverys-pricing-strategy-ZMff3</span>
+      <span class="badge">non mergé dans main</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2><span class="n">↪</span>Sommaire</h2>
+    <nav class="toc">
+      <a href="#contexte">1. Contexte & problème</a>
+      <a href="#methode">2. Méthode & recherche marché</a>
+      <a href="#outils">3. Outils & repos GitHub de référence</a>
+      <a href="#decisions">4. Décisions tranchées</a>
+      <a href="#avant-apres">5. Avant / après par niche</a>
+      <a href="#rentabilite">6. Étude de rentabilité (1er mois -50 %)</a>
+      <a href="#grilles">7. Grilles (publique + interne)</a>
+      <a href="#facturation">8. Comparatif facturation</a>
+      <a href="#fichiers">9. Fichiers modifiés & suite</a>
+    </nav>
+  </section>
+
+  <section id="contexte">
+    <h2><span class="n">1</span>Contexte & problème</h2>
+    <p>Salverys n'avait <strong>aucune source unique de prix</strong> : les tarifs vivaient éparpillés dans les corps d'emails (<code>OUTREACH-*.md</code>), les objections du CRM, les deux simulateurs et la landing page. Trois faiblesses ressortaient :</p>
+    <ul>
+      <li><strong>Incohérence sur l'essai</strong> : « 15 jours gratuit » dans les emails/CRM vs « 7 jours » dans le simulateur/site.</li>
+      <li><strong>Benchmarks RH probablement hauts</strong> vs marché FR 2025 : « 35-45 k€/an » (secrétaire) et « 48-55 k€/an » (téléconseiller) — chiffres difficiles à défendre face à un prospect qui connaît ses coûts.</li>
+      <li><strong>Pilote gratuit coûteux</strong> à 10 agents, où la capacité est la ressource rare.</li>
+    </ul>
+    <p>Objectif : <strong>figer une grille défendable</strong>, lever les incohérences, et trancher les décisions implicites — sans construire d'outil maison (règle <em>SaaS-first</em>).</p>
+  </section>
+
+  <section id="methode">
+    <h2><span class="n">2</span>Méthode & recherche marché</h2>
+    <h3>Modèles de tarification BPO (état de l'art)</h3>
+    <p>Cinq grands modèles coexistent dans l'outsourcing centre d'appels :</p>
+    <table>
+      <tr><th>Modèle</th><th>Principe</th><th>Retenu par Salverys ?</th></tr>
+      <tr><td>ETP par position</td><td>Forfait mensuel par agent dédié</td><td>✅ <strong>n°1</strong> — 1 900-2 800 €/mois (cf. §7)</td></tr>
+      <tr><td>À l'heure</td><td>Taux horaire par agent</td><td>✅ n°2 — 12-15 €/h</td></tr>
+      <tr><td>À l'interaction</td><td>Par ticket / appel / chat</td><td>✅ n°3 — 2,5-4 €/ticket</td></tr>
+      <tr><td>À la minute</td><td>Temps d'interaction réel</td><td>non retenu</td></tr>
+      <tr><td>À l'outcome / hybride</td><td>Au résultat ou mix</td><td>non retenu</td></tr>
+    </table>
+    <p>Règle de choix : volume <strong>stable et élevé</strong> → usage à l'interaction ; volume <strong>imprévisible</strong> → ETP/heure pour garantir la couverture. La main-d'œuvre pèse <strong>60-75 %</strong> du coût.</p>
+
+    <h3>Marché français du télésecrétariat médical (2025)</h3>
+    <ul>
+      <li>Forfaits temps plein : <strong>300-900 €/mois</strong> · petits volumes : 70-200 €/mois.</li>
+      <li>À l'appel : <strong>1-2,50 €/appel</strong> traité.</li>
+      <li>Tendance 2025→2026 : <strong>+5 à 8 %</strong> sur les prix.</li>
+    </ul>
+    <div class="callout ok"><strong>Conclusion :</strong> la grille Salverys <strong>350 / 590 / 950 €</strong> est <strong>bien calée</strong> sur le marché — on la fige telle quelle (on retire juste « indicatifs à valider »).</div>
+
+    <h3>Repères RH France (côté employeur)</h3>
+    <table>
+      <tr><th>Poste</th><th>Salaire marché 2025</th><th>Coût employeur estimé</th></tr>
+      <tr><td>Secrétaire médicale</td><td>~1 925 €/brut/mois</td><td class="num">~33-40 k€/an tout compris</td></tr>
+      <tr><td>Téléconseiller CDI (CRC)</td><td>~21 900 €/brut/an</td><td class="num">~38-46 k€/an tout compris</td></tr>
+    </table>
+    <p>Méthode : brut × charges patronales (~+42 %) + poste de travail + formation + coût de turnover/recrutement amorti (turnover CRC ~25 %/an, recrutement 60-90 j).</p>
+  </section>
+
+  <section id="outils">
+    <h2><span class="n">3</span>Outils & repos GitHub de référence</h2>
+    <p>Pour outiller la démarche pricing (et rester <em>SaaS-first</em>), les ressources les plus utiles repérées :</p>
+    <table>
+      <tr><th>Ressource</th><th>Usage pour Salverys</th></tr>
+      <tr><td><a href="https://github.com/priceops/awesome-priceops">priceops/awesome-priceops</a></td><td>Bibliothèque de guides et méthodes de pricing — point de départ.</td></tr>
+      <tr><td><a href="https://github.com/isa-group/Pricing4SaaS">isa-group/Pricing4SaaS</a></td><td>Modélisation formelle de grilles SaaS (paliers, features) — utile pour structurer les forfaits.</td></tr>
+      <tr><td><a href="https://github.com/max-alletsee/pricesensitivitymeter">max-alletsee/pricesensitivitymeter</a> · <a href="https://github.com/vivianamarquez/Van-Westendorp-Price-Sensitivity-Meter">vivianamarquez/Van-Westendorp</a></td><td>Méthode <strong>Van Westendorp</strong> : fixer le prix psychologiquement acceptable via 4 questions clients. À utiliser quand on aura un panel de cabinets pour valider 350/590/950.</td></tr>
+      <tr><td><a href="https://github.com/flexprice/flexprice">flexprice/flexprice</a></td><td>Billing usage-based self-host — <em>à connaître mais non retenu</em> (règle SaaS-first : on n'auto-héberge pas l'encaissement).</td></tr>
+    </table>
+  </section>
+
+  <section id="decisions">
+    <h2><span class="n">4</span>Décisions tranchées</h2>
+    <table>
+      <tr><th>Sujet</th><th>Décision</th></tr>
+      <tr><td>Visibilité des prix</td><td><strong>Hybride</strong> : grille médical <span class="pill pub">publique</span>, grilles bailleurs & SaaS/helpdesk <span class="pill int">interne</span>.</td></tr>
+      <tr><td>Modèle médical</td><td>Forfait au volume <strong>conservé</strong> (350/590/950 + sur-devis), prix fermes. Pas de palier d'entrée bas.</td></tr>
+      <tr><td>Benchmarks RH</td><td><strong>Révisés à la baisse</strong> pour rester défendables (cf. §5).</td></tr>
+      <tr><td>Essai / pilote</td><td>« 15 j gratuit » → <strong>« 1er mois à -50 % »</strong> (validé par l'étude §6).</td></tr>
+      <tr><td>Contrats helpdesk</td><td>« 12-36 mois » → <strong>« dès 3 mois, puis 12 mois renouvelable »</strong> (moins de friction).</td></tr>
+      <tr><td>Priorités niches</td><td><strong>Support N1 SaaS & Helpdesk IT → priorité 2</strong> · Bailleurs & grandes structures → priorité 3.</td></tr>
+      <tr><td>Modèles de tarification</td><td>Par préférence : <strong>1) ETP par position · 2) à l'heure · 3) à l'interaction</strong>.</td></tr>
+      <tr><td>Go-to-market</td><td>Deux voies chiffrées : <strong>en direct</strong> (client final) et <strong>en marque blanche</strong> (sous-traitant d'un acteur établi, marge donneur d'ordre ~25-35 %).</td></tr>
+      <tr><td>Facturation</td><td><strong>Décision reportée</strong> — comparatif §8.</td></tr>
+    </table>
+  </section>
+
+  <section id="avant-apres">
+    <h2><span class="n">5</span>Avant / après par niche</h2>
+    <h3>Médical (priorité 1)</h3>
+    <table>
+      <tr><th>Élément</th><th>Avant</th><th>Après</th></tr>
+      <tr><td>Benchmark interne</td><td class="old">35-45 k€/an</td><td class="new">33-40 k€/an</td></tr>
+      <tr><td>Essai</td><td class="old">15 jours gratuit</td><td class="new">1er mois à -50 %</td></tr>
+      <tr><td>Grille</td><td class="old">« indicatifs à valider »</td><td class="new">prix fermes 350/590/950</td></tr>
+      <tr><td>Breakeven objection prix</td><td>30 €/RDV · 15 manqués · 450 €</td><td>conservé (cohérent, &gt; forfait 350 €)</td></tr>
+    </table>
+    <div class="callout"><strong>Deux go-to-market chiffrés.</strong> Les colonnes ci-dessous distinguent <strong>« en direct »</strong> (Salverys décroche le client final) et <strong>« en marque blanche »</strong> (Salverys sous-traite pour un acteur déjà établi, qui prend ~25-35 % de marge). En marque blanche, on capte moins par unité mais le coût d'acquisition est ~nul et le volume est apporté.</div>
+    <h3>Support N1 SaaS & Helpdesk IT (priorité 2)</h3>
+    <table>
+      <tr><th>Élément</th><th>Avant</th><th>Après — en direct</th><th>Après — marque blanche</th></tr>
+      <tr><td>ETP/position — N1 SaaS</td><td>non chiffré</td><td class="new">1 900-2 400 €/mois</td><td class="new">1 350-1 700 €/mois</td></tr>
+      <tr><td>ETP/position — Helpdesk ITIL</td><td>non chiffré</td><td class="new">2 200-2 800 €/mois</td><td class="new">1 550-2 000 €/mois</td></tr>
+      <tr><td>À l'heure</td><td>non chiffré</td><td class="new">12-15 €/h</td><td class="new">8-11 €/h</td></tr>
+      <tr><td>À l'interaction</td><td>non chiffré</td><td class="new">2,5-4 €/ticket</td><td class="new">1,8-2,8 €/ticket</td></tr>
+      <tr><td><strong>Benchmark interne</strong> (CDI FR chargé)</td><td class="old">48-55 k€/an</td><td colspan="2" class="new">38-46 k€/an ≈ 3 200-3 800 €/mois → cible -40 % en direct</td></tr>
+      <tr><td>Contrat</td><td class="old">12 à 36 mois</td><td colspan="2" class="new">dès 3 mois, puis 12 mois renouvelable</td></tr>
+    </table>
+    <h3>Bailleurs & grandes structures (priorité 3)</h3>
+    <table>
+      <tr><th>Élément</th><th>Avant</th><th>Après — en direct</th><th>Après — marque blanche</th></tr>
+      <tr><td>ETP / capacité réservée</td><td>capacité d'appoint (flou)</td><td class="new">1 800-3 500 €/mois</td><td class="new">1 300-2 500 €/mois</td></tr>
+      <tr><td>À l'appel traité</td><td>non chiffré</td><td class="new">1,20-1,80 €</td><td class="new">0,90-1,40 €</td></tr>
+      <tr><td>Benchmark téléconseiller</td><td class="old">48-55 k€/an</td><td colspan="2" class="new">38-46 k€/an</td></tr>
+      <tr><td>Pilote</td><td>sur 1 pic</td><td colspan="2">sur 1 pic, <strong>facturé</strong> (pas de gratuit)</td></tr>
+    </table>
+  </section>
+
+  <section id="rentabilite">
+    <h2><span class="n">6</span>Étude de rentabilité — 1er mois à -50 %</h2>
+    <p>À 10 agents, <strong>la capacité (agents + bande passante d'onboarding) est la ressource rare</strong>. La vraie question n'est pas « combien ça rapporte » mais « combien un essai gratuit nous coûte en capacité qu'on ne peut pas vendre ailleurs ».</p>
+    <h3>Hypothèses</h3>
+    <ul>
+      <li>Coût agent chargé (Madagascar, tout compris) : <strong>~700 €/mois</strong>.</li>
+      <li>1 télésecrétaire couvre <strong>~6 cabinets Essentiel</strong> ⇒ service <strong>~117 €/client/mois</strong>.</li>
+      <li>Setup/onboarding par client : <strong>~40 €</strong>. Forfait de référence : <strong>350 €</strong>.</li>
+    </ul>
+    <h3>Mois d'acquisition</h3>
+    <table>
+      <tr><th>Scénario</th><th>Revenu M1</th><th>Coût service+setup</th><th>Marge M1</th><th>Mois suivants</th></tr>
+      <tr><td>Essai 15 j gratuit</td><td class="num">0 €</td><td class="num">~98 €</td><td class="num" style="color:var(--danger)">−98 €</td><td class="num">+233 €/mois</td></tr>
+      <tr><td><strong>1er mois −50 %</strong></td><td class="num">175 €</td><td class="num">~157 €</td><td class="num" style="color:var(--ok)"><strong>+18 €</strong></td><td class="num">+233 €/mois</td></tr>
+    </table>
+    <p><strong>Sensibilité</strong> (cas pessimiste 1 agent = 4 cabinets ⇒ service ~175 €) : le -50 % tombe à ~−40 € une seule fois (négligeable) ; l'essai gratuit à −215 €.</p>
+    <div class="callout ok"><strong>Verdict : 1er mois -50 % validé.</strong> Mois d'acquisition passe de négatif à ~équilibre, la capacité rare est protégée, le message « sans risque » est préservé (demi-tarif, sans engagement), et l'engagement de paiement <strong>filtre les non-sérieux</strong> → meilleure conversion qu'un essai 100 % gratuit.</div>
+    <div class="callout warn"><strong>Garde-fou :</strong> si le taux réponse→souscription en cold s'effondre vs l'essai gratuit, repli sur « 7 jours offerts, périmètre limité » (qui lève aussi l'incohérence 15j/7j).</div>
+  </section>
+
+  <section id="grilles">
+    <h2><span class="n">7</span>Grilles</h2>
+    <h3>Médical <span class="pill pub">publique</span></h3>
+    <table>
+      <tr><th>Forfait</th><th>Volume inclus</th><th>Prix mensuel</th></tr>
+      <tr><td>Essentiel</td><td>≤ ~250 appels/mois</td><td class="num">350 €</td></tr>
+      <tr><td>Confort</td><td>≤ ~500 appels/mois</td><td class="num">590 €</td></tr>
+      <tr><td>Intensif</td><td>≤ ~900 appels/mois</td><td class="num">950 €</td></tr>
+      <tr><td>Sur-mesure</td><td>&gt; 900 appels/mois</td><td class="num">sur devis</td></tr>
+    </table>
+    <p style="font-size:14px;color:var(--text-soft)">Modèles retenus par préférence : <strong>1) ETP par position · 2) à l'heure · 3) à l'interaction</strong>. Colonnes <strong>direct</strong> vs <strong>marque blanche</strong> (sous-traitance, marge donneur d'ordre ~25-35 %).</p>
+    <div class="grid2">
+      <div>
+        <h3>SaaS / Helpdesk (priorité 2) <span class="pill int">interne</span></h3>
+        <table>
+          <tr><th>Modèle</th><th>Direct</th><th>Marque blanche</th></tr>
+          <tr><td>ETP N1 SaaS (€/mois)</td><td class="num">1 900-2 400</td><td class="num">1 350-1 700</td></tr>
+          <tr><td>ETP Helpdesk ITIL</td><td class="num">2 200-2 800</td><td class="num">1 550-2 000</td></tr>
+          <tr><td>À l'heure</td><td class="num">12-15 €</td><td class="num">8-11 €</td></tr>
+          <tr><td>À l'interaction</td><td class="num">2,5-4 €</td><td class="num">1,8-2,8 €</td></tr>
+        </table>
+        <p style="font-size:13px;color:var(--text-mute)">Contrat : dès 3 mois, puis 12 mois renouvelable.</p>
+      </div>
+      <div>
+        <h3>Bailleurs (priorité 3) <span class="pill int">interne</span></h3>
+        <table>
+          <tr><th>Modèle</th><th>Direct</th><th>Marque blanche</th></tr>
+          <tr><td>ETP / capacité (€/mois)</td><td class="num">1 800-3 500</td><td class="num">1 300-2 500</td></tr>
+          <tr><td>À l'appel traité</td><td class="num">1,20-1,80 €</td><td class="num">0,90-1,40 €</td></tr>
+        </table>
+        <p style="font-size:13px;color:var(--text-mute)">Toujours en sur-devis · pilote facturé sur 1 pic.</p>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--text-mute)"><strong>Plancher absolu</strong> (les deux segments) : jamais sous le coût chargé agent + ~20 %. Détail complet dans <code>PRICING.md</code> (§3-§4).</p>
+  </section>
+
+  <section id="facturation">
+    <h2><span class="n">8</span>Comparatif facturation <span class="pill int">décision reportée</span></h2>
+    <table>
+      <tr><th>Critère</th><th>Stripe Billing + SEPA</th><th>GoCardless</th><th>Pennylane</th></tr>
+      <tr><td>Abonnement récurrent</td><td>✅ natif</td><td>✅ natif</td><td>⚠️ via module</td></tr>
+      <tr><td>Prélèvement SEPA B2B FR</td><td>✅</td><td>✅ spécialiste</td><td>✅</td></tr>
+      <tr><td>CB / self-service</td><td>✅ fort</td><td>⚠️ limité</td><td>⚠️</td></tr>
+      <tr><td>Compta/facturation FR</td><td>⚠️ à coupler</td><td>❌</td><td>✅ intégré</td></tr>
+      <tr><td>Mise en route</td><td>rapide</td><td>rapide</td><td>moyenne</td></tr>
+    </table>
+    <p><strong>Critère de choix :</strong> priorité encaissement récurrent automatisé → <strong>Stripe</strong> ou <strong>GoCardless</strong> ; priorité facturation + compta FR intégrée → <strong>Pennylane</strong> + un PSP. <em>Recommandation de départ : Stripe Billing + SEPA</em>, mais aucune décision n'est figée dans le code.</p>
+  </section>
+
+  <section id="fichiers">
+    <h2><span class="n">9</span>Fichiers modifiés & prochaines étapes</h2>
+    <h3>Créés</h3>
+    <ul>
+      <li><code>PRICING.md</code> — source unique de vérité tarifaire.</li>
+      <li><code>RAPPORT-PRIX.html</code> — ce rapport.</li>
+    </ul>
+    <h3>Alignés sur <code>PRICING.md</code></h3>
+    <ul>
+      <li><code>OUTREACH-SEQUENCE.md</code>, <code>OUTREACH-cabinets-medicaux.md</code>, <code>OUTREACH-telesec-marque-blanche.md</code></li>
+      <li><code>IDEAL-CUSTOMER-PROFILE.md</code></li>
+      <li><code>CRM_Salverys.html</code> (scripts d'appel + objections)</li>
+      <li><code>simulateur-salverys.html</code>, <code>simulateur-informatique.html</code>, <code>index.html</code></li>
+      <li><code>CLAUDE.md</code> (renvoi vers <code>PRICING.md</code>)</li>
+    </ul>
+    <h3>Prochaines étapes</h3>
+    <ol>
+      <li><strong>Valider 350/590/950</strong> sur un panel de cabinets via la méthode Van Westendorp.</li>
+      <li><strong>Trancher l'outil de facturation</strong> (Stripe vs GoCardless vs Pennylane).</li>
+      <li>Suivre le <strong>taux réponse→souscription</strong> du « 1er mois -50 % » vs l'ancien essai, activer le repli si besoin.</li>
+      <li>Affiner les <strong>coûts de service réels</strong> (capacité par agent) une fois 2-3 clients en production.</li>
+    </ol>
+  </section>
+
+</main>
+<footer>
+  <div class="wrap">Salverys — document interne · grille tarifaire 2026 · ne pas diffuser les sections « interne » aux prospects.</div>
+</footer>
+</body>
+</html>

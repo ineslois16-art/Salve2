@@ -172,7 +172,7 @@ secrétariat, c'est un problème de capacité. »
 
 Bonjour {{firstName}},
 
-Un repère qui revient chez les cabinets qu'on accompagne : une secrétaire médicale en interne, en coût complet (salaire + charges + congés + formation au logiciel + turnover), tourne autour de 35 à 45 k€ par an équivalent temps plein. Et le recrutement prend 60 à 90 jours, avec un turnover régulier à refaire.
+Un repère qui revient chez les cabinets qu'on accompagne : une secrétaire médicale en interne, en coût complet (salaire + charges + congés + formation au logiciel + turnover), tourne autour de 33 à 40 k€ par an équivalent temps plein. Et le recrutement prend 60 à 90 jours, avec un turnover régulier à refaire.
 
 Pas de demande aujourd'hui — juste un repère utile si vous arbitrez entre interne et externe pour {{structure}} sur 2026.
 
@@ -226,7 +226,7 @@ réponse (script `CALL_SCRIPTS.telemed.qualif`).
 ### Email 4 — L'angle marque blanche + pilote (Jour 14)
 
 **Objet A :** vos patients ne verront pas la différence
-**Objet B :** essai 15 jours sans engagement
+**Objet B :** 1er mois à -50 %, sans engagement
 
 ---
 
@@ -236,7 +236,7 @@ Jusqu'ici je vous ai parlé fonctionnement et coût. L'autre sujet pour {{struct
 
 Notre modèle est marque blanche : équipe française d'origine, sous votre nom, vos process, votre ton. Le patient pense parler à votre secrétariat.
 
-Pour limiter le risque, on peut démarrer par un essai de 15 jours sans engagement, sur un périmètre réduit (un site, certains créneaux). Vous jugez la qualité avant d'élargir.
+Pour limiter le risque, on peut démarrer par un 1er mois à -50 %, sans engagement, sur un périmètre réduit (un site, certains créneaux). Vous jugez la qualité avant d'élargir.
 
 Si l'email n'est pas le plus simple, on peut aussi en parler par WhatsApp au +33 6 48 91 84 50.
 
@@ -251,7 +251,7 @@ Ouvert à en parler ?
 
 #### Variantes A/B
 **Ligne d'ouverture A (marque) :** « Jusqu'ici je vous ai parlé fonctionnement et coût. L'autre point, c'est l'image… »
-**Ligne d'ouverture B (risque) :** « Une objection légitime : et si la qualité ne suit pas ? D'où notre approche par essai 15 jours. »
+**Ligne d'ouverture B (risque) :** « Une objection légitime : et si la qualité ne suit pas ? D'où notre approche : 1er mois à -50 %, sans engagement. »
 
 ---
 
@@ -336,7 +336,80 @@ COLD CALLING). Les 5 objections principales :
 
 ---
 
-# 2. Bailleurs sociaux & grandes structures (cible n°2)
+# 2. Support N1 — Éditeurs SaaS FR & Helpdesk IT (priorité 2)
+
+> Cette séquence existe depuis le 27/05/2026 et reste fonctionnelle. Elle sera
+> alignée plus tard sur le principe « Canaux & CTA » ci-dessus (mention
+> WhatsApp / live chat). Pour l'instant, traiter cette niche en priorité basse.
+
+**Segment cible :** éditeurs SaaS B2B français, 20-300 salariés, en croissance
+**Persona :** Head of Support / Customer Support Manager / Responsable Relation Client
+**Décideur secondaire :** COO / Directeur des Opérations
+**Framework :** Problème → Preuve → Ask
+
+### Recherche de personnalisation (niveau segment)
+
+**Déclencheurs entreprise :**
+1. Poste « Support N1 / Customer Care » ouvert depuis > 1 mois — Qualité : Hot
+2. Levée de fonds < 12 mois — Qualité : Warm
+3. Avis clients (Trustpilot/G2) sur les délais de réponse — Qualité : Warm
+
+**Déclencheurs sectoriels :**
+1. 89 % des éditeurs de logiciels en difficulté de recrutement (vs 78 % il y a 2 ans)
+2. Recrutement interne = 60-90 jours vs équipe externe en quelques semaines
+3. Pression de rentabilité post-levée → marge support scrutée
+
+### Séquence 5 emails (résumé)
+
+| Email | Jour | Angle | CTA |
+|---|---|---|---|
+| 1 | J1 | Accroche + problème chiffré (89 %) + -40 % du coût | « Ça vaudrait un échange de 15 min ? » |
+| 2 | J3 | Coût complet d'un N1 interne + 60-90 j de recrutement | aucun (valeur pure) |
+| 3 | J7 | Preuve sociale / cadrage honnête (cas client OU benchmark) | « Je vous montre comment en 15 min ? » |
+| 4 | J14 | Angle marque blanche + offre pilote | « Ouvert à en parler ? » |
+| 5 | J21 | Breakup, porte ouverte | répondez simplement à ce mail |
+
+> Pour le contenu complet des emails SaaS et leurs touchpoints LinkedIn, voir
+> l'historique git de ce fichier (avant le 2026-05-30). À ré-injecter ici lors
+> de l'alignement sur le principe transverse.
+
+---
+
+# Bonnes pratiques d'envoi (Emelia)
+
+- **Créneau optimal** : mardi-jeudi, 9 h-11 h. Éviter lundi matin et vendredi
+  après-midi.
+- **Volume** : démarrer à 10-20 envois/jour par boîte, monter progressivement à
+  ~50.
+- **Warm-up** : chauffer le domaine d'envoi 2-3 semaines avant (Emelia propose
+  un warm-up intégré — l'activer).
+- **Domaine** : utiliser un domaine d'envoi dédié (ex. `mail.salverys.fr`),
+  pas le domaine principal.
+- **Authentification** : SPF, DKIM, DMARC configurés. Tester via mail-tester.com
+  avant lancement.
+- **Format** : texte brut, sans image ni tracking pixel sur l'email 1
+  (meilleure délivrabilité).
+- **Désinscription** : inclure un lien de désinscription (conformité RGPD /
+  CAN-SPAM).
+- **Relance si aucune réponse aux 5 emails** : attendre 30 jours, repartir sur
+  un nouvel angle ou un nouveau déclencheur (nouvelle ouverture de centre,
+  nouveau poste ouvert).
+
+---
+
+# Prochaines étapes suggérées
+
+- **Premier pilote signé** : remplacer le cadrage honnête de l'email 3
+  (médical) par un vrai cas client (cabinet ou chaîne pilote, métriques avant /
+  après).
+- **Alignement SaaS** : intégrer WhatsApp / live chat dans la séquence SaaS
+  existante (priorité basse).
+
+---
+
+*Document maintenu en parallèle du pipeline Emelia. Toute modification doit
+être répercutée dans le mail-merge avant le prochain envoi.*
+# 3. Bailleurs sociaux & grandes structures (priorité 3)
 
 **Segment cible**
 - **Priorité 1 :** bailleurs sociaux (ESH) de 25 000 à 100 000 logements —
@@ -462,7 +535,7 @@ opérationnel le plus difficile à dimensionner. »
 
 Bonjour {{firstName}},
 
-Un repère qui revient chez les Dir. Relation Client : un téléconseiller en CDI, en coût complet (salaire + charges + formation + management + turnover), tourne autour de 48 à 55 k€/an par ETP. Et le recrutement prend 60 à 90 jours, avec un turnover ~25 %/an sur les CRC.
+Un repère qui revient chez les Dir. Relation Client : un téléconseiller en CDI, en coût complet (salaire + charges + formation + management + turnover), tourne autour de 38 à 46 k€/an par ETP. Et le recrutement prend 60 à 90 jours, avec un turnover ~25 %/an sur les CRC.
 
 Pour absorber un pic prévisible (rentrée, hiver, période de charges), embaucher ne tient pas — la capacité flexible externalisée si.
 
@@ -610,76 +683,3 @@ nominations y sont annoncées.
 
 ---
 
-# 3. Support N1 — Éditeurs SaaS FR (niche tertiaire)
-
-> Cette séquence existe depuis le 27/05/2026 et reste fonctionnelle. Elle sera
-> alignée plus tard sur le principe « Canaux & CTA » ci-dessus (mention
-> WhatsApp / live chat). Pour l'instant, traiter cette niche en priorité basse.
-
-**Segment cible :** éditeurs SaaS B2B français, 20-300 salariés, en croissance
-**Persona :** Head of Support / Customer Support Manager / Responsable Relation Client
-**Décideur secondaire :** COO / Directeur des Opérations
-**Framework :** Problème → Preuve → Ask
-
-### Recherche de personnalisation (niveau segment)
-
-**Déclencheurs entreprise :**
-1. Poste « Support N1 / Customer Care » ouvert depuis > 1 mois — Qualité : Hot
-2. Levée de fonds < 12 mois — Qualité : Warm
-3. Avis clients (Trustpilot/G2) sur les délais de réponse — Qualité : Warm
-
-**Déclencheurs sectoriels :**
-1. 89 % des éditeurs de logiciels en difficulté de recrutement (vs 78 % il y a 2 ans)
-2. Recrutement interne = 60-90 jours vs équipe externe en quelques semaines
-3. Pression de rentabilité post-levée → marge support scrutée
-
-### Séquence 5 emails (résumé)
-
-| Email | Jour | Angle | CTA |
-|---|---|---|---|
-| 1 | J1 | Accroche + problème chiffré (89 %) + -40 % du coût | « Ça vaudrait un échange de 15 min ? » |
-| 2 | J3 | Coût complet d'un N1 interne + 60-90 j de recrutement | aucun (valeur pure) |
-| 3 | J7 | Preuve sociale / cadrage honnête (cas client OU benchmark) | « Je vous montre comment en 15 min ? » |
-| 4 | J14 | Angle marque blanche + offre pilote | « Ouvert à en parler ? » |
-| 5 | J21 | Breakup, porte ouverte | répondez simplement à ce mail |
-
-> Pour le contenu complet des emails SaaS et leurs touchpoints LinkedIn, voir
-> l'historique git de ce fichier (avant le 2026-05-30). À ré-injecter ici lors
-> de l'alignement sur le principe transverse.
-
----
-
-# Bonnes pratiques d'envoi (Emelia)
-
-- **Créneau optimal** : mardi-jeudi, 9 h-11 h. Éviter lundi matin et vendredi
-  après-midi.
-- **Volume** : démarrer à 10-20 envois/jour par boîte, monter progressivement à
-  ~50.
-- **Warm-up** : chauffer le domaine d'envoi 2-3 semaines avant (Emelia propose
-  un warm-up intégré — l'activer).
-- **Domaine** : utiliser un domaine d'envoi dédié (ex. `mail.salverys.fr`),
-  pas le domaine principal.
-- **Authentification** : SPF, DKIM, DMARC configurés. Tester via mail-tester.com
-  avant lancement.
-- **Format** : texte brut, sans image ni tracking pixel sur l'email 1
-  (meilleure délivrabilité).
-- **Désinscription** : inclure un lien de désinscription (conformité RGPD /
-  CAN-SPAM).
-- **Relance si aucune réponse aux 5 emails** : attendre 30 jours, repartir sur
-  un nouvel angle ou un nouveau déclencheur (nouvelle ouverture de centre,
-  nouveau poste ouvert).
-
----
-
-# Prochaines étapes suggérées
-
-- **Premier pilote signé** : remplacer le cadrage honnête de l'email 3
-  (médical) par un vrai cas client (cabinet ou chaîne pilote, métriques avant /
-  après).
-- **Alignement SaaS** : intégrer WhatsApp / live chat dans la séquence SaaS
-  existante (priorité basse).
-
----
-
-*Document maintenu en parallèle du pipeline Emelia. Toute modification doit
-être répercutée dans le mail-merge avant le prochain envoi.*
