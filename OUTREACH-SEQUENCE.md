@@ -40,7 +40,7 @@ aux filtres anti-spam et plombent la délivrabilité.
 WhatsApp n'apparaît jamais comme un **lien cliquable** en cold (`wa.me/...`
 dégrade la délivrabilité). Le pivot se fait dès qu'un prospect répond :
 
-> « Pour simplifier, on peut continuer par WhatsApp ? +33 X XX XX XX XX »
+> « Pour simplifier, on peut continuer par WhatsApp ? +33 6 48 91 84 50 »
 
 Côté CRM, mettre le statut du lead à `contacté` puis `rdv` selon l'issue, et
 passer le canal sur `WhatsApp`.
@@ -237,7 +237,7 @@ Notre modèle est marque blanche : équipe française d'origine, sous votre nom,
 
 Pour limiter le risque, on peut démarrer par un essai de 15 jours sans engagement, sur un périmètre réduit (un site, certains créneaux). Vous jugez la qualité avant d'élargir.
 
-Si l'email n'est pas le plus simple, on peut aussi en parler par WhatsApp au +33 X XX XX XX XX.
+Si l'email n'est pas le plus simple, on peut aussi en parler par WhatsApp au +33 6 48 91 84 50.
 
 Ouvert à en parler ?
 
@@ -252,9 +252,6 @@ Ouvert à en parler ?
 **Ligne d'ouverture A (marque) :** « Jusqu'ici je vous ai parlé fonctionnement et coût. L'autre point, c'est l'image… »
 **Ligne d'ouverture B (risque) :** « Une objection légitime : et si la qualité ne suit pas ? D'où notre approche par essai 15 jours. »
 
-> Remplacer `+33 X XX XX XX XX` par le numéro WhatsApp Business Salverys avant
-> lancement.
-
 ---
 
 ### Email 5 — Le breakup (Jour 21)
@@ -268,7 +265,7 @@ Bonjour {{firstName}},
 
 Je n'encombre pas davantage votre boîte. Le sujet — répondre à 100 % des appels patients sous votre nom, à -40 % du coût d'une secrétaire interne — sera là quand il deviendra prioritaire pour {{structure}}.
 
-Si c'est le cas, répondez simplement à ce mail, ou écrivez-nous sur WhatsApp au +33 X XX XX XX XX.
+Si c'est le cas, répondez simplement à ce mail, ou écrivez-nous sur WhatsApp au +33 6 48 91 84 50.
 
 Bonne continuation à vous et à l'équipe.
 
@@ -311,7 +308,7 @@ en pratique : WhatsApp ou appel rapide.
 1. **Réponse positive ou question** :
    - CRM : passer le lead de `contacté` à `rdv` si un créneau est posé,
      sinon laisser `contacté` et mettre une note.
-   - Canal : « Pour simplifier, on continue par WhatsApp ? +33 X XX XX XX XX »
+   - Canal : « Pour simplifier, on continue par WhatsApp ? +33 6 48 91 84 50 »
      ou proposer un appel de 15 min dans la foulée.
 2. **Réponse négative / pas le moment** :
    - CRM : `perdu` avec note sur le motif (mauvais timing, déjà équipé, hors
@@ -401,13 +398,9 @@ COLD CALLING). Les 5 objections principales :
 
 # Prochaines étapes suggérées
 
-- **À faire avant lancement médical** : remplir le numéro WhatsApp Business
-  Salverys dans les emails 4 et 5 (placeholders `+33 X XX XX XX XX`).
 - **Premier pilote signé** : remplacer le cadrage honnête de l'email 3
   (médical) par un vrai cas client (cabinet ou chaîne pilote, métriques avant /
   après).
-- **Niche secondaire (bailleurs / organismes)** : construire une séquence
-  dédiée ciblant le Directeur de la Relation Client (jamais le DG).
 - **Alignement SaaS** : intégrer WhatsApp / live chat dans la séquence SaaS
   existante (priorité basse).
 
