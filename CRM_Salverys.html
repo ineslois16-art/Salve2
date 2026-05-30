@@ -350,7 +350,6 @@
         .mail-preview { flex:1; background:#F8FAFC; border:1px dashed var(--border); border-radius:10px; padding:18px; overflow-y:auto; font-size:13.5px; line-height:1.65; white-space:pre-wrap; min-height:300px; }
         .mail-preview .h-from { font-size:12px; color:var(--text-muted); margin-bottom:4px; }
         .mail-preview .h-sub { font-size:15px; font-weight:700; color:var(--text); margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border); }
-        .mail-tpl-tag { display:inline-block; padding:2px 7px; border-radius:4px; background:#EFF6FF; color:#1D4ED8; font-size:10.5px; font-weight:700; margin-left:4px; }
         .var-chip { display:inline-flex; align-items:center; padding:2px 7px; border-radius:5px; background:#F1F5F9; color:var(--text); font-size:11px; font-weight:600; margin:2px 3px 2px 0; cursor:pointer; }
         .var-chip:hover { background:#E2E8F0; }
         .mail-actions { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
@@ -497,13 +496,9 @@
                         </div>
 
                         <div class="mail-panel">
-                            <h3 style="display:flex; justify-content:space-between; align-items:center;">
-                                <span>2. Template</span>
-                                <button type="button" class="btn btn-sm btn-ghost" onclick="openTemplateEditModal()" style="font-size:12px;">✏️ Éditer</button>
-                            </h3>
-                            <div class="mail-field">
-                                <label>Modèle d'email</label>
-                                <select id="mail-tpl" onchange="renderMailPreview()"></select>
+                            <h3>2. Email</h3>
+                            <div class="mail-field" style="font-size:11.5px;color:#64748B;background:#F1F5F9;padding:8px 10px;border-radius:8px;line-height:1.4;">
+                                Les <strong>séquences cold mail</strong> sont gérées dans <strong>Emelia</strong> (voir <code>OUTREACH-SEQUENCE.md</code>). Ce composeur sert aux <strong>messages 1-à-1</strong> (relance manuelle, proposition, réponse personnalisée).
                             </div>
                             <div class="mail-field">
                                 <label>Objet</label>
@@ -534,7 +529,7 @@
 
                     <!-- RIGHT: Preview -->
                     <div class="mail-panel" style="min-height:0;">
-                        <h3>👁️ Aperçu <span id="mail-tpl-tag" class="mail-tpl-tag"></span></h3>
+                        <h3>👁️ Aperçu</h3>
                         <div class="mail-preview" id="mail-preview"></div>
                         <div class="mail-actions">
                             <button class="btn btn-primary" onclick="copyMail()">📋 Copier le texte</button>
@@ -618,6 +613,7 @@
                         <option value="">Choisir…</option>
                         <option>LinkedIn</option>
                         <option>Email</option>
+                        <option>WhatsApp</option>
                         <option>Appel entrant</option>
                         <option>Recommandation</option>
                         <option>Salon / Événement</option>
@@ -657,39 +653,6 @@
             <div class="modal-actions">
                 <button type="button" class="btn btn-danger-soft btn-sm" id="del-lead-btn" style="display:none;margin-right:auto" onclick="deleteLead()">🗑 Supprimer</button>
                 <button type="button" class="btn btn-ghost" onclick="closeLeadModal()">Annuler</button>
-                <button type="submit" class="btn btn-primary">Enregistrer</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- ====== TEMPLATE EDIT MODAL ====== -->
-<div class="modal-overlay" id="tpl-overlay" onclick="if(event.target===this)closeTemplateModal()">
-    <div class="modal" onclick="event.stopPropagation()">
-        <div class="modal-hd">
-            <h3>Éditer le template</h3>
-            <button class="modal-close" onclick="closeTemplateModal()">✕</button>
-        </div>
-        <form id="tpl-form" onsubmit="saveTemplate(event)">
-            <input type="hidden" id="tpl-edit-id">
-            <div class="form-group">
-                <label>Nom du template</label>
-                <input id="tpl-edit-name" required placeholder="Ex: Découverte — appels manqués">
-            </div>
-            <div class="form-group">
-                <label>Objet de l'email</label>
-                <input id="tpl-edit-subject" required placeholder="{prenom}, vos appels gérés">
-            </div>
-            <div class="form-group">
-                <label>Corps du message</label>
-                <textarea id="tpl-edit-body" required style="min-height:200px;"></textarea>
-            </div>
-            <div class="form-group" style="font-size:11.5px;color:#64748B;background:#F1F5F9;padding:10px;border-radius:8px;">
-                <strong>Variables disponibles :</strong> {prenom}, {nom}, {nom_complet}, {structure}, {ville_dept}, {email}, {tel}, {niche}
-            </div>
-            <div class="modal-actions">
-                <button type="button" class="btn btn-danger-soft btn-sm" id="reset-tpl-btn" style="margin-right:auto" onclick="resetTemplate()">↺ Réinitialiser</button>
-                <button type="button" class="btn btn-ghost" onclick="closeTemplateModal()">Annuler</button>
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
             </div>
         </form>
@@ -2500,182 +2463,15 @@ function deleteTask() {
     renderGantt(_taskType);
 }
 
-// ─── COLD MAILING ─────────────────────────────────────────────
-const MAIL_TEMPLATES = {
-    'telemed': [
-        {
-            id: 'tm-decouverte',
-            name: '🩺 Découverte — appels manqués',
-            subject: 'Vos appels gérés pendant les consultations — {structure}',
-            body:
-`Bonjour {prenom},
-
-Je m'adresse à vous parce que je sais qu'au {structure}, comme dans la plupart des cabinets de {ville_dept}, une part des appels patients sonne dans le vide pendant les consultations.
-
-Chez Salverys, on prend en charge ces appels pour des médecins libéraux : télésecrétaires francophones formées, horaires 8h–20h, intégration Doctolib / Maiia, 0 jour d'arrêt.
-
-Forfait mensuel selon votre volume d'appels, à partir de 350 €/mois — sans engagement les 15 premiers jours (essai gratuit).
-
-Si l'idée d'arrêter de rappeler vos patients en fin de journée vous parle, je vous propose 15 minutes pour en discuter cette semaine.
-
-À très vite,`
-        },
-        {
-            id: 'tm-desert',
-            name: '🩺 Désert médical (Creuse/Ariège/Lot/Cantal)',
-            subject: '{prenom}, vos confrères du {ville_dept} ne rappellent plus le soir',
-            body:
-`Bonjour Dr {nom},
-
-J'écris aux cabinets de {ville_dept} parce que la densité médicale dans le département rend la gestion des appels presque impossible — particulièrement pour {structure}.
-
-On propose une télésecrétaire médicale dédiée, francophone, formée à votre logiciel (Doctolib, Maiia, Médistory, Cegedim), qui prend vos appels patients sans que vous ayez à embaucher.
-
-→ Tarif : à partir de 350 €/mois
-→ Essai 15 jours sans engagement
-→ Vous gardez la main sur les agendas
-
-Je peux vous envoyer un mémo précis sur ce que ça donne pour un cabinet à votre échelle — ça vous intéresse ?
-
-Cordialement,`
-        },
-        {
-            id: 'tm-relance',
-            name: '🩺 Relance J+7 (post 1er contact)',
-            subject: 'Re: appels {structure} — un créneau de 15 min ?',
-            body:
-`Bonjour {prenom},
-
-Je reviens vers vous suite à mon message la semaine dernière — je sais que la période est chargée.
-
-Une question simple : combien d'appels patients restent sans réponse chez {structure} chaque jour ? Si la réponse est "plus de 5", ça vaut le coup qu'on en parle 10 minutes.
-
-Voici 3 créneaux possibles cette semaine :
-- mardi 14h
-- mercredi 11h
-- jeudi 16h
-
-Lequel vous arrange ? Sinon proposez-moi.
-
-Bien à vous,`
-        }
-    ],
-    'support-n1': [
-        {
-            id: 'sn-debordement',
-            name: '💻 Support débordé — Head of CS',
-            subject: '{structure} — bouchon sur le support N1 ?',
-            body:
-`Bonjour {prenom},
-
-Si l'équipe support de {structure} traite encore les tickets N1 en interne, vous êtes probablement en train d'arbitrer entre temps de réponse et coût.
-
-Chez Salverys (Madagascar, FR natif, fuseau Paris l'après-midi), on gère le N1 pour des éditeurs SaaS : Zendesk / Freshdesk / Intercom, SLA documenté, KPI First Response Time + CSAT mesurés chaque semaine.
-
-Coût : ~40 % inférieur à un agent interne, sans charge RH.
-
-Si vous voulez voir comment on fait gagner 2 jours de TTR à vos équipes, je vous propose un appel découverte de 20 minutes.
-
-Cordialement,`
-        },
-        {
-            id: 'sn-recrute',
-            name: '💻 Vous recrutez un support N1 ? (Indeed/WTTJ)',
-            subject: 'Avant de finaliser le recrutement N1 chez {structure}',
-            body:
-`Bonjour {prenom},
-
-J'ai vu que {structure} recrute actuellement un Technicien Support N1. Je ne suis pas là pour candidater — juste pour vous proposer une alternative qui pourrait diviser votre coût par 2.
-
-Salverys opère une équipe de support N1 francophone à Madagascar : mêmes outils que les vôtres (Zendesk, Freshdesk, Intercom), même fuseau horaire l'après-midi, formation produit prise en charge par nous.
-
-→ Démarrage en 2 semaines
-→ Pilote de 15 jours gratuit
-→ Vous gardez votre process et vos SLA
-
-Ça vaut peut-être 15 minutes au téléphone avant de signer le CDI ?
-
-Bien cordialement,`
-        },
-        {
-            id: 'sn-relance',
-            name: '💻 Relance — Manager Support',
-            subject: 'Re: support N1 chez {structure}',
-            body:
-`Bonjour {prenom},
-
-Petite relance — je vous envoyais récemment un message sur l'externalisation N1 pour {structure}.
-
-Je ne vous demande pas de prendre une décision aujourd'hui. Juste 15 min pour vous montrer comment 3 éditeurs SaaS similaires ont structuré leur N1 chez nous (avec leurs KPI avant/après).
-
-Un créneau cette semaine ?
-
-À bientôt,`
-        }
-    ],
-    'helpdesk-n1': [
-        {
-            id: 'hd-dsi',
-            name: '🖥️ Helpdesk IT — DSI / Resp. Support',
-            subject: 'Helpdesk N1 distant pour {structure} — 40 % moins cher',
-            body:
-`Bonjour {prenom},
-
-Je vous contacte parce que pour une structure comme {structure}, le helpdesk N1 représente entre 30 et 50 % du budget support utilisateurs — alors que c'est le niveau le plus standardisable.
-
-Salverys opère du helpdesk IT N1 distant depuis Madagascar :
-→ Profils ITIL, ServiceNow / JIRA Service Desk / ManageEngine
-→ SLA documenté & signé
-→ Contrats 12–36 mois, montée en charge progressive
-→ Coût opérationnel ~40 % inférieur à un prestataire hexagonal
-
-On peut commencer petit (1 ETP dédié) et monter selon le ROI.
-
-15 minutes pour cadrer votre besoin ?
-
-Bien à vous,`
-        },
-        {
-            id: 'hd-esn',
-            name: '🖥️ ESN / Intégrateur — sous-traitance',
-            subject: '{structure} : sous-traitance N1 sur vos contrats clients',
-            body:
-`Bonjour {prenom},
-
-Pour les ESN comme {structure}, le N1 est souvent le maillon le moins margé sur les contrats infogérance. C'est exactement là qu'on intervient.
-
-Salverys propose du helpdesk N1 white-label depuis Madagascar :
-→ Vous gardez la relation client et les SLA
-→ On vous fournit la capacité, formée à vos outils (ServiceNow, JIRA, etc.)
-→ Vos marges remontent immédiatement sur les contrats N1
-
-Plusieurs intégrateurs nous délèguent déjà des plateaux à 5–10 ETP. Si {structure} a un appel d'offres ou un contrat tendu côté N1, on peut en parler ?
-
-Cordialement,`
-        },
-        {
-            id: 'hd-relance',
-            name: '🖥️ Relance — DSI',
-            subject: 'Re: Helpdesk N1 {structure}',
-            body:
-`Bonjour {prenom},
-
-Je reviens vers vous au sujet du helpdesk N1.
-
-Une question rapide : sur vos derniers mois, quel est le délai moyen de prise en charge d'un ticket N1 chez {structure} ? Si c'est > 30 min, on a probablement des choses à se dire.
-
-Je peux vous envoyer un benchmark anonymisé de 3 DSI comparables qu'on accompagne — ça vous intéresse ?
-
-Bien cordialement,`
-        }
-    ]
-};
+// ─── COLD MAILING (composeur 1-à-1) ───────────────────────────
+// Les séquences cold mail vivent dans OUTREACH-SEQUENCE.md et sont gérées
+// via Emelia. Ce composeur sert aux messages 1-à-1 (relance manuelle,
+// proposition, réponse personnalisée) avec substitution de variables.
 
 let _mailLeadId = null;
 
 function renderMailing() {
     renderMailLeadList();
-    populateMailTemplates();
     renderMailPreview();
 }
 
@@ -2709,37 +2505,8 @@ function selectMailLead(id) {
     const d = load();
     const lead = d.leads.find(l => l.id === id);
     if (!lead) return;
-    populateMailTemplates(lead.niche);
     renderMailLeadList();
     renderMailPreview();
-}
-
-function populateMailTemplates(forcedNiche=null) {
-    const sel = document.getElementById('mail-tpl');
-    if (!sel) return;
-    const d = load();
-    const lead = d.leads.find(l => l.id === _mailLeadId);
-    const niche = forcedNiche || lead?.niche || 'telemed';
-    const tpls = MAIL_TEMPLATES[niche] || [];
-    const current = sel.value;
-    sel.innerHTML = tpls.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
-    if (tpls.find(t => t.id === current)) sel.value = current;
-    loadTemplateIntoForm();
-}
-
-function loadTemplateIntoForm() {
-    const sel = document.getElementById('mail-tpl');
-    if (!sel) return;
-    const tplId = sel.value;
-    let tpl = null;
-    for (const k in MAIL_TEMPLATES) {
-        const t = MAIL_TEMPLATES[k].find(x => x.id === tplId);
-        if (t) tpl = t;
-    }
-    if (!tpl) return;
-    document.getElementById('mail-subject').value = tpl.subject;
-    document.getElementById('mail-body').value = tpl.body;
-    renderMailVars();
 }
 
 function renderMailVars() {
@@ -2809,16 +2576,8 @@ function renderMailPreview() {
             `${escapeHtml(body)}\n\n— ${escapeHtml(sigName)}\n${escapeHtml(sigContact)}`;
     }
 
-    const sel = document.getElementById('mail-tpl');
-    const tag = document.getElementById('mail-tpl-tag');
-    if (sel && tag) tag.textContent = sel.options[sel.selectedIndex]?.text || '';
-
     renderMailVars();
 }
-
-document.addEventListener('change', e => {
-    if (e.target && e.target.id === 'mail-tpl') loadTemplateIntoForm();
-});
 
 function getCurrentMailText() {
     const d = load();
@@ -3166,81 +2925,9 @@ function nextStepBtn() {
     return `<button class="btn btn-primary" onclick="setCallStep('${CALL_STEPS[i+1].id}')">${CALL_STEPS[i+1].label} →</button>`;
 }
 
-// ─── TEMPLATES STORAGE ────────────────────────────────────────
-const CUSTOM_TEMPLATES_KEY = 'salverys_custom_templates_v1';
-
-function getCustomTemplates() {
-    const raw = localStorage.getItem(CUSTOM_TEMPLATES_KEY);
-    return raw ? JSON.parse(raw) : {};
-}
-
-function saveCustomTemplates(obj) {
-    localStorage.setItem(CUSTOM_TEMPLATES_KEY, JSON.stringify(obj));
-}
-
-function getTemplateById(tplId) {
-    const custom = getCustomTemplates();
-    if (custom[tplId]) return custom[tplId];
-    for (const niche in MAIL_TEMPLATES) {
-        const t = MAIL_TEMPLATES[niche].find(x => x.id === tplId);
-        if (t) return t;
-    }
-    return null;
-}
-
-function openTemplateEditModal() {
-    const sel = document.getElementById('mail-tpl');
-    if (!sel || !sel.value) { alert('Sélectionne un template d\'abord.'); return; }
-    const tplId = sel.value;
-    const tpl = getTemplateById(tplId);
-    if (!tpl) { alert('Template non trouvé.'); return; }
-
-    document.getElementById('tpl-edit-id').value = tplId;
-    document.getElementById('tpl-edit-name').value = tpl.name || '';
-    document.getElementById('tpl-edit-subject').value = tpl.subject || '';
-    document.getElementById('tpl-edit-body').value = tpl.body || '';
-    document.getElementById('tpl-overlay').classList.add('open');
-}
-
-function closeTemplateModal() {
-    document.getElementById('tpl-overlay').classList.remove('open');
-}
-
-function saveTemplate(e) {
-    e.preventDefault();
-    const tplId = document.getElementById('tpl-edit-id').value;
-    const name = document.getElementById('tpl-edit-name').value;
-    const subject = document.getElementById('tpl-edit-subject').value;
-    const body = document.getElementById('tpl-edit-body').value;
-
-    if (!tplId || !name || !subject || !body) { alert('Tous les champs sont obligatoires.'); return; }
-
-    const custom = getCustomTemplates();
-    custom[tplId] = { id: tplId, name, subject, body };
-    saveCustomTemplates(custom);
-
-    closeTemplateModal();
-    renderMailPreview();
-    alert('✓ Template enregistré');
-}
-
-function resetTemplate() {
-    const tplId = document.getElementById('tpl-edit-id').value;
-    const tpl = getTemplateById(tplId);
-    if (!tpl || !confirm('Réinitialiser ce template à sa version par défaut ?')) return;
-
-    const custom = getCustomTemplates();
-    delete custom[tplId];
-    saveCustomTemplates(custom);
-
-    closeTemplateModal();
-    renderMailPreview();
-    alert('✓ Template réinitialisé');
-}
-
 // ─── KEYBOARD ─────────────────────────────────────────────────
 document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeLeadModal(); closeTaskModal(); closeTemplateModal(); }
+    if (e.key === 'Escape') { closeLeadModal(); closeTaskModal(); }
 });
 
 // ─── INIT ─────────────────────────────────────────────────────
