@@ -116,10 +116,12 @@
       const elsewhere = st.calls * PER_CALL_ELSEWHERE * mult;
       const perCall = price / st.calls;
       const rdv = Math.round(st.calls * RDV_RATE);
+      const callsPerDay = Math.round(st.calls / 22);
 
       $('price-monthly').textContent = euro(price);
       $('calls-monthly').textContent = st.calls.toLocaleString('fr-FR');
       $('cost-percall').textContent = eur2(perCall);
+      $('calls-per-day').textContent = '≈ ' + callsPerDay;
       $('rdv-recovered').textContent = '≈ ' + rdv;
       $('coverage').textContent = st.days + ' j · ' + (st.schedule > 1 ? '8h–22h' : '8h–20h');
 

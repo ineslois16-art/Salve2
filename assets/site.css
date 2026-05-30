@@ -105,7 +105,10 @@ img { display: block; max-width: 100%; }
 .nav-links a.active { color: var(--primary); }
 .nav-cta { background: var(--cta); color: var(--cta-text); padding: 11px 20px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 700; white-space: nowrap; transition: transform .15s, box-shadow .2s; }
 .nav-cta:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.nav-cta-secondary { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); padding: 10px 18px; }
+.nav-cta-secondary:hover { background: var(--primary); color: var(--cta-text); }
 .nav-links .nav-cta { display: none; }
+.nav-links .nav-cta-secondary { display: none; }
 .nav-burger { display: none; background: none; border: 0; font-size: 26px; color: var(--primary); cursor: pointer; }
 @media (max-width: 780px) {
   .nav-links { position: fixed; inset: 70px 0 auto 0; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 24px 20px; transform: translateY(-130%); transition: transform .3s var(--ease); }
@@ -114,7 +117,9 @@ img { display: block; max-width: 100%; }
   .nav-burger { display: block; }
   .nav-links { margin-left: 0; }
   .nav-inner > .nav-cta { display: none; }
+  .nav-inner > .nav-cta-secondary { display: none; }
   .nav-links .nav-cta { display: block; margin-top: 12px; padding: 13px 20px; border-bottom: 0; text-align: center; color: var(--cta-text); }
+  .nav-links .nav-cta-secondary { display: block; margin-top: 12px; padding: 13px 20px; border: 1.5px solid var(--primary); text-align: center; color: var(--primary); background: transparent; }
   .nav-links .nav-cta::after { content: none; }
 }
 
@@ -355,6 +360,14 @@ input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; background: v
 .footer-col a { display: block; font-size: 14px; padding: 5px 0; transition: color .15s; }
 .footer-col a:hover { color: var(--accent); }
 .footer-meta { border-top: 1px solid rgba(255,255,255,.12); padding-top: 24px; font-size: 13px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* ================= WHATSAPP ================= */
+.nav-wa { background: #25D366; color: #fff; font-size: 14px; }
+.nav-wa:hover { background: #1ea952; }
+.whatsapp-float { position: fixed; bottom: 28px; right: 28px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; z-index: 999; box-shadow: 0 4px 12px rgba(37,211,102,.3); transition: all .2s; text-decoration: none; }
+.whatsapp-float:hover { background: #1ea952; box-shadow: 0 6px 16px rgba(37,211,102,.4); transform: scale(1.08); }
+.whatsapp-float svg { width: 24px; height: 24px; }
+@media (max-width: 768px) { .whatsapp-float { bottom: 20px; right: 20px; width: 52px; height: 52px; } }
 
 /* ================= REVEAL / ANIMATIONS ================= */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
