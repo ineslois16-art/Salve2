@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt — Session prix Salverys</title>
+<style>
+    :root {
+        --bg: #FAFAF7;
+        --surface: #FFFFFF;
+        --ink: #1F2937;
+        --muted: #64748B;
+        --line: #E5E7EB;
+        --accent: #B8860B;
+        --accent-soft: #FBF5E3;
+        --code-bg: #F3F4F6;
+        --success: #10B981;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.55;
+    }
+    .container {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+    }
+    .header {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 28px;
+    }
+    h1 {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0;
+        color: var(--ink);
+    }
+    .subtitle {
+        color: var(--muted);
+        font-size: 14px;
+    }
+    .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--bg);
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+    }
+    .copy-btn {
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s ease, transform 0.05s ease;
+        font-family: inherit;
+    }
+    .copy-btn:hover { background: #9F750A; }
+    .copy-btn:active { transform: scale(0.98); }
+    .copy-btn.copied {
+        background: var(--success);
+    }
+    .word-count {
+        color: var(--muted);
+        font-size: 13px;
+    }
+    .prompt {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 32px;
+    }
+    .prompt h2 {
+        font-size: 17px;
+        font-weight: 700;
+        margin: 28px 0 12px;
+        color: var(--ink);
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 6px;
+    }
+    .prompt h2:first-child { margin-top: 0; }
+    .prompt h3 {
+        font-size: 15px;
+        font-weight: 700;
+        margin: 20px 0 8px;
+        color: var(--ink);
+    }
+    .prompt p { margin: 10px 0; }
+    .prompt ul {
+        margin: 8px 0;
+        padding-left: 24px;
+    }
+    .prompt li { margin: 4px 0; }
+    .prompt code {
+        background: var(--code-bg);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 13px;
+        color: #374151;
+    }
+    .prompt strong { color: var(--ink); }
+    .prompt hr {
+        border: none;
+        border-top: 1px solid var(--line);
+        margin: 24px 0;
+    }
+    .footer {
+        margin-top: 32px;
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+    }
+    @media (max-width: 600px) {
+        .container { padding: 20px 16px 60px; }
+        .prompt { padding: 22px; }
+        h1 { font-size: 20px; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Prompt — Session prix Salverys</h1>
+        <div class="subtitle">À coller au début d'une nouvelle conversation Claude pour cadrer la session « offre & tarification ».</div>
+    </div>
+
+    <div class="toolbar">
+        <span class="word-count" id="word-count"></span>
+        <button class="copy-btn" id="copy-btn" type="button">📋 Tout copier</button>
+    </div>
+
+    <div class="prompt" id="prompt-display">
+        <p><strong>Contexte Salverys</strong> (depuis <code>CLAUDE.md</code>) : BPO francophone à Antananarivo, <strong>10 agents</strong>, cible clients français. Marque : <strong>Salverys</strong> (remplace Vinlo/Nesvalo). Avantage transverse : fuseau FR, français langue maternelle, <strong>~40 % moins cher qu'un prestataire hexagonal</strong>. Cold mailing via <strong>Emelia</strong>. Règle d'arbitrage : <strong>SaaS-first</strong> avant code maison. Toujours répondre en français, direct et opérationnel.</p>
+
+        <p><strong>Tâche : firmer la grille tarifaire et le modèle d'offre, avec modifs à venir.</strong></p>
+
+        <hr>
+
+        <h2>État actuel de l'offre</h2>
+        <p>Extraits du playbook <code>OUTREACH-SEQUENCE.md</code> — chiffres revendiqués en cold mail.</p>
+
+        <h3>Médical (priorité 1)</h3>
+        <ul>
+            <li>Modèle : forfait mensuel selon volume d'appels, <strong>à partir de ~350 €/mois</strong></li>
+            <li><strong>Essai 15 jours sans engagement</strong> (gratuit)</li>
+            <li>Périmètre pilote : un site / certains créneaux</li>
+            <li>Argument coût : ~40 % moins cher qu'une secrétaire interne</li>
+            <li>Référence interne FR citée : 35-45 k€/an équivalent temps plein (salaire + charges + formation + turnover)</li>
+        </ul>
+
+        <h3>Bailleurs sociaux &amp; grandes structures (priorité 2)</h3>
+        <ul>
+            <li>Positionnement : <strong>capacité d'appoint, pas remplacement</strong> du CRC</li>
+            <li>Pilote sur 1 pic d'appels (rentrée, période de charges)</li>
+            <li>Argument coût : ~40 % moins cher qu'un téléconseiller CDI</li>
+            <li>Référence interne FR citée : 48-55 k€/an par ETP, turnover ~25 %/an</li>
+        </ul>
+
+        <h3>Support N1 SaaS &amp; Helpdesk IT (priorité 3)</h3>
+        <ul>
+            <li>Modèle ETP dédié, contrats 12-36 mois, montée en charge progressive</li>
+            <li>Sans engagement long, pilote 15 jours gratuit (SaaS) / « commencer petit, 1 ETP, monter selon ROI » (helpdesk)</li>
+            <li>Argument coût : ~40 % moins cher qu'équipe interne / prestataire hexagonal</li>
+            <li>Délai opérationnel : quelques semaines vs 60-90 j de recrutement</li>
+        </ul>
+
+        <h3>Cross-cutting toutes niches</h3>
+        <ul>
+            <li><strong>Marque blanche</strong> systématique (équipe répond sous le nom du client)</li>
+            <li><strong>Live chat</strong> opéré par Salverys sur son site = preuve de réactivité</li>
+            <li><strong>WhatsApp</strong> +33 6 48 91 84 50 = canal de bascule post-réponse</li>
+        </ul>
+
+        <hr>
+
+        <h2>Fichiers à connaître</h2>
+        <ul>
+            <li><code>OUTREACH-SEQUENCE.md</code> : <strong>tous les chiffres prix sont dans les corps d'email</strong> (E1/E2/E4/E5 médical + bailleurs + SaaS) et dans les tableaux d'objections. Si la grille change, ces emails sont à mettre à jour.</li>
+            <li><code>IDEAL-CUSTOMER-PROFILE.md</code> : segments cibles et règles d'engagement.</li>
+            <li><code>CRM_Salverys.html</code> : pipeline + <code>CALL_SCRIPTS</code> + <code>OBJECTIONS_TELEMED</code> / <code>OBJECTIONS_SUPPORT-N1</code> / <code>OBJECTIONS_HELPDESK-N1</code> (~lignes 2700+) — contiennent aussi des références prix à aligner.</li>
+            <li><code>CLAUDE.md</code> : note de marque + règle SaaS-first.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Décisions implicites à challenger / formaliser</h2>
+        <ul>
+            <li>Le « -40 % » est un argument transverse, pas une grille. Faut-il une vraie grille publique ou rester sur du sur-mesure ?</li>
+            <li>Le « 350 €/mois à partir de » médical est un point d'entrée — quelles tranches de volume ?</li>
+            <li>Le « pilote 15 jours gratuit » est-il viable économiquement à 10 agents ?</li>
+            <li>Contrats SaaS/Helpdesk « 12-36 mois » : conserver ou raccourcir pour réduire la friction d'entrée ?</li>
+            <li>Faire facturer comment (SaaS-first : Stripe / Pennylane / autre) ?</li>
+        </ul>
+
+        <p><strong>Workflow</strong> : créer une nouvelle branche <code>claude/...</code> pour toutes les modifs prix, ne pas développer sur main.</p>
+    </div>
+
+    <div class="footer">
+        Salverys — généré le 2026-05-30
+    </div>
+</div>
+
+<script id="prompt-raw" type="text/plain">**Contexte Salverys** (depuis `CLAUDE.md`) : BPO francophone à Antananarivo, **10 agents**, cible clients français. Marque : **Salverys** (remplace Vinlo/Nesvalo). Avantage transverse : fuseau FR, français langue maternelle, **~40 % moins cher qu'un prestataire hexagonal**. Cold mailing via **Emelia**. Règle d'arbitrage : **SaaS-first** avant code maison. Toujours répondre en français, direct et opérationnel.
+
+**Tâche : firmer la grille tarifaire et le modèle d'offre, avec modifs à venir.**
+
+---
+
+**État actuel de l'offre (extraits du playbook `OUTREACH-SEQUENCE.md` — chiffres revendiqués en cold mail) :**
+
+**Médical (priorité 1)**
+- Modèle : forfait mensuel selon volume d'appels, **à partir de ~350 €/mois**
+- **Essai 15 jours sans engagement** (gratuit)
+- Périmètre pilote : un site / certains créneaux
+- Argument coût : ~40 % moins cher qu'une secrétaire interne
+- Référence interne FR citée : 35-45 k€/an équivalent temps plein (salaire + charges + formation + turnover)
+
+**Bailleurs sociaux & grandes structures (priorité 2)**
+- Positionnement : **capacité d'appoint, pas remplacement** du CRC
+- Pilote sur 1 pic d'appels (rentrée, période de charges)
+- Argument coût : ~40 % moins cher qu'un téléconseiller CDI
+- Référence interne FR citée : 48-55 k€/an par ETP, turnover ~25 %/an
+
+**Support N1 SaaS & Helpdesk IT (priorité 3)**
+- Modèle ETP dédié, contrats 12-36 mois, montée en charge progressive
+- Sans engagement long, pilote 15 jours gratuit (SaaS) / « commencer petit, 1 ETP, monter selon ROI » (helpdesk)
+- Argument coût : ~40 % moins cher qu'équipe interne / prestataire hexagonal
+- Délai opérationnel : quelques semaines vs 60-90 j de recrutement
+
+**Cross-cutting toutes niches**
+- **Marque blanche** systématique (équipe répond sous le nom du client)
+- **Live chat** opéré par Salverys sur son site = preuve de réactivité
+- **WhatsApp** +33 6 48 91 84 50 = canal de bascule post-réponse
+
+---
+
+**Fichiers à connaître**
+- `OUTREACH-SEQUENCE.md` : **tous les chiffres prix sont dans les corps d'email** (E1/E2/E4/E5 médical + bailleurs + SaaS) et dans les tableaux d'objections. Si la grille change, ces emails sont à mettre à jour.
+- `IDEAL-CUSTOMER-PROFILE.md` : segments cibles et règles d'engagement.
+- `CRM_Salverys.html` : pipeline + `CALL_SCRIPTS` + `OBJECTIONS_TELEMED` / `OBJECTIONS_SUPPORT-N1` / `OBJECTIONS_HELPDESK-N1` (~lignes 2700+) — contiennent aussi des références prix à aligner.
+- `CLAUDE.md` : note de marque + règle SaaS-first.
+
+---
+
+**Décisions implicites à challenger / formaliser**
+- Le « -40 % » est un argument transverse, pas une grille. Faut-il une vraie grille publique ou rester sur du sur-mesure ?
+- Le « 350 €/mois à partir de » médical est un point d'entrée — quelles tranches de volume ?
+- Le « pilote 15 jours gratuit » est-il viable économiquement à 10 agents ?
+- Contrats SaaS/Helpdesk « 12-36 mois » : conserver ou raccourcir pour réduire la friction d'entrée ?
+- Faire facturer comment (SaaS-first : Stripe / Pennylane / autre) ?
+
+**Workflow** : créer une nouvelle branche `claude/...` pour toutes les modifs prix, ne pas développer sur main.</script>
+
+<script>
+(function() {
+    var raw = document.getElementById('prompt-raw').textContent.trim();
+    var btn = document.getElementById('copy-btn');
+    var wc = document.getElementById('word-count');
+    wc.textContent = raw.split(/\s+/).length + ' mots · ' + raw.length + ' caractères';
+
+    btn.addEventListener('click', function() {
+        var fallback = function() {
+            var ta = document.createElement('textarea');
+            ta.value = raw;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+        };
+        var done = function() {
+            btn.textContent = '✓ Copié !';
+            btn.classList.add('copied');
+            setTimeout(function() {
+                btn.textContent = '📋 Tout copier';
+                btn.classList.remove('copied');
+            }, 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(raw).then(done).catch(function() { fallback(); done(); });
+        } else {
+            fallback();
+            done();
+        }
+    });
+})();
+</script>
+</body>
+</html>
