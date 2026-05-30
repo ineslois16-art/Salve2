@@ -139,13 +139,13 @@ remplace pas le logo maître.
 | Or chaud | `#B89968` (`:root`) | Accent secondaire / détails |
 | Greige (fond doux) | `#F6F2EA` (`:root`) | Fond doux **et** texte sur aplats d'accent |
 | Navy (secondaire) | `#013C58` (`.theme-it`) | Réservé aux supports / pages **IT** |
-| Doré profond (secondaire) | `#F7CA52` (`.theme-it`) | Accent du thème IT — **décision finale** |
+| Doré profond (secondaire) | `#F0B429` (`.theme-it`) | Accent du thème IT — **décision finale** |
 
 ### Règle de lisibilité — texte sur aplat d'accent
 Tout **texte posé sur un aplat d'accent** (sauge, doré) s'écrit en
 **`#F6F2EA` (fond doux)**. Validé sur les deux accents retenus :
 - Sauge `#6F8770` → texte crème `#F6F2EA` ✓
-- Doré profond `#F7CA52` → texte crème `#F6F2EA` ✓ (arbitrage clos)
+- Doré profond `#F0B429` → texte crème `#F6F2EA` ✓ (arbitrage clos)
 
 > 👁️ **Pour comparer visuellement** : ouvrir `comparaison-charte-salverys.html`
 > dans un navigateur (principal sauge vs secondaire navy, couleur + typo +
@@ -180,7 +180,7 @@ Tout **texte posé sur un aplat d'accent** (sauge, doré) s'écrit en
       aucun renversement à coder.
 - [x] **Appliquer la règle de lisibilité** : texte `#F6F2EA` sur aplat d'accent
       dans `assets/site.css` — `--cta-text: #F6F2EA` sur les deux thèmes.
-- [x] **Nuance dorée du thème secondaire tranchée** : `#F7CA52` (doré profond)
+- [x] **Nuance dorée du thème secondaire tranchée** : `#F0B429` (doré profond)
       retenu. Texte crème lisible, arbitrage clos.
 - [x] **Lockup décliné sur le footer du site** (forme longue sur l'accueil,
       formes courtes par contexte sur les simulateurs).
