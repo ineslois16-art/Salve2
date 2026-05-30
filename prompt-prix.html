@@ -6,15 +6,16 @@
 <title>Prompt — Session prix Salverys</title>
 <style>
     :root {
-        --bg: #FAFAF7;
+        --bg: #F6F2EA;
         --surface: #FFFFFF;
-        --ink: #1F2937;
-        --muted: #64748B;
-        --line: #E5E7EB;
-        --accent: #B8860B;
-        --accent-soft: #FBF5E3;
-        --code-bg: #F3F4F6;
-        --success: #10B981;
+        --primary: #2E3B4E;
+        --ink: #20303F;
+        --muted: #8A8275;
+        --line: #E7DFD1;
+        --accent: #6F8770;
+        --accent-soft: #EAF0EA;
+        --code-bg: #F0EADE;
+        --success: #6F8770;
     }
     * { box-sizing: border-box; }
     body {
@@ -36,11 +37,23 @@
         gap: 8px;
         margin-bottom: 28px;
     }
-    h1 {
-        font-size: 24px;
+    .site-brand {
+        display: inline-block;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: 20px;
         font-weight: 700;
+        color: var(--primary);
+        letter-spacing: -.01em;
+        margin-bottom: 20px;
+    }
+    .site-brand::after { content: "."; color: var(--accent); }
+    h1 {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: 26px;
+        font-weight: 600;
         margin: 0;
-        color: var(--ink);
+        color: var(--primary);
+        letter-spacing: -.01em;
     }
     .subtitle {
         color: var(--muted);
@@ -71,7 +84,7 @@
         transition: background 0.15s ease, transform 0.05s ease;
         font-family: inherit;
     }
-    .copy-btn:hover { background: #9F750A; }
+    .copy-btn:hover { background: #5C7160; }
     .copy-btn:active { transform: scale(0.98); }
     .copy-btn.copied {
         background: var(--success);
@@ -87,10 +100,11 @@
         padding: 32px;
     }
     .prompt h2 {
-        font-size: 17px;
-        font-weight: 700;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: 18px;
+        font-weight: 600;
         margin: 28px 0 12px;
-        color: var(--ink);
+        color: var(--primary);
         border-bottom: 1px solid var(--line);
         padding-bottom: 6px;
     }
@@ -136,6 +150,7 @@
 </head>
 <body>
 <div class="container">
+    <a class="site-brand" href="index.html">Salverys</a>
     <div class="header">
         <h1>Prompt — Session prix Salverys</h1>
         <div class="subtitle">À coller au début d'une nouvelle conversation Claude pour cadrer la session « offre & tarification ».</div>
