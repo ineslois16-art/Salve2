@@ -33,6 +33,17 @@ plus apparaître dans aucun livrable, séquence, CRM ou support client.
 ## Outils retenus
 - **Cold mailing : Emelia** (outil de prospection email retenu)
 
+## Source de vérité tarifaire
+
+Tous les prix, grilles, benchmarks et conditions (essai/offre de lancement) sont
+définis dans **`PRICING.md`** — c'est la **source unique de vérité**. Toute copy
+(emails `OUTREACH-*`, CRM, simulateurs, `index.html`) doit s'aligner dessus ; en cas
+de divergence, `PRICING.md` fait foi. Réflexion détaillée : `RAPPORT-PRIX.html`.
+
+Rappels clés : priorités niches = **1) médical · 2) Support N1 SaaS & Helpdesk IT ·
+3) Bailleurs** ; offre de lancement = **1er mois à -50 %** (et non plus essai gratuit) ;
+modèles de tarification = **ETP par position > à l'heure > à l'interaction**.
+
 ## Règle d'arbitrage : SaaS-first avant tout code maison
 
 Avant de proposer d'implémenter une fonctionnalité dans le CRM ou dans un
