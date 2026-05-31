@@ -232,6 +232,9 @@ img { display: block; max-width: 100%; }
 .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: s; }
 @media (max-width: 880px) { .steps { grid-template-columns: 1fr 1fr; gap: 30px 20px; } }
 .step { position: relative; padding-top: 18px; }
+@media (min-width: 881px) {
+  .step:not(:last-child)::after { content: '→'; position: absolute; right: -12px; top: 44px; transform: translateX(50%); font-size: 18px; color: var(--primary); opacity: 0.35; }
+}
 .step .sn { width: 52px; height: 52px; border-radius: 16px; background: var(--accent-tint); color: var(--primary); display: flex; align-items: center; justify-content: center; font-family: 'Georgia', serif; font-size: 22px; font-weight: 700; margin-bottom: 16px; }
 .theme-it .step .sn { font-family: 'Inter', sans-serif; background: var(--accent); }
 .step h4 { font-size: 17px; color: var(--primary); margin-bottom: 8px; }
