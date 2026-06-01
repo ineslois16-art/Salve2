@@ -61,7 +61,7 @@ Les partenaires technologiques identifiés incluent HP, Dell et 3CX. Les référ
 
 | Nom | Titre | Canal | Priorité |
 |-----|-------|-------|----------|
-| Hichem Boulahbel | Président, Dirigeant-Fondateur | LinkedIn (InMail) + Email [email protected] | 1 |
+| Hichem Boulahbel | Président, Dirigeant-Fondateur | LinkedIn (InMail) + Email **hichem.boulahbel@oxxodata.com** (basse confiance — micro-structure, pattern non vérifié) · Fallback : **contact@oxxodata.com** (confirmé) | 1 |
 | Deuxième décideur | À identifier (probable absence — structure solo) | — | — |
 
 **Notes d'approche :**
@@ -75,7 +75,7 @@ Les partenaires technologiques identifiés incluent HP, Dell et 3CX. Les référ
 ## Plan d'action en 3 niveaux
 
 ### Niveau 1 — Immédiat (J1-J3)
-- Envoyer l'email E1 à [email protected] (tester aussi [email protected] et [email protected] comme variantes courantes).
+- Envoyer l'email E1 à **hichem.boulahbel@oxxodata.com** en premier. Si rebond : `hb@oxxodata.com` (pattern alternatif détecté sur RocketReach, possiblement inversé). Fallback sûr : **contact@oxxodata.com** avec son prénom dans l'objet. Alternative directe : InMail LinkedIn (profil actif — à privilégier vu la taille de la structure).
 - En parallèle, envoyer un InMail LinkedIn à Hichem Boulahbel avec le même angle mais reformulé en 3 phrases (InMail court = taux de réponse supérieur).
 - Logguer dans le CRM Salverys : contact = Hichem Boulahbel, statut = "E1 envoyé", séquence = marque blanche Helpdesk IT N1.
 

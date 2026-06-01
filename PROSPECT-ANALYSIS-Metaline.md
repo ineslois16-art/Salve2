@@ -58,11 +58,11 @@ La tension capacitaire est documentée et persistante : l'objectif de 1 000 coll
 
 ## Carte des décideurs
 
-| Nom | Titre | Canal | Priorité |
-|-----|-------|-------|----------|
-| Samuel Amiet | Président du groupe Metaline | LinkedIn (profil confirmé) | 1 |
-| Alexandre Sebban | Directeur Général / Directeur des opérations, Metaline IT | LinkedIn (à valider parmi homonymes) | 2 |
-| Directeur/Responsable Delivery | Non identifié nominativement | À creuser via LinkedIn Sales Nav ou réseau | 3 |
+| Nom | Titre | Email | LinkedIn | Priorité |
+|-----|-------|-------|----------|----------|
+| Alexandre Sebban | DG Opérations, Metaline IT | **a.sebban@metaline.fr** (pattern confirmé, 75 %) | à valider parmi homonymes (Metaline IT / Aptech / Nanterre) | 1 |
+| Samuel Amiet | Président du groupe Metaline | **s.amiet@metaline.fr** (pattern confirmé, 75 %) | https://fr.linkedin.com/in/samuel-amiet-6a8443 | 2 |
+| Directeur/Responsable Delivery | Non identifié nominativement | — | À creuser via LinkedIn Sales Nav ou réseau | 3 |
 
 **Notes d'approche :**
 
@@ -78,8 +78,8 @@ Le Directeur Delivery ou Responsable Centre de Services n'a pas été identifié
 
 ### Niveau 1 — Immédiat (J1-J3)
 - Confirmer l'identité LinkedIn d'Alexandre Sebban (filtrer sur Metaline IT / Aptech / Nanterre)
-- Trouver l'email professionnel d'Alexandre Sebban (pattern probable : a.sebban@metaline.fr ou alexandre.sebban@metaline.fr — à valider avec Hunter.io ou Apollo)
-- Envoyer l'email E1 à Alexandre Sebban (DG Ops) avec l'objet A ou B ci-dessous
+- Envoyer l'email E1 à **a.sebban@metaline.fr** (pattern confirmé via employés Metaline sur RocketReach — `m.barbe@metaline.fr` vérifié). Si rebond : tester `alexandre.sebban@metaline.fr`
+- En parallèle : connexion LinkedIn avec Samuel Amiet (note de connexion courte et directe)
 - En parallèle : connexion LinkedIn avec Samuel Amiet (note de connexion courte et directe)
 
 ### Niveau 2 — Court terme (J3-J14)

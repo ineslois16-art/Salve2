@@ -105,9 +105,9 @@ conversation sur un apport de capacité externe.
 
 | Nom | Titre | LinkedIn | Email probable | Priorité |
 |-----|-------|----------|----------------|----------|
-| Eric Forestier | Directeur Général | linkedin.com/in/ericforestier | e.forestier@tenexa.fr (à tester) | 1 |
-| Stéphane Clément | Président du Groupe | linkedin.com/in/stephane-clement-tenexa | s.clement@tenexa.fr (à tester) | 2 |
-| Vighen Papazian | Fondateur / Président fondateur | linkedin.com/in/vighenpapazian | v.papazian@tenexa.fr (à tester) | 3 |
+| Eric Forestier | Directeur Général | linkedin.com/in/ericforestier | **eric.forestier@tenexa.fr** (pattern `prenom.nom@tenexa.fr` dominant, ~40 % des boîtes Tenexa — confiance moyenne) | 1 |
+| Stéphane Clément | Président du Groupe | linkedin.com/in/stephane-clement-tenexa | **stephane.clement@tenexa.fr** (même pattern) | 2 |
+| Vighen Papazian | Fondateur / rôle en retrait | linkedin.com/in/vighenpapazian | vighen.papazian@tenexa.fr | 3 |
 | Directeur Delivery / Directeur des Opérations | Non identifié à ce stade | LinkedIn Tenexa à explorer | — | À identifier |
 
 **Notes d'approche :**
@@ -143,13 +143,9 @@ potentiellement le décideur technique le plus pertinent pour un pilote.
 
 ### Niveau 1 — Immédiat (J1-J3)
 
-- Envoyer l'email E1 à eric.forestier@tenexa.fr (format à tester) avec objet A ou B
-- En parallèle : envoyer une demande de connexion LinkedIn à Eric Forestier avec un
-  message court (2-3 phrases, angle recrutement N1)
-- Rechercher sur LinkedIn "Tenexa" + "directeur opérations" / "service desk manager"
-  pour identifier un décideur delivery non encore trouvé
-- Vérifier le format email exact de Tenexa (tester prenom.nom@ vs pnom@ vs
-  p.nom@ avec un outil de vérification type Hunter.io ou ZeroBounce)
+- Envoyer l'email E1 à **eric.forestier@tenexa.fr** — pattern `prenom.nom@tenexa.fr` confirmé comme dominant (~40 % des boîtes). Si rebond : tester `e.forestier@tenexa.fr`
+- En parallèle : demande de connexion LinkedIn à Eric Forestier (profil actif, +500 connexions) avec message court 2-3 phrases, angle recrutement N1
+- Rechercher sur LinkedIn "Tenexa" + "directeur opérations" / "service desk manager" pour identifier un décideur delivery non encore trouvé
 
 ### Niveau 2 — Court terme (J3-J14)
 
