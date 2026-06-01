@@ -21,9 +21,9 @@
 
 | # | Société | URL | Effectifs | CA estimé | Ville | Décideur cible | Signal d'achat | Score / 5 |
 |---|---------|-----|-----------|-----------|-------|---------------|----------------|-----------|
-| 1 | **Oxxodata** | oxxodata.com | ~30-60 | ~4-6 M€ | Meyzieu (69) | Fondateur / DG (à identifier) | ⚡ **PROPOSE DÉJÀ de l'infogérance en marque blanche** — page dédiée "infogérance helpdesk marque blanche" sur leur site | ★★★★★ |
-| 2 | **Metaline** | metaline.fr | ~150-250 | ~17 M€ | Nanterre (92) | DG groupe (à identifier) | ⚡ 1,8 million d'appels/an + croissance CA +44% en 2023 — tension capacité massive + recrutement | ★★★★★ |
-| 3 | **Infodis IT (Tenexa)** | tenexa.fr | ~500 (dont 220 helpdesk) | ~50 M€ | Roissy-en-France (95) | Vighen Papazian (DG) | ⚡ 220 agents helpdesk dédiés + recrutements actifs N1 sur LinkedIn + CA 50M€ | ★★★★☆ |
+| 1 | **Oxxodata** | oxxodata.com | ~2-10 (micro-structure) | ~0,1 M€ public | Meyzieu (69) | Hichem Boulahbel (Président-Fondateur) | ⚡ **PROPOSE DÉJÀ de l'infogérance en marque blanche** — page dédiée "infogérance helpdesk marque blanche" sur leur site | ★★★★★ |
+| 2 | **Metaline** | metaline.fr | ~150-250 | ~17 M€ | Nanterre (92) | Samuel Amiet (Président) + Alexandre Sebban (DG Ops) | ⚡ 75+ offres techniciens support actives (Indeed, mai 2026) + croissance +44% + actionnaire PE LFPI | ★★★★★ |
+| 3 | **Infodis IT (Tenexa)** | tenexa.fr | ~1 000 (post-acquisitions) | ~100 M€ | Roissy-en-France (95) | Eric Forestier (DG depuis fév. 2026) | ⚡ 18 offres helpdesk actives (CDI IDF + Amiens) + croissance par acquisitions (fonds HLD) | ★★★★☆ |
 | 4 | **Cyllene** | groupe-cyllene.com | ~250-400 | ~70 M€ | Nanterre (92) | Président (remplacé en 2022 = réorg en cours) | Offre services managés 24/7, financement Société Générale Capital, croissance active | ★★★★☆ |
 | 5 | **Kincy** | kincy.fr | ~65 | ~6-8 M€ | Paris / Marseille / Papeete | DG (à identifier) | 30 techs helpdesk, 3 sites, 1000+ serveurs managés, infogérance PME/ETI active | ★★★★☆ |
 
@@ -58,11 +58,11 @@
 
 ### À APPROCHER EN PRIORITÉ (Top 5)
 
-**#1 Oxxodata** — cas unique : ils VENDENT déjà de l'infogérance en marque blanche à d'autres MSPs. Salverys ne leur propose pas de sous-traiter leur N1 — on leur propose d'être le **sous-traitant humain** derrière leur offre marque blanche. Angle : "Vous vendez du helpdesk en marque blanche — on opère les agents derrière."
+**#1 Oxxodata** (analyse 71/100) — cas unique : ils VENDENT déjà de l'infogérance en marque blanche à d'autres MSPs. Salverys ne leur propose pas de sous-traiter leur N1 — on leur propose d'être le **sous-traitant humain** derrière leur offre marque blanche. Décideur : Hichem Boulahbel (Président-Fondateur). À noter : micro-structure (2-10 pers., comptes confidentiels depuis 2022) → décision rapide mais volume potentiel limité. Angle : "Vous vendez du helpdesk en marque blanche — on opère les agents derrière."
 
-**#2 Metaline** — 1,8 million d'appels/an + croissance +44% = tension capacité réelle. Nanterre = grande entreprise française qui ne sous-traite pas offshore à priori mais qui déborde. Angle : "Votre croissance dépasse votre capacité de recrutement France. Pilote 60j sur l'overflow."
+**#2 Metaline** (analyse 78/100 — meilleure cible) — 1,8 million d'appels/an + croissance +44% = tension capacité réelle. Décideurs : Samuel Amiet (Président) + Alexandre Sebban (DG Ops). Actionnaire PE LFPI (depuis 2023) = pression croissance rentable, sensible à un levier sans capex. Signal le plus fort : 75+ offres techniciens support actives sur Indeed (mai 2026). Aucune filiale offshore détectée. Angle : "Votre croissance dépasse votre capacité de recrutement France. Pilote 60j sur l'overflow."
 
-**#3 Infodis IT / Tenexa** — 220 agents helpdesk + recrutements actifs = preuve de tension. Vighen Papazian est le fondateur depuis 1985 = approche directe possible. Angle : "Vous recrutez des N1 — on peut vous envoyer 3-5 ETP francophones natifs en 3 semaines."
+**#3 Infodis IT / Tenexa** (analyse 74/100) — CORRECTION : la cible n'est plus Vighen Papazian (en retrait progressif) mais **Eric Forestier**, DG depuis février 2026. Taille réelle ~1 000 pers / 100+ M€ (doublement 2023-2024 via 3 acquisitions, fonds HLD), pas 500 / 50 M€. Modèle "made in France" affiché = pas d'offshore interne = opportunité directe. Signal : 18 offres helpdesk actives (CDI IDF + Amiens). Frein : cycle de vente plus long vu la taille. Angle : "Vous recrutez des N1 — on peut vous envoyer 3-5 ETP francophones natifs en 3 semaines."
 
 **#4 Cyllene** — services managés 24/7 = ils ont une offre nocturne et weekend. Impossible à couvrir sans composante offshore ou astreintes coûteuses. Angle : "UTC+3 couvre votre créneau 6h-8h du matin sans supplément nuit."
 
