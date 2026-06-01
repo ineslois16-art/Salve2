@@ -98,12 +98,10 @@
     ];
     const PER_CALL_ELSEWHERE = 1.60;
     const MARGINAL_PER_100 = 95;
-    const RDV_RATE = 0.12;
     const daysMult = { 5: 1.0, 6: 1.12, 7: 1.22 };
     const st = { calls: 250, days: 5, schedule: 1.0, integration: 1.0 };
 
     const tierFor = c => TIERS.find(t => c <= t.max) || null;
-    const eur2 = n => n.toFixed(2).replace('.', ',') + ' €';
     const $ = id => document.getElementById(id);
 
     function calc() {
@@ -114,16 +112,15 @@
       else { custom = true; name = 'Sur-mesure'; base = 950 + Math.ceil((st.calls - 900) / 100) * MARGINAL_PER_100; }
       const price = base * mult;
       const elsewhere = st.calls * PER_CALL_ELSEWHERE * mult;
-      const perCall = price / st.calls;
-      const rdv = Math.round(st.calls * RDV_RATE);
+      const perDay = Math.round(st.calls / (st.days * 4.33));
 
       $('price-monthly').textContent = euro(price);
       $('calls-monthly').textContent = st.calls.toLocaleString('fr-FR');
-      $('cost-percall').textContent = eur2(perCall);
-      $('rdv-recovered').textContent = '≈ ' + rdv;
+      $('calls-perday').textContent = '≈ ' + perDay;
       $('coverage').textContent = st.days + ' j · ' + (st.schedule > 1 ? '8h–22h' : '8h–20h');
 
       const savings = elsewhere - price;
+      $('savings-monthly').textContent = euro(Math.max(savings, 0)) + ' €';
       const cmp = $('compare-line'), badge = $('savings-badge');
       if (savings > 0) {
         cmp.innerHTML = 'Facturation à l\'appel ailleurs : <span class="old">' + euro(elsewhere) + ' €/mois</span>';
