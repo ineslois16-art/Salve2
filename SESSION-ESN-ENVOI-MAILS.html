@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salverys — Prochaine session : envoi emails ESN helpdesk IT N1</title>
+<style>
+  :root{
+    --bg:#FFFFFF; --bg-soft:#F6F2EA; --bg-deep:#2E3B4E; --ink:#20303F;
+    --text:#2A2620; --text-soft:#5C5448; --text-mute:#8A8275;
+    --line:#E7DFD1; --line-soft:#F0EADE;
+    --primary:#2E3B4E; --accent:#6F8770; --accent-tint:#EAF0EA;
+    --gold:#B89968; --danger:#B6604D; --ok:#6F8770;
+    --warn:#C08040;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);background:var(--bg-soft);line-height:1.6;font-size:16px}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+  header.hero{background:linear-gradient(135deg,var(--primary),#1a2a3a);color:#fff;padding:48px 0 40px}
+  .kicker{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:rgba(255,255,255,.6);margin-bottom:10px}
+  h1{font-family:'Georgia','Times New Roman',serif;font-size:30px;line-height:1.2;margin:0 0 10px;font-weight:600}
+  header.hero p{color:#D0D8D0;max-width:680px;font-size:15px}
+  .meta{margin-top:14px;font-size:13px;color:#9AADA0;display:flex;gap:10px;flex-wrap:wrap}
+  .badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+    padding:3px 10px;border-radius:999px;font-size:12px}
+  main{padding:30px 0 60px}
+
+  /* cards */
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin:16px 0;
+    box-shadow:0 1px 3px rgba(32,48,63,.05)}
+  .card-accent{border-left:4px solid var(--accent)}
+  .card-gold{border-left:4px solid var(--gold)}
+  .card-danger{border-left:4px solid var(--danger)}
+
+  h2{font-family:'Georgia','Times New Roman',serif;font-size:22px;font-weight:600;
+    color:var(--primary);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  h2 .ico{font-size:20px}
+  h3{font-size:15px;font-weight:600;color:var(--ink);margin:16px 0 8px}
+  h4{font-size:13px;font-weight:600;color:var(--text-soft);text-transform:uppercase;letter-spacing:.08em;margin:14px 0 6px}
+  p{margin:6px 0;font-size:15px}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--bg-soft);color:var(--ink);font-weight:600;font-size:13px}
+  td code{background:#F0EDE8;padding:1px 5px;border-radius:4px;font-size:13px;font-family:'SFMono-Regular',Consolas,monospace}
+
+  /* score pill */
+  .score{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;
+    font-size:13px;font-weight:700;line-height:1}
+  .score-hi{background:#E8F2E8;color:#3A7A3A}
+  .score-mid{background:#FFF3E0;color:#B06000}
+  .score-lo{background:#FDE8E8;color:#A03030}
+
+  /* confidence */
+  .conf-hi{color:var(--ok);font-weight:600}
+  .conf-mid{color:var(--warn);font-weight:600}
+  .conf-lo{color:var(--danger);font-weight:600}
+
+  /* order badge */
+  .order{display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:8px;background:var(--primary);
+    color:#fff;font-weight:700;font-size:14px;flex:0 0 auto;margin-right:6px}
+
+  /* email preview */
+  .email-box{background:#FAFAF8;border:1px solid var(--line);border-radius:10px;
+    padding:18px 20px;font-family:'SFMono-Regular',Consolas,monospace;
+    font-size:13px;line-height:1.7;color:var(--text);white-space:pre-wrap;margin:12px 0}
+  .email-field{color:var(--text-mute);font-size:12px;margin-bottom:2px}
+  .email-subj{font-weight:700;color:var(--ink);margin-bottom:12px;font-family:inherit}
+  .email-body{border-top:1px solid var(--line);padding-top:12px;font-family:'Inter',sans-serif;font-size:14px;line-height:1.7}
+
+  /* checklist */
+  .checklist{list-style:none;margin:10px 0}
+  .checklist li{display:flex;align-items:flex-start;gap:8px;padding:6px 0;
+    border-bottom:1px solid var(--line-soft);font-size:14.5px}
+  .checklist li:last-child{border-bottom:none}
+  .checklist .cb{width:18px;height:18px;border:2px solid var(--line);border-radius:4px;
+    flex:0 0 18px;margin-top:2px;background:#fff}
+  .checklist .tag{font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;
+    white-space:nowrap}
+  .tag-now{background:#E8F2E8;color:#3A7A3A}
+  .tag-soon{background:#FFF3E0;color:#B06000}
+  .tag-later{background:#EEF2FF;color:#3050A0}
+
+  /* files grid */
+  .files{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:12px 0}
+  .file-card{background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .file-name{font-family:'SFMono-Regular',Consolas,monospace;font-size:13px;font-weight:600;color:var(--primary)}
+  .file-desc{font-size:13px;color:var(--text-soft);margin-top:4px}
+  .file-status{font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;
+    display:inline-block;margin-top:6px}
+  .st-done{background:#E8F2E8;color:#3A7A3A}
+  .st-go{background:#FFF3E0;color:#B06000}
+
+  /* section divider */
+  .section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--text-mute);margin:28px 0 8px}
+
+  /* alert */
+  .alert{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:10px;font-size:14px}
+  .alert-ok{background:#E8F2E8;color:#2A5A2A}
+  .alert-warn{background:#FFF3E0;color:#7A4000}
+
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  strong{font-weight:600}
+  code{background:#F0EDE8;padding:1px 5px;border-radius:4px;font-size:13px;font-family:'SFMono-Regular',Consolas,monospace}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Salverys — Sales Intelligence</div>
+    <h1>Prochaine session : rédaction, revue et envoi des emails ESN</h1>
+    <p>Campagne helpdesk IT N1 marque blanche — partenariat sous-traitance ESN/MSP France. Tout est prêt dans le dépôt. Cette session se concentre sur l'activation Emelia et le suivi CRM.</p>
+    <div class="meta">
+      <span class="badge">Segment : helpdesk-it-esn</span>
+      <span class="badge">Outil : Emelia (mail-merge CSV)</span>
+      <span class="badge">Branche git : claude/config-P042g</span>
+      <span class="badge">Date : 2026-06-01</span>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <!-- WHAT'S READY -->
+  <div class="section-label">Ce qui est prêt dans le dépôt</div>
+  <div class="card">
+    <h2><span class="ico">📁</span> Fichiers disponibles</h2>
+    <div class="files">
+      <div class="file-card">
+        <div class="file-name">ESN-TARGETS.md</div>
+        <div class="file-desc">20 cibles ESN/MSP France. Top 3 enrichies avec décideurs nominatifs et signaux d'achat.</div>
+        <span class="file-status st-done">✓ Complet</span>
+      </div>
+      <div class="file-card">
+        <div class="file-name">OUTREACH-IT-N1-marque-blanche.md</div>
+        <div class="file-desc">Séquence 5 emails / 21 jours. Variables Emelia. 4 objections préparées.</div>
+        <span class="file-status st-done">✓ Complet</span>
+      </div>
+      <div class="file-card">
+        <div class="file-name">PROSPECT-ANALYSIS-Metaline.md</div>
+        <div class="file-desc">Score 78/100. Email E1 prêt. 2 décideurs + emails identifiés.</div>
+        <span class="file-status st-done">✓ Prêt à envoyer</span>
+      </div>
+      <div class="file-card">
+        <div class="file-name">PROSPECT-ANALYSIS-Oxxodata.md</div>
+        <div class="file-desc">Score 71/100. Email E1 prêt. InMail LinkedIn recommandé en premier.</div>
+        <span class="file-status st-done">✓ Prêt à envoyer</span>
+      </div>
+      <div class="file-card">
+        <div class="file-name">PROSPECT-ANALYSIS-Infodis-Tenexa.md</div>
+        <div class="file-desc">Score 74/100. Email E1 prêt. Eric Forestier (DG depuis fév. 2026).</div>
+        <span class="file-status st-done">✓ Prêt à envoyer</span>
+      </div>
+      <div class="file-card">
+        <div class="file-name">CRM_Salverys.html</div>
+        <div class="file-desc">Niche helpdesk-it-esn créée. 20 leads seed (l181-l200). Leads l181-l183 enrichis.</div>
+        <span class="file-status st-done">✓ À jour</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER OF ATTACK -->
+  <div class="section-label">Ordre d'envoi</div>
+  <div class="alert alert-ok" style="margin-bottom:8px">
+    <span>✓</span>
+    <span>Envoyer dans cet ordre. Metaline d'abord (signal le plus chaud + emails les plus fiables), Oxxodata en parallèle via LinkedIn, Tenexa après (cycle plus long).</span>
+  </div>
+
+  <!-- METALINE -->
+  <div class="card card-accent">
+    <h2>
+      <span class="order">1</span>
+      Metaline
+      <span class="score score-hi">78 / 100</span>
+    </h2>
+
+    <table>
+      <tr><th style="width:160px">Destinataire principal</th><td>Alexandre Sebban — DG Opérations, Metaline IT</td></tr>
+      <tr><th>Email</th><td><code>a.sebban@metaline.fr</code> <span class="conf-hi">75 %</span> — pattern <code>initiale.nom@metaline.fr</code> vérifié (source : RocketReach, <code>m.barbe@metaline.fr</code> confirmé)</td></tr>
+      <tr><th>Fallback si rebond</th><td><code>alexandre.sebban@metaline.fr</code></td></tr>
+      <tr><th>En parallèle</th><td>Connexion LinkedIn à Samuel Amiet (Président) — <a href="https://fr.linkedin.com/in/samuel-amiet-6a8443" target="_blank">profil confirmé</a> — note courte même angle</td></tr>
+      <tr><th>Trigger E1</th><td>75 postes support ouverts sur Indeed (mai 2026) — tension documentée et actuelle</td></tr>
+      <tr><th>Signal fort</th><td>Actionnaire PE LFPI Gestion depuis 2023 = pression croissance rentable, sensible à levier sans capex</td></tr>
+      <tr><th>Risque</th><td>Sous-traitance offshore non confirmée mais non exclue — à vérifier au premier échange</td></tr>
+    </table>
+
+    <h3>Email E1 — prêt à copier dans Emelia</h3>
+    <div class="email-box"><div class="email-field">À :</div><div class="email-subj">a.sebban@metaline.fr</div><div class="email-field">Objet A (test) :</div><div class="email-subj">Absorber vos pics helpdesk sans recruter en France</div><div class="email-field">Objet B (test) :</div><div class="email-subj">Overflow N1 : pilote 60j pour Metaline ?</div><div class="email-body">Bonjour Alexandre,
+
+Metaline a 75 postes support ouverts sur Indeed en ce moment. Le recrutement CDI en France ne suit pas le volume — ça se voit.
+
+Nous sommes Salverys, BPO à Madagascar : agents francophones natifs, process ITIL, UTC+3 — on couvre le créneau 7h-9h France sans supplément. Tarif 1 550-2 000 €/ETP/mois, activation en 3 semaines.
+
+Pas de substitution à vos équipes : uniquement l'overflow que vous ne pouvez pas absorber aujourd'hui.
+
+Est-ce que 20 minutes cette semaine vous conviennent pour voir si c'est pertinent pour Metaline ?
+
+Cordialement,
+[Prénom Nom]
+Salverys — Business Development
+[Email] | [Téléphone]
+Antananarivo, Madagascar</div></div>
+    <p style="font-size:13px;color:var(--text-mute)">82 mots · zéro lien · zéro emoji · zéro gras</p>
+  </div>
+
+  <!-- OXXODATA -->
+  <div class="card card-gold">
+    <h2>
+      <span class="order">2</span>
+      Oxxodata
+      <span class="score score-mid">71 / 100</span>
+    </h2>
+
+    <table>
+      <tr><th style="width:160px">Destinataire</th><td>Hichem Boulahbel — Président-Fondateur</td></tr>
+      <tr><th>Canal recommandé</th><td><strong>InMail LinkedIn en premier</strong> — <a href="https://fr.linkedin.com/in/hichem-boulahbel-6b332824" target="_blank">profil actif (posts infogérance)</a>. Micro-structure = il lit tout lui-même.</td></tr>
+      <tr><th>Email</th><td><code>hichem.boulahbel@oxxodata.com</code> <span class="conf-lo">basse confiance</span> — pattern non vérifié (2-10 personnes, comptes confidentiels depuis 2022)</td></tr>
+      <tr><th>Fallback email</th><td><code>contact@oxxodata.com</code> <span class="conf-hi">confirmé</span> — mettre son prénom dans l'objet</td></tr>
+      <tr><th>Angle unique</th><td>Oxxodata VEND déjà de l'infogérance en marque blanche. On ne propose pas de sous-traiter leur N1 interne — on propose d'être la couche humaine derrière leur offre. Ils vendent, on opère.</td></tr>
+      <tr><th>Risque</th><td>Micro-structure (2-10 pers.) = volume limité. Valider le potentiel dès le premier échange.</td></tr>
+    </table>
+
+    <h3>Email E1 — prêt à copier</h3>
+    <div class="email-box"><div class="email-field">À :</div><div class="email-subj">hichem.boulahbel@oxxodata.com (ou contact@oxxodata.com)</div><div class="email-field">Objet A :</div><div class="email-subj">Vos clients marque blanche — on peut opérer le N1 pour vous</div><div class="email-field">Objet B :</div><div class="email-subj">Derrière votre helpdesk marque blanche — une équipe à Madagascar</div><div class="email-body">Bonjour Hichem,
+
+Vous vendez de l'infogérance helpdesk en marque blanche à vos partenaires revendeurs — j'ai vu votre offre dédiée sur le site.
+
+Salverys opère des techniciens N1 francophones natifs (Madagascar, UTC+3) sous l'enseigne de nos donneurs d'ordre. Process ITIL, disponibles dès 7h heure France, activation en 3 semaines. Tarif : 1 550-2 000 €/ETP/mois tout compris.
+
+Concrètement : vous gardez la relation client, vous prenez votre marge, on opère les agents. Vous pouvez vendre plus de sièges marque blanche sans recruter.
+
+Est-ce que ça colle avec un projet en cours chez vous ?
+
+Valérie
+Salverys — Helpdesk IT N1 en marque blanche
+[email] | [téléphone]</div></div>
+    <p style="font-size:13px;color:var(--text-mute)">94 mots · zéro lien · zéro emoji · zéro gras</p>
+  </div>
+
+  <!-- TENEXA -->
+  <div class="card">
+    <h2>
+      <span class="order">3</span>
+      Infodis IT / Tenexa
+      <span class="score score-mid">74 / 100</span>
+    </h2>
+
+    <div class="alert alert-warn" style="margin-bottom:12px">
+      <span>⚠</span>
+      <span>Correction importante : le bon contact n'est plus Vighen Papazian (fondateur en retrait) mais <strong>Eric Forestier</strong>, DG depuis février 2026. Cycle de décision plus long (1 000 pers., 100 M€ CA). À lancer après Metaline.</span>
+    </div>
+
+    <table>
+      <tr><th style="width:160px">Destinataire principal</th><td>Eric Forestier — DG depuis fév. 2026 (DG nouveau en poste = fenêtre d'écoute favorable)</td></tr>
+      <tr><th>Email</th><td><code>eric.forestier@tenexa.fr</code> <span class="conf-mid">confiance moyenne</span> — pattern <code>prenom.nom@tenexa.fr</code> dominant (~40 % des boîtes Tenexa)</td></tr>
+      <tr><th>Fallback si rebond</th><td><code>e.forestier@tenexa.fr</code></td></tr>
+      <tr><th>Décideur backup</th><td>Stéphane Clément (Président) — <code>stephane.clement@tenexa.fr</code> — à approcher si Forestier ne répond pas à J+10</td></tr>
+      <tr><th>Trigger E1</th><td>18 offres helpdesk actives sur recrutement.tenexa.com (CDI IDF + Amiens, oct. 2025 documenté)</td></tr>
+      <tr><th>Atout</th><td>Positionnement "made in France" affiché = pas de filiale offshore interne = opportunité directe</td></tr>
+      <tr><th>Frein</th><td>Taille (1 000 pers.) = cycle de vente plus long, décideur Delivery non encore identifié</td></tr>
+    </table>
+
+    <h3>Email E1 — à personnaliser avant envoi</h3>
+    <p style="font-size:13px;color:var(--text-soft)">Corps complet dans <code>PROSPECT-ANALYSIS-Infodis-Tenexa.md</code> §Email E1 — 88 mots.</p>
+    <div class="email-box"><div class="email-field">À :</div><div class="email-subj">eric.forestier@tenexa.fr</div><div class="email-field">Objet A :</div><div class="email-subj">Tenexa recrute des N1 — on peut vous envoyer 3 ETP en 3 semaines</div><div class="email-field">Objet B :</div><div class="email-subj">Overflow helpdesk IT pour Tenexa — francophone natif, UTC+3</div><div class="email-body">Bonjour Eric,
+
+Tenexa a des postes techniciens helpdesk ouverts en CDI en ce moment — dont des positions en Île-de-France.
+
+Salverys (Madagascar) opère du helpdesk N1 en marque blanche pour des ESN françaises : francophones natifs, ITIL, vos outils, vos scripts. UTC+3 — on couvre le créneau 7h-9h France sans supplément nuit. 1 550-2 000 €/ETP/mois, pilote activable en 3 semaines.
+
+Pas de substitution à vos équipes internes : l'overflow et les créneaux que vous ne voulez pas couvrir en CDI France.
+
+Ça mériterait 15 minutes ?
+
+[Signature Salverys]</div></div>
+    <p style="font-size:13px;color:var(--text-mute)">88 mots · zéro lien · zéro emoji · zéro gras</p>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="section-label">Checklist de session — dans l'ordre</div>
+  <div class="card card-accent">
+    <h2><span class="ico">✅</span> Actions à compléter</h2>
+    <ul class="checklist">
+      <li>
+        <div class="cb"></div>
+        <div>
+          <strong>Vérifier les emails avant envoi</strong> — ZeroBounce ou Hunter.io sur les 3 adresses principales
+          (<code>a.sebban@metaline.fr</code>, <code>eric.forestier@tenexa.fr</code>, <code>hichem.boulahbel@oxxodata.com</code>)
+          <br><span class="tag tag-now">Immédiat</span>
+        </div>
+      </li>
+      <li>
+        <div class="cb"></div>
+        <div>
+          <strong>Créer la séquence Emelia — Metaline</strong> : importer le CSV (1 ligne), coller l'E1 ci-dessus, paramétrer la cadence J1/J3/J7/J14/J21
+          <br><span class="tag tag-now">Immédiat</span>
+        </div>
+      </li>
+      <li>
+        <div class="cb"></div>
+        <div>
+          <strong>Envoyer InMail LinkedIn à Hichem Boulahbel (Oxxodata)</strong> — 3 phrases max, même angle "vous vendez, on opère"
+          <br><span class="tag tag-now">Immédiat</span>
+        </div>
+      </li>
+      <li>
+        <div class="cb"></div>
+        <div>
+          <strong>Connexion LinkedIn à Samuel Amiet (Metaline)</strong> — note courte au moment de la demande de connexion
+          <br><span class="tag tag-now">Immédiat</span>
+        </div>
+      </li>
+      <li>
+        <div class="cb"></div>
+        <div>
+          <strong>Logger dans CRM_Salverys.html</strong> — passer l182 (Metaline), l181 (Oxxodata), l183 (Tenexa) de <code>nouveau</code> à <code>contacté</code> après envoi. Ajouter la date de contact.
+          <br><span class="tag tag-now">Après envoi</span>
+        </div>
+      </li>
+      <li>
+        <div class="cb"></div>
+        <div>
+          <strong>Créer séquence Emelia — Tenexa</strong> après le lancement Metaline (décalage recommandé : 2-3 jours)
+          <br><span class="tag tag-soon">J+2 / J+3</span>
+        </div>
+      </li>
+      <li>
+        <div class="cb"></div>
+        <div>
+          <strong>Identifier le Directeur Delivery / COO Tenexa</strong> — LinkedIn search "Tenexa" + "directeur opérations" / "service desk manager". Si trouvé : l'ajouter dans PROSPECT-ANALYSIS-Infodis-Tenexa.md et cibler en parallèle.
+          <br><span class="tag tag-soon">J+2</span>
+        </div>
+      </li>
+      <li>
+        <div class="cb"></div>
+        <div>
+          <strong>Lancer séquence Emelia — Oxxodata</strong> (email de backup si pas de réponse LinkedIn sous 4 jours)
+          <br><span class="tag tag-soon">J+4 si silence LinkedIn</span>
+        </div>
+      </li>
+      <li>
+        <div class="cb"></div>
+        <div>
+          <strong>Suivi E2 (Jour 3)</strong> — email "coût CDI vs marque blanche" — déjà rédigé dans OUTREACH-IT-N1-marque-blanche.md §Email 2. Emelia gère l'envoi automatique si la séquence est paramétrée.
+          <br><span class="tag tag-later">J+3 (auto Emelia)</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- EMELIA SETUP -->
+  <div class="section-label">Configuration Emelia</div>
+  <div class="card">
+    <h2><span class="ico">⚙</span> Variables CSV à préparer</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Variable Emelia</th>
+          <th>Metaline</th>
+          <th>Oxxodata</th>
+          <th>Tenexa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>{{firstName}}</code></td>
+          <td>Alexandre</td>
+          <td>Hichem</td>
+          <td>Eric</td>
+        </tr>
+        <tr>
+          <td><code>{{esn_nom}}</code></td>
+          <td>Metaline</td>
+          <td>Oxxodata</td>
+          <td>Tenexa</td>
+        </tr>
+        <tr>
+          <td><code>{{ville}}</code></td>
+          <td>Nanterre</td>
+          <td>Meyzieu</td>
+          <td>Roissy-en-France</td>
+        </tr>
+        <tr>
+          <td><code>{{trigger_recrutement}}</code></td>
+          <td>Metaline a 75 postes support ouverts sur Indeed en ce moment.</td>
+          <td>Vous vendez de l'infogérance helpdesk en marque blanche à vos partenaires revendeurs — j'ai vu votre offre dédiée sur le site.</td>
+          <td>Tenexa a des postes techniciens helpdesk ouverts en CDI en ce moment — dont des positions en Île-de-France.</td>
+        </tr>
+        <tr>
+          <td><code>{{nb_postes}}</code></td>
+          <td>75</td>
+          <td>—</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td><code>email</code> (envoi)</td>
+          <td><code>a.sebban@metaline.fr</code></td>
+          <td><code>contact@oxxodata.com</code></td>
+          <td><code>eric.forestier@tenexa.fr</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--text-soft);margin-top:8px">Séquence master dans <code>OUTREACH-IT-N1-marque-blanche.md</code> — cadence J1 / J3 / J7 / J14 / J21. Ne pas mettre de lien cliquable dans E1, E2, E3.</p>
+  </div>
+
+  <!-- OBJECTIONS RAPIDES -->
+  <div class="section-label">Objections à anticiper</div>
+  <div class="card">
+    <h2><span class="ico">💬</span> Réponses aux objections clés</h2>
+    <h4>« On a déjà un prestataire helpdesk »</h4>
+    <p>→ <em>Ce n'est pas une question de remplacement — c'est de savoir qui absorbe quand il est saturé : pics de décembre, pannes à 7h du matin, congés d'été. C'est exactement le créneau qu'on couvre.</em></p>
+    <h4>« Nos clients n'accepteraient pas de l'offshore »</h4>
+    <p>→ <em>C'est de la marque blanche totale : ils ne voient que votre marque. Nos agents sont francophones natifs, formés sur vos scripts, sans accent identifiable. On absorbe le N1 répétitif — là où le risque qualité est le plus faible.</em></p>
+    <h4>« Vous êtes trop petits »</h4>
+    <p>→ <em>C'est pour ça qu'on propose un pilote 60 jours sur un périmètre restreint. Vous n'avez pas besoin de nous croire sur parole — vous avez besoin de KPIs réels sur vos propres tickets.</em></p>
+    <h4>« On gère en interne, on ne sous-traite pas »</h4>
+    <p>→ <em>Vous recrutez X postes helpdesk en ce moment — ce qui suggère que l'interne est sous tension. La question n'est pas externaliser ou pas, c'est comment scaler la capacité N1 sans attendre 3 mois de CDI.</em></p>
+    <p style="font-size:13px;color:var(--text-soft);margin-top:12px">Réponses complètes dans <code>OUTREACH-IT-N1-marque-blanche.md</code> §Objections préparées</p>
+  </div>
+
+  <!-- REFERENCE -->
+  <div class="section-label">Référence rapide</div>
+  <div class="card">
+    <h2><span class="ico">📋</span> Rappels opérationnels</h2>
+    <table>
+      <tr><th style="width:200px">Tarif marque blanche</th><td>1 550-2 000 €/ETP/mois tout compris (source : PRICING.md — ne jamais citer d'autre prix)</td></tr>
+      <tr><th>Délai activation</th><td>3 semaines (vs 60-90 jours CDI France)</td></tr>
+      <tr><th>Fuseau horaire</th><td>UTC+3 — couvre 7h-9h France sans supplément nuit ni astreinte</td></tr>
+      <tr><th>Pilote proposé</th><td>60 jours, périmètre défini (200-400 tickets), KPIs partagés dès J1 (FCR, CSAT, AHT), sortie sans frais</td></tr>
+      <tr><th>Règles cold email</th><td>Zéro lien E1-E3 · zéro emoji · zéro gras dans le corps · &lt; 100 mots · CTA = question simple, jamais Calendly</td></tr>
+      <tr><th>Statuts CRM</th><td>nouveau → contacté → réponse → rdv → pilote → client</td></tr>
+    </table>
+  </div>
+
+</div>
+</main>
+
+</body>
+</html>
