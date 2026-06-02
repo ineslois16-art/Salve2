@@ -41,12 +41,12 @@
   --ease: cubic-bezier(.22,.61,.36,1);
 }
 
-/* ----- Thème IT : navy + doré profond ----- */
+/* ----- Thème IT : navy + jaune pastel (Support N1 SaaS) ----- */
 .theme-it {
   --bg-deep: #013C58;
   --primary: #013C58;
   --primary-deep: #012C42;
-  --accent: #FCE27C;       /* doré profond */
+  --accent: #FCE27C;       /* jaune pastel */
   --accent-soft: #FFE9A0;
   --accent-tint: #FCEEC9;
   --gold: #FCE27C;
@@ -54,6 +54,22 @@
   --cta: #FCE27C;
   --cta-text: #013C58;
   --halo: rgba(252,226,124,0.34);
+  --ok: #1E9E6A;
+}
+
+/* ----- Thème Helpdesk : bleu pétrole (Helpdesk IT ESN/MSP) ----- */
+.theme-helpdesk {
+  --bg-deep: #0E3D4E;
+  --primary: #1A5F7A;
+  --primary-deep: #114457;
+  --accent: #1A5F7A;       /* bleu pétrole */
+  --accent-soft: #5A8FA3;
+  --accent-tint: #D9E6EC;
+  --gold: #1A5F7A;
+  --gold-soft: #5A8FA3;
+  --cta: #1A5F7A;
+  --cta-text: #FFFFFF;
+  --halo: rgba(26,95,122,0.34);
   --ok: #1E9E6A;
 }
 
@@ -130,6 +146,8 @@ img { display: block; max-width: 100%; }
 .btn-outline:hover { background: var(--primary); color: #fff; }
 .btn-it { background: linear-gradient(120deg, #FCE27C 0%, #FCE27C 42%, #FFF0B3 50%, #FCE27C 58%, #FCE27C 100%); background-size: 260% 100%; background-position: 100% 0; color: #013C58; box-shadow: 0 6px 20px -8px rgba(252,226,124,.55), var(--shadow-md); transition: transform .18s var(--ease), box-shadow .25s, background-position .7s var(--ease); }
 .btn-it:hover { transform: translateY(-2px); background-position: 0 0; box-shadow: 0 14px 30px -8px rgba(252,226,124,.7), var(--shadow-lg); }
+.btn-helpdesk { background: linear-gradient(120deg, #1A5F7A 0%, #1A5F7A 42%, #2E7C99 50%, #1A5F7A 58%, #1A5F7A 100%); background-size: 260% 100%; background-position: 100% 0; color: #fff; box-shadow: 0 6px 20px -8px rgba(26,95,122,.55), var(--shadow-md); transition: transform .18s var(--ease), box-shadow .25s, background-position .7s var(--ease); }
+.btn-helpdesk:hover { transform: translateY(-2px); background-position: 0 0; box-shadow: 0 14px 30px -8px rgba(26,95,122,.7), var(--shadow-lg); }
 
 /* ================= HERO ================= */
 .hero { position: relative; overflow: hidden; padding: 72px 0 84px; }
@@ -221,12 +239,14 @@ img { display: block; max-width: 100%; }
 .ncard-tag { position: absolute; top: 14px; left: 14px; z-index: 3; font-size: 11.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 6px 12px; border-radius: var(--radius-pill); background: #fff; color: var(--primary); }
 .ncard.med .ncard-tag { background: var(--accent); color: #fff; }
 .ncard.it .ncard-tag { background: #013C58; color: #FCE27C; }
+.ncard.helpdesk .ncard-tag { background: #1A5F7A; color: #fff; }
 .ncard-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
 .ncard-body h3 { font-family: 'Georgia', serif; font-size: 22px; font-weight: 600; color: var(--primary); margin-bottom: 10px; }
 .ncard-body p { font-size: 14.5px; color: var(--text-soft); margin-bottom: 18px; flex: 1; }
 .ncard-link { font-size: 14.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
 .ncard.med .ncard-link { color: var(--accent); }
 .ncard.it .ncard-link { color: #0A6E96; }
+.ncard.helpdesk .ncard-link { color: #1A5F7A; }
 .ncard-link .arrow { transition: transform .2s var(--ease); }
 .ncard:hover .ncard-link .arrow { transform: translateX(5px); }
 
