@@ -241,7 +241,7 @@ img { display: block; max-width: 100%; }
 .ncard .photo-wrap::after { background: linear-gradient(180deg, transparent 45%, rgba(20,28,40,.5)); }
 .ncard-tag { position: absolute; top: 14px; left: 14px; z-index: 3; font-size: 11.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 6px 12px; border-radius: var(--radius-pill); background: #fff; color: var(--primary); }
 .ncard.med .ncard-tag { background: var(--accent); color: #fff; }
-.ncard.it .ncard-tag { background: #013C58; color: #FCE27C; }
+.ncard.it .ncard-tag { background: #FCE27C; color: #013C58; }
 .ncard.helpdesk .ncard-tag { background: #1A5F7A; color: #fff; }
 .ncard-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
 .ncard-body h3 { font-family: 'Georgia', serif; font-size: 22px; font-weight: 600; color: var(--primary); margin-bottom: 10px; }
