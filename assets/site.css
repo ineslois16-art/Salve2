@@ -128,8 +128,8 @@ img { display: block; max-width: 100%; }
 .btn-ghost:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
 .btn-outline { background: transparent; color: var(--primary); border: 1.6px solid var(--primary); }
 .btn-outline:hover { background: var(--primary); color: #fff; }
-.btn-it { background: #013C58; color: #F0B429; box-shadow: var(--shadow-md); }
-.btn-it:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.btn-it { background: linear-gradient(120deg, #F0B429 0%, #F0B429 42%, #FCE38A 50%, #F0B429 58%, #F0B429 100%); background-size: 260% 100%; background-position: 100% 0; color: #013C58; box-shadow: 0 6px 20px -8px rgba(240,180,41,.55), var(--shadow-md); transition: transform .18s var(--ease), box-shadow .25s, background-position .7s var(--ease); }
+.btn-it:hover { transform: translateY(-2px); background-position: 0 0; box-shadow: 0 14px 30px -8px rgba(240,180,41,.7), var(--shadow-lg); }
 
 /* ================= HERO ================= */
 .hero { position: relative; overflow: hidden; padding: 72px 0 84px; }
