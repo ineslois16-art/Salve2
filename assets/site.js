@@ -155,11 +155,22 @@
 
   /* ========================================================
      SIMULATEUR IT  (présent si #posts existe)
+     Config externe via window.SIM_CONFIG :
+       baseDirect : tarif ETP/mois 35h en direct (cf. PRICING.md §3)
+       baseMb     : tarif ETP/mois 35h en marque blanche
+       modeDefault: 'direct' ou 'mb' — pré-sélection du toggle
+       frBench    : coût mensuel CDI FR chargé (référence comparaison)
      ======================================================== */
   if (document.getElementById('posts')) {
-    const COST_BASE = 585.53, MARGIN = 0.58, PROD = 0.85;
-    const FR_COST = 3200, FR_PEN = 1.35;
-    const st = { posts: 1, hours: 35, service: 1.0, channels: 1.0, language: 1.0, schedule: 1.0 };
+    const CFG = Object.assign({
+      baseDirect: 2100, baseMb: 1525, modeDefault: 'direct', frBench: 3200,
+    }, window.SIM_CONFIG || {});
+    const PROD = 0.85, FR_PEN = 1.35;
+    const st = {
+      posts: 1, hours: 35,
+      service: 1.0, channels: 1.0, language: 1.0, schedule: 1.0,
+      mode: CFG.modeDefault === 'mb' ? CFG.baseMb : CFG.baseDirect,
+    };
     const $ = id => document.getElementById(id);
     const hourly = n => n.toFixed(1).replace('.', ',') + ' €';
     const vol = p => p >= 6 ? 0.90 : (p >= 3 ? 0.95 : 1.0);
@@ -167,11 +178,11 @@
     function calc() {
       const hpm = st.hours * 4.33;
       const ratio = hpm / 152;
-      const basePrice = (COST_BASE * ratio) / (1 - MARGIN);
+      const basePrice = st.mode * ratio;
       const mult = st.service * st.channels * st.language * st.schedule;
       const total = basePrice * mult * st.posts * vol(st.posts);
       const frMult = st.language * Math.pow(st.schedule, FR_PEN);
-      const frCost = FR_COST * ratio * st.posts * frMult;
+      const frCost = CFG.frBench * ratio * st.posts * frMult;
       const savings = frCost - total;
       const hMonth = hpm * st.posts;
 
@@ -184,11 +195,14 @@
       $('hourly-productive').textContent = hourly(total / (hMonth * PROD));
       $('annual-savings').textContent = euro(savings * 12) + ' €';
 
-      let reco;
-      if (st.posts === 1 && st.hours <= 20 && st.service <= 0.85) reco = 'Forfait <strong>Support Starter</strong> — idéal pour démarrer.';
-      else if (st.posts >= 2 || (st.posts === 1 && st.hours >= 35 && st.service >= 1.0 && st.schedule > 1.0)) reco = 'Forfait <strong>Centre N1 Scale</strong> — couverture étendue + backup.';
-      else reco = 'Forfait <strong>Support Pro</strong> — meilleur rapport coût / disponibilité.';
-      $('recommendation').innerHTML = reco;
+      const recoEl = $('recommendation');
+      if (recoEl) {
+        let reco;
+        if (st.posts === 1 && st.hours <= 20 && st.service <= 0.85) reco = 'Forfait <strong>Support Starter</strong> — idéal pour démarrer.';
+        else if (st.posts >= 2 || (st.posts === 1 && st.hours >= 35 && st.service >= 1.0 && st.schedule > 1.0)) reco = 'Forfait <strong>Centre N1 Scale</strong> — couverture étendue + backup.';
+        else reco = 'Forfait <strong>Support Pro</strong> — meilleur rapport coût / disponibilité.';
+        recoEl.innerHTML = reco;
+      }
       pop($('price-monthly'));
     }
 
@@ -207,7 +221,23 @@
       $('hours-value').textContent = l;
       calc();
     });
-    bindPills((name, m) => { st[name] = m; calc(); });
+
+    // Toggle direct / marque blanche — utilise les pills existantes avec data-group="mode"
+    const modeGroup = document.querySelector('.pill-group[data-group="mode"]');
+    if (modeGroup) {
+      modeGroup.querySelectorAll('.pill').forEach(pill => {
+        const isMb = pill.dataset.value === 'mb';
+        pill.classList.toggle('active', isMb === (CFG.modeDefault === 'mb'));
+        pill.addEventListener('click', () => {
+          modeGroup.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          st.mode = isMb ? CFG.baseMb : CFG.baseDirect;
+          calc();
+        });
+      });
+    }
+
+    bindPills((name, m) => { if (name !== 'mode') { st[name] = m; calc(); } });
     calc();
   }
 })();

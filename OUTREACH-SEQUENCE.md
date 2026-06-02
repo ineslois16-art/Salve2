@@ -6,11 +6,12 @@ pipeline post-réponse, aux décideurs vérifiés et aux scripts d'appel — pas
 l'envoi des séquences.
 
 **Outil d'envoi :** Emelia (mail-merge CSV)
-**Date :** 2026-05-30
-**Niches couvertes :**
+**Date :** 2026-06-02
+**Niches couvertes (ordre CLAUDE.md) :**
 1. **Télésecrétariat médical** — priorité absolue (séquence détaillée ci-dessous)
-2. **Bailleurs sociaux & grandes structures** — cible secondaire (séquence détaillée ci-dessous)
-3. **Support N1 — Éditeurs SaaS FR** — niche tertiaire (séquence existante, voir plus bas)
+2. **Support N1 — Éditeurs SaaS FR** — priorité 2 (séquence détaillée ci-dessous)
+2. **Helpdesk IT N1 — ESN & MSP** — priorité 2 (séquence dédiée : `OUTREACH-IT-N1-marque-blanche.md`)
+3. **Bailleurs sociaux & grandes structures** — priorité 3 (séquence détaillée ci-dessous)
 
 ---
 
@@ -336,42 +337,219 @@ COLD CALLING). Les 5 objections principales :
 
 ---
 
-# 2. Support N1 — Éditeurs SaaS FR & Helpdesk IT (priorité 2)
+# 2. Support N1 — Éditeurs SaaS FR (priorité 2)
 
-> Cette séquence existe depuis le 27/05/2026 et reste fonctionnelle. Elle sera
-> alignée plus tard sur le principe « Canaux & CTA » ci-dessus (mention
-> WhatsApp / live chat). Pour l'instant, traiter cette niche en priorité basse.
+> Pour le **Helpdesk IT N1 en marque blanche** (ESN, MSP, infogéreurs), voir
+> le fichier dédié `OUTREACH-IT-N1-marque-blanche.md` — segment et angle
+> différents (sous-traitance d'un acteur établi, pas vente directe).
 
 **Segment cible :** éditeurs SaaS B2B français, 20-300 salariés, en croissance
-**Persona :** Head of Support / Customer Support Manager / Responsable Relation Client
+**Persona :** Head of Support / Customer Support Manager / Head of Customer Care
 **Décideur secondaire :** COO / Directeur des Opérations
 **Framework :** Problème → Preuve → Ask
 
-### Recherche de personnalisation (niveau segment)
+### Recherche de personnalisation (à remplir dans `{{accroche_perso}}`)
 
-**Déclencheurs entreprise :**
-1. Poste « Support N1 / Customer Care » ouvert depuis > 1 mois — Qualité : Hot
-2. Levée de fonds < 12 mois — Qualité : Warm
-3. Avis clients (Trustpilot/G2) sur les délais de réponse — Qualité : Warm
+Trois déclencheurs à chercher (30 s par prospect, prioriser le n°1).
 
-**Déclencheurs sectoriels :**
-1. 89 % des éditeurs de logiciels en difficulté de recrutement (vs 78 % il y a 2 ans)
-2. Recrutement interne = 60-90 jours vs équipe externe en quelques semaines
-3. Pression de rentabilité post-levée → marge support scrutée
+1. **Poste « Support N1 / Customer Care » ouvert depuis > 1 mois**
+   (LinkedIn, Welcome to the Jungle, page carrières) — Qualité : Hot
+   *Angle :* « J'ai vu que {{structure}} cherche un Customer Support Specialist
+   depuis quelques semaines — j'imagine que les tickets s'empilent en attendant. »
+2. **Avis clients sur les délais de réponse** (Trustpilot, G2, Capterra,
+   ProductHunt) — Qualité : Warm
+   *Angle :* « Plusieurs avis G2 récents sur {{structure}} mentionnent un délai
+   de réponse support qui s'allonge. »
+3. **Levée de fonds < 12 mois** (Maddyness, Eldorado) — Qualité : Warm
+   *Angle :* « Avec la série {{X}} bouclée en {{mois}}, le scale-up du support
+   client doit être un sujet ouvert chez {{structure}}. »
 
-### Séquence 5 emails (résumé)
+**Angle d'ouverture préféré :** déclencheur entreprise (poste ouvert ou avis).
+**Variable spécifique :** `{{outil_ticketing}}` (Zendesk / Intercom / Freshdesk /
+Crisp), trouvée sur la page carrières du poste support ou dans la stack publique
+de l'éditeur.
 
-| Email | Jour | Angle | CTA |
-|---|---|---|---|
-| 1 | J1 | Accroche + problème chiffré (89 %) + -40 % du coût | « Ça vaudrait un échange de 15 min ? » |
-| 2 | J3 | Coût complet d'un N1 interne + 60-90 j de recrutement | aucun (valeur pure) |
-| 3 | J7 | Preuve sociale / cadrage honnête (cas client OU benchmark) | « Je vous montre comment en 15 min ? » |
-| 4 | J14 | Angle marque blanche + offre pilote | « Ouvert à en parler ? » |
-| 5 | J21 | Breakup, porte ouverte | répondez simplement à ce mail |
+---
 
-> Pour le contenu complet des emails SaaS et leurs touchpoints LinkedIn, voir
-> l'historique git de ce fichier (avant le 2026-05-30). À ré-injecter ici lors
-> de l'alignement sur le principe transverse.
+## Séquence 5 emails (SaaS)
+
+### Email 1 — L'accroche (Jour 1)
+
+**Objet A :** {{firstName}}, vos tickets N1 s'empilent ?
+**Objet B :** support {{secteur}} pour {{structure}}
+
+---
+
+Bonjour {{firstName}},
+
+{{accroche_perso}}
+
+Recruter un Customer Support Specialist FR en CDI prend 60 à 90 jours et 35-40 k€ chargés par an, pour un poste qui tourne ~18 mois. Pendant ce temps, les tickets N1 s'empilent et le NPS prend.
+
+Chez Salverys, on opère une équipe française d'origine, formée à {{outil_ticketing}}, qui traite votre N1 sous le nom de {{structure}} : tickets, chat in-app, téléphone, escalade cadrée vers vos équipes produit. Dès 1 525 € par agent dédié et par mois en marque blanche.
+
+Ça vaudrait un échange de 15 min cette semaine ?
+
+{{signature}}
+
+---
+
+**CTA :** soft, question
+**Touchpoint complémentaire (Jour 5) :** LinkedIn — visite de profil + invitation
+sans note pour le persona Head of Support (l'éditeur SaaS y est actif).
+
+#### Variantes A/B
+**Ligne d'ouverture A (déclencheur perso) :** `{{accroche_perso}}`
+**Ligne d'ouverture B (sectorielle) :** « 89 % des éditeurs SaaS FR déclarent
+des difficultés de recrutement sur le support N1 — c'est devenu le goulot
+d'étranglement n°1 de la croissance. »
+
+---
+
+### Email 2 — La valeur (Jour 3)
+
+**Objet A :** le vrai coût d'un Customer Support en CDI
+**Objet B :** 60 jours pour recruter, vs…
+
+---
+
+Bonjour {{firstName}},
+
+Un repère qui revient chez les éditeurs SaaS qu'on accompagne : un Customer Support Specialist FR en interne, en coût complet (salaire chargé + onboarding produit 4-6 semaines + outils + turnover ~18 mois), tourne autour de 38-46 k€ par an équivalent temps plein. Et c'est 60 à 90 jours de recrutement, à refaire à chaque rotation.
+
+Pas de demande aujourd'hui — juste un repère utile si {{structure}} arbitre entre internalisation et externalisation pour 2026.
+
+{{signature}}
+
+---
+
+**CTA :** zéro (apport de valeur pur)
+**Touchpoint complémentaire :** aucun à ce stade.
+
+#### Variantes A/B
+**Ligne d'ouverture A :** « Un repère qui revient chez les éditeurs SaaS qu'on accompagne… »
+**Ligne d'ouverture B :** « Petit chiffre qui surprend souvent les Head of Support… »
+
+---
+
+### Email 3 — Le cadrage honnête + preuve réactivité (Jour 7)
+
+**Objet A :** comment on prendrait vos tickets {{outil_ticketing}}
+**Objet B :** testez notre réactivité en direct
+
+---
+
+Bonjour {{firstName}},
+
+Salverys démarre — donc plutôt qu'un faux cas client, je préfère vous décrire ce que ça donnerait pour {{structure}}.
+
+Vos tickets {{outil_ticketing}} sont routés vers nos agents selon vos règles (priorité, langue, type de demande). On répond sous votre nom, avec votre macro et votre ton. Les questions hors périmètre N1 sont escaladées vers votre équipe produit avec un contexte propre — pas de ping-pong client.
+
+Avant tout échange, vous pouvez tester notre réactivité : un live chat est ouvert sur notre site (en signature). Posez une question, vous verrez le délai.
+
+Je vous montre comment en 15 min ?
+
+{{signature}}
+
+---
+
+**CTA :** soft, question
+**Touchpoint complémentaire (Jour 12) :** relance LinkedIn — message court
+référant à l'email (« je vous ai écrit la semaine dernière sur le N1 SaaS, vu
+le poste ouvert chez {{structure}} »).
+
+#### Variantes A/B
+**Ligne d'ouverture A :** « Salverys démarre — donc plutôt que de vous sortir un cas client… »
+**Ligne d'ouverture B :** « Une question revient souvent à ce stade : comment ça se passe concrètement sur {{outil_ticketing}} ? »
+
+> Note : remplacer ce cadrage par un vrai cas client dès qu'un premier éditeur
+> pilote est signé. Ne jamais inventer une référence.
+
+---
+
+### Email 4 — L'angle marque blanche + pilote (Jour 14)
+
+**Objet A :** vos utilisateurs ne verront pas la différence
+**Objet B :** 1er mois à -50 %, sans engagement
+
+---
+
+Bonjour {{firstName}},
+
+Jusqu'ici je vous ai parlé volume et coût. L'autre sujet pour {{structure}}, c'est l'expérience perçue par vos utilisateurs.
+
+Notre modèle est marque blanche : équipe française d'origine, sous votre nom, vos macros, votre ton produit. L'utilisateur pense parler à votre équipe support.
+
+Pour limiter le risque, on peut démarrer par un 1er mois à -50 %, sans engagement, sur un périmètre réduit (1 agent, certaines catégories de tickets). Vous jugez la qualité avant d'élargir.
+
+Si l'email n'est pas le plus simple, on peut aussi en parler par WhatsApp au +33 6 48 91 84 50.
+
+Ouvert à en parler ?
+
+{{signature}}
+
+---
+
+**CTA :** soft, question + canal optionnel (WhatsApp en texte brut)
+**Touchpoint complémentaire :** aucun.
+
+#### Variantes A/B
+**Ligne d'ouverture A (marque) :** « Jusqu'ici je vous ai parlé volume et coût. L'autre point, c'est l'expérience perçue… »
+**Ligne d'ouverture B (risque) :** « Une objection légitime : et si la qualité produit ne suit pas ? D'où notre approche : 1er mois à -50 %, sans engagement. »
+
+---
+
+### Email 5 — Le breakup (Jour 21)
+
+**Objet A :** je referme la boucle
+**Objet B :** ce n'est peut-être pas le moment
+
+---
+
+Bonjour {{firstName}},
+
+Je n'encombre pas davantage votre boîte. Le sujet — un N1 français formé à {{outil_ticketing}}, sous votre marque, à -40 % d'un CDI interne — sera là quand il deviendra prioritaire pour {{structure}}.
+
+Si c'est le cas, répondez simplement à ce mail, ou écrivez-nous sur WhatsApp au +33 6 48 91 84 50.
+
+Bonne continuation à vous et à l'équipe.
+
+{{signature}}
+
+---
+
+**CTA :** porte ouverte, sans culpabilisation. WhatsApp en option (texte brut).
+**(< 75 mots)**
+
+#### Variantes A/B
+**Ligne d'ouverture A :** « Je n'encombre pas davantage votre boîte. »
+**Ligne d'ouverture B :** « Visiblement le timing n'est pas le bon — je comprends. »
+
+---
+
+## Récap touchpoints (SaaS)
+
+| Jour | Action | Notes |
+|---|---|---|
+| 1 | Email 1 — accroche | `{{accroche_perso}}` obligatoire |
+| 3 | Email 2 — valeur (coût CDI + délai recrutement) | — |
+| 5 | LinkedIn — visite + invitation sans note | Head of Support |
+| 7 | Email 3 — cadrage + live chat | — |
+| 12 | Relance LinkedIn courte | Référer à l'email |
+| 14 | Email 4 — marque blanche + pilote | WhatsApp en option |
+| 21 | Email 5 — breakup | Porte ouverte |
+
+---
+
+## Objections (SaaS)
+
+| Objection | Réponse courte |
+|---|---|
+| « Nos users vont sentir que c'est externalisé » | Équipe française d'origine, sous votre nom, vos macros, vos process. Le user voit votre marque — Salverys n'apparaît jamais. |
+| « C'est combien ? » | 1 525-1 700 €/agent/mois en marque blanche, 2 100-2 400 €/agent en direct. -40 % d'un CDI N1 FR chargé. |
+| « Nos tickets sont trop techniques pour du N1 externalisé » | C'est exactement le périmètre cadré : N1 sur catégories simples, escalade automatique vers votre N2 sur le reste. Vous gardez la complexité. |
+| « On a déjà un Customer Support Manager » | Pas pour le remplacer — pour absorber le N1 répétitif et lui rendre du temps sur la qualité, l'onboarding, la voice of customer. |
+| « Et la formation à notre produit ? » | Onboarding 5-10 jours sur votre base de connaissance + macros. Backup agent inclus pour absorber le turnover de votre côté **et** du nôtre. |
 
 ---
 
@@ -399,11 +577,12 @@ COLD CALLING). Les 5 objections principales :
 
 # Prochaines étapes suggérées
 
-- **Premier pilote signé** : remplacer le cadrage honnête de l'email 3
-  (médical) par un vrai cas client (cabinet ou chaîne pilote, métriques avant /
-  après).
-- **Alignement SaaS** : intégrer WhatsApp / live chat dans la séquence SaaS
-  existante (priorité basse).
+- **Premier pilote signé (médical)** : remplacer le cadrage honnête de l'email 3
+  par un vrai cas client (cabinet ou chaîne pilote, métriques avant / après).
+- **Premier pilote signé (SaaS)** : idem, remplacer l'email 3 SaaS par un vrai
+  cas éditeur (métriques sur volume tickets / délai première réponse / CSAT).
+- **Helpdesk IT (ESN)** : séquence maintenue séparément dans
+  `OUTREACH-IT-N1-marque-blanche.md` — pas de fusion prévue, segments distincts.
 
 ---
 
