@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Salverys — Aperçu boutons Télésecrétariat (sauge)</title>
+<link rel="stylesheet" href="assets/site.css" />
+<style>
+  body { background: #ECE8E1; padding: 48px 0 80px; }
+  .preview-head { max-width: 900px; margin: 0 auto 36px; padding: 0 24px; }
+  .preview-head h1 { font-family: 'Georgia', serif; font-size: 24px; color: #2E3B4E; margin-bottom: 6px; }
+  .preview-head p { color: #5C5448; font-size: 14px; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
+
+  .card { background: #fff; border-radius: 18px; padding: 32px; box-shadow: 0 10px 28px rgba(32,48,63,.10); }
+  .card-label { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #8A8275; margin-bottom: 6px; }
+  .card-title { font-size: 17px; font-weight: 700; color: #2E3B4E; margin-bottom: 24px; }
+
+  /* ---- AVANT : bouton navy original ---- */
+  .btn-avant {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 28px; border-radius: 100px;
+    font-size: 15px; font-weight: 700; cursor: default;
+    background: #2E3B4E; color: #fff;
+    box-shadow: 0 10px 28px rgba(32,48,63,.10), 0 3px 8px rgba(32,48,63,.06);
+    border: 0;
+  }
+  .btn-avant .arrow { display: inline-block; }
+
+  /* ---- APRÈS : bouton sauge (identique au site.css modifié) ---- */
+  .btn-apres {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 28px; border-radius: 100px;
+    font-size: 15px; font-weight: 700; cursor: pointer;
+    background: linear-gradient(120deg, #6F8770 0%, #6F8770 42%, #92AE93 50%, #6F8770 58%, #6F8770 100%);
+    background-size: 260% 100%; background-position: 100% 0;
+    color: #fff;
+    box-shadow: 0 6px 20px -8px rgba(111,135,112,.55), 0 10px 28px rgba(32,48,63,.10);
+    border: 0;
+    transition: transform .18s cubic-bezier(.22,.61,.36,1), box-shadow .25s, background-position .7s cubic-bezier(.22,.61,.36,1);
+  }
+  .btn-apres:hover {
+    transform: translateY(-2px);
+    background-position: 0 0;
+    box-shadow: 0 14px 30px -8px rgba(111,135,112,.7), 0 24px 60px rgba(32,48,63,.16);
+  }
+  .btn-apres .arrow { display: inline-block; transition: transform .22s cubic-bezier(.22,.61,.36,1); }
+  .btn-apres:hover .arrow { transform: translateX(4px); }
+
+  /* contextes foncés */
+  .dark-bg { background: #2E3B4E; border-radius: 14px; padding: 28px; margin-top: 20px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .section-title { font-size: 13px; font-weight: 700; color: #8A8275; margin-top: 24px; margin-bottom: 10px; }
+
+  /* IT côte à côte pour comparaison */
+  .pair { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 6px; }
+  .btn-it-ref {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 28px; border-radius: 100px;
+    font-size: 15px; font-weight: 700; cursor: pointer;
+    background: linear-gradient(120deg, #F0B429 0%, #F0B429 42%, #FCE38A 50%, #F0B429 58%, #F0B429 100%);
+    background-size: 260% 100%; background-position: 100% 0;
+    color: #013C58;
+    box-shadow: 0 6px 20px -8px rgba(240,180,41,.55), 0 10px 28px rgba(32,48,63,.10);
+    border: 0;
+    transition: transform .18s cubic-bezier(.22,.61,.36,1), box-shadow .25s, background-position .7s cubic-bezier(.22,.61,.36,1);
+  }
+  .btn-it-ref:hover { transform: translateY(-2px); background-position: 0 0; box-shadow: 0 14px 30px -8px rgba(240,180,41,.7), 0 24px 60px rgba(32,48,63,.16); }
+  .btn-it-ref .arrow { display: inline-block; transition: transform .22s cubic-bezier(.22,.61,.36,1); }
+  .btn-it-ref:hover .arrow { transform: translateX(4px); }
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #6F8770; display: inline-block; margin-right: 6px; }
+</style>
+</head>
+<body>
+
+<div class="preview-head">
+  <h1>Salverys — Aperçu boutons Télésecrétariat <span class="dot"></span>sauge</h1>
+  <p>Comparaison avant / après. Passez la souris sur les boutons «&nbsp;Après&nbsp;» pour voir l'animation shine.</p>
+</div>
+
+<div class="cols">
+
+  <!-- AVANT -->
+  <div class="card">
+    <div class="card-label">Avant</div>
+    <div class="card-title">Bouton navy actuel</div>
+
+    <div class="section-title">Hero / section principale</div>
+    <div class="pair">
+      <button class="btn-avant">Télésecrétariat médical <span class="arrow">→</span></button>
+    </div>
+
+    <div class="section-title">Simulateur</div>
+    <div class="pair">
+      <button class="btn-avant">Simuler — Télésecrétariat <span class="arrow">→</span></button>
+    </div>
+
+    <div class="section-title">Footer CTA</div>
+    <div class="pair">
+      <button class="btn-avant">Réserver un appel découverte <span class="arrow">→</span></button>
+    </div>
+
+    <div class="dark-bg">
+      <span style="color:#fff;font-size:13px;font-weight:600;width:100%;margin-bottom:4px;">Sur fond sombre</span>
+      <button class="btn-avant">Télésecrétariat médical <span class="arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- APRÈS -->
+  <div class="card">
+    <div class="card-label" style="color:#6F8770;">Après (proposé)</div>
+    <div class="card-title">Bouton vert sauge</div>
+
+    <div class="section-title">Hero / section principale</div>
+    <div class="pair">
+      <button class="btn-apres">Télésecrétariat médical <span class="arrow">→</span></button>
+    </div>
+
+    <div class="section-title">Simulateur</div>
+    <div class="pair">
+      <button class="btn-apres">Simuler — Télésecrétariat <span class="arrow">→</span></button>
+    </div>
+
+    <div class="section-title">Footer CTA</div>
+    <div class="pair">
+      <button class="btn-apres">Réserver un appel découverte <span class="arrow">→</span></button>
+    </div>
+
+    <div class="dark-bg">
+      <span style="color:#fff;font-size:13px;font-weight:600;width:100%;margin-bottom:4px;">Sur fond sombre</span>
+      <button class="btn-apres">Télésecrétariat médical <span class="arrow">→</span></button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Duo médical + IT côte à côte -->
+<div style="max-width:900px; margin:32px auto 0; padding:0 24px;">
+  <div class="card">
+    <div class="card-label" style="color:#6F8770;">Cohérence de la paire</div>
+    <div class="card-title">Médical sauge + IT doré — comme sur l'accueil</div>
+    <div class="pair">
+      <button class="btn-apres">Télésecrétariat médical <span class="arrow">→</span></button>
+      <button class="btn-it-ref">Support IT &amp; Applicatif <span class="arrow">→</span></button>
+    </div>
+    <p style="margin-top:18px;font-size:13px;color:#8A8275;">Les deux boutons partagent le même effet <em>shine sweep</em> au hover — cohérence visuelle thème médical ↔ thème IT.</p>
+  </div>
+</div>
+
+</body>
+</html>
