@@ -145,6 +145,7 @@
   .gantt-day.weekend { background: var(--greige-dark); opacity: .4; }
   .gantt-day.weekend .day-num { color: var(--text-mute); }
   .gantt-day.done { box-shadow: inset 0 0 0 2px var(--sage-dark); }
+  .gantt-day.has-reply::after { content:''; position:absolute; bottom:3px; right:3px; width:5px; height:5px; border-radius:50%; background:var(--gold); }
   .gantt-day.today { box-shadow: 0 0 0 2px var(--blue), 0 0 0 4px rgba(46,59,78,.2); z-index:2; }
   .gantt-day .day-num { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:9px; color: var(--text-soft); }
   .progress-track { height: 12px; background: var(--greige); border-radius: 100px; overflow: hidden; margin-top: 18px; }
@@ -313,6 +314,8 @@
           <input class="inp" type="text" id="new-name" placeholder="Prénom Nom" />
           <input class="inp" type="email" id="new-email" placeholder="email@exemple.fr" style="min-width:200px" />
           <button class="btn btn-add" id="add-recip">+ Ajouter un destinataire</button>
+          <span id="save-status" style="font-size:12px;color:var(--text-mute);margin-left:auto;white-space:nowrap">Pas encore sauvegardé</span>
+          <button class="btn btn-light" id="save-btn" style="background:var(--blue);color:#fff;white-space:nowrap">Enregistrer</button>
         </div>
 
         <div class="track-scroll">
@@ -425,7 +428,18 @@ if (!recipients) {
 function rid() { return 'r' + Math.random().toString(36).slice(2, 9); }
 function load(k, fb) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : fb; } catch (e) { return fb; } }
 function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
-function persist() { save(LS.recipients, recipients); save(LS.sends, sends); save(LS.replies, replies); save(LS.start, startDate); }
+function persist() {
+  save(LS.recipients, recipients);
+  save(LS.sends, sends);
+  save(LS.replies, replies);
+  save(LS.start, startDate);
+  const el = document.getElementById('save-status');
+  if (el) {
+    const t = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    el.textContent = 'Sauvegardé à ' + t + ' ✓';
+    el.style.color = 'var(--sage-dark)';
+  }
+}
 
 function dayDate(i) { const d = new Date(startDate + 'T00:00:00'); d.setDate(d.getDate() + i); return d; }
 function fmtDate(d) { return d.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }); }
@@ -459,6 +473,7 @@ function toggleReply(rId, day, on) {
   persist();
 }
 function totalReplies() { return Object.values(replies).reduce((a, arr) => a + arr.length, 0); }
+function repliesOnDay(day) { return recipients.reduce((a, r) => a + (isReplied(r.id, day) ? 1 : 0), 0); }
 
 /* ============================================================
    GANTT
@@ -495,16 +510,19 @@ function renderGantt() {
   }).join('');
 
   // Cases-jours
-  let days = '';
+  let days = ‘’;
   for (let i = 0; i < TOTAL_DAYS; i++) {
     const p = phaseOfDay(i);
     const we = isWeekend(i);
     const done = sentOnDay(i) > 0;
-    const cls = [p.cls, we ? 'weekend' : '', done ? 'done' : '', i === ti ? 'today' : ''].join(' ');
-    const title = fmtLong(dayDate(i)) + (we ? ' — week-end (pas d’envoi)' : ' — ' + sentOnDay(i) + ' envoi(s)');
+    const replied = repliesOnDay(i) > 0;
+    const cls = [p.cls, we ? ‘weekend’ : ‘’, done ? ‘done’ : ‘’, i === ti ? ‘today’ : ‘’, replied ? ‘has-reply’ : ‘’].join(‘ ‘);
+    const title = fmtLong(dayDate(i)) + (we
+      ? ‘ — week-end (pas d\’envoi)’
+      : ‘ — ‘ + sentOnDay(i) + ‘ envoi(s) · ‘ + repliesOnDay(i) + ‘ réponse(s)’);
     days += `<div class="gantt-day ${cls}" title="${title}"><span class="day-num">${i + 1}</span></div>`;
   }
-  document.getElementById('gantt-days').innerHTML = days;
+  document.getElementById(‘gantt-days’).innerHTML = days;
 
   // Progression globale (cumul des quotas min attendus sur les JOURS OUVRÉS écoulés)
   let expected = 0;
@@ -818,6 +836,7 @@ function renderAll() {
 
 /* ---------- Listeners ---------- */
 document.getElementById('add-recip').addEventListener('click', addRecipient);
+document.getElementById('save-btn').addEventListener('click', () => { persist(); toast('Données enregistrées ✓'); });
 document.getElementById('new-email').addEventListener('keydown', e => { if (e.key === 'Enter') addRecipient(); });
 document.getElementById('gen-btn').addEventListener('click', generateEmail);
 document.getElementById('copy-btn').addEventListener('click', () => {
