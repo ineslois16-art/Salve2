@@ -167,6 +167,20 @@
   table.track .recip-email { color: var(--text-mute); font-size: 11px; }
   table.track tbody tr:hover .recip-cell { background: #fff; }
   .cell-chk { width: 16px; height: 16px; cursor: pointer; accent-color: var(--sage-dark); }
+  .reply-chk { width: 16px; height: 16px; cursor: pointer; accent-color: var(--gold); }
+  .reply-chk:disabled { opacity: .22; cursor: default; }
+  tr.send-row { border-top: 2px solid var(--greige-dark); }
+  tr.reply-row td.dcell { background: rgba(184,153,104,.07); }
+  tr.reply-row td.dcell.col-s1 { background: rgba(184,153,104,.10); }
+  tr.reply-row td.dcell.col-s3 { background: rgba(184,153,104,.12); }
+  tr.reply-row td.dcell.col-today { background: rgba(184,153,104,.22); }
+  tr.reply-row td.dcell.col-weekend { background: repeating-linear-gradient(45deg, rgba(0,0,0,.02), rgba(0,0,0,.02) 4px, rgba(0,0,0,.04) 4px, rgba(0,0,0,.04) 8px); }
+  tr.reply-row td { border-bottom: 2px solid var(--greige-dark); }
+  .row-legend { margin-top: 7px; display: flex; flex-direction: column; gap: 2px; }
+  .leg { font-size: 10px; display: flex; align-items: center; gap: 4px; color: var(--text-mute); }
+  .leg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .leg-send .leg-dot { background: var(--sage-dark); }
+  .leg-reply .leg-dot { background: var(--gold); }
   td.dcell.col-s1 { background: rgba(197,210,197,.18); }
   td.dcell.col-s3 { background: rgba(212,185,138,.14); }
   td.dcell.col-weekend { background: repeating-linear-gradient(45deg, rgba(0,0,0,.03), rgba(0,0,0,.03) 4px, rgba(0,0,0,.06) 4px, rgba(0,0,0,.06) 8px); }
@@ -249,6 +263,7 @@
       <div class="kpi"><div class="kpi-label">Aujourd'hui</div><div class="kpi-value accent" id="kpi-today">0</div></div>
       <div class="kpi"><div class="kpi-label">Reste / objectif</div><div class="kpi-value gold" id="kpi-left">—</div></div>
       <div class="kpi"><div class="kpi-label">Total envoyés</div><div class="kpi-value" id="kpi-total">0</div></div>
+      <div class="kpi"><div class="kpi-label">Taux réponse</div><div class="kpi-value gold" id="kpi-ratio">—</div></div>
     </div>
   </div>
 </section>
@@ -292,7 +307,7 @@
     <div>
       <div class="card">
         <div class="card-title">Suivi des envois — destinataires × jours</div>
-        <div class="card-sub">Une case = un mail de chauffe envoyé ce jour-là à ce destinataire. La colonne surlignée est aujourd'hui.</div>
+        <div class="card-sub">Ligne du haut ✉ = mail envoyé · Ligne du bas ↩ = réponse reçue. La colonne surlignée est aujourd'hui.</div>
 
         <div class="track-toolbar">
           <input class="inp" type="text" id="new-name" placeholder="Prénom Nom" />
@@ -311,6 +326,7 @@
           <div>Aujourd'hui : <b class="ok" id="dc-done">0</b> envoyé(s)</div>
           <div>Objectif du jour : <b id="dc-goal">5–10</b></div>
           <div>Reste à faire : <b class="left" id="dc-left">—</b></div>
+          <div style="border-left:1px solid var(--greige-dark);padding-left:24px;margin-left:4px">Réponses reçues : <b id="dc-ratio">—</b></div>
         </div>
       </div>
 
@@ -368,6 +384,7 @@
 const LS = {
   recipients: 'vinlo_warmup_recipients',
   sends:      'vinlo_warmup_sends',
+  replies:    'vinlo_warmup_replies',
   start:      'vinlo_warmup_start',
 };
 
@@ -388,7 +405,8 @@ function phaseOfDay(d) {
 
 /* ---------- État ---------- */
 let recipients = load(LS.recipients, null);
-let sends = load(LS.sends, {});            // { recipientId: [dayIndex, ...] }
+let sends   = load(LS.sends, {});          // { recipientId: [dayIndex, ...] }
+let replies = load(LS.replies, {});        // { recipientId: [dayIndex, ...] }
 let startDate = load(LS.start, DEFAULT_START);
 
 if (!recipients) {
@@ -407,7 +425,7 @@ if (!recipients) {
 function rid() { return 'r' + Math.random().toString(36).slice(2, 9); }
 function load(k, fb) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : fb; } catch (e) { return fb; } }
 function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
-function persist() { save(LS.recipients, recipients); save(LS.sends, sends); save(LS.start, startDate); }
+function persist() { save(LS.recipients, recipients); save(LS.sends, sends); save(LS.replies, replies); save(LS.start, startDate); }
 
 function dayDate(i) { const d = new Date(startDate + 'T00:00:00'); d.setDate(d.getDate() + i); return d; }
 function fmtDate(d) { return d.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }); }
@@ -432,6 +450,15 @@ function toggleSend(rId, day, on) {
 }
 function totalSends() { return Object.values(sends).reduce((a, arr) => a + arr.length, 0); }
 function sentOnDay(day) { return recipients.reduce((a, r) => a + (isSent(r.id, day) ? 1 : 0), 0); }
+function isReplied(rId, day) { return (replies[rId] || []).includes(day); }
+function toggleReply(rId, day, on) {
+  const arr = replies[rId] || (replies[rId] = []);
+  const pos = arr.indexOf(day);
+  if (on && pos === -1) arr.push(day);
+  if (!on && pos !== -1) arr.splice(pos, 1);
+  persist();
+}
+function totalReplies() { return Object.values(replies).reduce((a, arr) => a + arr.length, 0); }
 
 /* ============================================================
    GANTT
@@ -508,36 +535,80 @@ function renderTable() {
   head += '</tr>';
   document.getElementById('track-head').innerHTML = head;
 
-  // Corps
-  let body = '';
+  // Corps — deux rangées par destinataire : envois (haut) + réponses (bas)
+  let body = ‘’;
   for (const r of recipients) {
-    body += '<tr>';
-    body += `<td class="recip-cell">
+    // Rangée envois
+    body += ‘<tr class="send-row">’;
+    body += `<td class="recip-cell" rowspan="2">
         <span class="recip-name">${escapeHtml(r.name)}</span>
         <button class="del-btn" data-del="${r.id}" title="Supprimer">✕</button><br>
         <span class="recip-email">${escapeHtml(r.email)}</span>
+        <div class="row-legend">
+          <div class="leg leg-send"><span class="leg-dot"></span>envoyé</div>
+          <div class="leg leg-reply"><span class="leg-dot"></span>réponse</div>
+        </div>
       </td>`;
     for (let i = 0; i < TOTAL_DAYS; i++) {
       const p = phaseOfDay(i);
       const colCls = [
-        'dcell',
-        isWeekend(i) ? 'col-weekend' : (p.cls === 's1' ? 'col-s1' : (p.cls === 's3' ? 'col-s3' : '')),
-        i === ti ? 'col-today' : '',
-      ].join(' ');
-      const title = isWeekend(i) ? 'Week-end — pas d’envoi de chauffe' : '';
+        ‘dcell’,
+        isWeekend(i) ? ‘col-weekend’ : (p.cls === ‘s1’ ? ‘col-s1’ : (p.cls === ‘s3’ ? ‘col-s3’ : ‘’)),
+        i === ti ? ‘col-today’ : ‘’,
+      ].join(‘ ‘);
+      const title = isWeekend(i) ? ‘Week-end — pas d\’envoi de chauffe’ : ‘’;
       body += `<td class="${colCls}" title="${title}">
-        <input type="checkbox" class="cell-chk" data-r="${r.id}" data-d="${i}" ${isSent(r.id, i) ? 'checked' : ''}>
+        <input type="checkbox" class="cell-chk" data-r="${r.id}" data-d="${i}" ${isSent(r.id, i) ? ‘checked’ : ‘’}>
       </td>`;
     }
-    body += '</tr>';
+    body += ‘</tr>’;
+
+    // Rangée réponses
+    body += ‘<tr class="reply-row">’;
+    for (let i = 0; i < TOTAL_DAYS; i++) {
+      const p = phaseOfDay(i);
+      const colCls = [
+        ‘dcell’,
+        isWeekend(i) ? ‘col-weekend’ : (p.cls === ‘s1’ ? ‘col-s1’ : (p.cls === ‘s3’ ? ‘col-s3’ : ‘’)),
+        i === ti ? ‘col-today’ : ‘’,
+      ].join(‘ ‘);
+      const notSent = !isSent(r.id, i);
+      const titleR = isWeekend(i) ? ‘Week-end’ : (notSent ? ‘Mail non envoyé ce jour-là’ : ‘Cocher si réponse reçue ce jour-là’);
+      body += `<td class="${colCls}" title="${titleR}">
+        <input type="checkbox" class="reply-chk" data-r="${r.id}" data-d="${i}"
+          ${isReplied(r.id, i) ? ‘checked’ : ‘’}
+          ${(isWeekend(i) || notSent) ? ‘disabled’ : ‘’}>
+      </td>`;
+    }
+    body += ‘</tr>’;
   }
   if (recipients.length === 0) body = `<tr><td class="recip-cell" colspan="${TOTAL_DAYS + 1}" style="padding:18px;color:var(--text-mute)">Aucun destinataire — ajoute-en un ci-dessus.</td></tr>`;
   document.getElementById('track-body').innerHTML = body;
 
-  // Listeners cases
+  // Listeners cases envoi
   document.querySelectorAll('.cell-chk').forEach(chk => {
     chk.addEventListener('change', e => {
-      toggleSend(e.target.dataset.r, parseInt(e.target.dataset.d), e.target.checked);
+      const rId = e.target.dataset.r;
+      const day = parseInt(e.target.dataset.d);
+      toggleSend(rId, day, e.target.checked);
+      // Si on décoche l'envoi, on retire aussi la réponse et on grise la case
+      const replyChk = document.querySelector(`.reply-chk[data-r="${rId}"][data-d="${day}"]`);
+      if (replyChk) {
+        if (!e.target.checked) {
+          replyChk.checked = false;
+          replyChk.disabled = true;
+          toggleReply(rId, day, false);
+        } else {
+          replyChk.disabled = false;
+        }
+      }
+      refreshDynamic();
+    });
+  });
+  // Listeners cases réponse
+  document.querySelectorAll('.reply-chk').forEach(chk => {
+    chk.addEventListener('change', e => {
+      toggleReply(e.target.dataset.r, parseInt(e.target.dataset.d), e.target.checked);
       refreshDynamic();
     });
   });
@@ -564,6 +635,15 @@ function renderDayCounter() {
   document.getElementById('kpi-left').textContent =
     !inRange ? '—' : (weekend ? 'WE' : (left === 0 ? '✓' : left + '/' + p.quotaMin));
   document.getElementById('kpi-total').textContent = totalSends();
+
+  // Ratio réponses
+  const totalS = totalSends();
+  const totalR = totalReplies();
+  const ratioText = totalS > 0
+    ? totalR + ' / ' + totalS + ' (' + Math.round((totalR / totalS) * 100) + ' %)'
+    : '—';
+  document.getElementById('dc-ratio').textContent = ratioText;
+  document.getElementById('kpi-ratio').textContent = totalS > 0 ? Math.round((totalR / totalS) * 100) + ' %' : '—';
 }
 
 /* ============================================================
@@ -572,20 +652,26 @@ function renderDayCounter() {
 function renderAddresses() {
   const box = document.getElementById('addr-list');
   const contacted = recipients
-    .map(r => ({ r, days: (sends[r.id] || []) }))
+    .map(r => ({ r, days: (sends[r.id] || []), rDays: (replies[r.id] || []) }))
     .filter(x => x.days.length > 0)
-    .map(x => ({ r: x.r, count: x.days.length, last: Math.max(...x.days) }));
+    .map(x => ({ r: x.r, count: x.days.length, repCount: x.rDays.length, last: Math.max(...x.days) }));
 
   if (contacted.length === 0) {
     box.innerHTML = `<div class="addr-empty">Aucune adresse contactée pour l'instant — coche une case ou utilise « Marquer comme envoyé ».</div>`;
     return;
   }
   contacted.sort((a, b) => b.last - a.last);
-  box.innerHTML = contacted.map(x => `
+  box.innerHTML = contacted.map(x => {
+    const ratioColor = x.repCount > 0 ? 'var(--sage-dark)' : 'var(--text-mute)';
+    return `
     <div class="addr-item">
       <div><span class="a-mail">${escapeHtml(x.r.email)}</span><br><span class="a-meta">${escapeHtml(x.r.name)}</span></div>
-      <span class="a-meta">${x.count} envoi(s)<br>dernier : ${fmtDate(dayDate(x.last))}</span>
-    </div>`).join('');
+      <span class="a-meta" style="text-align:right">
+        ${x.count} envoi(s) · <span style="color:${ratioColor};font-weight:600">${x.repCount} réponse(s)</span><br>
+        dernier : ${fmtDate(dayDate(x.last))}
+      </span>
+    </div>`;
+  }).join('');
 }
 
 function contactedEmails() {
@@ -671,6 +757,7 @@ function removeRecipient(id) {
   if (!confirm('Supprimer ' + r.name + ' ? Les coches associées seront perdues.')) return;
   recipients = recipients.filter(x => x.id !== id);
   delete sends[id];
+  delete replies[id];
   persist();
   renderAll();
 }
