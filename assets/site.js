@@ -229,4 +229,67 @@
     bindPills((name, m) => { if (name !== 'mode') { st[name] = m; calc(); } });
     calc();
   }
+
+  /* ========================================================
+     MODAL DEVIS — Formspree AJAX
+     Remplacer XXXXXXXX dans chaque simulateur par l'ID
+     Formspree obtenu sur formspree.io → New Form.
+     ======================================================== */
+  (function () {
+    const overlay = document.getElementById('modal-devis');
+    if (!overlay) return;
+    const form     = overlay.querySelector('#form-devis');
+    const okEl     = overlay.querySelector('#form-success');
+    const closeBtn = overlay.querySelector('.modal-close');
+
+    function openModal() {
+      const priceEl = document.getElementById('price-monthly');
+      const recoEl  = document.getElementById('recommendation');
+      const hEst    = form.querySelector('[name="estimation"]');
+      const hReco   = form.querySelector('[name="recommandation"]');
+      if (priceEl && hEst)  hEst.value  = priceEl.textContent.trim() + ' €/mois';
+      if (recoEl  && hReco) hReco.value = recoEl.textContent.trim();
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      const first = form.querySelector('input:not([type=hidden])');
+      if (first) setTimeout(() => first.focus(), 60);
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-devis]').forEach(el =>
+      el.addEventListener('click', e => { e.preventDefault(); openModal(); })
+    );
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+    });
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = form.querySelector('[type=submit]');
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours…';
+      try {
+        const r = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (r.ok) {
+          form.style.display = 'none';
+          okEl.style.display = 'block';
+        } else {
+          throw new Error(r.status);
+        }
+      } catch (_) {
+        btn.disabled = false;
+        btn.innerHTML = 'Réessayer <span class="arrow">→</span>';
+      }
+    });
+  }());
 })();
