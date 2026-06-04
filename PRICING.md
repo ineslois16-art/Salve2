@@ -11,8 +11,12 @@
 
 ## 0. Principes
 
-- **Affichage hybride** : grille **médical publique** (site + simulateur), grilles
-  **bailleurs et SaaS/helpdesk en interne** (section §3-§4, ne pas publier).
+- **Affichage des prix — règle à 3 paliers** (grille de décision détaillée en §9) :
+  - **Médical standard** → **public**, grille ferme + simulateur (350/590/950).
+  - **Support N1 & Helpdesk IT en direct** → **estimation publique sans prix ferme** : simulateur en
+    **fourchette** + « devis sous 24 h » (capture lead). Pas de tarif ETP exact affiché.
+  - **Toute marque blanche** (médical, support, helpdesk) → **jamais publique** : le prix de gros est
+    l'input de marge du revendeur. Bailleurs → interne (§4).
 - **Forfait, pas à l'appel** côté client (prévisibilité). Le « à l'appel » ne sert
   qu'en référence interne de coût.
 - **-40 %** = claim public **conservateur et défendable** (cf. §5). L'économie réelle
@@ -206,3 +210,41 @@ basculer sur le repli « 7 jours offerts, périmètre limité ».
 | Priorités niches | Bailleurs n°2, SaaS/Helpdesk n°3 | **SaaS/Helpdesk n°2, Bailleurs n°3** |
 | Modèles de tarification | implicites | **ETP/position > à l'heure > à l'interaction** |
 | Go-to-market | direct uniquement | **direct + marque blanche (sous-traitance)** |
+| Affichage public | « hybride » (médical public, reste interne) | **3 paliers (§9)** : médical public ferme · support/helpdesk **direct = estimation** · **toute MB jamais publique** |
+| Simulateurs IT (helpdesk/informatique) | prix **ETP marque blanche** affiché publiquement (fuite de marge) | **estimation directe (fourchette)** + « devis sous 24 h », chiffres MB retirés |
+
+---
+
+## 9. Affichage public des prix — grille de décision (synthèse)
+
+Système de points (8 critères pondérés, max 50). Détail et interprétation dans `RAPPORT-PRIX.html §9`.
+
+| Segment | Score /50 | % | Décision |
+|---|---|---|---|
+| Médical — standard | 45,5 | 91 % | **Afficher** (grille ferme + simulateur) |
+| Support N1 — standard (direct) | 31 | 62 % | **Estimation** sans prix ferme + capture lead |
+| Helpdesk IT — standard (direct) | 29,5 | 59 % | **Estimation** sans prix ferme + capture lead |
+| Médical — marque blanche | 22,5 | 45 % | **Jamais public** |
+| Support N1 — marque blanche | 17,5 | 35 % | **Jamais public** |
+| Helpdesk IT — marque blanche | 17,5 | 35 % | **Jamais public** |
+
+**3 paliers** : ≥70 % = grille ferme publique · 50-69 % = estimation (fourchette) sans prix ferme +
+« devis sous 24 h » · <50 % = jamais public. **Ligne de fracture = 2 axes** : direct vs marque blanche
+(toute MB privée, conflit de marge) ET produit packagé vs ETP sur-mesure.
+
+---
+
+## 10. Modèle d'exécution & infra (freelance / BYOD, SaaS-first)
+
+> Réflexe : **SaaS-first**, aucune infra télécom maison. Le modèle **freelances + équipes dédiées** est
+> viable sous conditions. Détail (tableaux par domaine) dans `RAPPORT-PRIX.html §10`.
+
+- **Infra transversale** : VoIP cloud (Aircall/Ringover/3CX, pas de standard physique) ; **double FAI +
+  4G backup + onduleur/groupe électrogène** (point dur Tana) ; gouvernance d'accès (comptes nommés, MFA,
+  **zéro download**) ; RGPD art. 28 (DPA, registre) ; WFM/Erlang ; QA/double écoute ; **backfill +1
+  agent/compte** ; documentation écrite dès le client n°1.
+- **BYOD freelance & santé** : viable façon **SECRETEL** — l'agent consulte des **SaaS HDS dans un
+  navigateur** (Doctolib Pro → Ubicentrex) ; les données restent chez l'hébergeur HDS, jamais sur le
+  poste ; Salverys est **sous-traitant (art. 28)**, pas hébergeur. Le VDI strict ne devient nécessaire que
+  pour un **logiciel lourd installé** (ex. Médistory local).
+- **Angle mort** : disponibilité garantie ≠ freelance pur → cadrer juridiquement + backfill.

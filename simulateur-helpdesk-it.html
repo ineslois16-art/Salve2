@@ -51,8 +51,8 @@
              alt="Helpdesk IT N1" />
       </div>
       <div class="float-card fc1">
-        <div class="fc-num">dès 1 775 €</div>
-        <div class="fc-lab">par agent dédié, par mois (marque blanche)</div>
+        <div class="fc-num">&lt; 2 min</div>
+        <div class="fc-lab">pour estimer votre équipe · devis sous 24 h</div>
       </div>
     </div>
   </div>
@@ -70,14 +70,6 @@
     <div class="sim-grid">
       <!-- CONTRÔLES -->
       <div class="controls-card reveal">
-        <div class="control-group">
-          <div class="control-label"><span class="control-label-text">Mode commercial</span></div>
-          <div class="pill-group" data-group="mode">
-            <button class="pill" data-value="direct">En direct</button>
-            <button class="pill active" data-value="mb">Marque blanche</button>
-          </div>
-        </div>
-
         <div class="control-group">
           <div class="control-label">
             <span class="control-label-text">Nombre d'agents</span>
@@ -135,8 +127,8 @@
       <!-- RÉSULTATS -->
       <div class="results-card reveal d1">
         <div class="result-primary">
-          <div class="result-label">Votre forfait mensuel</div>
-          <div><span class="result-price" id="price-monthly">1 775</span><span class="result-price-unit">€/mois</span></div>
+          <div class="result-label">Estimation mensuelle</div>
+          <div><span class="result-price" id="price-monthly">2 250 – 2 750</span><span class="result-price-unit">€/mois</span></div>
           <div class="result-strikethrough">
             Équivalent régie IT France : <span class="old" id="price-fr-hourly">21 €/h</span> · <span class="old" id="price-fr">3 200 €/mois</span>
           </div>
@@ -150,7 +142,8 @@
           <div class="result-stat"><div class="result-stat-label">Économie annuelle</div><div class="result-stat-value accent" id="annual-savings">17 100 €</div></div>
         </div>
 
-        <div class="disclaimer">Tarifs ETP en marque blanche · sous-traitance pour ESN/MSP/infogéreurs · contrat dès 3 mois.</div>
+        <a href="mailto:contact@salverys.fr?subject=Devis%20helpdesk%20IT%20N1%20sous%2024h" class="btn btn-helpdesk" style="width:100%;justify-content:center;margin-top:14px;">Recevoir mon devis sous 24 h <span class="arrow">→</span></a>
+        <div class="disclaimer">Estimation indicative · devis précis sous 24 h · contrat dès 3 mois.</div>
       </div>
     </div>
   </div>
@@ -168,8 +161,8 @@
       <div class="pkg reveal">
         <div class="pkg-name">Helpdesk Starter</div>
         <div class="pkg-tag">Débordement ponctuel, sans engagement long</div>
-        <div><span class="pkg-price">890</span><span class="pkg-unit"> €/mois</span></div>
-        <div class="pkg-equiv">1 agent mutualisé 20 h · marque blanche</div>
+        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">1 200</span><span class="pkg-unit"> €/mois</span></div>
+        <div class="pkg-equiv">1 agent mutualisé 20 h · sous votre marque</div>
         <ul class="pkg-feat">
           <li>1 agent mutualisé · 20 h / semaine</li>
           <li>Tickets + email</li>
@@ -184,8 +177,8 @@
         <div class="pkg-badge">★ Le plus choisi</div>
         <div class="pkg-name">Helpdesk Pro</div>
         <div class="pkg-tag">Un N1 ITIL dédié, sous votre marque</div>
-        <div><span class="pkg-price">1 775</span><span class="pkg-unit"> €/mois</span></div>
-        <div class="pkg-equiv">1 agent 35 h dédié · marque blanche</div>
+        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">2 500</span><span class="pkg-unit"> €/mois</span></div>
+        <div class="pkg-equiv">1 agent 35 h dédié · sous votre marque</div>
         <ul class="pkg-feat">
           <li>1 agent 100 % dédié · 35 h / semaine</li>
           <li>Tickets + téléphone + chat</li>
@@ -199,8 +192,8 @@
       <div class="pkg reveal d2">
         <div class="pkg-name">Helpdesk Scale</div>
         <div class="pkg-tag">Équipe N1 ITIL, couverture étendue</div>
-        <div><span class="pkg-price">3 540</span><span class="pkg-unit"> €/mois</span></div>
-        <div class="pkg-equiv">2 agents 35 h dédiés · marque blanche</div>
+        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">4 800</span><span class="pkg-unit"> €/mois</span></div>
+        <div class="pkg-equiv">2 agents 35 h dédiés · sous votre marque</div>
         <ul class="pkg-feat">
           <li>2 agents dédiés · 35 h / semaine</li>
           <li>Superviseur dédié</li>
@@ -228,14 +221,14 @@
         <div class="ccell">Recrutement interne</div>
         <div class="ccell c-hide">Régie IT FR</div>
         <div class="ccell c-hide">Offshore générique</div>
-        <div class="ccell salv">Salverys (MB)</div>
+        <div class="ccell salv">Salverys</div>
       </div>
       <div class="crow alt">
         <div class="cfeat">Coût mensuel chargé</div>
         <div class="ccell bad">3 200 €</div>
         <div class="ccell c-hide neu">350-550 €/j</div>
         <div class="ccell c-hide neu">Variable</div>
-        <div class="ccell salv">1 775 €</div>
+        <div class="ccell salv">≈ 2 250-2 750 €</div>
       </div>
       <div class="crow">
         <div class="cfeat">Disponibilité garantie</div>
@@ -316,8 +309,10 @@
 </footer>
 
 <script>
-  // Config simulateur : Helpdesk IT N1 ESN/MSP (PRICING.md §3, médianes des fourchettes)
-  window.SIM_CONFIG = { baseDirect: 2500, baseMb: 1775, modeDefault: 'mb', frBench: 3200 };
+  // Config simulateur : Helpdesk IT N1 ESN/MSP (PRICING.md §3, médiane direct).
+  // Estimation publique sur base DIRECTE uniquement — le tarif marque blanche
+  // (sous-traitance) n'est jamais exposé publiquement (cf. PRICING.md §0).
+  window.SIM_CONFIG = { baseDirect: 2500, frBench: 3200 };
 </script>
 <script src="assets/site.js"></script>
 </body>

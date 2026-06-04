@@ -87,7 +87,9 @@
       <a href="#rentabilite">6. Étude de rentabilité (1er mois -50 %)</a>
       <a href="#grilles">7. Grilles (publique + interne)</a>
       <a href="#facturation">8. Comparatif facturation</a>
-      <a href="#fichiers">9. Fichiers modifiés & suite</a>
+      <a href="#affichage">9. Affichage public — grille de décision</a>
+      <a href="#competences">10. Compétences cachées & infra (BYOD)</a>
+      <a href="#fichiers">11. Fichiers modifiés & suite</a>
     </nav>
   </section>
 
@@ -261,8 +263,107 @@
     <p><strong>Critère de choix :</strong> priorité encaissement récurrent automatisé → <strong>Stripe</strong> ou <strong>GoCardless</strong> ; priorité facturation + compta FR intégrée → <strong>Pennylane</strong> + un PSP. <em>Recommandation de départ : Stripe Billing + SEPA</em>, mais aucune décision n'est figée dans le code.</p>
   </section>
 
+  <section id="affichage">
+    <h2><span class="n">9</span>Affichage public des prix — grille de décision</h2>
+    <p class="lead">Faut-il afficher publiquement le prix (avec simulateur) pour chacun des 6 segments :
+      médical, support N1 SaaS, helpdesk IT — chacun en <strong>standard (direct)</strong> et en
+      <strong>marque blanche</strong> ? Réponse construite via un système de points.</p>
+
+    <h3>Système de points (8 critères pondérés, max 50)</h3>
+    <table>
+      <tr><th>Critère</th><th>Poids</th><th>Pourquoi</th></tr>
+      <tr><td>Standardisation / produit packagé</td><td class="num">×1,5</td><td>Un forfait s'affiche, un sur-mesure non</td></tr>
+      <tr><td>Benchmark déjà public sur le marché</td><td class="num">×1</td><td>Si le prix est connu, le cacher ne sert à rien</td></tr>
+      <tr><td>Effet de filtre / qualification</td><td class="num">×1</td><td>Le prix trie les prospects</td></tr>
+      <tr><td>Inbound / SEO via simulateur</td><td class="num">×1</td><td>Volume de leads générable</td></tr>
+      <tr><td>Cycle court / self-service</td><td class="num">×1</td><td>Vente sans RDV possible</td></tr>
+      <tr><td><strong>Absence de conflit de marge</strong></td><td class="num">×2</td><td><strong>Décisif</strong> pour la marque blanche (révèle la marge du revendeur)</td></tr>
+      <tr><td>Faible risque concurrentiel</td><td class="num">×1</td><td>Coût de dévoiler le prix au marché</td></tr>
+      <tr><td>Cohérence positionnement</td><td class="num">×1,5</td><td>Sur-mesure premium ≠ prix affiché</td></tr>
+    </table>
+
+    <h3>Scores par segment</h3>
+    <table>
+      <tr><th>Segment</th><th>Total /50</th><th>%</th><th>Décision</th></tr>
+      <tr><td><strong>Médical — standard</strong></td><td class="num">45,5</td><td class="num">91 %</td><td><span class="pill pub">Afficher</span> grille ferme + simulateur</td></tr>
+      <tr><td>Support N1 — standard</td><td class="num">31</td><td class="num">62 %</td><td><span class="pill pub">Estimation</span> sans prix ferme + capture lead</td></tr>
+      <tr><td>Helpdesk IT — standard</td><td class="num">29,5</td><td class="num">59 %</td><td><span class="pill pub">Estimation</span> sans prix ferme + capture lead</td></tr>
+      <tr><td>Médical — marque blanche</td><td class="num">22,5</td><td class="num">45 %</td><td><span class="pill int">Jamais public</span></td></tr>
+      <tr><td>Support N1 — marque blanche</td><td class="num">17,5</td><td class="num">35 %</td><td><span class="pill int">Jamais public</span></td></tr>
+      <tr><td>Helpdesk IT — marque blanche</td><td class="num">17,5</td><td class="num">35 %</td><td><span class="pill int">Jamais public</span></td></tr>
+    </table>
+
+    <h3>Interprétation — 3 paliers</h3>
+    <table>
+      <tr><th>Score</th><th>Décision</th><th>Format</th></tr>
+      <tr><td>≥ 70 %</td><td>Afficher</td><td>Grille ferme + simulateur public</td></tr>
+      <tr><td>50-69 %</td><td>Semi-public</td><td>Simulateur <strong>estimation</strong> (fourchette), pas de prix ferme, capture email, « devis sous 24 h »</td></tr>
+      <tr><td>&lt; 50 %</td><td>Ne pas afficher</td><td>Prix uniquement en RDV / proposition</td></tr>
+    </table>
+    <div class="callout"><strong>La ligne de fracture n'est pas la niche, ce sont deux axes :</strong>
+      <strong>(1) direct vs marque blanche</strong> — toute marque blanche reste privée (le prix de gros est
+      l'input de marge du revendeur) ; <strong>(2) produit packagé vs ETP sur-mesure</strong> — le forfait
+      s'affiche, l'ETP se négocie. Le médical standard coche les deux bonnes cases ; le reste penche vers le
+      privé ou le semi-public.</div>
+    <div class="callout warn"><strong>Incohérence corrigée dans ce push.</strong> Les simulateurs
+      <code>simulateur-helpdesk-it.html</code> et <code>simulateur-informatique.html</code> (liés depuis
+      <code>index.html</code>) affichaient publiquement le <strong>tarif ETP en marque blanche</strong>
+      (1 775 € / 1 525 €) — fuite de marge. Ils passent en <strong>estimation directe (fourchette)</strong>
+      avec « devis sous 24 h », et tout chiffre marque blanche est retiré du public. Le positionnement
+      white-label (argument de vente) est conservé, seuls les prix MB disparaissent.</div>
+  </section>
+
+  <section id="competences">
+    <h2><span class="n">10</span>Compétences cachées & infra de l'externalisation (BYOD / SaaS-first)</h2>
+    <p>La peur légitime est le volet <strong>infra / implémentation</strong>. Réflexe directeur :
+      <strong>SaaS-first</strong> — ne monter aucune infra télécom maison. Le modèle de l'utilisateur
+      (<strong>freelances + équipes dédiées</strong>) est viable, à condition de couvrir les compétences
+      cachées ci-dessous.</p>
+
+    <h3>Transversal — tous domaines</h3>
+    <table>
+      <tr><th>Domaine caché</th><th>Risque</th><th>Parade (SaaS-first)</th></tr>
+      <tr><td>Téléphonie / VoIP</td><td>Numéros FR, qualité d'appel Mada↔France, latence</td><td>Aircall / Ringover / 3CX cloud — pas de standard physique</td></tr>
+      <tr><td>Lien internet & courant</td><td>Une coupure = SLA cassé (point dur Tana)</td><td><strong>Double FAI + 4G backup + onduleur/groupe électrogène</strong></td></tr>
+      <tr><td>Gouvernance d'accès</td><td>Données client/santé exposées</td><td>Comptes nommés, MFA, <strong>zéro téléchargement local</strong>, politique de session</td></tr>
+      <tr><td>RGPD (art. 28)</td><td>Sous-traitant de données FR</td><td>DPA signé, registre, hébergement UE</td></tr>
+      <tr><td>WFM / dimensionnement</td><td>Files d'attente ou agents payés à vide</td><td>Prévision de charge, Erlang, gestion des pics</td></tr>
+      <tr><td>QA / supervision</td><td>Qualité invisible = churn</td><td>Double écoute, scoring, coaching, KPI temps réel</td></tr>
+      <tr><td>Continuité (PCA)</td><td>Agent absent = compte non couvert</td><td><strong>Backfill : +1 agent formé en réserve par compte</strong></td></tr>
+      <tr><td>Documentation</td><td>Savoir dans la tête des freelances = départ casse le compte</td><td>Procédures + base de connaissance écrites dès le client n°1</td></tr>
+    </table>
+
+    <h3>Spécifique par domaine</h3>
+    <ul>
+      <li><strong>Médical :</strong> <strong>HDS porté par le SaaS du client</strong> (Doctolib / Ubicentrex),
+        pas par toi ; secret médical ; gestion de l'urgence ; logiciels métier (Doctolib/Maiia/Médistory/Cegedim).</li>
+      <li><strong>Support N1 SaaS :</strong> ITSM / ticketing (Zendesk/Freshdesk/Jira SM), respect des SLA,
+        escalade N2, base de connaissance produit, multicanal.</li>
+      <li><strong>Helpdesk IT :</strong> ITIL Foundation, prise en main à distance (TeamViewer/AnyDesk),
+        bases AD / Microsoft 365 / Intune, gestion d'incidents, CMDB.</li>
+    </ul>
+
+    <h3>BYOD freelance & données de santé — la nuance clé</h3>
+    <div class="callout ok"><strong>Le BYOD freelance est viable pour le médical</strong> — confirmé par le
+      montage type <strong>SECRETEL</strong> : l'agent ne fait que <strong>consulter des SaaS dans un
+      navigateur</strong> (Doctolib Pro → Ubicentrex). Les données de santé restent <strong>hébergées chez
+      les SaaS HDS</strong>, jamais sur le poste. Salverys est <strong>sous-traitant RGPD (art. 28)</strong>,
+      pas hébergeur. L'exigence se déplace donc de « monter un VDI » vers la <strong>gouvernance d'accès</strong>
+      (comptes nommés, MFA, zéro download) + fiabilité internet/courant + backfill.</div>
+    <div class="callout warn"><strong>Angle mort du modèle freelance :</strong> (1) une équipe dédiée avec SLA
+      suppose une <strong>disponibilité garantie</strong> ≠ freelance pur → cadrer juridiquement + backfill ;
+      (2) le BYOD à domicile n'est sûr <strong>qu'en accès SaaS HDS navigateur</strong> — un logiciel lourd
+      installé (ex. Médistory local) imposerait alors un VDI strict.</div>
+  </section>
+
   <section id="fichiers">
-    <h2><span class="n">9</span>Fichiers modifiés & prochaines étapes</h2>
+    <h2><span class="n">11</span>Fichiers modifiés & prochaines étapes</h2>
+    <div class="callout warn"><strong>Révision du 4 juin 2026 (branche <code>claude/pricing-strategy-analysis-dR5L5</code>).</strong>
+      Ajout des §9 (grille de décision d'affichage public) et §10 (compétences cachées & BYOD). Correction de
+      la fuite de prix marque blanche dans les simulateurs IT : <code>simulateur-helpdesk-it.html</code> et
+      <code>simulateur-informatique.html</code> passent en estimation directe (fourchette + « devis sous 24 h »),
+      moteur <code>assets/site.js</code> mis à jour (base directe uniquement, plus de toggle MB).
+      <code>PRICING.md</code> §0/§8/§9/§10 alignés.</div>
     <h3>Créés</h3>
     <ul>
       <li><code>PRICING.md</code> — source unique de vérité tarifaire.</li>

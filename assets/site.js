@@ -157,22 +157,26 @@
      SIMULATEUR IT  (présent si #posts existe)
      Config externe via window.SIM_CONFIG :
        baseDirect : tarif ETP/mois 35h en direct (cf. PRICING.md §3)
-       baseMb     : tarif ETP/mois 35h en marque blanche
-       modeDefault: 'direct' ou 'mb' — pré-sélection du toggle
        frBench    : coût mensuel CDI FR chargé (référence comparaison)
+     Estimation publique = base DIRECTE uniquement. Le tarif marque blanche
+     (sous-traitance) n'est jamais exposé publiquement (cf. PRICING.md §0).
      ======================================================== */
   if (document.getElementById('posts')) {
+    // Affichage public = estimation directe uniquement, sans prix ferme.
+    // Le tarif marque blanche (sous-traitance) n'est JAMAIS exposé ici : il révélerait
+    // la marge du revendeur (cf. PRICING.md §0 / RAPPORT-PRIX.html §9). Réservé au devis.
     const CFG = Object.assign({
-      baseDirect: 2100, baseMb: 1525, modeDefault: 'direct', frBench: 3200,
+      baseDirect: 2100, frBench: 3200,
     }, window.SIM_CONFIG || {});
-    const PROD = 0.85, FR_PEN = 1.35;
+    const PROD = 0.85, FR_PEN = 1.35, BAND = 0.10; // ±10 % autour de l'estimation
     const st = {
       posts: 1, hours: 35,
       service: 1.0, channels: 1.0, language: 1.0, schedule: 1.0,
-      mode: CFG.modeDefault === 'mb' ? CFG.baseMb : CFG.baseDirect,
+      mode: CFG.baseDirect,
     };
     const $ = id => document.getElementById(id);
     const hourly = n => n.toFixed(1).replace('.', ',') + ' €';
+    const range = n => euro(n * (1 - BAND)) + ' – ' + euro(n * (1 + BAND));
     const vol = p => p >= 6 ? 0.90 : (p >= 3 ? 0.95 : 1.0);
 
     function calc() {
@@ -186,7 +190,7 @@
       const savings = frCost - total;
       const hMonth = hpm * st.posts;
 
-      $('price-monthly').textContent = euro(total);
+      $('price-monthly').textContent = range(total);
       $('price-fr-hourly').textContent = (frCost / hMonth).toFixed(1).replace('.', ',') + ' €/h';
       $('price-fr').textContent = euro(frCost) + ' €/mois';
       $('savings-badge').textContent = 'Économie : ' + Math.round((savings / frCost) * 100) + ' %';
@@ -221,21 +225,6 @@
       $('hours-value').textContent = l;
       calc();
     });
-
-    // Toggle direct / marque blanche — utilise les pills existantes avec data-group="mode"
-    const modeGroup = document.querySelector('.pill-group[data-group="mode"]');
-    if (modeGroup) {
-      modeGroup.querySelectorAll('.pill').forEach(pill => {
-        const isMb = pill.dataset.value === 'mb';
-        pill.classList.toggle('active', isMb === (CFG.modeDefault === 'mb'));
-        pill.addEventListener('click', () => {
-          modeGroup.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-          pill.classList.add('active');
-          st.mode = isMb ? CFG.baseMb : CFG.baseDirect;
-          calc();
-        });
-      });
-    }
 
     bindPills((name, m) => { if (name !== 'mode') { st[name] = m; calc(); } });
     calc();
