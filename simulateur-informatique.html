@@ -89,9 +89,9 @@
         <div class="control-group">
           <div class="control-label"><span class="control-label-text">Niveau de service</span></div>
           <div class="pill-group" data-group="service">
-            <button class="pill" data-value="shared" data-multiplier="0.85">Mutualisé</button>
-            <button class="pill active" data-value="dedicated" data-multiplier="1.0">Dédié</button>
-            <button class="pill" data-value="premium" data-multiplier="1.25">Premium</button>
+            <button class="pill" data-value="shared" data-multiplier="0.85" data-tooltip="Équipe partagée" title="Équipe partagée" aria-label="Mutualisé : équipe partagée">Mutualisé</button>
+            <button class="pill active" data-value="dedicated" data-multiplier="1.0" data-tooltip="Ressource nominative" title="Ressource nominative" aria-label="Dédié : ressource nominative">Dédié</button>
+            <button class="pill" data-value="premium" data-multiplier="1.25" data-tooltip="Ressource dédiée + SLA renforcés" title="Ressource dédiée + SLA renforcés" aria-label="Premium : ressource dédiée et SLA renforcés">Premium</button>
           </div>
         </div>
 
@@ -102,6 +102,7 @@
             <button class="pill" data-value="multi" data-multiplier="1.08">Tél + ticket</button>
             <button class="pill" data-value="omni" data-multiplier="1.15">Omnicanal</button>
           </div>
+          <div class="option-help">Téléphone, tickets, emails et chat</div>
         </div>
 
         <div class="control-group">
@@ -127,19 +128,18 @@
       <!-- RÉSULTATS -->
       <div class="results-card reveal d1">
         <div class="result-primary">
-          <div class="result-label">Estimation mensuelle</div>
-          <div><span class="result-price" id="price-monthly">1 900 – 2 300</span><span class="result-price-unit">€/mois</span></div>
+          <div class="result-label">Tarif mensuel estimé</div>
+          <div><span class="result-price" id="price-monthly">2 070 – 2 530</span><span class="result-price-unit">€/mois</span></div>
           <div class="result-strikethrough">
-            Équivalent N1 interne France : <span class="old" id="price-fr-hourly">21 €/h</span> · <span class="old" id="price-fr">3 200 €/mois</span>
+            Coût estimé d'un N1 internalisé en France : <span id="price-fr">3 646 €/mois</span>
           </div>
-          <div class="savings-badge" id="savings-badge">Économie : 34 %</div>
+          <div class="savings-badge" id="savings-badge">Économie : 37 %</div>
         </div>
 
         <div class="result-grid">
           <div class="result-stat"><div class="result-stat-label">Heures / mois</div><div class="result-stat-value" id="hours-monthly">152 h</div></div>
-          <div class="result-stat"><div class="result-stat-label">Tarif horaire affiché</div><div class="result-stat-value" id="hourly-displayed">8,5 €</div></div>
-          <div class="result-stat"><div class="result-stat-label">Tarif horaire productif</div><div class="result-stat-value accent" id="hourly-productive">10,0 €</div></div>
-          <div class="result-stat"><div class="result-stat-label">Économie annuelle</div><div class="result-stat-value accent" id="annual-savings">22 000 €</div></div>
+          <div class="result-stat"><div class="result-stat-label">Équivalent horaire</div><div class="result-stat-value" id="hourly-equivalent">15,2 €</div></div>
+          <div class="result-stat featured-saving"><div class="result-stat-label">Économie annuelle estimée</div><div class="result-stat-value accent" id="annual-savings">16 152 €</div></div>
         </div>
 
         <div class="recommendation">
@@ -165,7 +165,7 @@
       <div class="pkg reveal">
         <div class="pkg-name">Support Starter</div>
         <div class="pkg-tag">Premier niveau, sans recruter</div>
-        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">1 000</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">1 100</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">1 agent mutualisé 20 h</div>
         <ul class="pkg-feat">
           <li>1 agent mutualisé · 20 h / semaine</li>
@@ -181,7 +181,7 @@
         <div class="pkg-badge">★ Le plus choisi</div>
         <div class="pkg-name">Support Pro</div>
         <div class="pkg-tag">Un N1 dédié à votre SaaS</div>
-        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">2 100</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">2 300</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">1 agent 35 h dédié · en direct</div>
         <ul class="pkg-feat">
           <li>1 agent 100 % dédié · 35 h / semaine</li>
@@ -196,7 +196,7 @@
       <div class="pkg reveal d2">
         <div class="pkg-name">Centre N1 Scale</div>
         <div class="pkg-tag">Équipe N1, couverture étendue</div>
-        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">4 200</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">4 600</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">2 agents 35 h dédiés · en direct</div>
         <ul class="pkg-feat">
           <li>2 agents dédiés · 35 h / semaine</li>
@@ -316,7 +316,7 @@
   // Config simulateur : Support N1 SaaS éditeurs (PRICING.md §3, médiane direct).
   // Estimation publique sur base DIRECTE uniquement — le tarif marque blanche
   // (sous-traitance) n'est jamais exposé publiquement (cf. PRICING.md §0).
-  window.SIM_CONFIG = { baseDirect: 2100, frBench: 3200 };
+  window.SIM_CONFIG = { baseDirect: 2300, frBench: 3646 };
 </script>
 <script src="assets/site.js"></script>
 </body>

@@ -181,7 +181,7 @@
 
     function calc() {
       const hpm = st.hours * 4.33;
-      const ratio = hpm / 152;
+      const ratio = hpm / (35 * 4.33);
       const basePrice = st.mode * ratio;
       const mult = st.service * st.channels * st.language * st.schedule;
       const total = basePrice * mult * st.posts * vol(st.posts);
@@ -191,12 +191,13 @@
       const hMonth = hpm * st.posts;
 
       $('price-monthly').textContent = range(total);
-      $('price-fr-hourly').textContent = (frCost / hMonth).toFixed(1).replace('.', ',') + ' €/h';
+      if ($('price-fr-hourly')) $('price-fr-hourly').textContent = (frCost / hMonth).toFixed(1).replace('.', ',') + ' €/h';
       $('price-fr').textContent = euro(frCost) + ' €/mois';
       $('savings-badge').textContent = 'Économie : ' + Math.round((savings / frCost) * 100) + ' %';
       $('hours-monthly').textContent = Math.round(hMonth) + ' h';
-      $('hourly-displayed').textContent = hourly(total / hMonth);
-      $('hourly-productive').textContent = hourly(total / (hMonth * PROD));
+      const hourlyEquivalent = $('hourly-equivalent') || $('hourly-displayed');
+      if (hourlyEquivalent) hourlyEquivalent.textContent = hourly(total / hMonth);
+      if ($('hourly-productive')) $('hourly-productive').textContent = hourly(total / (hMonth * PROD));
       $('annual-savings').textContent = euro(savings * 12) + ' €';
 
       const recoEl = $('recommendation');
