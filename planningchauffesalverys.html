@@ -24,6 +24,8 @@
     --text-soft: #5C5448;
     --text-mute: #8A8275;
     --danger: #B6604D;
+    --ok: #6F8770;
+    --warn: #C99A4B;
     --shadow-sm: 0 1px 2px rgba(46, 59, 78, 0.06), 0 1px 3px rgba(46, 59, 78, 0.04);
     --shadow-md: 0 4px 12px rgba(46, 59, 78, 0.08), 0 2px 6px rgba(46, 59, 78, 0.04);
     --shadow-lg: 0 12px 32px rgba(46, 59, 78, 0.12), 0 4px 12px rgba(46, 59, 78, 0.06);
@@ -48,6 +50,16 @@
     margin: 0 auto;
     padding: 0 24px;
   }
+
+  /* ============ Bandeau d'erreur global (visible si le JS plante) ============ */
+  #err-banner {
+    display: none;
+    position: sticky; top: 0; z-index: 200;
+    background: var(--danger); color: #fff;
+    padding: 12px 18px; font-size: 14px; font-weight: 600;
+    box-shadow: var(--shadow-md);
+  }
+  #err-banner code { background: rgba(0,0,0,.18); padding: 1px 6px; border-radius: 4px; font-weight: 400; }
 
   /* ============ HERO compact ============ */
   .hero {
@@ -91,6 +103,17 @@
   .kpi-value { font-family: 'Georgia', serif; font-size: 26px; font-weight: 500; color: var(--blue); line-height: 1; }
   .kpi-value.accent { color: var(--sage-dark); }
   .kpi-value.gold { color: var(--gold); }
+  .kpi-sub { font-size: 11px; color: var(--text-mute); margin-top: 5px; }
+
+  /* Pastille de santé */
+  .kpi.health { position: relative; }
+  .health-dot { display:inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .health-ok   { color: var(--ok); }
+  .health-warn { color: var(--warn); }
+  .health-bad  { color: var(--danger); }
+  .health-ok   .health-dot { background: var(--ok); }
+  .health-warn .health-dot { background: var(--warn); }
+  .health-bad  .health-dot { background: var(--danger); }
 
   /* ============ Cartes génériques ============ */
   .card {
@@ -157,16 +180,22 @@
   @media (max-width: 980px) { .main-grid { grid-template-columns: 1fr; } }
 
   /* ============ Grille de suivi ============ */
-  .track-toolbar { display:flex; gap:10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+  .track-toolbar { display:flex; gap:10px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+  .add-msg { min-height: 18px; font-size: 12.5px; margin-bottom: 12px; font-weight: 600; }
+  .add-msg.error { color: var(--danger); }
+  .add-msg.ok { color: var(--sage-dark); }
   .track-scroll { overflow-x: auto; border: 1px solid var(--greige); border-radius: var(--radius-md); }
   table.track { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 12px; }
   table.track th, table.track td { border-bottom: 1px solid var(--greige); padding: 6px 8px; text-align: center; }
   table.track thead th { background: var(--blue); color: #fff; position: sticky; top: 0; font-weight: 600; }
   table.track thead th.week-sep { border-left: 2px solid var(--bg-card); }
-  table.track .recip-cell { text-align: left; white-space: nowrap; position: sticky; left: 0; background: var(--bg-card); z-index: 1; min-width: 190px; }
+  table.track .recip-cell { text-align: left; white-space: nowrap; position: sticky; left: 0; background: var(--bg-card); z-index: 1; min-width: 200px; }
   table.track .recip-name { font-weight: 600; color: var(--blue); }
   table.track .recip-email { color: var(--text-mute); font-size: 11px; }
+  table.track .recip-stat { font-size: 10.5px; color: var(--text-mute); margin-top: 2px; }
+  table.track .recip-stat b { font-weight: 700; }
   table.track tbody tr:hover .recip-cell { background: #fff; }
+  tr.send-row.followup .recip-cell { border-left: 3px solid var(--gold); }
   .cell-chk { width: 16px; height: 16px; cursor: pointer; accent-color: var(--sage-dark); }
   .reply-chk { width: 16px; height: 16px; cursor: pointer; accent-color: var(--gold); }
   .reply-chk:disabled { opacity: .22; cursor: default; }
@@ -200,12 +229,30 @@
   .day-counter .ok { color: var(--sage-dark); }
   .day-counter .left { color: var(--gold); }
 
+  /* ============ Import en masse ============ */
+  .bulk-box { margin-top: 16px; border: 1px dashed var(--greige-dark); border-radius: var(--radius-md); padding: 0; overflow: hidden; }
+  .bulk-head { display:flex; align-items:center; justify-content:space-between; padding: 12px 16px; cursor: pointer; user-select:none; }
+  .bulk-head .bt { font-size: 13px; font-weight: 600; color: var(--blue); }
+  .bulk-head .chev { color: var(--text-mute); transition: transform .2s; }
+  .bulk-box.open .bulk-head .chev { transform: rotate(180deg); }
+  .bulk-body { display:none; padding: 0 16px 16px; }
+  .bulk-box.open .bulk-body { display:block; }
+  .bulk-body textarea { width:100%; min-height: 110px; resize: vertical; border-radius: var(--radius-sm); border: 1px solid var(--greige-dark); padding: 10px 12px; font-family: inherit; font-size: 13px; }
+  .bulk-body .bulk-hint { font-size: 11.5px; color: var(--text-mute); margin: 6px 0 10px; }
+
+  /* ============ Encadré relances ============ */
+  .followup-box { margin-top: 28px; }
+  .followup-list { display:flex; flex-direction: column; gap: 8px; }
+  .followup-item { display:flex; justify-content: space-between; align-items:center; gap: 10px; padding: 8px 12px; background: var(--bg-elevated); border: 1px solid var(--greige); border-left: 3px solid var(--gold); border-radius: var(--radius-sm); font-size: 13px; }
+  .followup-item .f-mail { color: var(--blue); font-weight: 500; }
+  .followup-item .f-meta { color: var(--text-mute); font-size: 11px; white-space: nowrap; text-align:right; }
+
   /* ============ Encadré adresses ============ */
   .addr-box { margin-top: 28px; }
   .addr-list { display:flex; flex-direction: column; gap: 8px; max-height: 320px; overflow-y: auto; }
   .addr-item { display:flex; justify-content: space-between; align-items:center; gap: 10px; padding: 8px 12px; background: var(--bg-elevated); border: 1px solid var(--greige); border-radius: var(--radius-sm); font-size: 13px; }
   .addr-item .a-mail { color: var(--blue); font-weight: 500; }
-  .addr-item .a-meta { color: var(--text-mute); font-size: 11px; white-space: nowrap; }
+  .addr-item .a-meta { color: var(--text-mute); font-size: 11px; white-space: nowrap; text-align:right; }
   .addr-empty { color: var(--text-mute); font-size: 13px; font-style: italic; padding: 8px 0; }
 
   /* ============ Générateur (colonne droite) ============ */
@@ -243,14 +290,24 @@
   .btn-light:hover { background: #fff; }
   .btn-add { background: var(--sage); color:#fff; }
   .btn-add:hover { background: var(--sage-dark); }
+  .btn-blue { background: var(--blue); color:#fff; }
+  .btn-gold { background: var(--gold); color:#fff; }
+  .btn-sm { padding: 8px 13px; font-size: 12px; }
   .btn-copy-addr { background: var(--blue); color:#fff; margin-top: 12px; }
 
   .inp { padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid var(--greige-dark); background:#fff; font-size: 13px; font-family: inherit; }
   .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--blue); color:#fff; padding: 12px 22px; border-radius: 100px; font-size: 14px; box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none; transition: all .25s; z-index: 50; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  .save-bar { display:flex; align-items:center; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .save-status { font-size: 12px; color: var(--text-mute); white-space: nowrap; }
+  .save-status.saved { color: var(--sage-dark); }
 </style>
 </head>
 <body>
+
+<!-- Bandeau d'erreur global : rendu visible par le gestionnaire d'erreurs JS -->
+<div id="err-banner"></div>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -258,13 +315,14 @@
     <div>
       <span class="hero-badge">Warm-up manuel · Cold mailing</span>
       <h1>Mailbox warm-up — <em>suivi &amp; cadence</em></h1>
-      <p>Coche à qui tu as envoyé tes mails de chauffe, suis ta montée en charge sur 6 semaines et génère un mail conforme en un clic.</p>
+      <p>Coche à qui tu as envoyé tes mails de chauffe, suis tes réponses et ta montée en charge sur 6 semaines, et génère un mail conforme en un clic.</p>
     </div>
     <div class="kpi-row">
       <div class="kpi"><div class="kpi-label">Aujourd'hui</div><div class="kpi-value accent" id="kpi-today">0</div></div>
       <div class="kpi"><div class="kpi-label">Reste / objectif</div><div class="kpi-value gold" id="kpi-left">—</div></div>
       <div class="kpi"><div class="kpi-label">Total envoyés</div><div class="kpi-value" id="kpi-total">0</div></div>
       <div class="kpi"><div class="kpi-label">Taux réponse</div><div class="kpi-value gold" id="kpi-ratio">—</div></div>
+      <div class="kpi health"><div class="kpi-label">Santé chauffe</div><div class="kpi-value" id="kpi-health"><span class="health-dot"></span>—</div><div class="kpi-sub" id="kpi-health-sub">—</div></div>
     </div>
   </div>
 </section>
@@ -314,9 +372,20 @@
           <input class="inp" type="text" id="new-name" placeholder="Prénom Nom" />
           <input class="inp" type="email" id="new-email" placeholder="email@exemple.fr" style="min-width:200px" />
           <button class="btn btn-add" id="add-recip">+ Ajouter un destinataire</button>
-          <span id="save-status" style="font-size:12px;color:var(--text-mute);margin-left:auto;white-space:nowrap">Pas encore sauvegardé</span>
-          <button class="btn btn-light" id="save-btn" style="background:var(--blue);color:#fff;white-space:nowrap">Enregistrer</button>
-          <button class="btn" id="download-btn" style="background:var(--gold);color:#fff;white-space:nowrap">⬇ Télécharger le fichier</button>
+        </div>
+        <div class="add-msg" id="add-msg"></div>
+
+        <!-- Import en masse -->
+        <div class="bulk-box" id="bulk-box">
+          <div class="bulk-head" id="bulk-head">
+            <span class="bt">📋 Importer plusieurs destinataires d'un coup</span>
+            <span class="chev">▾</span>
+          </div>
+          <div class="bulk-body">
+            <div class="bulk-hint">Une ligne par destinataire. Formats acceptés : <code>Nom;email</code>, <code>Nom,email</code>, <code>email Nom</code> ou <code>email</code> seul. Les doublons et lignes invalides sont ignorés.</div>
+            <textarea id="bulk-text" placeholder="Camille Durand;camille.durand@gmail.com&#10;thomas.lefevre@outlook.fr&#10;Léa Moreau, lea.moreau@orange.fr"></textarea>
+            <div style="margin-top:10px"><button class="btn btn-add btn-sm" id="bulk-add">Importer la liste</button></div>
+          </div>
         </div>
 
         <div class="track-scroll">
@@ -332,6 +401,21 @@
           <div>Reste à faire : <b class="left" id="dc-left">—</b></div>
           <div style="border-left:1px solid var(--greige-dark);padding-left:24px;margin-left:4px">Réponses reçues : <b id="dc-ratio">—</b></div>
         </div>
+
+        <!-- Sauvegarde -->
+        <div class="save-bar">
+          <span class="save-status" id="save-status">Pas encore sauvegardé</span>
+          <button class="btn btn-blue btn-sm" id="export-btn">⬇ Exporter (.json)</button>
+          <button class="btn btn-light btn-sm" id="import-btn" style="border:1px solid var(--greige-dark)">⬆ Importer (.json)</button>
+          <input type="file" id="import-file" accept=".json,application/json" style="display:none" />
+        </div>
+      </div>
+
+      <!-- ENCADRÉ RELANCES -->
+      <div class="card followup-box">
+        <div class="card-title">Relances à faire</div>
+        <div class="card-sub">Destinataires contactés il y a plus de <span id="fu-days">3</span> jours ouvrés et qui n'ont jamais répondu.</div>
+        <div class="followup-list" id="followup-list"></div>
       </div>
 
       <!-- ENCADRÉ ADRESSES -->
@@ -379,178 +463,200 @@
 
 <div class="toast" id="toast"></div>
 
-<!-- Données embarquées — remplacées automatiquement lors du téléchargement de sauvegarde -->
-<script id="saved-data" type="application/json">null</script>
-
 <script>
-/* Capture du HTML brut avant tout rendu, pour l'export fichier */
-const FILE_TEMPLATE = document.documentElement.outerHTML;
+"use strict";
 /* ============================================================
-   Suivi de chauffe manuelle Salverys — page unique autonome
-   Persistance : localStorage, préfixe vinlo_warmup_
+   Suivi de chauffe manuelle Salverys — page unique autonome.
+   Persistance : localStorage (préfixe salverys_warmup_)
+                 + export / import d'un fichier .json.
+   Aucune dépendance, aucun serveur : ouvrir le fichier suffit.
    ============================================================ */
 
-const LS = {
+/* ---------- Garde-fou : toute erreur JS devient visible ---------- */
+function showError(msg) {
+  var b = document.getElementById('err-banner');
+  if (!b) return;
+  b.style.display = 'block';
+  b.innerHTML = '⚠ Une erreur est survenue : <code>' + String(msg).replace(/</g, '&lt;') +
+    '</code> — recharge la page ; si le problème persiste, signale-le.';
+}
+window.addEventListener('error', function (e) { showError(e.message || e.error || 'erreur inconnue'); });
+window.addEventListener('unhandledrejection', function (e) { showError((e.reason && e.reason.message) || e.reason || 'promesse rejetée'); });
+
+/* ---------- Constantes ---------- */
+var LS = {
+  recipients: 'salverys_warmup_recipients',
+  sends:      'salverys_warmup_sends',
+  replies:    'salverys_warmup_replies',
+  start:      'salverys_warmup_start'
+};
+/* Anciennes clés (migration unique pour ne rien perdre) */
+var LS_OLD = {
   recipients: 'vinlo_warmup_recipients',
   sends:      'vinlo_warmup_sends',
   replies:    'vinlo_warmup_replies',
-  start:      'vinlo_warmup_start',
+  start:      'vinlo_warmup_start'
 };
 
-const TOTAL_DAYS = 43;          // 03 juin → 15 juil. 2026 (aligné sur Salve2, S6 = 8 jours)
-const DEFAULT_START = '2026-06-03';
+var TOTAL_DAYS = 43;              // 03 juin -> 15 juil. 2026 (S6 = 8 jours)
+var DEFAULT_START = '2026-06-03';
+var FOLLOWUP_DAYS = 3;            // jours ouvrés sans réponse avant de signaler une relance
 
-/* Phases : index de jour -> infos. Quotas (par jour ouvré) issus du manuel de chauffe. */
-const PHASES = [
-  { name: 'S1–S2', startDay: 0,  endDay: 13, quotaMin: 5,  quotaMax: 10, links: 0, color: 'var(--sage)',  cls: 's1', goal: '≥ 30 % de réponses' },
-  { name: 'S3–S4', startDay: 14, endDay: 27, quotaMin: 20, quotaMax: 30, links: 1, color: 'var(--blue-soft)', cls: 's3', goal: 'Maintenir l’engagement' },
-  { name: 'S5–S6', startDay: 28, endDay: 42, quotaMin: 45, quotaMax: 55, links: 1, color: 'var(--gold)',  cls: 's3', goal: 'Démarrer les campagnes' },
+/* Phases : quotas par jour ouvré, issus du manuel de chauffe.
+   replyTarget = taux de réponse visé (sert au score de santé). */
+var PHASES = [
+  { name: 'S1–S2', startDay: 0,  endDay: 13, quotaMin: 5,  quotaMax: 10, links: 0, color: 'var(--sage)',      cls: 's1', goal: '≥ 30 % de réponses',   replyTarget: 0.30 },
+  { name: 'S3–S4', startDay: 14, endDay: 27, quotaMin: 20, quotaMax: 30, links: 1, color: 'var(--blue-soft)', cls: 's3', goal: 'Maintenir l’engagement', replyTarget: 0.20 },
+  { name: 'S5–S6', startDay: 28, endDay: 42, quotaMin: 45, quotaMax: 55, links: 1, color: 'var(--gold)',      cls: 's3', goal: 'Démarrer les campagnes', replyTarget: 0.10 }
 ];
 
 function phaseOfDay(d) {
-  for (const p of PHASES) if (d >= p.startDay && d <= p.endDay) return p;
+  for (var i = 0; i < PHASES.length; i++) { if (d >= PHASES[i].startDay && d <= PHASES[i].endDay) return PHASES[i]; }
   return PHASES[PHASES.length - 1];
 }
 
-/* ---------- État — priorité : données embarquées > localStorage ---------- */
-let recipients, sends, replies, startDate;
-(function() {
-  try {
-    const el = document.getElementById('saved-data');
-    const raw = el && el.textContent.trim();
-    const d = raw && raw !== 'null' && JSON.parse(raw);
-    if (d && d.recipients) {
-      recipients = d.recipients;
-      sends      = d.sends    || {};
-      replies    = d.replies  || {};
-      startDate  = d.start    || DEFAULT_START;
-      return;
-    }
-  } catch(e) {}
-  recipients = load(LS.recipients, null);
-  sends      = load(LS.sends,      {});
-  replies    = load(LS.replies,    {});
-  startDate  = load(LS.start,      DEFAULT_START);
-})();
+/* ---------- Utilitaires de stockage ---------- */
+function rid() { return 'r' + Math.random().toString(36).slice(2, 9); }
+function load(k, fb) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : fb; } catch (e) { return fb; } }
+function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 
-if (!recipients) {
-  // Destinataires d'exemple (éditables / supprimables)
-  recipients = [
-    { id: rid(), name: 'Camille Durand',  email: 'camille.durand@gmail.com' },
-    { id: rid(), name: 'Thomas Lefèvre',  email: 'thomas.lefevre@outlook.fr' },
-    { id: rid(), name: 'Léa Moreau',      email: 'lea.moreau@orange.fr' },
-    { id: rid(), name: 'Karim Benali',    email: 'k.benali@proton.me' },
-    { id: rid(), name: 'Sophie Marchand', email: 'sophie.marchand@yahoo.fr' },
-  ];
-  persist();
+/* ---------- État ---------- */
+var recipients, sends, replies, startDate;
+
+function migrateIfNeeded() {
+  // Si rien sous le nouveau préfixe mais des données sous l'ancien : on recopie une fois.
+  if (localStorage.getItem(LS.recipients) === null && localStorage.getItem(LS_OLD.recipients) !== null) {
+    var keys = ['recipients', 'sends', 'replies', 'start'];
+    for (var i = 0; i < keys.length; i++) {
+      var old = localStorage.getItem(LS_OLD[keys[i]]);
+      if (old !== null) save(LS[keys[i]], JSON.parse(old));
+    }
+  }
 }
 
-/* ---------- Utilitaires ---------- */
-function rid() { return 'r' + Math.random().toString(36).slice(2, 9); }
-function load(k, fb) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : fb; } catch (e) { return fb; } }
-function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
-function persist() {
+function loadState() {
+  migrateIfNeeded();
+  recipients = load(LS.recipients, null);
+  sends      = load(LS.sends,    {});
+  replies    = load(LS.replies,  {});
+  startDate  = load(LS.start,    DEFAULT_START);
+
+  if (!recipients || !recipients.length) {
+    // Destinataires d'exemple (éditables / supprimables)
+    recipients = [
+      { id: rid(), name: 'Camille Durand',  email: 'camille.durand@gmail.com' },
+      { id: rid(), name: 'Thomas Lefèvre',  email: 'thomas.lefevre@outlook.fr' },
+      { id: rid(), name: 'Léa Moreau',      email: 'lea.moreau@orange.fr' },
+      { id: rid(), name: 'Karim Benali',    email: 'k.benali@proton.me' },
+      { id: rid(), name: 'Sophie Marchand', email: 'sophie.marchand@yahoo.fr' }
+    ];
+    persist(false);
+  }
+}
+
+function persist(showStatus) {
   save(LS.recipients, recipients);
   save(LS.sends, sends);
   save(LS.replies, replies);
   save(LS.start, startDate);
-  const el = document.getElementById('save-status');
-  if (el) {
-    const t = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-    el.textContent = 'Sauvegardé à ' + t + ' ✓';
-    el.style.color = 'var(--sage-dark)';
+  if (showStatus !== false) {
+    var el = document.getElementById('save-status');
+    if (el) {
+      var t = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+      el.textContent = 'Sauvegardé automatiquement · ' + t + ' ✓';
+      el.classList.add('saved');
+    }
   }
 }
 
-function dayDate(i) { const d = new Date(startDate + 'T00:00:00'); d.setDate(d.getDate() + i); return d; }
+/* ---------- Dates ---------- */
+function dayDate(i) { var d = new Date(startDate + 'T00:00:00'); d.setDate(d.getDate() + i); return d; }
 function fmtDate(d) { return d.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }); }
 function fmtLong(d) { return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' }); }
-
-/* Jours ouvrés : on n'envoie pas le week-end (samedi/dimanche). */
-function isWeekend(i) { const wd = dayDate(i).getDay(); return wd === 0 || wd === 6; }
+function isWeekend(i) { var wd = dayDate(i).getDay(); return wd === 0 || wd === 6; }
 function isWorkday(i) { return !isWeekend(i); }
-
 function todayIndex() {
-  const t = new Date(); t.setHours(0, 0, 0, 0);
-  const s = new Date(startDate + 'T00:00:00');
+  var t = new Date(); t.setHours(0, 0, 0, 0);
+  var s = new Date(startDate + 'T00:00:00');
   return Math.round((t - s) / 86400000);
 }
-function isSent(rId, day) { return (sends[rId] || []).includes(day); }
+
+/* ---------- Accès envois / réponses ---------- */
+function isSent(rId, day) { return (sends[rId] || []).indexOf(day) !== -1; }
 function toggleSend(rId, day, on) {
-  const arr = sends[rId] || (sends[rId] = []);
-  const pos = arr.indexOf(day);
+  var arr = sends[rId] || (sends[rId] = []);
+  var pos = arr.indexOf(day);
   if (on && pos === -1) arr.push(day);
   if (!on && pos !== -1) arr.splice(pos, 1);
   persist();
 }
-function totalSends() { return Object.values(sends).reduce((a, arr) => a + arr.length, 0); }
-function sentOnDay(day) { return recipients.reduce((a, r) => a + (isSent(r.id, day) ? 1 : 0), 0); }
-function isReplied(rId, day) { return (replies[rId] || []).includes(day); }
+function isReplied(rId, day) { return (replies[rId] || []).indexOf(day) !== -1; }
 function toggleReply(rId, day, on) {
-  const arr = replies[rId] || (replies[rId] = []);
-  const pos = arr.indexOf(day);
+  var arr = replies[rId] || (replies[rId] = []);
+  var pos = arr.indexOf(day);
   if (on && pos === -1) arr.push(day);
   if (!on && pos !== -1) arr.splice(pos, 1);
   persist();
 }
-function totalReplies() { return Object.values(replies).reduce((a, arr) => a + arr.length, 0); }
-function repliesOnDay(day) { return recipients.reduce((a, r) => a + (isReplied(r.id, day) ? 1 : 0), 0); }
+function sendCount(rId)  { return (sends[rId]   || []).length; }
+function replyCount(rId) { return (replies[rId] || []).length; }
+function totalSends()   { var n = 0; for (var k in sends)   if (sends.hasOwnProperty(k))   n += sends[k].length;   return n; }
+function totalReplies() { var n = 0; for (var k in replies) if (replies.hasOwnProperty(k)) n += replies[k].length; return n; }
+function sentOnDay(day)    { var n = 0; for (var i = 0; i < recipients.length; i++) if (isSent(recipients[i].id, day)) n++; return n; }
+function repliesOnDay(day) { var n = 0; for (var i = 0; i < recipients.length; i++) if (isReplied(recipients[i].id, day)) n++; return n; }
 
 /* ============================================================
    GANTT
    ============================================================ */
 function renderGantt() {
-  const ti = todayIndex();
+  var ti = todayIndex();
   document.getElementById('gantt-range').textContent =
     'Démarré le ' + fmtLong(dayDate(0)) + ' → ' + fmtLong(dayDate(TOTAL_DAYS - 1));
 
-  // Phases
-  const curPhase = (ti >= 0 && ti < TOTAL_DAYS) ? phaseOfDay(ti) : null;
-  document.getElementById('gantt-phases').innerHTML = PHASES.map(p => `
-    <div class="phase-chip ${p === curPhase ? 'active' : ''}">
-      <span class="ph-dot" style="background:${p.color}"></span>
-      <div class="ph-name">${p.name}</div>
-      <div class="ph-quota">${p.quotaMin}–${p.quotaMax} <span style="font-size:12px;color:var(--text-mute)">mails/jour</span></div>
-      <div class="ph-meta">${p.links === 0 ? 'Texte brut, 0 lien' : 'Texte brut, 1 lien max'} · ${p.goal}</div>
-    </div>`).join('');
+  var curPhase = (ti >= 0 && ti < TOTAL_DAYS) ? phaseOfDay(ti) : null;
+  document.getElementById('gantt-phases').innerHTML = PHASES.map(function (p) {
+    return '<div class="phase-chip ' + (p === curPhase ? 'active' : '') + '">' +
+      '<span class="ph-dot" style="background:' + p.color + '"></span>' +
+      '<div class="ph-name">' + p.name + '</div>' +
+      '<div class="ph-quota">' + p.quotaMin + '–' + p.quotaMax + ' <span style="font-size:12px;color:var(--text-mute)">mails/jour</span></div>' +
+      '<div class="ph-meta">' + (p.links === 0 ? 'Texte brut, 0 lien' : 'Texte brut, 1 lien max') + ' · ' + p.goal + '</div>' +
+    '</div>';
+  }).join('');
 
-  // En-têtes de semaines
-  let weeks = '';
-  for (let w = 0; w < 6; w++) {
-    const d0 = dayDate(w * 7);
-    weeks += `<div class="gantt-week-head">S${w + 1}<br><span style="font-weight:400;text-transform:none">${fmtDate(d0)}</span></div>`;
+  var weeks = '';
+  for (var w = 0; w < 6; w++) {
+    var d0 = dayDate(w * 7);
+    weeks += '<div class="gantt-week-head">S' + (w + 1) + '<br><span style="font-weight:400;text-transform:none">' + fmtDate(d0) + '</span></div>';
   }
   document.getElementById('gantt-weeks').innerHTML = weeks;
 
-  // Barres de phase (positionnées en % de la timeline)
-  document.getElementById('gantt-bars').innerHTML = PHASES.map(p => {
-    const left = (p.startDay / TOTAL_DAYS) * 100;
-    const width = ((p.endDay - p.startDay + 1) / TOTAL_DAYS) * 100;
-    return `<div class="gantt-bar" style="background:${p.color};margin-left:${left}%;width:${width}%">
-      ${p.name} — ${p.quotaMin}–${p.quotaMax}/j</div>`;
+  document.getElementById('gantt-bars').innerHTML = PHASES.map(function (p) {
+    var left = (p.startDay / TOTAL_DAYS) * 100;
+    var width = ((p.endDay - p.startDay + 1) / TOTAL_DAYS) * 100;
+    return '<div class="gantt-bar" style="background:' + p.color + ';margin-left:' + left + '%;width:' + width + '%">' +
+      p.name + ' — ' + p.quotaMin + '–' + p.quotaMax + '/j</div>';
   }).join('');
 
-  // Cases-jours
-  let days = ‘’;
-  for (let i = 0; i < TOTAL_DAYS; i++) {
-    const p = phaseOfDay(i);
-    const we = isWeekend(i);
-    const done = sentOnDay(i) > 0;
-    const replied = repliesOnDay(i) > 0;
-    const cls = [p.cls, we ? ‘weekend’ : ‘’, done ? ‘done’ : ‘’, i === ti ? ‘today’ : ‘’, replied ? ‘has-reply’ : ‘’].join(‘ ‘);
-    const title = fmtLong(dayDate(i)) + (we
-      ? ‘ — week-end (pas d\’envoi)’
-      : ‘ — ‘ + sentOnDay(i) + ‘ envoi(s) · ‘ + repliesOnDay(i) + ‘ réponse(s)’);
-    days += `<div class="gantt-day ${cls}" title="${title}"><span class="day-num">${i + 1}</span></div>`;
+  var days = '';
+  for (var i = 0; i < TOTAL_DAYS; i++) {
+    var p = phaseOfDay(i);
+    var we = isWeekend(i);
+    var done = sentOnDay(i) > 0;
+    var replied = repliesOnDay(i) > 0;
+    var cls = [p.cls, we ? 'weekend' : '', done ? 'done' : '', i === ti ? 'today' : '', replied ? 'has-reply' : ''].join(' ');
+    var title = fmtLong(dayDate(i)) + (we
+      ? ' — week-end (pas d’envoi)'
+      : ' — ' + sentOnDay(i) + ' envoi(s) · ' + repliesOnDay(i) + ' réponse(s)');
+    days += '<div class="gantt-day ' + cls + '" title="' + title + '"><span class="day-num">' + (i + 1) + '</span></div>';
   }
-  document.getElementById(‘gantt-days’).innerHTML = days;
+  document.getElementById('gantt-days').innerHTML = days;
 
-  // Progression globale (cumul des quotas min attendus sur les JOURS OUVRÉS écoulés)
-  let expected = 0;
-  const upto = Math.min(Math.max(ti + 1, 0), TOTAL_DAYS);
-  for (let i = 0; i < upto; i++) if (isWorkday(i)) expected += phaseOfDay(i).quotaMin;
-  const total = totalSends();
-  const pct = expected > 0 ? Math.min(100, Math.round((total / expected) * 100)) : 0;
+  // Progression vs objectif min cumulé sur les jours ouvrés écoulés
+  var expected = 0;
+  var upto = Math.min(Math.max(ti + 1, 0), TOTAL_DAYS);
+  for (var j = 0; j < upto; j++) if (isWorkday(j)) expected += phaseOfDay(j).quotaMin;
+  var total = totalSends();
+  var pct = expected > 0 ? Math.min(100, Math.round((total / expected) * 100)) : 0;
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-text').textContent =
     total + ' envoi' + (total > 1 ? 's' : '') + ' · objectif cumulé (jours ouvrés) : ' + expected;
@@ -561,179 +667,231 @@ function renderGantt() {
    GRILLE DE SUIVI
    ============================================================ */
 function renderTable() {
-  const ti = todayIndex();
+  var ti = todayIndex();
 
-  // En-tête : jours, séparateurs de semaine, week-ends grisés
-  let head = '<tr><th class="recip-cell" style="text-align:left">Destinataire</th>';
-  for (let i = 0; i < TOTAL_DAYS; i++) {
-    const sep = i % 7 === 0 ? 'week-sep' : '';
-    const we = isWeekend(i) ? 'th-weekend' : '';
-    const d = dayDate(i);
-    head += `<th class="${sep} ${we}" title="${fmtLong(d)}${isWeekend(i) ? ' — week-end' : ''}">${fmtDate(d)}</th>`;
+  var head = '<tr><th class="recip-cell" style="text-align:left">Destinataire</th>';
+  for (var i = 0; i < TOTAL_DAYS; i++) {
+    var sep = i % 7 === 0 ? 'week-sep' : '';
+    var we = isWeekend(i) ? 'th-weekend' : '';
+    var d = dayDate(i);
+    head += '<th class="' + sep + ' ' + we + '" title="' + fmtLong(d) + (isWeekend(i) ? ' — week-end' : '') + '">' + fmtDate(d) + '</th>';
   }
   head += '</tr>';
   document.getElementById('track-head').innerHTML = head;
 
-  // Corps — deux rangées par destinataire : envois (haut) + réponses (bas)
-  let body = ‘’;
-  for (const r of recipients) {
+  var body = '';
+  for (var r = 0; r < recipients.length; r++) {
+    var rec = recipients[r];
+    var nb = sendCount(rec.id), nr = replyCount(rec.id);
+    var rate = nb > 0 ? Math.round((nr / nb) * 100) : 0;
+    var rateColor = nb === 0 ? 'var(--text-mute)' : (nr > 0 ? 'var(--sage-dark)' : 'var(--text-mute)');
+    var needsFollowup = isFollowupDue(rec.id, ti);
+
     // Rangée envois
-    body += ‘<tr class="send-row">’;
-    body += `<td class="recip-cell" rowspan="2">
-        <span class="recip-name">${escapeHtml(r.name)}</span>
-        <button class="del-btn" data-del="${r.id}" title="Supprimer">✕</button><br>
-        <span class="recip-email">${escapeHtml(r.email)}</span>
-        <div class="row-legend">
-          <div class="leg leg-send"><span class="leg-dot"></span>envoyé</div>
-          <div class="leg leg-reply"><span class="leg-dot"></span>réponse</div>
-        </div>
-      </td>`;
-    for (let i = 0; i < TOTAL_DAYS; i++) {
-      const p = phaseOfDay(i);
-      const colCls = [
-        ‘dcell’,
-        isWeekend(i) ? ‘col-weekend’ : (p.cls === ‘s1’ ? ‘col-s1’ : (p.cls === ‘s3’ ? ‘col-s3’ : ‘’)),
-        i === ti ? ‘col-today’ : ‘’,
-      ].join(‘ ‘);
-      const title = isWeekend(i) ? ‘Week-end — pas d\’envoi de chauffe’ : ‘’;
-      body += `<td class="${colCls}" title="${title}">
-        <input type="checkbox" class="cell-chk" data-r="${r.id}" data-d="${i}" ${isSent(r.id, i) ? ‘checked’ : ‘’}>
-      </td>`;
+    body += '<tr class="send-row' + (needsFollowup ? ' followup' : '') + '">';
+    body += '<td class="recip-cell" rowspan="2">' +
+        '<span class="recip-name">' + escapeHtml(rec.name) + '</span>' +
+        '<button class="del-btn" data-del="' + rec.id + '" title="Supprimer">✕</button><br>' +
+        '<span class="recip-email">' + escapeHtml(rec.email) + '</span>' +
+        '<div class="recip-stat">' + nb + ' envoi(s) · <b style="color:' + rateColor + '">' + nr + ' réponse(s) · ' + rate + ' %</b></div>' +
+        '<div class="row-legend">' +
+          '<div class="leg leg-send"><span class="leg-dot"></span>envoyé</div>' +
+          '<div class="leg leg-reply"><span class="leg-dot"></span>réponse</div>' +
+        '</div>' +
+      '</td>';
+    for (var s = 0; s < TOTAL_DAYS; s++) {
+      var ps = phaseOfDay(s);
+      var colS = ['dcell', isWeekend(s) ? 'col-weekend' : (ps.cls === 's1' ? 'col-s1' : (ps.cls === 's3' ? 'col-s3' : '')), s === ti ? 'col-today' : ''].join(' ');
+      var titleS = isWeekend(s) ? 'Week-end — pas d’envoi de chauffe' : '';
+      body += '<td class="' + colS + '" title="' + titleS + '">' +
+        '<input type="checkbox" class="cell-chk" data-r="' + rec.id + '" data-d="' + s + '" ' + (isSent(rec.id, s) ? 'checked' : '') + '>' +
+      '</td>';
     }
-    body += ‘</tr>’;
+    body += '</tr>';
 
     // Rangée réponses
-    body += ‘<tr class="reply-row">’;
-    for (let i = 0; i < TOTAL_DAYS; i++) {
-      const p = phaseOfDay(i);
-      const colCls = [
-        ‘dcell’,
-        isWeekend(i) ? ‘col-weekend’ : (p.cls === ‘s1’ ? ‘col-s1’ : (p.cls === ‘s3’ ? ‘col-s3’ : ‘’)),
-        i === ti ? ‘col-today’ : ‘’,
-      ].join(‘ ‘);
-      const notSent = !isSent(r.id, i);
-      const titleR = isWeekend(i) ? ‘Week-end’ : (notSent ? ‘Mail non envoyé ce jour-là’ : ‘Cocher si réponse reçue ce jour-là’);
-      body += `<td class="${colCls}" title="${titleR}">
-        <input type="checkbox" class="reply-chk" data-r="${r.id}" data-d="${i}"
-          ${isReplied(r.id, i) ? ‘checked’ : ‘’}
-          ${(isWeekend(i) || notSent) ? ‘disabled’ : ‘’}>
-      </td>`;
+    body += '<tr class="reply-row">';
+    for (var q = 0; q < TOTAL_DAYS; q++) {
+      var pq = phaseOfDay(q);
+      var colR = ['dcell', isWeekend(q) ? 'col-weekend' : (pq.cls === 's1' ? 'col-s1' : (pq.cls === 's3' ? 'col-s3' : '')), q === ti ? 'col-today' : ''].join(' ');
+      var notSent = !isSent(rec.id, q);
+      var titleR = isWeekend(q) ? 'Week-end' : (notSent ? 'Mail non envoyé ce jour-là' : 'Cocher si réponse reçue ce jour-là');
+      body += '<td class="' + colR + '" title="' + titleR + '">' +
+        '<input type="checkbox" class="reply-chk" data-r="' + rec.id + '" data-d="' + q + '" ' +
+          (isReplied(rec.id, q) ? 'checked ' : '') + ((isWeekend(q) || notSent) ? 'disabled' : '') + '>' +
+      '</td>';
     }
-    body += ‘</tr>’;
+    body += '</tr>';
   }
-  if (recipients.length === 0) body = `<tr><td class="recip-cell" colspan="${TOTAL_DAYS + 1}" style="padding:18px;color:var(--text-mute)">Aucun destinataire — ajoute-en un ci-dessus.</td></tr>`;
+  if (recipients.length === 0) body = '<tr><td class="recip-cell" colspan="' + (TOTAL_DAYS + 1) + '" style="padding:18px;color:var(--text-mute)">Aucun destinataire — ajoute-en un ci-dessus.</td></tr>';
   document.getElementById('track-body').innerHTML = body;
 
   // Listeners cases envoi
-  document.querySelectorAll('.cell-chk').forEach(chk => {
-    chk.addEventListener('change', e => {
-      const rId = e.target.dataset.r;
-      const day = parseInt(e.target.dataset.d);
+  var sendChks = document.querySelectorAll('.cell-chk');
+  for (var a = 0; a < sendChks.length; a++) {
+    sendChks[a].addEventListener('change', function (e) {
+      var rId = e.target.dataset.r, day = parseInt(e.target.dataset.d, 10);
       toggleSend(rId, day, e.target.checked);
-      // Si on décoche l'envoi, on retire aussi la réponse et on grise la case
-      const replyChk = document.querySelector(`.reply-chk[data-r="${rId}"][data-d="${day}"]`);
+      var replyChk = document.querySelector('.reply-chk[data-r="' + rId + '"][data-d="' + day + '"]');
       if (replyChk) {
-        if (!e.target.checked) {
-          replyChk.checked = false;
-          replyChk.disabled = true;
-          toggleReply(rId, day, false);
-        } else {
-          replyChk.disabled = false;
-        }
+        if (!e.target.checked) { replyChk.checked = false; replyChk.disabled = true; toggleReply(rId, day, false); }
+        else { replyChk.disabled = false; }
       }
       refreshDynamic();
     });
-  });
+  }
   // Listeners cases réponse
-  document.querySelectorAll('.reply-chk').forEach(chk => {
-    chk.addEventListener('change', e => {
-      toggleReply(e.target.dataset.r, parseInt(e.target.dataset.d), e.target.checked);
+  var replyChks = document.querySelectorAll('.reply-chk');
+  for (var c = 0; c < replyChks.length; c++) {
+    replyChks[c].addEventListener('change', function (e) {
+      toggleReply(e.target.dataset.r, parseInt(e.target.dataset.d, 10), e.target.checked);
       refreshDynamic();
     });
-  });
-  document.querySelectorAll('[data-del]').forEach(b => {
-    b.addEventListener('click', () => removeRecipient(b.dataset.del));
-  });
+  }
+  var dels = document.querySelectorAll('[data-del]');
+  for (var b2 = 0; b2 < dels.length; b2++) {
+    dels[b2].addEventListener('click', function (e) { removeRecipient(e.currentTarget.dataset.del); });
+  }
 }
 
 function renderDayCounter() {
-  const ti = todayIndex();
-  const inRange = ti >= 0 && ti < TOTAL_DAYS;
-  const weekend = inRange && isWeekend(ti);
-  const p = inRange ? phaseOfDay(ti) : null;
-  const done = inRange ? sentOnDay(ti) : 0;
-  const left = (p && !weekend) ? Math.max(0, p.quotaMin - done) : 0;
+  var ti = todayIndex();
+  var inRange = ti >= 0 && ti < TOTAL_DAYS;
+  var weekend = inRange && isWeekend(ti);
+  var p = inRange ? phaseOfDay(ti) : null;
+  var done = inRange ? sentOnDay(ti) : 0;
+  var left = (p && !weekend) ? Math.max(0, p.quotaMin - done) : 0;
 
   document.getElementById('dc-done').textContent = done;
-  document.getElementById('dc-goal').textContent = !inRange ? '—' : (weekend ? 'jour non ouvré' : `${p.quotaMin}–${p.quotaMax}`);
+  document.getElementById('dc-goal').textContent = !inRange ? '—' : (weekend ? 'jour non ouvré' : (p.quotaMin + '–' + p.quotaMax));
   document.getElementById('dc-left').textContent =
     !inRange ? 'hors période' : (weekend ? 'repos · pas d’envoi' : (left === 0 ? 'objectif atteint ✓' : left + ' min'));
 
-  // KPIs hero
   document.getElementById('kpi-today').textContent = done;
   document.getElementById('kpi-left').textContent =
     !inRange ? '—' : (weekend ? 'WE' : (left === 0 ? '✓' : left + '/' + p.quotaMin));
   document.getElementById('kpi-total').textContent = totalSends();
 
   // Ratio réponses
-  const totalS = totalSends();
-  const totalR = totalReplies();
-  const ratioText = totalS > 0
-    ? totalR + ' / ' + totalS + ' (' + Math.round((totalR / totalS) * 100) + ' %)'
-    : '—';
-  document.getElementById('dc-ratio').textContent = ratioText;
-  document.getElementById('kpi-ratio').textContent = totalS > 0 ? Math.round((totalR / totalS) * 100) + ' %' : '—';
+  var tS = totalSends(), tR = totalReplies();
+  document.getElementById('dc-ratio').textContent = tS > 0 ? (tR + ' / ' + tS + ' (' + Math.round((tR / tS) * 100) + ' %)') : '—';
+  document.getElementById('kpi-ratio').textContent = tS > 0 ? (Math.round((tR / tS) * 100) + ' %') : '—';
+
+  renderHealth(tS, tR, inRange ? p : phaseOfDay(Math.max(0, Math.min(ti, TOTAL_DAYS - 1))));
+}
+
+/* ---------- Score de santé ---------- */
+function renderHealth(tS, tR, phase) {
+  var box = document.getElementById('kpi-health');
+  var sub = document.getElementById('kpi-health-sub');
+  var target = (phase && phase.replyTarget) ? phase.replyTarget : 0.30;
+  if (tS === 0) {
+    box.className = 'kpi-value';
+    box.innerHTML = '<span class="health-dot"></span>—';
+    sub.textContent = 'Aucun envoi pour l’instant';
+    return;
+  }
+  var rate = tR / tS;
+  var cls, label;
+  if (rate >= target)        { cls = 'health-ok';   label = 'Bonne'; }
+  else if (rate >= target / 2) { cls = 'health-warn'; label = 'Moyenne'; }
+  else                       { cls = 'health-bad';  label = 'Faible'; }
+  box.className = 'kpi-value ' + cls;
+  box.innerHTML = '<span class="health-dot"></span>' + label;
+  sub.textContent = Math.round(rate * 100) + ' % vs cible ' + Math.round(target * 100) + ' %';
+}
+
+/* ============================================================
+   RELANCES À FAIRE
+   ============================================================ */
+function workdaysBetween(fromDay, toDay) {
+  // nombre de jours ouvrés strictement après fromDay et jusqu'à toDay inclus
+  var n = 0;
+  for (var i = fromDay + 1; i <= toDay; i++) if (isWorkday(i)) n++;
+  return n;
+}
+function isFollowupDue(rId, ti) {
+  if (ti < 0) return false;
+  var arr = sends[rId] || [];
+  if (!arr.length) return false;
+  if (replyCount(rId) > 0) return false;           // a déjà répondu : pas de relance
+  var last = Math.max.apply(null, arr);
+  if (last > ti) return false;
+  return workdaysBetween(last, ti) >= FOLLOWUP_DAYS;
+}
+function renderFollowups() {
+  var ti = todayIndex();
+  var box = document.getElementById('followup-list');
+  document.getElementById('fu-days').textContent = FOLLOWUP_DAYS;
+  var due = [];
+  for (var i = 0; i < recipients.length; i++) {
+    var rec = recipients[i];
+    if (isFollowupDue(rec.id, ti)) {
+      var last = Math.max.apply(null, sends[rec.id]);
+      due.push({ rec: rec, last: last, gap: workdaysBetween(last, ti) });
+    }
+  }
+  if (due.length === 0) {
+    box.innerHTML = '<div class="addr-empty">Personne à relancer pour l’instant. 👍</div>';
+    return;
+  }
+  due.sort(function (a, b) { return b.gap - a.gap; });
+  box.innerHTML = due.map(function (x) {
+    return '<div class="followup-item">' +
+      '<div><span class="f-mail">' + escapeHtml(x.rec.email) + '</span><br><span class="f-meta" style="text-align:left">' + escapeHtml(x.rec.name) + '</span></div>' +
+      '<span class="f-meta">dernier envoi : ' + fmtDate(dayDate(x.last)) + '<br>il y a ' + x.gap + ' j ouvrés · 0 réponse</span>' +
+    '</div>';
+  }).join('');
 }
 
 /* ============================================================
    ENCADRÉ ADRESSES
    ============================================================ */
 function renderAddresses() {
-  const box = document.getElementById('addr-list');
-  const contacted = recipients
-    .map(r => ({ r, days: (sends[r.id] || []), rDays: (replies[r.id] || []) }))
-    .filter(x => x.days.length > 0)
-    .map(x => ({ r: x.r, count: x.days.length, repCount: x.rDays.length, last: Math.max(...x.days) }));
-
+  var box = document.getElementById('addr-list');
+  var contacted = [];
+  for (var i = 0; i < recipients.length; i++) {
+    var rec = recipients[i];
+    var days = sends[rec.id] || [];
+    if (days.length > 0) contacted.push({ r: rec, count: days.length, rep: replyCount(rec.id), last: Math.max.apply(null, days) });
+  }
   if (contacted.length === 0) {
-    box.innerHTML = `<div class="addr-empty">Aucune adresse contactée pour l'instant — coche une case ou utilise « Marquer comme envoyé ».</div>`;
+    box.innerHTML = '<div class="addr-empty">Aucune adresse contactée pour l’instant — coche une case ou utilise « Marquer comme envoyé ».</div>';
     return;
   }
-  contacted.sort((a, b) => b.last - a.last);
-  box.innerHTML = contacted.map(x => {
-    const ratioColor = x.repCount > 0 ? 'var(--sage-dark)' : 'var(--text-mute)';
-    return `
-    <div class="addr-item">
-      <div><span class="a-mail">${escapeHtml(x.r.email)}</span><br><span class="a-meta">${escapeHtml(x.r.name)}</span></div>
-      <span class="a-meta" style="text-align:right">
-        ${x.count} envoi(s) · <span style="color:${ratioColor};font-weight:600">${x.repCount} réponse(s)</span><br>
-        dernier : ${fmtDate(dayDate(x.last))}
-      </span>
-    </div>`;
+  contacted.sort(function (a, b) { return b.last - a.last; });
+  box.innerHTML = contacted.map(function (x) {
+    var rate = x.count > 0 ? Math.round((x.rep / x.count) * 100) : 0;
+    var col = x.rep > 0 ? 'var(--sage-dark)' : 'var(--text-mute)';
+    return '<div class="addr-item">' +
+      '<div><span class="a-mail">' + escapeHtml(x.r.email) + '</span><br><span class="a-meta" style="text-align:left">' + escapeHtml(x.r.name) + '</span></div>' +
+      '<span class="a-meta">' + x.count + ' envoi(s) · <span style="color:' + col + ';font-weight:600">' + x.rep + ' rép. · ' + rate + ' %</span><br>dernier : ' + fmtDate(dayDate(x.last)) + '</span>' +
+    '</div>';
   }).join('');
 }
-
 function contactedEmails() {
-  return recipients.filter(r => (sends[r.id] || []).length > 0).map(r => r.email);
+  var out = [];
+  for (var i = 0; i < recipients.length; i++) if ((sends[recipients[i].id] || []).length > 0) out.push(recipients[i].email);
+  return out;
 }
 
 /* ============================================================
    GÉNÉRATEUR DE MAIL
    ============================================================ */
-const FRAG = {
+var FRAG = {
   openings: [
     'Salut {p},',
     'Hello {p},',
     'Coucou {p},',
     'Salut {p}, j’espère que tu vas bien.',
-    'Hello {p}, dis-moi quand tu as deux minutes.',
+    'Hello {p}, dis-moi quand tu as deux minutes.'
   ],
   contexts: [
     'j’avance sur le lancement de Salverys (support client externalisé depuis Madagascar pour des clients français)',
     'je bosse en ce moment sur Salverys, notre projet de télésecrétariat médical externalisé',
     'on prépare le démarrage de Salverys et je cale notre positionnement sur l’externalisation de support',
     'je remonte une équipe pour Salverys, du support francophone à coût réduit pour des boîtes françaises',
-    'je creuse le marché du secrétariat médical à distance avec Salverys',
+    'je creuse le marché du secrétariat médical à distance avec Salverys'
   ],
   questions: [
     'd’après toi, quel est le principal frein des cabinets médicaux pour externaliser leur secrétariat ?',
@@ -741,60 +899,117 @@ const FRAG = {
     'si tu devais externaliser ton support client, qu’est-ce qui te bloquerait en premier ?',
     'tu connais des éditeurs SaaS qui galèrent avec leur support N1 ? j’essaie de comprendre leurs besoins.',
     'quel argument te ferait confiance pour confier ton standard à une équipe externe ?',
-    'tu vois un truc qui manque aux prestataires de support que tu as déjà testés ?',
+    'tu vois un truc qui manque aux prestataires de support que tu as déjà testés ?'
   ],
   closings: [
     'Dis-moi, ça m’aide vraiment.',
     'Ton avis m’intéresse beaucoup, merci d’avance.',
     'Même une réponse en deux lignes m’aiderait.',
     'Pas de pression, juste ton ressenti rapide.',
-    'Curieux d’avoir ton retour franc.',
+    'Curieux d’avoir ton retour franc.'
   ],
   linkLines: [
     'Si ça t’intéresse, j’ai posé l’idée ici : https://salverys-bpo.fr',
-    'Je t’ai mis deux lignes de contexte là : https://salverys-bpo.fr',
-  ],
+    'Je t’ai mis deux lignes de contexte là : https://salverys-bpo.fr'
+  ]
 };
 function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
 function generateEmail() {
-  const phaseIdx = parseInt(document.querySelector('#phase-pills .pill.active').dataset.phase);
-  const phase = PHASES[phaseIdx];
-  const sel = document.getElementById('gen-recip');
-  const r = recipients.find(x => x.id === sel.value);
-  const prenom = r ? r.name.split(' ')[0] : 'là';
+  var phaseIdx = parseInt(document.querySelector('#phase-pills .pill.active').dataset.phase, 10);
+  var phase = PHASES[phaseIdx];
+  var sel = document.getElementById('gen-recip');
+  var r = null;
+  for (var i = 0; i < recipients.length; i++) if (recipients[i].id === sel.value) r = recipients[i];
+  var prenom = r ? r.name.split(' ')[0] : 'là';
 
-  let body = pick(FRAG.openings).replace('{p}', prenom) + '\n\n';
+  var body = pick(FRAG.openings).replace('{p}', prenom) + '\n\n';
   body += pick(FRAG.contexts) + ', je voulais ton avis rapide : ' + pick(FRAG.questions) + '\n\n';
   if (phase.links >= 1 && Math.random() < 0.5) body += pick(FRAG.linkLines) + '\n\n';
   body += pick(FRAG.closings) + '\n\nValérien';
 
   document.getElementById('gen-output').value = body;
   document.getElementById('gen-rules').textContent =
-    `Phase ${phase.name} — texte brut, ${phase.links === 0 ? '0 lien' : '1 lien max'}, une question. À varier à chaque envoi.`;
+    'Phase ' + phase.name + ' — texte brut, ' + (phase.links === 0 ? '0 lien' : '1 lien max') + ', une question. À varier à chaque envoi.';
 }
 
 /* ============================================================
-   ACTIONS
+   ACTIONS DESTINATAIRES
    ============================================================ */
+var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+function addMsg(text, ok) {
+  var el = document.getElementById('add-msg');
+  el.textContent = text || '';
+  el.className = 'add-msg ' + (text ? (ok ? 'ok' : 'error') : '');
+}
+function emailExists(email) {
+  var e = email.toLowerCase();
+  for (var i = 0; i < recipients.length; i++) if (recipients[i].email.toLowerCase() === e) return true;
+  return false;
+}
+
 function addRecipient() {
-  const name = document.getElementById('new-name').value.trim();
-  const email = document.getElementById('new-email').value.trim();
-  if (!name || !email) { toast('Renseigne un nom et un email.'); return; }
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { toast('Email invalide.'); return; }
-  recipients.push({ id: rid(), name, email });
+  var name = document.getElementById('new-name').value.trim();
+  var email = document.getElementById('new-email').value.trim();
+  if (!name && !email) { addMsg('Renseigne un nom et un email.'); return; }
+  if (!name)  { addMsg('Renseigne un nom.'); return; }
+  if (!email) { addMsg('Renseigne un email.'); return; }
+  if (!EMAIL_RE.test(email)) { addMsg('Email invalide : ' + email); return; }
+  if (emailExists(email)) { addMsg('Cet email est déjà dans la liste.'); return; }
+  recipients.push({ id: rid(), name: name, email: email });
   persist();
   document.getElementById('new-name').value = '';
   document.getElementById('new-email').value = '';
+  addMsg('Destinataire ajouté : ' + name, true);
   renderAll();
-  toast('Destinataire ajouté.');
+}
+
+function parseBulkLine(line) {
+  var s = line.trim();
+  if (!s) return null;
+  var name = '', email = '';
+  if (s.indexOf(';') !== -1)      { var a = s.split(';'); name = a[0].trim(); email = (a[1] || '').trim(); }
+  else if (s.indexOf(',') !== -1) { var b = s.split(','); name = b[0].trim(); email = (b[1] || '').trim(); }
+  else if (s.indexOf(' ') !== -1) {
+    // "email Nom" ou "Nom email" : on repère le token qui ressemble à un email
+    var parts = s.split(/\s+/);
+    for (var i = 0; i < parts.length; i++) { if (EMAIL_RE.test(parts[i])) { email = parts[i]; break; } }
+    name = s.replace(email, '').trim();
+  } else { email = s; }
+  // Si on n'a pas pu distinguer un nom, on dérive un nom lisible depuis l'email
+  if (EMAIL_RE.test(name) && !EMAIL_RE.test(email)) { var tmp = name; name = email; email = tmp; }
+  if (!email && EMAIL_RE.test(name)) { email = name; name = ''; }
+  if (!email || !EMAIL_RE.test(email)) return { invalid: true, raw: s };
+  if (!name) {
+    name = email.split('@')[0].replace(/[._-]+/g, ' ').replace(/\b\w/g, function (m) { return m.toUpperCase(); });
+  }
+  return { name: name, email: email };
+}
+
+function bulkImport() {
+  var raw = document.getElementById('bulk-text').value;
+  var lines = raw.split('\n');
+  var added = 0, skipped = 0;
+  for (var i = 0; i < lines.length; i++) {
+    if (!lines[i].trim()) continue;
+    var parsed = parseBulkLine(lines[i]);
+    if (!parsed || parsed.invalid || emailExists(parsed.email)) { skipped++; continue; }
+    recipients.push({ id: rid(), name: parsed.name, email: parsed.email });
+    added++;
+  }
+  if (added > 0) persist();
+  document.getElementById('bulk-text').value = '';
+  toast(added + ' ajouté(s)' + (skipped ? ' · ' + skipped + ' ignoré(s)' : '') + ' ✓');
+  renderAll();
 }
 
 function removeRecipient(id) {
-  const r = recipients.find(x => x.id === id);
+  var r = null;
+  for (var i = 0; i < recipients.length; i++) if (recipients[i].id === id) r = recipients[i];
   if (!r) return;
   if (!confirm('Supprimer ' + r.name + ' ? Les coches associées seront perdues.')) return;
-  recipients = recipients.filter(x => x.id !== id);
+  recipients = recipients.filter(function (x) { return x.id !== id; });
   delete sends[id];
   delete replies[id];
   persist();
@@ -802,9 +1017,9 @@ function removeRecipient(id) {
 }
 
 function markSentToday() {
-  const ti = todayIndex();
+  var ti = todayIndex();
   if (ti < 0 || ti >= TOTAL_DAYS) { toast('Hors de la période de chauffe.'); return; }
-  const sel = document.getElementById('gen-recip');
+  var sel = document.getElementById('gen-recip');
   if (!sel.value) { toast('Choisis un destinataire.'); return; }
   if (isSent(sel.value, ti)) { toast('Déjà marqué envoyé aujourd’hui.'); return; }
   toggleSend(sel.value, ti, true);
@@ -812,57 +1027,90 @@ function markSentToday() {
   toast('Marqué comme envoyé aujourd’hui ✓');
 }
 
-async function copyText(text, msg) {
-  try { await navigator.clipboard.writeText(text); toast(msg); }
-  catch (e) {
-    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta);
-    ta.select(); try { document.execCommand('copy'); toast(msg); } catch (_) { toast('Copie impossible.'); }
-    document.body.removeChild(ta);
-  }
-}
-
-function downloadSave() {
-  const data = JSON.stringify({ recipients, sends, replies, start: startDate })
-    .replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
-  const newHtml = '<!DOCTYPE html>\n' + FILE_TEMPLATE.replace(
-    /<script id="saved-data" type="application\/json">[\s\S]*?<\/script>/,
-    '<script id="saved-data" type="application/json">' + data + '<\/script>'
-  );
-  const blob = new Blob([newHtml], { type: 'text/html;charset=utf-8' });
-  const a = document.createElement('a');
+/* ============================================================
+   EXPORT / IMPORT FICHIER .json
+   ============================================================ */
+function exportData() {
+  var payload = { app: 'salverys-warmup', version: 1, exportedAt: new Date().toISOString(),
+                  recipients: recipients, sends: sends, replies: replies, start: startDate };
+  var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json;charset=utf-8' });
+  var a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'warmup-salverys-' + new Date().toISOString().slice(0, 10) + '.html';
+  a.download = 'warmup-salverys-' + new Date().toISOString().slice(0, 10) + '.json';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(a.href);
-  toast('Fichier téléchargé ✓ — remplace l\'ancien par ce nouveau fichier.');
+  toast('Sauvegarde exportée ✓');
 }
 
-let toastTimer;
+function importData(file) {
+  var reader = new FileReader();
+  reader.onload = function () {
+    try {
+      var d = JSON.parse(reader.result);
+      if (!d || !Array.isArray(d.recipients)) { toast('Fichier invalide.'); return; }
+      if (!confirm('Importer cette sauvegarde ? Elle remplacera les données actuelles.')) return;
+      recipients = d.recipients;
+      sends      = d.sends    || {};
+      replies    = d.replies  || {};
+      startDate  = d.start    || DEFAULT_START;
+      persist();
+      renderAll();
+      toast('Sauvegarde importée ✓ (' + recipients.length + ' destinataire(s))');
+    } catch (e) { toast('Impossible de lire le fichier.'); }
+  };
+  reader.readAsText(file);
+}
+
+/* ============================================================
+   OUTILS UI
+   ============================================================ */
+function copyText(text, msg) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function () { toast(msg); }, function () { fallbackCopy(text, msg); });
+  } else { fallbackCopy(text, msg); }
+}
+function fallbackCopy(text, msg) {
+  var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); toast(msg); } catch (e) { toast('Copie impossible.'); }
+  document.body.removeChild(ta);
+}
+
+var toastTimer;
 function toast(msg) {
-  const t = document.getElementById('toast');
+  var t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2400);
 }
 
-function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, function (c) {
+    return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+  });
+}
 
 /* ============================================================
    RENDU
    ============================================================ */
 function renderRecipSelect() {
-  const sel = document.getElementById('gen-recip');
-  const prev = sel.value;
-  sel.innerHTML = recipients.map(r => `<option value="${r.id}">${escapeHtml(r.name)} — ${escapeHtml(r.email)}</option>`).join('');
-  if (recipients.some(r => r.id === prev)) sel.value = prev;
+  var sel = document.getElementById('gen-recip');
+  var prev = sel.value;
+  sel.innerHTML = recipients.map(function (r) {
+    return '<option value="' + r.id + '">' + escapeHtml(r.name) + ' — ' + escapeHtml(r.email) + '</option>';
+  }).join('');
+  var keep = false;
+  for (var i = 0; i < recipients.length; i++) if (recipients[i].id === prev) keep = true;
+  if (keep) sel.value = prev;
 }
 
 function refreshDynamic() {  // recalcule ce qui dépend des coches sans tout reconstruire
   renderGantt();
   renderDayCounter();
   renderAddresses();
+  renderFollowups();
 }
 
 function renderAll() {
@@ -870,44 +1118,72 @@ function renderAll() {
   renderTable();
   renderDayCounter();
   renderAddresses();
+  renderFollowups();
   renderRecipSelect();
 }
 
-/* ---------- Listeners ---------- */
-document.getElementById('add-recip').addEventListener('click', addRecipient);
-document.getElementById('save-btn').addEventListener('click', () => { persist(); toast('Données enregistrées ✓'); });
-document.getElementById('download-btn').addEventListener('click', downloadSave);
-document.getElementById('new-email').addEventListener('keydown', e => { if (e.key === 'Enter') addRecipient(); });
-document.getElementById('gen-btn').addEventListener('click', generateEmail);
-document.getElementById('copy-btn').addEventListener('click', () => {
-  const v = document.getElementById('gen-output').value;
-  if (!v.trim()) { toast('Génère d’abord un mail.'); return; }
-  copyText(v, 'Mail copié ✓');
-});
-document.getElementById('mark-btn').addEventListener('click', markSentToday);
-document.getElementById('copy-addr').addEventListener('click', () => {
-  const list = contactedEmails();
-  if (list.length === 0) { toast('Aucune adresse contactée.'); return; }
-  copyText(list.join(', '), list.length + ' adresse(s) copiée(s) ✓');
-});
-document.querySelectorAll('#phase-pills .pill').forEach(p => {
-  p.addEventListener('click', () => {
-    document.querySelectorAll('#phase-pills .pill').forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
-  });
-});
+/* ============================================================
+   INIT
+   ============================================================ */
+function init() {
+  loadState();
 
-/* ---------- Init ---------- */
-// Phase par défaut du générateur = phase courante
-(function initPhase() {
-  const ti = todayIndex();
-  if (ti >= 0 && ti < TOTAL_DAYS) {
-    const idx = PHASES.indexOf(phaseOfDay(ti));
-    document.querySelectorAll('#phase-pills .pill').forEach(x => x.classList.toggle('active', parseInt(x.dataset.phase) === idx));
+  document.getElementById('add-recip').addEventListener('click', addRecipient);
+  document.getElementById('new-name').addEventListener('keydown', function (e) { if (e.key === 'Enter') addRecipient(); });
+  document.getElementById('new-email').addEventListener('keydown', function (e) { if (e.key === 'Enter') addRecipient(); });
+  document.getElementById('new-name').addEventListener('input', function () { addMsg(''); });
+  document.getElementById('new-email').addEventListener('input', function () { addMsg(''); });
+
+  document.getElementById('bulk-head').addEventListener('click', function () {
+    document.getElementById('bulk-box').classList.toggle('open');
+  });
+  document.getElementById('bulk-add').addEventListener('click', bulkImport);
+
+  document.getElementById('export-btn').addEventListener('click', exportData);
+  document.getElementById('import-btn').addEventListener('click', function () { document.getElementById('import-file').click(); });
+  document.getElementById('import-file').addEventListener('change', function (e) {
+    if (e.target.files && e.target.files[0]) importData(e.target.files[0]);
+    e.target.value = '';
+  });
+
+  document.getElementById('gen-btn').addEventListener('click', generateEmail);
+  document.getElementById('copy-btn').addEventListener('click', function () {
+    var v = document.getElementById('gen-output').value;
+    if (!v.trim()) { toast('Génère d’abord un mail.'); return; }
+    copyText(v, 'Mail copié ✓');
+  });
+  document.getElementById('mark-btn').addEventListener('click', markSentToday);
+  document.getElementById('copy-addr').addEventListener('click', function () {
+    var list = contactedEmails();
+    if (list.length === 0) { toast('Aucune adresse contactée.'); return; }
+    copyText(list.join(', '), list.length + ' adresse(s) copiée(s) ✓');
+  });
+
+  var pills = document.querySelectorAll('#phase-pills .pill');
+  for (var i = 0; i < pills.length; i++) {
+    pills[i].addEventListener('click', function (e) {
+      for (var j = 0; j < pills.length; j++) pills[j].classList.remove('active');
+      e.currentTarget.classList.add('active');
+    });
   }
-})();
-renderAll();
-generateEmail();
+
+  // Phase par défaut du générateur = phase courante
+  var ti = todayIndex();
+  if (ti >= 0 && ti < TOTAL_DAYS) {
+    var idx = PHASES.indexOf(phaseOfDay(ti));
+    for (var k = 0; k < pills.length; k++) pills[k].classList.toggle('active', parseInt(pills[k].dataset.phase, 10) === idx);
+  }
+
+  renderAll();
+  generateEmail();
+}
+
+try {
+  init();
+} catch (e) {
+  showError((e && e.message) || e);
+  throw e;
+}
 </script>
 
 </body>
