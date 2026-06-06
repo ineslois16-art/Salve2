@@ -237,7 +237,7 @@ Jusqu'ici je vous ai parlé fonctionnement et coût. L'autre sujet pour {{struct
 
 Notre modèle est marque blanche : équipe française d'origine, sous votre nom, vos process, votre ton. Le patient pense parler à votre secrétariat.
 
-Pour limiter le risque, on peut démarrer par un 1er mois à -50 %, sans engagement, sur un périmètre réduit (un site, certains créneaux). Vous jugez la qualité avant d'élargir.
+Pour limiter le risque, deux garde-fous : un 1er mois à -50 %, sans engagement, sur un périmètre réduit (un site, certains créneaux) ; et une fois en régime, on s'engage sur le décroché — sous 95 % d'appels pris sur un mois, 20 % d'avoir le mois suivant. Vous jugez la qualité avant d'élargir, et on met notre argent sur le résultat.
 
 Si l'email n'est pas le plus simple, on peut aussi en parler par WhatsApp au +33 6 48 91 84 50.
 
@@ -252,7 +252,7 @@ Ouvert à en parler ?
 
 #### Variantes A/B
 **Ligne d'ouverture A (marque) :** « Jusqu'ici je vous ai parlé fonctionnement et coût. L'autre point, c'est l'image… »
-**Ligne d'ouverture B (risque) :** « Une objection légitime : et si la qualité ne suit pas ? D'où notre approche : 1er mois à -50 %, sans engagement. »
+**Ligne d'ouverture B (risque) :** « Une objection légitime : et si la qualité ne suit pas ? D'où notre approche : 1er mois à -50 %, sans engagement, plus un engagement de décroché en régime (sous 95 %, 20 % d'avoir). »
 
 ---
 
@@ -480,7 +480,7 @@ Jusqu'ici je vous ai parlé volume et coût. L'autre sujet pour {{structure}}, c
 
 Notre modèle est marque blanche : équipe française d'origine, sous votre nom, vos macros, votre ton produit. L'utilisateur pense parler à votre équipe support.
 
-Pour limiter le risque, on peut démarrer par un 1er mois à -50 %, sans engagement, sur un périmètre réduit (1 agent, certaines catégories de tickets). Vous jugez la qualité avant d'élargir.
+Pour limiter le risque, deux garde-fous : un 1er mois à -50 %, sans engagement, sur un périmètre réduit (1 agent, certaines catégories de tickets) ; et une fois en régime, on s'engage sur le SLA de première réponse — non tenu sur un mois, 20 % d'avoir le mois suivant. Vous jugez la qualité avant d'élargir, et on met notre argent sur le résultat.
 
 Si l'email n'est pas le plus simple, on peut aussi en parler par WhatsApp au +33 6 48 91 84 50.
 
@@ -495,7 +495,7 @@ Ouvert à en parler ?
 
 #### Variantes A/B
 **Ligne d'ouverture A (marque) :** « Jusqu'ici je vous ai parlé volume et coût. L'autre point, c'est l'expérience perçue… »
-**Ligne d'ouverture B (risque) :** « Une objection légitime : et si la qualité produit ne suit pas ? D'où notre approche : 1er mois à -50 %, sans engagement. »
+**Ligne d'ouverture B (risque) :** « Une objection légitime : et si la qualité produit ne suit pas ? D'où notre approche : 1er mois à -50 %, sans engagement, plus un engagement sur le SLA de première réponse en régime (non tenu = 20 % d'avoir). »
 
 ---
 
@@ -781,7 +781,7 @@ Jusqu'ici je vous ai parlé fonctionnement et coût. Le point sensible pour {{st
 
 Notre modèle est marque blanche : équipe française d'origine, sous votre nom, vos scripts, votre ton. Un locataire pense parler à votre CRC.
 
-Pour limiter le risque, on peut piloter sur un pic précis (rentrée, période de charges) avant d'élargir. Vous mesurez la qualité avant tout engagement.
+Pour limiter le risque, on pilote sur un pic précis (rentrée, période de charges) avant d'élargir, avec un engagement sur le décroché : sous le seuil convenu sur un mois, 20 % d'avoir. Vous mesurez la qualité avant tout engagement, et on met notre argent sur le résultat.
 
 Si l'email n'est pas le plus simple, on peut en parler par WhatsApp au +33 6 48 91 84 50.
 
@@ -856,7 +856,7 @@ nominations y sont annoncées.
 | « Vous êtes 10, on gère 92 000 logements » | On n'est pas votre CRC principal — on est votre capacité d'appoint sur les pics et le hors bureau. Sur 92 000 logements, ça représente quelques milliers d'appels/mois en débordement — c'est exactement notre format. |
 | « Marchés publics obligatoires » | Pour les OPH et organismes publics, on cible la création de la relation et l'accompagnement sur le cahier des charges. On répond au prochain BOAMP. |
 | « Confidentialité des données locataires » | RGPD, accès tracé dans votre SI, hébergement UE, dossier sécurité avant tout démarrage. Aucun stockage en local. |
-| « On craint que la qualité ne suive pas » | Pilote sur 1 pic d'appels (rentrée ou charges), QA partagée, écoute en double, mesures hebdo. Vous arbitrez sur pièces. |
+| « On craint que la qualité ne suive pas » | Pilote sur 1 pic d'appels (rentrée ou charges), QA partagée, écoute en double, mesures hebdo — **et engagement de décroché** : sous le seuil convenu sur un mois, 20 % d'avoir. Vous arbitrez sur pièces, on met notre argent sur le résultat. |
 | « On a déjà un BPO sur le débordement » | Voir si on est complémentaire (heures hors bureau, week-end, vagues imprévues). Sinon, on garde le contact pour la prochaine RFP. |
 | « Modèle social — externaliser pose problème » | Marque blanche, les locataires n'ont pas conscience d'un changement. Équipe française d'origine, conditions de travail Salverys publiques sur demande. |
 

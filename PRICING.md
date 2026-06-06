@@ -213,6 +213,10 @@ remboursement cash** :
 - **Seuil** : 95 % est ambitieux ; **repli défendable 90 %** si les premiers mois réels
   le justifient. Plafond du remède gelé à **20 % d'avoir** quelle que soit l'ampleur du
   manqué (protège la marge).
+- **Déclinaison par niche (même mécanique, KPI adapté, 20 % d'avoir, mêmes conditions)** :
+  Support N1 SaaS → **SLA de première réponse** ; Helpdesk IT N1 → **SLA de prise en
+  charge** ; Bailleurs (débordement) → **taux de décroché** sur le périmètre convenu ;
+  télésec marque blanche → **taux de décroché**. Le seuil exact se fige au cadrage.
 
 **Garde-fou** : si le taux réponse→souscription en cold s'effondre vs l'essai gratuit,
 basculer sur le repli « 7 jours offerts, périmètre limité ».
