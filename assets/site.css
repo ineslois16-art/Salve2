@@ -281,6 +281,24 @@ input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; background: v
 .theme-it input[type="range"]::-webkit-slider-thumb { background: var(--accent); border-color: var(--primary); }
 .theme-it input[type="range"]::-moz-range-thumb { background: var(--accent); border-color: var(--primary); }
 .pill-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Zones colorées sous le slider (proportions paliers Essentiel/Confort/Intensif/Sur-mesure) */
+.tier-zones { display: flex; gap: 2px; margin-top: 10px; height: 5px; border-radius: 100px; overflow: hidden; }
+.tz { height: 100%; border-radius: 2px; }
+.tz-essentiel  { flex: 200 0 0; background: var(--accent); opacity: .45; }
+.tz-confort    { flex: 250 0 0; background: #1A5F7A; opacity: .40; }
+.tz-intensif   { flex: 400 0 0; background: #B07000; opacity: .40; }
+.tz-surmesure  { flex: 300 0 0; background: var(--primary); opacity: .22; }
+
+/* Chip de palier inline dans calls-value */
+.tier-chip { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .03em; padding: 2px 8px; border-radius: 100px; margin-left: 6px; vertical-align: middle; font-family: 'Inter', sans-serif; }
+.tc-essentiel { background: var(--accent-tint); color: var(--accent); }
+.tc-confort   { background: #E4F1F7; color: #1A5F7A; }
+.tc-intensif  { background: #FEF3DE; color: #A06000; }
+.tc-surmesure { background: rgba(1,60,88,.08); color: var(--primary); }
+
+/* Alerte de seuil (apparaît seulement dans les 50 derniers appels) */
+.tier-alert { margin-top: 10px; font-size: 13px; font-weight: 600; color: #A05000; background: #FEF6E8; border-left: 3px solid #E0A030; border-radius: 0 6px 6px 0; padding: 7px 12px; }
 .pill { flex: 1; min-width: fit-content; padding: 10px 14px; background: #fff; border: 1.5px solid var(--line); border-radius: 100px; font-size: 13px; font-weight: 600; color: var(--text-soft); cursor: pointer; text-align: center; transition: all .15s; position: relative; }
 .pill:hover { border-color: var(--accent); color: var(--primary); }
 .pill.active { background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -326,6 +344,10 @@ input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; background: v
 .pkg.featured .pkg-name { color: #fff; }
 .pkg-tag { font-size: 13px; color: var(--text-mute); margin-bottom: 22px; }
 .pkg.featured .pkg-tag { color: rgba(255,255,255,.65); }
+.pkg-from { display: block; font-size: 13px; font-weight: 600; color: var(--text-mute); margin-bottom: 4px; }
+.pkg.featured .pkg-from { color: rgba(255,255,255,.6); }
+.pkg.pkg-sage { background: var(--accent-tint); }
+.pkg.pkg-gold { background: #F5EEDD; }
 .pkg-price { font-family: 'Georgia', serif; font-size: 44px; font-weight: 700; color: var(--primary); letter-spacing: -.02em; line-height: 1; }
 .theme-it .pkg-price { font-family: 'Inter', sans-serif; }
 .pkg.featured .pkg-price { color: #fff; }
@@ -393,12 +415,16 @@ input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; background: v
 .reveal.d1 { transition-delay: .08s; }
 .reveal.d2 { transition-delay: .16s; }
 .reveal.d3 { transition-delay: .24s; }
+.scroll-hint-wrap { text-align: center; margin-top: 28px; position: relative; z-index: 2; }
+.scroll-hint { display: inline-block; color: var(--accent); opacity: .65; text-decoration: none; animation: bounce 2.2s ease-in-out infinite; }
+.scroll-hint:hover { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero-bg-blob, .float-card, .marquee-track { animation: none; }
+  .hero-bg-blob, .float-card, .marquee-track, .scroll-hint { animation: none; }
   html { scroll-behavior: auto; }
 }
 @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(9px); } }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 var(--halo); } 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 @keyframes scrollx { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes pop { from { opacity: .4; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }

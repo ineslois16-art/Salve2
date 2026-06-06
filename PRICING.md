@@ -198,11 +198,13 @@ Le mois pilote -50 % couvre la réassurance **« essayer sans risque »**. Une *
 réassurance s'applique **une fois le service en régime** (intégration stabilisée), **sans
 remboursement cash** :
 
-- **Engagement** : viser **≥ 95 % d'appels patients décrochés** sur les plages couvertes
+- **Engagement** : viser **≥ 90 % d'appels patients décrochés** sur les plages couvertes
   (8h-20h), dans la limite du volume du forfait souscrit.
 - **Remède si le seuil n'est pas atteint sur un mois civil** : **avoir de 20 %** sur la
-  facture du mois suivant, **automatique** (le client n'a pas à le réclamer). **Pas de
-  remboursement en cash** — un avoir protège la trésorerie et favorise la rétention.
+  facture du mois suivant, **automatique** (le client n'a pas à le réclamer), **dans la
+  limite d'un mois sur douze** (plafond annuel — protège la marge si creux saisonnier
+  prolongé). **Pas de remboursement en cash** — un avoir protège la trésorerie et
+  favorise la rétention.
 - **Conditions de défense** (anti-abus / risque non maîtrisé) : mesuré sur les **appels
   présentés** pendant les plages couvertes ; **hors débordement** au-delà du forfait
   (un dépassement = bascule palier, pas une pénalité) ; **hors indisponibilités côté
@@ -210,9 +212,9 @@ remboursement cash** :
 - **Pourquoi pas pendant le mois pilote** : durant l'onboarding (paramétrage, formation),
   le décroché n'est pas encore stabilisé — l'engagement ne court qu'à partir du **1er mois
   plein en régime**. Le pilote reste couvert par le « sans engagement ».
-- **Seuil** : 95 % est ambitieux ; **repli défendable 90 %** si les premiers mois réels
-  le justifient. Plafond du remède gelé à **20 % d'avoir** quelle que soit l'ampleur du
-  manqué (protège la marge).
+- **Seuil retenu : 90 %** (standard marché FR BPO médical, atteignable dès le mois 2 ;
+  95 % écarté — trop ambitieux en phase de démarrage). Plafond du remède gelé à
+  **20 % d'avoir, max 1 mois/12** quelle que soit l'ampleur du manqué.
 - **Déclinaison par niche (même mécanique, KPI adapté, 20 % d'avoir, mêmes conditions)** :
   Support N1 SaaS → **SLA de première réponse** ; Helpdesk IT N1 → **SLA de prise en
   charge** ; Bailleurs (débordement) → **taux de décroché** sur le périmètre convenu ;

@@ -17,7 +17,7 @@
     <nav class="nav-links">
       <a href="index.html">Accueil</a>
       <a href="simulateur-salverys.html" class="active">Télésecrétariat médical</a>
-      <a href="simulateur-informatique.html">Support IT &amp; Applicatif</a>
+      <a href="simulateur-informatique.html">Support Applicatif &amp; Métier</a>
       <a href="simulateur-helpdesk-it.html">Helpdesk IT (ESN)</a>
       <a href="#simulator" class="nav-cta">Simuler mon forfait</a>
     </nav>
@@ -56,6 +56,11 @@
       </div>
     </div>
   </div>
+  <div class="scroll-hint-wrap">
+    <a href="#simulator" class="scroll-hint" aria-label="Voir le simulateur">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </div>
 </section>
 
 <!-- SIMULATEUR -->
@@ -75,7 +80,14 @@
             <span class="control-label-text">Volume d'appels / mois</span>
             <span class="control-value" id="calls-value">250 appels</span>
           </div>
-          <div class="slider-wrap"><input type="range" id="calls" min="50" max="1200" value="250" step="25" /></div>
+          <div class="slider-wrap"><input type="range" id="calls" min="50" max="1200" value="250" step="1" /></div>
+          <div class="tier-zones">
+            <div class="tz tz-essentiel"></div>
+            <div class="tz tz-confort"></div>
+            <div class="tz tz-intensif"></div>
+            <div class="tz tz-surmesure"></div>
+          </div>
+          <div class="tier-alert" id="tier-alert"></div>
         </div>
 
         <div class="control-group">
@@ -98,8 +110,8 @@
           <div class="control-label"><span class="control-label-text">Intégration agenda</span></div>
           <div class="pill-group" data-group="integration">
             <button class="pill active" data-value="doctolib" data-multiplier="1.0">Doctolib</button>
-            <button class="pill" data-value="maiia" data-multiplier="1.0">Maiia</button>
             <button class="pill" data-value="ubicentrex" data-multiplier="1.0">Ubicentrex</button>
+            <button class="pill" data-value="maiia" data-multiplier="1.0">Maiia</button>
             <button class="pill" data-value="medistory" data-multiplier="1.0">Médistory</button>
             <button class="pill" data-value="other" data-multiplier="1.0">Autre</button>
           </div>
@@ -112,23 +124,23 @@
           <div class="result-label">Votre forfait mensuel</div>
           <div><span class="result-price" id="price-monthly">350</span><span class="result-price-unit">€/mois</span></div>
           <div class="result-strikethrough" id="compare-line">
-            Facturation à l'appel ailleurs : <span class="old">400 €/mois</span>
+            Une secrétaire au cabinet : <span class="old">2 200 €+/mois</span> charges comprises
           </div>
-          <div class="savings-badge" id="savings-badge">Économie : 12 % vs à l'appel</div>
+          <div class="savings-badge" id="savings-badge">−84 % vs une secrétaire interne</div>
         </div>
 
         <div class="result-grid">
           <div class="result-stat"><div class="result-stat-label">Appels traités / mois</div><div class="result-stat-value" id="calls-monthly">250</div></div>
           <div class="result-stat"><div class="result-stat-label">Appels pris / jour</div><div class="result-stat-value" id="calls-perday">≈ 12</div></div>
           <div class="result-stat"><div class="result-stat-label">Couverture</div><div class="result-stat-value" id="coverage">5 j · 8h–20h</div></div>
-          <div class="result-stat"><div class="result-stat-label">Économie / mois</div><div class="result-stat-value accent" id="savings-monthly">50 €</div></div>
+          <div class="result-stat"><div class="result-stat-label">Économie / mois</div><div class="result-stat-value accent" id="savings-monthly">1 850 €</div></div>
         </div>
 
         <div class="recommendation">
           <div class="recommendation-label">★ Recommandé pour vous</div>
           <div class="recommendation-text" id="recommendation">Forfait <strong>Essentiel</strong> — idéal pour un praticien.</div>
         </div>
-        <div class="disclaimer">Montants fermes · 1er mois à -50 %, sans engagement.</div>
+        <div class="disclaimer" id="sim-disclaimer">Montants fermes · 1er mois à -50 %, sans engagement.</div>
       </div>
     </div>
   </div>
@@ -143,10 +155,10 @@
       <p>Facturation au forfait mensuel selon votre volume — jamais à l'appel.</p>
     </div>
     <div class="packages">
-      <div class="pkg reveal">
+      <div class="pkg pkg-sage reveal">
         <div class="pkg-name">Essentiel</div>
         <div class="pkg-tag">Pour un praticien seul</div>
-        <div><span class="pkg-price">350</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-from">À partir de</span><span class="pkg-price">350</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">jusqu'à ~250 appels/mois</div>
         <ul class="pkg-feat">
           <li>Prise d'appels 8h–20h, 5j/7</li>
@@ -162,7 +174,7 @@
         <div class="pkg-badge">★ Le plus choisi</div>
         <div class="pkg-name">Confort</div>
         <div class="pkg-tag">Pour un cabinet actif</div>
-        <div><span class="pkg-price">590</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-from">À partir de</span><span class="pkg-price">590</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">jusqu'à ~500 appels/mois</div>
         <ul class="pkg-feat">
           <li>Tout l'Essentiel, volume doublé</li>
@@ -174,10 +186,10 @@
         <a href="#contact" class="pkg-cta">Choisir Confort</a>
       </div>
 
-      <div class="pkg reveal d2">
+      <div class="pkg pkg-gold reveal d2">
         <div class="pkg-name">Intensif</div>
         <div class="pkg-tag">Cabinet de groupe / fort volume</div>
-        <div><span class="pkg-price">950</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-from">À partir de</span><span class="pkg-price">950</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">jusqu'à ~900 appels/mois</div>
         <ul class="pkg-feat">
           <li>Plusieurs praticiens / agendas</li>
@@ -254,12 +266,36 @@
   </div>
 </section>
 
+<!-- RÉASSURANCE EN DEUX TEMPS -->
+<section class="section" id="garantie">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">Sans risque</div>
+      <h2>On vous rassure en deux temps</h2>
+      <p>D'abord vous essayez sans risque. Ensuite, on s'engage sur le niveau — et on met notre marge en jeu.</p>
+    </div>
+    <div class="steps reveal d1" style="grid-template-columns:1fr 1fr;max-width:820px;margin:0 auto;gap:34px;">
+      <div class="step">
+        <div class="sn">1</div>
+        <h4>Mois pilote à −50 %, sans engagement</h4>
+        <p>Vous démarrez à demi-tarif le premier mois, résiliable à tout moment. Le temps de vérifier que ça tourne, sans vous engager.</p>
+      </div>
+      <div class="step">
+        <div class="sn">2</div>
+        <h4>Engagement de décroché ≥ 90 %</h4>
+        <p>Une fois le service en régime, si on décroche moins de 90 % de vos appels sur les plages couvertes, <strong>20 % d'avoir automatique</strong> sur le mois suivant, dans la limite d'un mois sur douze — vous n'avez rien à réclamer.</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-soft);max-width:680px;margin-left:auto;margin-right:auto;">Mesuré sur les appels présentés pendant vos plages couvertes, hors débordement au-delà du forfait. Seuil et périmètre figés au cadrage.</p>
+  </div>
+</section>
+
 <!-- CTA BAND -->
 <section class="cta-band" id="contact">
   <span class="hero-bg-blob b1"></span>
   <div class="container">
     <h2>Votre télésecrétariat, <span class="hl">opérationnel en 2 à 3 semaines</span>.</h2>
-    <p>1er mois à -50 % · sans engagement · vous gardez la main sur vos agendas.</p>
+    <p>1er mois à -50 %, sans engagement — puis engagement de décroché ≥ 90 %. Vous gardez la main sur vos agendas.</p>
     <a href="mailto:contact@salverys.fr" class="btn btn-primary">Contactez-nous <span class="arrow">→</span></a>
   </div>
 </section>
@@ -277,7 +313,7 @@
         <div class="footer-col">
           <h5>Métiers</h5>
           <a href="simulateur-salverys.html">Télésecrétariat médical</a>
-          <a href="simulateur-informatique.html">Support IT &amp; Applicatif</a>
+          <a href="simulateur-informatique.html">Support Applicatif &amp; Métier</a>
         </div>
         <div class="footer-col">
           <h5>Contact</h5>
