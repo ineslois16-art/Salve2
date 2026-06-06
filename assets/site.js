@@ -96,7 +96,6 @@
       { name: 'Confort',   max: 500, price: 590 },
       { name: 'Intensif',  max: 900, price: 950 },
     ];
-    const PER_CALL_ELSEWHERE = 1.60;
     const MARGINAL_PER_100 = 95;
     const daysMult = { 5: 1.0, 6: 1.12, 7: 1.22 };
     const st = { calls: 250, days: 5, schedule: 1.0, integration: 1.0 };
@@ -111,7 +110,7 @@
       if (tier) { name = tier.name; base = tier.price; }
       else { custom = true; name = 'Sur-mesure'; base = 950 + Math.ceil((st.calls - 900) / 100) * MARGINAL_PER_100; }
       const price = base * mult;
-      const elsewhere = st.calls * PER_CALL_ELSEWHERE * mult;
+      const INTERNAL_SECRETARY = 2200; // secrétaire interne au cabinet, charges comprises (cf. comparatif)
       const perDay = Math.round(st.calls / (st.days * 4.33));
 
       $('price-monthly').textContent = euro(price);
@@ -119,12 +118,12 @@
       $('calls-perday').textContent = '≈ ' + perDay;
       $('coverage').textContent = st.days + ' j · ' + (st.schedule > 1 ? '8h–22h' : '8h–20h');
 
-      const savings = elsewhere - price;
+      const savings = INTERNAL_SECRETARY - price;
       $('savings-monthly').textContent = euro(Math.max(savings, 0)) + ' €';
       const cmp = $('compare-line'), badge = $('savings-badge');
       if (savings > 0) {
-        cmp.innerHTML = 'Facturation à l\'appel ailleurs : <span class="old">' + euro(elsewhere) + ' €/mois</span>';
-        badge.textContent = 'Économie : ' + Math.round((savings / elsewhere) * 100) + ' % vs à l\'appel';
+        cmp.innerHTML = 'Une secrétaire au cabinet : <span class="old">2 200 €+/mois</span> charges comprises';
+        badge.textContent = '−' + Math.round((savings / INTERNAL_SECRETARY) * 100) + ' % vs une secrétaire interne';
       } else {
         cmp.textContent = 'Forfait tout compris, sans surprise.';
         badge.textContent = '1er mois à −50 %';
