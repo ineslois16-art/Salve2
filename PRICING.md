@@ -4,7 +4,7 @@
 > les simulateurs et le site doit être aligné sur ce fichier. En cas de divergence,
 > **ce fichier fait foi.**
 >
-> Dernière révision : 2026-05-30 · Branche `claude/salverys-pricing-strategy-ZMff3`
+> Dernière révision : 2026-06-06 (ajout §7 « engagement de décroché ») · base 2026-05-30 · Branche `claude/salverys-pricing-strategy-ZMff3`
 > Rapport de réflexion détaillé : `RAPPORT-PRIX.html`
 
 ---
@@ -191,6 +191,28 @@ en cold : « 7 jours offerts, périmètre limité » (lève au passage l'incohé
 3. Garde un message **« sans risque »** fort (demi-tarif, sans engagement, résiliable).
 4. **Filtre les non-sérieux** (engagement de paiement = signal d'intention) ⇒ meilleur
    taux de conversion qu'un essai 100 % gratuit.
+
+### Engagement de décroché (réassurance en régime, décidée 2026-06-06)
+
+Le mois pilote -50 % couvre la réassurance **« essayer sans risque »**. Une **seconde**
+réassurance s'applique **une fois le service en régime** (intégration stabilisée), **sans
+remboursement cash** :
+
+- **Engagement** : viser **≥ 95 % d'appels patients décrochés** sur les plages couvertes
+  (8h-20h), dans la limite du volume du forfait souscrit.
+- **Remède si le seuil n'est pas atteint sur un mois civil** : **avoir de 20 %** sur la
+  facture du mois suivant, **automatique** (le client n'a pas à le réclamer). **Pas de
+  remboursement en cash** — un avoir protège la trésorerie et favorise la rétention.
+- **Conditions de défense** (anti-abus / risque non maîtrisé) : mesuré sur les **appels
+  présentés** pendant les plages couvertes ; **hors débordement** au-delà du forfait
+  (un dépassement = bascule palier, pas une pénalité) ; **hors indisponibilités côté
+  client** (ligne, logiciel, coupure). Périmètre et seuil **figés au cadrage**.
+- **Pourquoi pas pendant le mois pilote** : durant l'onboarding (paramétrage, formation),
+  le décroché n'est pas encore stabilisé — l'engagement ne court qu'à partir du **1er mois
+  plein en régime**. Le pilote reste couvert par le « sans engagement ».
+- **Seuil** : 95 % est ambitieux ; **repli défendable 90 %** si les premiers mois réels
+  le justifient. Plafond du remède gelé à **20 % d'avoir** quelle que soit l'ampleur du
+  manqué (protège la marge).
 
 **Garde-fou** : si le taux réponse→souscription en cold s'effondre vs l'essai gratuit,
 basculer sur le repli « 7 jours offerts, périmètre limité ».
