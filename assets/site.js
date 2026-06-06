@@ -88,9 +88,9 @@
   const euro = n => Math.round(n).toLocaleString('fr-FR');
 
   /* ========================================================
-     SIMULATEUR MÉDICAL  (présent si #calls existe)
+     SIMULATEUR MÉDICAL  (présent si #tier-selector existe)
      ======================================================== */
-  if (document.getElementById('calls')) {
+  if (document.getElementById('tier-selector')) {
     const TIERS = [
       { name: 'Essentiel', max: 250, price: 350 },
       { name: 'Confort',   max: 500, price: 590 },
@@ -145,10 +145,13 @@
       pop($('price-monthly'));
     }
 
-    $('calls').addEventListener('input', e => {
-      st.calls = parseInt(e.target.value);
-      $('calls-value').textContent = st.calls.toLocaleString('fr-FR') + ' appels';
-      calc();
+    document.querySelectorAll('#tier-selector .pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('#tier-selector .pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        st.calls = parseInt(pill.dataset.calls);
+        calc();
+      });
     });
     $('days').addEventListener('input', e => {
       st.days = parseInt(e.target.value);

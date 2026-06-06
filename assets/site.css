@@ -281,6 +281,7 @@ input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; background: v
 .theme-it input[type="range"]::-webkit-slider-thumb { background: var(--accent); border-color: var(--primary); }
 .theme-it input[type="range"]::-moz-range-thumb { background: var(--accent); border-color: var(--primary); }
 .pill-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.tier-selector { display: flex; gap: 8px; flex-wrap: wrap; }
 .pill { flex: 1; min-width: fit-content; padding: 10px 14px; background: #fff; border: 1.5px solid var(--line); border-radius: 100px; font-size: 13px; font-weight: 600; color: var(--text-soft); cursor: pointer; text-align: center; transition: all .15s; position: relative; }
 .pill:hover { border-color: var(--accent); color: var(--primary); }
 .pill.active { background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -393,12 +394,16 @@ input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; background: v
 .reveal.d1 { transition-delay: .08s; }
 .reveal.d2 { transition-delay: .16s; }
 .reveal.d3 { transition-delay: .24s; }
+.scroll-hint-wrap { text-align: center; margin-top: 28px; position: relative; z-index: 2; }
+.scroll-hint { display: inline-block; color: var(--accent); opacity: .65; text-decoration: none; animation: bounce 2.2s ease-in-out infinite; }
+.scroll-hint:hover { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero-bg-blob, .float-card, .marquee-track { animation: none; }
+  .hero-bg-blob, .float-card, .marquee-track, .scroll-hint { animation: none; }
   html { scroll-behavior: auto; }
 }
 @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(9px); } }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 var(--halo); } 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 @keyframes scrollx { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes pop { from { opacity: .4; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
