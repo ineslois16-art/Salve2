@@ -144,7 +144,7 @@ Bonjour {prenom},
 
 En offshore marque blanche, la vraie question c'est la qualité — pas le prix. Notre équipe vient d'une structure de 1 000 collaborateurs : on sait cadrer décroché, script, double écoute et reporting hebdo.
 
-Concrètement, on propose un pilote : 200 à 500 appels/mois sur vos créneaux de débordement, KPIs mesurés (taux de décroché, temps moyen, satisfaction), sans engagement.
+Concrètement, on propose un pilote : 200 à 500 appels/mois sur vos créneaux de débordement, KPIs mesurés (taux de décroché, temps moyen, satisfaction), sans engagement. Et une fois en régime, on s'engage sur le décroché : sous le seuil convenu sur un mois, 20 % d'avoir le mois suivant.
 
 Si le résultat ne tient pas vos standards, vous arrêtez. Ça vaut un test ?
 
@@ -249,7 +249,7 @@ Bonne continuation,
 |---|---|
 | « On gère déjà tout en interne en France. » | Justement — on ne remplace pas vos équipes FR. On absorbe ce qu'elles ne couvrent pas rentablement : nuits, week-ends, pics, congés. Vous gardez la main sur les agendas et la relation client. |
 | « L'offshore, mes clients médecins n'aiment pas. » | C'est de la marque blanche : vos clients ne voient que vous. Français natif, fuseau Paris, double écoute qualité. On peut le cantonner d'abord à un volume limité de débordement. |
-| « Comment je sais que la qualité suivra ? » | Pilote 200-500 appels/mois, KPIs hebdo (décroché, temps moyen, satisfaction). Si ça ne tient pas vos standards, vous arrêtez — sans engagement. |
+| « Comment je sais que la qualité suivra ? » | Pilote 200-500 appels/mois, KPIs hebdo (décroché, temps moyen, satisfaction). Si ça ne tient pas vos standards, vous arrêtez — sans engagement. Et en régime, on s'engage sur le décroché : sous le seuil convenu, 20 % d'avoir. On met notre argent sur le résultat. |
 | « On a déjà essayé l'offshore, ça s'est mal passé. » | Compréhensible. La différence : direction issue d'une structure de 1 000 collaborateurs, cadrage qualité (script, double écoute, reporting) et démarrage en pilote mesuré, pas en bascule totale. |
 
 ---

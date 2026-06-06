@@ -162,7 +162,7 @@ Bonjour {{firstName}},
 
 Je reviens avec quelque chose de concret plutôt qu'une relance.
 
-Proposition : un pilote 60 jours sur un périmètre N1 défini ensemble (200 à 400 tickets), avec KPIs partagés dès J1 (FCR, CSAT, AHT). Si les SLA ne sont pas tenus, on s'arrête sans frais de sortie.
+Proposition : un pilote 60 jours sur un périmètre N1 défini ensemble (200 à 400 tickets), avec KPIs partagés dès J1 (FCR, CSAT, AHT). Et une fois en régime, on s'engage sur le SLA : non tenu sur un mois, 20 % d'avoir le mois suivant — et vous pouvez arrêter sans frais de sortie.
 
 C'est la seule façon de vérifier si ça vaut l'intégration dans votre delivery — sans engager de budget significant.
 
@@ -208,7 +208,7 @@ Votre réponse (même courte) m'aidera à savoir si je reste utile ou si je revi
 > "C'est de la marque blanche totale : ils ne voient que votre marque. Nos agents sont francophones natifs, formés sur vos scripts, sans accent identifiable. Ce qu'on absorbe, c'est le N1 répétitif — exactement là où le risque qualité est le plus faible."
 
 **"Vous êtes trop petits / pas assez de références"**
-> "C'est pour ça qu'on propose un pilote 60 jours sur un périmètre restreint avant tout engagement. Vous n'avez pas besoin de nous croire sur parole — vous avez besoin de KPIs réels sur vos propres tickets. Et notre direction a géré des équipes de 1 000+ personnes : les process qualité existent, même si l'équipe actuelle est plus petite."
+> "C'est pour ça qu'on propose un pilote 60 jours sur un périmètre restreint avant tout engagement. Vous n'avez pas besoin de nous croire sur parole — vous avez besoin de KPIs réels sur vos propres tickets. Et on adosse un avoir de 20 % si les SLA ne sont pas tenus en régime : on met notre argent sur le résultat. Notre direction a géré des équipes de 1 000+ personnes : les process qualité existent, même si l'équipe actuelle est plus petite."
 
 **"On gère ça en interne, on n'externalise pas"**
 > "Vous recrutez {{nb_postes}} postes helpdesk en ce moment — ce qui suggère que l'interne est sous tension. La question n'est pas 'externaliser ou pas', c'est 'comment scalez-vous la capacité N1 sans attendre 3 mois de recrutement par CDI ?'"

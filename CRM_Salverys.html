@@ -2653,7 +2653,7 @@ const CALL_SCRIPTS = {
             tip: `Pose UNE question à la fois. Note les réponses. Reformule avant de continuer : "Si je comprends bien, vous perdez environ X appels par jour, c'est ça ?"`
         },
         pitch: {
-            script: `Ce qu'on propose c'est simple : <strong>une télésecrétaire médicale francophone dédiée à {structure}</strong>, formée à votre logiciel, qui prend vos appels de 8h à 20h, sans congés, sans arrêt maladie.\n\nLa différence avec une secrétaire classique : on est à Madagascar, donc le tarif est environ 40 % inférieur à un prestataire en France — sans perte de qualité, le français est langue maternelle ici.\n\nForfait à partir de 350€/mois, <strong>1er mois à -50 %</strong> pour qu'on prouve la valeur avant que vous vous engagiez.`,
+            script: `Ce qu'on propose c'est simple : <strong>une télésecrétaire médicale francophone dédiée à {structure}</strong>, formée à votre logiciel, qui prend vos appels de 8h à 20h, sans congés, sans arrêt maladie.\n\nLa différence avec une secrétaire classique : on est à Madagascar, donc le tarif est environ 40 % inférieur à un prestataire en France — sans perte de qualité, le français est langue maternelle ici.\n\nForfait à partir de 350€/mois, <strong>1er mois à -50 %</strong> pour qu'on prouve la valeur avant que vous vous engagiez. Et une fois en régime, on s'engage sur le décroché : sous 95 % d'appels pris sur un mois, vous avez 20 % d'avoir le mois suivant.`,
             tip: `Termine TOUJOURS par une question fermée : "Est-ce que cet ordre de grandeur vous semble cohérent par rapport à ce que vous payez aujourd'hui ?"`
         },
         objection: 'OBJECTIONS_TELEMED',
@@ -2672,12 +2672,12 @@ const CALL_SCRIPTS = {
             tip: `Note le KPI exact (FRT, CSAT) — tu t'en serviras pour chiffrer le ROI au pitch.`
         },
         pitch: {
-            script: `Ce qu'on fait : <strong>une équipe N1 dédiée à {structure}</strong>, sur vos outils (Zendesk/Freshdesk/Intercom), formée à votre produit en 2 semaines, KPI documentés chaque semaine — FRT, CSAT, taux de résolution.\n\nLe levier économique : ~<strong>40 % de coût en moins qu'un CDI en France</strong>, sans charges RH côté Salverys, démarrage en 2 semaines.\n\nOn commence par un <strong>1er mois à -50 %</strong> — vous comparez nos KPI aux vôtres avant de signer.\n\nÇa correspond au type de scaling que vous cherchez ?`,
+            script: `Ce qu'on fait : <strong>une équipe N1 dédiée à {structure}</strong>, sur vos outils (Zendesk/Freshdesk/Intercom), formée à votre produit en 2 semaines, KPI documentés chaque semaine — FRT, CSAT, taux de résolution.\n\nLe levier économique : ~<strong>40 % de coût en moins qu'un CDI en France</strong>, sans charges RH côté Salverys, démarrage en 2 semaines.\n\nOn commence par un <strong>1er mois à -50 %</strong> — vous comparez nos KPI aux vôtres avant de signer. Et on engage le service : si le SLA de première réponse convenu n'est pas tenu sur un mois, 20 % d'avoir le mois suivant.\n\nÇa correspond au type de scaling que vous cherchez ?`,
             tip: `Toujours chiffrer le pilote : "1er mois à -50 %, ~80 tickets, demi-tarif."`
         },
         objection: 'OBJECTIONS_SUPPORT',
         closing: {
-            script: `OK {prenom}. Mon process habituel :\n\n<strong>1.</strong> Je vous envoie un one-pager + 2 références anonymisées.\n<strong>2.</strong> On bloque <strong>mardi 11h ou mercredi 15h</strong> une visio de 30 min avec un de vos lead techs pour qu'ils valident l'approche.\n<strong>3.</strong> Si OK on lance le pilote gratuit lundi suivant.\n\nMardi 11h ou mercredi 15h ?`,
+            script: `OK {prenom}. Mon process habituel :\n\n<strong>1.</strong> Je vous envoie un one-pager + 2 références anonymisées.\n<strong>2.</strong> On bloque <strong>mardi 11h ou mercredi 15h</strong> une visio de 30 min avec un de vos lead techs pour qu'ils valident l'approche.\n<strong>3.</strong> Si OK on lance le pilote (1er mois à -50 %) lundi suivant.\n\nMardi 11h ou mercredi 15h ?`,
             tip: `Implique le lead tech dans le 2e RDV — ça raccourcit le cycle de validation interne.`
         }
     },
@@ -2691,7 +2691,7 @@ const CALL_SCRIPTS = {
             tip: `Le SLA et le volume sont les 2 chiffres clés pour dimensionner ton offre. Note-les noir sur blanc.`
         },
             pitch: {
-                script: `On opère du <strong>helpdesk IT N1 distant 100% francophone</strong> :\n\n• Profils <strong>ITIL</strong>, formés à vos outils (ServiceNow, JIRA Service Desk, ManageEngine)\n• <strong>SLA documenté et signé</strong> dans le contrat\n• Contrats dès 3 mois, puis 12 mois renouvelable, dimensionnement progressif\n• <strong>~40 % de coût en moins</strong> qu'un prestataire hexagonal — sans perte de qualité de service\n• Plateaux dédiés ou mutualisés selon vos besoins\n\nOn peut démarrer petit, par exemple 1 ETP sur 3 mois, et monter en charge si le ROI est là.\n\nÇa rentre dans vos critères budgétaires actuels ?`,
+                script: `On opère du <strong>helpdesk IT N1 distant 100% francophone</strong> :\n\n• Profils <strong>ITIL</strong>, formés à vos outils (ServiceNow, JIRA Service Desk, ManageEngine)\n• <strong>SLA documenté et signé</strong> dans le contrat — non tenu sur un mois, 20 % d'avoir\n• Contrats dès 3 mois, puis 12 mois renouvelable, dimensionnement progressif\n• <strong>~40 % de coût en moins</strong> qu'un prestataire hexagonal — sans perte de qualité de service\n• Plateaux dédiés ou mutualisés selon vos besoins\n\nOn peut démarrer petit, par exemple 1 ETP sur 3 mois, et monter en charge si le ROI est là.\n\nÇa rentre dans vos critères budgétaires actuels ?`,
                 tip: `Pour les DSI grandes structures, mentionne <strong>contrat dès 3 mois puis 12 mois</strong> tôt — ça les rassure sur la sécurité du prestataire.`
             },
         objection: 'OBJECTIONS_HELPDESK',
@@ -2723,7 +2723,7 @@ const OBJECTIONS_TELEMED = [
         q: "C'est trop cher pour un cabinet de notre taille.",
         a: "<strong>Vous payez aujourd'hui combien pour gérer vos appels — y compris le coût des rendez-vous manqués ?</strong> Un patient qui ne peut pas vous joindre, en moyenne, c'est 30€ de consultation perdue. Si on évite 15 appels manqués par mois, on est déjà à 450€. Notre forfait commence à 350€.",
         branches: [
-            { resp: "Si silence ou \"je n'ai jamais calculé\" →", act: "\"Je vous propose de regarder ça ensemble. Sur le pilote gratuit, on chiffre exactement.\"" },
+            { resp: "Si silence ou \"je n'ai jamais calculé\" →", act: "\"Je vous propose de regarder ça ensemble. Sur le mois pilote à -50 %, on chiffre exactement.\"" },
             { resp: "Si \"pas tant de manqués que ça\" →", act: "\"Alors le plus petit forfait suffit largement — et le 1er mois à -50 % vous le confirme sans engagement.\"" }
         ]
     },
@@ -2759,7 +2759,7 @@ const OBJECTIONS_SUPPORT = [
         a: "<strong>C'est le réflexe normal — la plupart des SaaS qu'on signe ont eu une mauvaise expérience avant.</strong> 3 différences chez nous : <strong>(1)</strong> français langue maternelle, pas LV1 ; <strong>(2)</strong> KPI hebdomadaires partagés en transparence — vous voyez tout ; <strong>(3)</strong> 1er mois à -50 %, pas d'engagement. Qu'est-ce qui s'était mal passé exactement la dernière fois ?",
         branches: [
             { resp: "Si \"qualité de langue\" →", act: "\"Faites le test : on vous met en relation avec un de nos agents demain, vous évaluez.\"" },
-            { resp: "Si \"tickets jamais résolus\" →", act: "\"Notre KPI clé c'est le taux de résolution N1 — on l'engage par contrat.\"" }
+            { resp: "Si \"tickets jamais résolus\" →", act: "\"Notre KPI clé c'est le taux de résolution N1 — on l'engage par contrat, avec 20 % d'avoir si le seuil convenu n'est pas tenu.\"" }
         ]
     },
     {
