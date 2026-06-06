@@ -281,7 +281,24 @@ input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; background: v
 .theme-it input[type="range"]::-webkit-slider-thumb { background: var(--accent); border-color: var(--primary); }
 .theme-it input[type="range"]::-moz-range-thumb { background: var(--accent); border-color: var(--primary); }
 .pill-group { display: flex; gap: 8px; flex-wrap: wrap; }
-.tier-selector { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Zones colorées sous le slider (proportions paliers Essentiel/Confort/Intensif/Sur-mesure) */
+.tier-zones { display: flex; gap: 2px; margin-top: 10px; height: 5px; border-radius: 100px; overflow: hidden; }
+.tz { height: 100%; border-radius: 2px; }
+.tz-essentiel  { flex: 200 0 0; background: var(--accent); opacity: .45; }
+.tz-confort    { flex: 250 0 0; background: #1A5F7A; opacity: .40; }
+.tz-intensif   { flex: 400 0 0; background: #B07000; opacity: .40; }
+.tz-surmesure  { flex: 300 0 0; background: var(--primary); opacity: .22; }
+
+/* Chip de palier inline dans calls-value */
+.tier-chip { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .03em; padding: 2px 8px; border-radius: 100px; margin-left: 6px; vertical-align: middle; font-family: 'Inter', sans-serif; }
+.tc-essentiel { background: var(--accent-tint); color: var(--accent); }
+.tc-confort   { background: #E4F1F7; color: #1A5F7A; }
+.tc-intensif  { background: #FEF3DE; color: #A06000; }
+.tc-surmesure { background: rgba(1,60,88,.08); color: var(--primary); }
+
+/* Alerte de seuil (apparaît seulement dans les 50 derniers appels) */
+.tier-alert { margin-top: 10px; font-size: 13px; font-weight: 600; color: #A05000; background: #FEF6E8; border-left: 3px solid #E0A030; border-radius: 0 6px 6px 0; padding: 7px 12px; }
 .pill { flex: 1; min-width: fit-content; padding: 10px 14px; background: #fff; border: 1.5px solid var(--line); border-radius: 100px; font-size: 13px; font-weight: 600; color: var(--text-soft); cursor: pointer; text-align: center; transition: all .15s; position: relative; }
 .pill:hover { border-color: var(--accent); color: var(--primary); }
 .pill.active { background: var(--accent); border-color: var(--accent); color: #fff; }

@@ -88,9 +88,9 @@
   const euro = n => Math.round(n).toLocaleString('fr-FR');
 
   /* ========================================================
-     SIMULATEUR MÉDICAL  (présent si #tier-selector existe)
+     SIMULATEUR MÉDICAL  (présent si #calls existe)
      ======================================================== */
-  if (document.getElementById('tier-selector')) {
+  if (document.getElementById('calls')) {
     const TIERS = [
       { name: 'Essentiel', max: 250, price: 350 },
       { name: 'Confort',   max: 500, price: 590 },
@@ -142,16 +142,35 @@
           ? 'Estimation · couverture étendue = devis sur-mesure · 1er mois à -50 %.'
           : 'Montants fermes · 1er mois à -50 %, sans engagement.';
       }
+
+      // Chip de palier dans la valeur du slider
+      const valEl = $('calls-value');
+      if (valEl) {
+        const slug = name.toLowerCase().replace('-', '');
+        valEl.innerHTML = st.calls.toLocaleString('fr-FR') + ' appels <span class="tier-chip tc-' + slug + '">' + name + '</span>';
+      }
+
+      // Alerte de seuil : dans les 50 derniers appels avant le prochain palier
+      const alertEl = $('tier-alert');
+      if (alertEl) {
+        const approaching = tier && (tier.max - st.calls) > 0 && (tier.max - st.calls) <= 50;
+        if (approaching) {
+          const ni = TIERS.indexOf(tier) + 1;
+          const nextName = ni < TIERS.length ? TIERS[ni].name : 'Sur-mesure';
+          const nextPrice = ni < TIERS.length ? TIERS[ni].price : 950 + MARGINAL_PER_100;
+          alertEl.textContent = '→ Dans ' + (tier.max - st.calls) + ' appels : passage en ' + nextName + ' (' + euro(nextPrice * mult) + ' €/mois)';
+          alertEl.hidden = false;
+        } else {
+          alertEl.hidden = true;
+        }
+      }
+
       pop($('price-monthly'));
     }
 
-    document.querySelectorAll('#tier-selector .pill').forEach(pill => {
-      pill.addEventListener('click', () => {
-        document.querySelectorAll('#tier-selector .pill').forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-        st.calls = parseInt(pill.dataset.calls);
-        calc();
-      });
+    $('calls').addEventListener('input', e => {
+      st.calls = parseInt(e.target.value);
+      calc();
     });
     $('days').addEventListener('input', e => {
       st.days = parseInt(e.target.value);

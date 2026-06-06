@@ -78,13 +78,16 @@
         <div class="control-group">
           <div class="control-label">
             <span class="control-label-text">Volume d'appels / mois</span>
+            <span class="control-value" id="calls-value">250 appels</span>
           </div>
-          <div class="tier-selector" id="tier-selector">
-            <button class="pill active" data-calls="250" data-tier="essentiel">Essentiel · ~250 appels</button>
-            <button class="pill" data-calls="500" data-tier="confort">Confort · ~500 appels</button>
-            <button class="pill" data-calls="900" data-tier="intensif">Intensif · ~900 appels</button>
-            <button class="pill" data-calls="1000" data-tier="surmesure">Sur-mesure</button>
+          <div class="slider-wrap"><input type="range" id="calls" min="50" max="1200" value="250" step="25" /></div>
+          <div class="tier-zones">
+            <div class="tz tz-essentiel"></div>
+            <div class="tz tz-confort"></div>
+            <div class="tz tz-intensif"></div>
+            <div class="tz tz-surmesure"></div>
           </div>
+          <div class="tier-alert" id="tier-alert"></div>
         </div>
 
         <div class="control-group">
