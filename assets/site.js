@@ -195,6 +195,7 @@
     // la marge du revendeur (cf. PRICING.md §0 / RAPPORT-PRIX.html §9). Réservé au devis.
     const CFG = Object.assign({
       baseDirect: 2100, frBench: 3200,
+      tiers: ['Support Starter', 'Support Pro', 'Centre N1 Scale'],
     }, window.SIM_CONFIG || {});
     const PROD = 0.85, FR_PEN = 1.35, BAND = 0.10; // ±10 % autour de l'estimation
     const st = {
@@ -230,10 +231,11 @@
 
       const recoEl = $('recommendation');
       if (recoEl) {
+        const T = CFG.tiers; // noms de forfaits propres à la page (cf. window.SIM_CONFIG.tiers)
         let reco;
-        if (st.posts === 1 && st.hours <= 20 && st.service <= 0.85) reco = 'Forfait <strong>Support Starter</strong> — idéal pour démarrer.';
-        else if (st.posts >= 2 || (st.posts === 1 && st.hours >= 35 && st.service >= 1.0 && st.schedule > 1.0)) reco = 'Forfait <strong>Centre N1 Scale</strong> — couverture étendue + backup.';
-        else reco = 'Forfait <strong>Support Pro</strong> — meilleur rapport coût / disponibilité.';
+        if (st.posts === 1 && st.hours <= 20 && st.service <= 0.85) reco = 'Forfait <strong>' + T[0] + '</strong> — idéal pour démarrer.';
+        else if (st.posts >= 2 || (st.posts === 1 && st.hours >= 35 && st.service >= 1.0 && st.schedule > 1.0)) reco = 'Forfait <strong>' + T[2] + '</strong> — couverture étendue + backup.';
+        else reco = 'Forfait <strong>' + T[1] + '</strong> — meilleur rapport coût / disponibilité.';
         recoEl.innerHTML = reco;
       }
       pop($('price-monthly'));
@@ -249,7 +251,7 @@
       let l;
       if (st.hours <= 20) l = st.hours + ' h · temps partiel';
       else if (st.hours <= 30) l = st.hours + ' h · 4/5e';
-      else if (st.hours === 35) l = '35 h · temps plein';
+      else if (st.hours <= 37) l = st.hours + ' h · temps plein';
       else l = st.hours + ' h · temps plein +';
       $('hours-value').textContent = l;
       calc();

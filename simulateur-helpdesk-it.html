@@ -56,6 +56,11 @@
       </div>
     </div>
   </div>
+  <div class="scroll-hint-wrap">
+    <a href="#simulator" class="scroll-hint" aria-label="Voir le simulateur">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </div>
 </section>
 
 <!-- SIMULATEUR -->
@@ -83,7 +88,7 @@
             <span class="control-label-text">Heures / semaine / agent</span>
             <span class="control-value" id="hours-value">35 h</span>
           </div>
-          <div class="slider-wrap"><input type="range" id="hours" min="10" max="40" value="35" step="5" /></div>
+          <div class="slider-wrap"><input type="range" id="hours" min="10" max="40" value="35" step="1" /></div>
         </div>
 
         <div class="control-group">
@@ -130,7 +135,7 @@
           <div class="result-label">Estimation mensuelle</div>
           <div><span class="result-price" id="price-monthly">2 250 – 2 750</span><span class="result-price-unit">€/mois</span></div>
           <div class="result-strikethrough">
-            Équivalent régie IT France : <span class="old" id="price-fr-hourly">21 €/h</span> · <span class="old" id="price-fr">3 200 €/mois</span>
+            Équivalent recrutement interne FR (CDI chargé) : <span class="old" id="price-fr-hourly">21 €/h</span> · <span class="old" id="price-fr">3 200 €/mois</span>
           </div>
           <div class="savings-badge" id="savings-badge">Économie : 45 %</div>
         </div>
@@ -142,8 +147,12 @@
           <div class="result-stat"><div class="result-stat-label">Économie annuelle</div><div class="result-stat-value accent" id="annual-savings">17 100 €</div></div>
         </div>
 
+        <div class="recommendation">
+          <div class="recommendation-label">★ Recommandé pour vous</div>
+          <div class="recommendation-text" id="recommendation">Forfait <strong>Helpdesk Pro</strong> — un N1 ITIL dédié, sous votre marque.</div>
+        </div>
         <a href="mailto:contact@salverys.fr?subject=Devis%20helpdesk%20IT%20N1%20sous%2024h" class="btn btn-helpdesk" style="width:100%;justify-content:center;margin-top:14px;">Recevoir mon devis sous 24 h <span class="arrow">→</span></a>
-        <div class="disclaimer">Estimation indicative · devis précis sous 24 h · contrat dès 3 mois.</div>
+        <div class="disclaimer">Estimation indicative · 1er mois à −50 % · devis précis sous 24 h · contrat dès 3 mois.</div>
       </div>
     </div>
   </div>
@@ -158,10 +167,10 @@
       <p>Choisissez l'offre packagée, ou configurez sur mesure ci-dessus.</p>
     </div>
     <div class="packages">
-      <div class="pkg reveal">
+      <div class="pkg pkg-sage reveal">
         <div class="pkg-name">Helpdesk Starter</div>
         <div class="pkg-tag">Débordement ponctuel, sans engagement long</div>
-        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">1 200</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-from">À partir de</span><span class="pkg-price">1 200</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">1 agent mutualisé 20 h · sous votre marque</div>
         <ul class="pkg-feat">
           <li>1 agent mutualisé · 20 h / semaine</li>
@@ -177,7 +186,7 @@
         <div class="pkg-badge">★ Le plus choisi</div>
         <div class="pkg-name">Helpdesk Pro</div>
         <div class="pkg-tag">Un N1 ITIL dédié, sous votre marque</div>
-        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">2 500</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-from">À partir de</span><span class="pkg-price">2 500</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">1 agent 35 h dédié · sous votre marque</div>
         <ul class="pkg-feat">
           <li>1 agent 100 % dédié · 35 h / semaine</li>
@@ -189,10 +198,10 @@
         <a href="#contact" class="pkg-cta">Choisir Helpdesk Pro</a>
       </div>
 
-      <div class="pkg reveal d2">
+      <div class="pkg pkg-gold reveal d2">
         <div class="pkg-name">Helpdesk Scale</div>
         <div class="pkg-tag">Équipe N1 ITIL, couverture étendue</div>
-        <div><span class="pkg-unit">à partir de </span><span class="pkg-price">4 800</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-from">À partir de</span><span class="pkg-price">4 800</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">2 agents 35 h dédiés · sous votre marque</div>
         <ul class="pkg-feat">
           <li>2 agents dédiés · 35 h / semaine</li>
@@ -269,12 +278,36 @@
   </div>
 </section>
 
+<!-- RÉASSURANCE EN DEUX TEMPS -->
+<section class="section" id="garantie">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">Sans risque</div>
+      <h2>On vous rassure en deux temps</h2>
+      <p>D'abord vous testez le service à demi-tarif. Ensuite, on s'engage sur le niveau de service — et on met notre marge en jeu.</p>
+    </div>
+    <div class="steps reveal d1" style="grid-template-columns:1fr 1fr;max-width:820px;margin:0 auto;gap:34px;">
+      <div class="step">
+        <div class="sn">1</div>
+        <h4>Mois pilote à −50 %</h4>
+        <p>Vous démarrez le helpdesk à demi-tarif le premier mois — le temps de valider la qualité et les process ITIL avant de vous engager sur la durée.</p>
+      </div>
+      <div class="step">
+        <div class="sn">2</div>
+        <h4>Engagement sur le SLA de prise en charge</h4>
+        <p>Une fois le service en régime, si le SLA de prise en charge convenu n'est pas tenu sur un mois civil, <strong>20 % d'avoir automatique</strong> sur le mois suivant, dans la limite d'un mois sur douze — vous n'avez rien à réclamer.</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-soft);max-width:680px;margin-left:auto;margin-right:auto;">Seuil de SLA et périmètre figés au cadrage. Mesuré hors indisponibilités côté client (ligne, outil, coupure) et hors débordement au-delà du périmètre souscrit.</p>
+  </div>
+</section>
+
 <!-- CTA BAND -->
 <section class="cta-band" id="contact">
   <span class="hero-bg-blob b1"></span>
   <div class="container">
     <h2>Votre helpdesk N1, <span class="hl">lancé en 10 jours</span>.</h2>
-    <p>Onboarding offert · sans engagement long terme · un interlocuteur unique de bout en bout.</p>
+    <p>1er mois à −50 % — puis engagement sur le SLA de prise en charge. Onboarding offert, un interlocuteur unique de bout en bout.</p>
     <a href="mailto:contact@salverys.fr" class="btn btn-helpdesk">Contactez-nous <span class="arrow">→</span></a>
   </div>
 </section>
@@ -291,9 +324,9 @@
       <div class="footer-cols">
         <div class="footer-col">
           <h5>Métiers</h5>
-          <a href="simulateur-informatique.html">Support N1 — Éditeurs SaaS</a>
-          <a href="simulateur-helpdesk-it.html">Helpdesk IT N1 — ESN &amp; MSP</a>
           <a href="simulateur-salverys.html">Télésecrétariat médical</a>
+          <a href="simulateur-informatique.html">Support Applicatif &amp; Métier</a>
+          <a href="simulateur-helpdesk-it.html">Helpdesk IT (ESN)</a>
         </div>
         <div class="footer-col">
           <h5>Contact</h5>
@@ -312,7 +345,7 @@
   // Config simulateur : Helpdesk IT N1 ESN/MSP (PRICING.md §3, médiane direct).
   // Estimation publique sur base DIRECTE uniquement — le tarif marque blanche
   // (sous-traitance) n'est jamais exposé publiquement (cf. PRICING.md §0).
-  window.SIM_CONFIG = { baseDirect: 2500, frBench: 3200 };
+  window.SIM_CONFIG = { baseDirect: 2500, frBench: 3200, tiers: ['Helpdesk Starter', 'Helpdesk Pro', 'Helpdesk Scale'] };
 </script>
 <script src="assets/site.js"></script>
 </body>
