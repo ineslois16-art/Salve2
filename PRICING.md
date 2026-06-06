@@ -161,31 +161,13 @@ GoCardless ; si priorité **facturation + compta FR intégrée** → Pennylane +
 ## 7. Offre de lancement — **1er mois à -50 %** (remplace l'essai gratuit)
 
 **Décision : remplacer « essai 15 jours gratuit » par « 1er mois à -50 % ».**
-Validé par l'étude de rentabilité ci-dessous. Repli si friction commerciale trop forte
-en cold : « 7 jours offerts, périmètre limité » (lève au passage l'incohérence 15j/7j).
+Repli si friction commerciale trop forte en cold : « 7 jours offerts, périmètre limité »
+(lève au passage l'incohérence 15j/7j).
 
-### Étude de rentabilité (capacité = ressource rare à 10 agents)
-
-**Hypothèses**
-- Coût agent chargé (Madagascar, tout compris) : **~700 €/mois**.
-- 1 télésecrétaire couvre **~6 cabinets Essentiel** simultanément (appels intermittents)
-  ⇒ coût de service **~117 €/client/mois**.
-- Coût de setup/onboarding par nouveau client : **~40 €** (paramétrage, formation logiciel).
-- Forfait de référence Essentiel : **350 €/mois**.
-
-**Comparaison sur le mois d'acquisition**
-
-| Scénario | Revenu mois 1 | Coût service + setup | Marge mois 1 | Mois suivants |
-|---|---|---|---|---|
-| Essai 15j **gratuit** | 0 € | ~117/2 + 40 ≈ **98 €** | **−98 €** | +233 €/mois |
-| **1er mois −50 %** | **175 €** | ~117 + 40 ≈ **157 €** | **+18 €** | +233 €/mois |
-
-**Sensibilité (cas pessimiste : 1 agent = 4 cabinets ⇒ service ~175 €/client)**
-- 1er mois -50 % : 175 € revenu − 175 € service − 40 € setup ≈ **−40 €** (négligeable,
-  une seule fois). Essai gratuit : **−215 €**. → le -50 % reste nettement supérieur.
-
-**Conclusion : 1er mois -50 % VALIDÉ.**
-1. Transforme le mois d'acquisition de **négatif → ~équilibre** (cash positif).
+**Pourquoi -50 % plutôt qu'un essai gratuit :**
+1. **Couvre le mois d'acquisition** : le demi-tarif éponge en grande partie le coût de
+   service + l'onboarding du premier mois, là où l'essai gratuit les laisse entièrement
+   à perte.
 2. **Protège la capacité rare** (agents + bande passante d'onboarding) — contrainte
    n°1 à 10 agents.
 3. Garde un message **« sans risque »** fort (demi-tarif, sans engagement, résiliable).
