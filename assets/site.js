@@ -127,7 +127,7 @@
         badge.textContent = 'Économie : ' + Math.round((savings / elsewhere) * 100) + ' % vs à l\'appel';
       } else {
         cmp.textContent = 'Forfait tout compris, sans surprise.';
-        badge.textContent = 'Essai 7 jours offert';
+        badge.textContent = '1er mois à −50 %';
       }
 
       let reco;
@@ -136,6 +136,13 @@
       else if (name === 'Confort') reco = 'Forfait <strong>Confort</strong> — le meilleur rapport volume / prix.';
       else reco = 'Forfait <strong>Intensif</strong> — pensé pour les cabinets de groupe.';
       $('recommendation').innerHTML = reco;
+
+      const disc = $('sim-disclaimer');
+      if (disc) {
+        disc.textContent = (custom || mult > 1)
+          ? 'Estimation · couverture étendue = devis sur-mesure · 1er mois à -50 %.'
+          : 'Montants fermes · 1er mois à -50 %, sans engagement.';
+      }
       pop($('price-monthly'));
     }
 
