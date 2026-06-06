@@ -158,7 +158,7 @@
           const ni = TIERS.indexOf(tier) + 1;
           const nextName = ni < TIERS.length ? TIERS[ni].name : 'Sur-mesure';
           const nextPrice = ni < TIERS.length ? TIERS[ni].price : 950 + MARGINAL_PER_100;
-          alertEl.textContent = '→ Dans ' + (tier.max - st.calls) + ' appels : passage en ' + nextName + ' (' + euro(nextPrice * mult) + ' €/mois)';
+          alertEl.textContent = 'Ce volume reste dans le forfait ' + name + ' — ' + nextName + ' à ' + euro(nextPrice * mult) + ' €/mois au-delà.';
           alertEl.hidden = false;
         } else {
           alertEl.hidden = true;

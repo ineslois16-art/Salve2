@@ -344,6 +344,10 @@ input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; background: v
 .pkg.featured .pkg-name { color: #fff; }
 .pkg-tag { font-size: 13px; color: var(--text-mute); margin-bottom: 22px; }
 .pkg.featured .pkg-tag { color: rgba(255,255,255,.65); }
+.pkg-from { display: block; font-size: 13px; font-weight: 600; color: var(--text-mute); margin-bottom: 4px; }
+.pkg.featured .pkg-from { color: rgba(255,255,255,.6); }
+.pkg.pkg-sage { background: var(--accent-tint); }
+.pkg.pkg-gold { background: #F5EEDD; }
 .pkg-price { font-family: 'Georgia', serif; font-size: 44px; font-weight: 700; color: var(--primary); letter-spacing: -.02em; line-height: 1; }
 .theme-it .pkg-price { font-family: 'Inter', sans-serif; }
 .pkg.featured .pkg-price { color: #fff; }

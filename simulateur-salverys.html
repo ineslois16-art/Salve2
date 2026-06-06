@@ -17,7 +17,7 @@
     <nav class="nav-links">
       <a href="index.html">Accueil</a>
       <a href="simulateur-salverys.html" class="active">Télésecrétariat médical</a>
-      <a href="simulateur-informatique.html">Support IT &amp; Applicatif</a>
+      <a href="simulateur-informatique.html">Support Applicatif &amp; Métier</a>
       <a href="simulateur-helpdesk-it.html">Helpdesk IT (ESN)</a>
       <a href="#simulator" class="nav-cta">Simuler mon forfait</a>
     </nav>
@@ -80,7 +80,7 @@
             <span class="control-label-text">Volume d'appels / mois</span>
             <span class="control-value" id="calls-value">250 appels</span>
           </div>
-          <div class="slider-wrap"><input type="range" id="calls" min="50" max="1200" value="250" step="25" /></div>
+          <div class="slider-wrap"><input type="range" id="calls" min="50" max="1200" value="250" step="1" /></div>
           <div class="tier-zones">
             <div class="tz tz-essentiel"></div>
             <div class="tz tz-confort"></div>
@@ -110,8 +110,8 @@
           <div class="control-label"><span class="control-label-text">Intégration agenda</span></div>
           <div class="pill-group" data-group="integration">
             <button class="pill active" data-value="doctolib" data-multiplier="1.0">Doctolib</button>
-            <button class="pill" data-value="maiia" data-multiplier="1.0">Maiia</button>
             <button class="pill" data-value="ubicentrex" data-multiplier="1.0">Ubicentrex</button>
+            <button class="pill" data-value="maiia" data-multiplier="1.0">Maiia</button>
             <button class="pill" data-value="medistory" data-multiplier="1.0">Médistory</button>
             <button class="pill" data-value="other" data-multiplier="1.0">Autre</button>
           </div>
@@ -155,10 +155,10 @@
       <p>Facturation au forfait mensuel selon votre volume — jamais à l'appel.</p>
     </div>
     <div class="packages">
-      <div class="pkg reveal">
+      <div class="pkg pkg-sage reveal">
         <div class="pkg-name">Essentiel</div>
         <div class="pkg-tag">Pour un praticien seul</div>
-        <div><span class="pkg-price">350</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-from">À partir de</span><span class="pkg-price">350</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">jusqu'à ~250 appels/mois</div>
         <ul class="pkg-feat">
           <li>Prise d'appels 8h–20h, 5j/7</li>
@@ -174,7 +174,7 @@
         <div class="pkg-badge">★ Le plus choisi</div>
         <div class="pkg-name">Confort</div>
         <div class="pkg-tag">Pour un cabinet actif</div>
-        <div><span class="pkg-price">590</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-from">À partir de</span><span class="pkg-price">590</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">jusqu'à ~500 appels/mois</div>
         <ul class="pkg-feat">
           <li>Tout l'Essentiel, volume doublé</li>
@@ -186,10 +186,10 @@
         <a href="#contact" class="pkg-cta">Choisir Confort</a>
       </div>
 
-      <div class="pkg reveal d2">
+      <div class="pkg pkg-gold reveal d2">
         <div class="pkg-name">Intensif</div>
         <div class="pkg-tag">Cabinet de groupe / fort volume</div>
-        <div><span class="pkg-price">950</span><span class="pkg-unit"> €/mois</span></div>
+        <div><span class="pkg-from">À partir de</span><span class="pkg-price">950</span><span class="pkg-unit"> €/mois</span></div>
         <div class="pkg-equiv">jusqu'à ~900 appels/mois</div>
         <ul class="pkg-feat">
           <li>Plusieurs praticiens / agendas</li>
@@ -313,7 +313,7 @@
         <div class="footer-col">
           <h5>Métiers</h5>
           <a href="simulateur-salverys.html">Télésecrétariat médical</a>
-          <a href="simulateur-informatique.html">Support IT &amp; Applicatif</a>
+          <a href="simulateur-informatique.html">Support Applicatif &amp; Métier</a>
         </div>
         <div class="footer-col">
           <h5>Contact</h5>
