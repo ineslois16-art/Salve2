@@ -202,6 +202,38 @@ remboursement cash** :
   charge** ; Bailleurs (débordement) → **taux de décroché** sur le périmètre convenu ;
   télésec marque blanche → **taux de décroché**. Le seuil exact se fige au cadrage.
 
+### Clients fondateurs — 5 premiers logos, tarif dégressif 3 mois (décidé 2026-06-08)
+
+Mécanique d'amorçage inspirée du « give it away to get your first customers »
+(Hormozi), **adaptée à un service à coût marginal réel** (agents payés) et à un
+**contexte médical** où le gratuit peut signaler un manque de sérieux. On ne donne pas
+gratuitement : on consent un **tarif de lancement renforcé contre des contreparties**.
+
+- **Cible** : les **5 premiers cabinets** (badge « clients fondateurs »). S'applique aussi
+  par niche (support N1, helpdesk) avec le KPI adapté.
+- **Tarif dégressif sur 3 mois** (réf. Essentiel 350 €) :
+
+  | Mois | Remise | Prix payé |
+  |---|---|---|
+  | 1 | −50 % | 175 € |
+  | 2 | −30 % | 245 € |
+  | 3 | −15 % | 297,50 € |
+  | 4+ | plein tarif | 350 € |
+
+  Dégressif **préféré au −50 % sec** : la montée en prix par paliers doux évite le saut
+  175 €→350 € qui déclenche des résiliations ; au mois 4 le client est déjà habitué à ~297 €.
+- **Coût d'acquisition** : ~**332 € de remise cumulée / fondateur** sur 3 mois, soit
+  **~1 660 € pour 5 logos** + 5 témoignages + des référrals. CAC dérisoire pour amorcer
+  la preuve sociale.
+- **Engagement réciproque 3 mois** (≠ le « sans engagement » du mass-market, **inchangé**) :
+  c'est un échange explicite, opt-in, avec contreparties — pas un lock-in caché.
+- **Contreparties client** : **témoignage à 60 j** + **1 mise en relation** si satisfait.
+- **Garantie décroché ≥ 90 %** incluse (équilibre l'engagement : donnant-donnant).
+- **Bascule auto** en forfait standard **sans engagement** après les 3 mois.
+- **Langage client** : « forfait » / « contrat de service », **jamais « abonnement »**
+  (connotation télécom/grand public, dévalorise en médical). Le modèle reste de fait
+  récurrent mensuel — on le pense « abonnement » en interne, on le dit « forfait » dehors.
+
 **Garde-fou** : si le taux réponse→souscription en cold s'effondre vs l'essai gratuit,
 basculer sur le repli « 7 jours offerts, périmètre limité ».
 
@@ -212,6 +244,7 @@ basculer sur le repli « 7 jours offerts, périmètre limité ».
 | Élément | Avant | Après |
 |---|---|---|
 | Essai | « 15 jours gratuit » / « 7 jours » (incohérent) | **« 1er mois à -50 % »** (repli : 7j offerts cadrés) |
+| Amorçage | — | **Deal « clients fondateurs »** : 5 logos, dégressif −50/−30/−15 % sur 3 mois, engagement réciproque + témoignage 60 j + référral |
 | Secrétaire médicale (benchmark) | 35-45 k€/an | **33-40 k€/an** |
 | Téléconseiller CDI (benchmark) | 48-55 k€/an | **38-46 k€/an** |
 | Grille médical | « indicatifs à valider » | **prix fermes** (350/590/950 + sur-devis) |
