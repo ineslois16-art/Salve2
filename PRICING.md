@@ -89,6 +89,38 @@ le coût chargé agent + ~20 % (cf. §7).
   ⚠️ La copy dit « contrats 12 à 36 mois » → reformuler en « dès 3 mois, puis 12 mois ».
 - **Pilote** : 15 j cadré (~80 tickets) → repositionner en « 1er mois -50 % » si validé.
 
+### Tier « Priority » (ex-« Premium ITIL+ ») — service critique
+
+Le niveau de service haut de gamme des simulateurs Support N1 / Helpdesk IT est
+renommé **Priority** (remplace « Premium »/« Premium ITIL+ »). Ce n'est plus
+« un dédié en mieux » mais un **service critique** : capacité **réservée non
+mutualisée**, **traitement prioritaire systématique**, **redondance intégrée
+(backup permanent)**, **supervision renforcée**, **tolérance zéro rupture**.
+
+- **Tarification — multiplicateur dégressif** (le backup réservé s'amortit avec la taille) :
+
+  ```
+  priorityMult(n) = 1,10 + 0,90 / n      (n = nombre d'agents)
+  ```
+  | n | 1 | 2 | 3 | 4 | 6 | 10 |
+  |---|---|---|---|---|---|----|
+  | ×base | 2,00 | 1,55 | 1,40 | 1,33 | 1,25 | 1,19 |
+
+  Un agent **seul** porte un backup quasi complet (~×2, zéro rupture même en solo) ;
+  à 6+ agents le surcoût retombe vers ~×1,2 (≈ ancien plat ×1,25, d'où la continuité).
+  Plancher **1,10** = priorité de traitement + supervision renforcée, jamais nul.
+
+- **Équivalence résilience** (argument d'appel) : pour garantir `g` agents productifs
+  **sans rupture**, le **Dédié** doit sur-staffer ≈ **1 backup pour 3** (`g + ⌈g/3⌉`
+  têtes payées plein pot), alors que **Priority** inclut le backup. À garantie égale,
+  **`g` Priority ≡ `g + ⌈g/3⌉` Dédiés** (ex. 2 Priority ≡ 3 Dédiés, 6 Priority ≡ 8 Dédiés).
+  Sur le **coût**, Priority bascule **moins cher à partir de ~4 agents garantis** ;
+  en dessous, l'avantage est ailleurs : backup **géré par nous** (zéro planning) et
+  surtout **faisabilité** — à 1-2 agents, se sur-assurer en dédié revient à embaucher
+  un backup à temps plein (×2), impossible à demi-doser.
+- Source d'implémentation : `priorityMult()` dans `assets/site.js` ; arguments
+  d'appel détaillés dans `ARGUMENTS-APPEL-priority.md`.
+
 ---
 
 ## 4. Bailleurs sociaux & grandes structures (priorité 3) — **INTERNE**

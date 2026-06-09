@@ -92,7 +92,10 @@
           <div class="pill-group" data-group="service">
             <button class="pill" data-value="shared" data-multiplier="0.85">Mutualisé</button>
             <button class="pill active" data-value="dedicated" data-multiplier="1.0">Dédié</button>
-            <button class="pill" data-value="premium" data-multiplier="1.25">Premium ITIL+</button>
+            <button class="pill" data-value="priority" data-multiplier="1.25"
+                    data-tooltip="Service critique : capacité réservée non mutualisée, traitement prioritaire, backup permanent, supervision renforcée — tolérance zéro rupture"
+                    title="Service critique : capacité réservée, traitement prioritaire, backup permanent, supervision renforcée — zéro rupture"
+                    aria-label="Priority : service critique, capacité réservée et traitement prioritaire">Priority</button>
           </div>
         </div>
 
@@ -149,6 +152,29 @@
     </div>
   </div>
   <a class="scroll-next" href="#forfaits" aria-label="Aller à la section suivante"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+</section>
+
+<!-- COMPARATIF DÉDIÉ vs PRIORITY -->
+<section class="section" id="priority-compare">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">Dédié vs Priority</div>
+      <h2>Le vrai coût de la continuité de service</h2>
+      <p>En <strong>Dédié</strong>, éviter toute rupture impose de payer un agent de backup en plus. En <strong>Priority</strong>, le backup est réservé et mutualisé : son coût s'amortit à mesure que l'équipe grandit.</p>
+    </div>
+    <div class="chart-card reveal d1">
+      <div class="chart-toggle pill-group">
+        <button class="pill active" data-chart-view="brut">Coût brut</button>
+        <button class="pill" data-chart-view="resilience">À résilience égale</button>
+      </div>
+      <div id="priority-chart" class="priority-chart"></div>
+      <div class="chart-legend">
+        <span class="chart-legend-item"><span class="chart-swatch sw-dedie"></span>Dédié</span>
+        <span class="chart-legend-item"><span class="chart-swatch sw-priority"></span>Priority</span>
+      </div>
+      <p id="priority-chart-caption" class="chart-caption"></p>
+    </div>
+  </div>
 </section>
 
 <!-- FORFAITS -->
