@@ -163,6 +163,7 @@ img { display: block; max-width: 100%; }
 .theme-it .hero h1 { font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -.03em; }
 .hero h1 .hl { color: var(--accent); position: relative; white-space: nowrap; }
 .theme-it .hero h1 .hl { color: inherit; background: var(--accent); padding: 0 10px; border-radius: 8px; }
+.theme-helpdesk .hero h1 .hl { color: #114457; background: #FCE27C; padding: 0 10px; border-radius: 8px; }
 .hero p.lead { font-size: 19px; color: var(--text-soft); max-width: 540px; margin-bottom: 30px; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .ctas-metiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; width: 100%; max-width: 720px; margin: 0 auto; }
@@ -485,4 +486,27 @@ input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; background: v
 
 .pill[data-chart-view="resilience"] {
   animation: pulse-glow 1s ease-in-out infinite;
+}
+
+/* Helpdesk : bouton "À résilience égale" en jaune CTA + glow assorti */
+@keyframes pulse-glow-yellow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 #FCE27C,
+                0 0 8px 2px rgba(252, 226, 124, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 6px #FCE27C,
+                0 0 12px 4px rgba(252, 226, 124, 0.65);
+  }
+}
+
+.theme-helpdesk .pill[data-chart-view="resilience"],
+.theme-helpdesk .pill[data-chart-view="resilience"].active {
+  background: #FCE27C;
+  border-color: #FCE27C;
+  color: #114457;
+}
+
+.theme-helpdesk .pill[data-chart-view="resilience"] {
+  animation: pulse-glow-yellow 1s ease-in-out infinite;
 }
