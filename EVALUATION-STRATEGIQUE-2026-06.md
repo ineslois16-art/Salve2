@@ -103,7 +103,6 @@ direct** : voir politique salariale §3.4.
 | **Telesecretaire-mlg** | Madagascar | **0,98 €/appel** | Prix simple et lisible | Aucun discours qualité/continuité |
 | **Stylrendez-vous** | offshore | **0,70 € TTC/appel**, abo min. 30 €/mois | Entrée à très bas coût, sans engagement | Volume low-cost, pas de dédié |
 | **Callmed** | vitrine FR, base offshore à vérifier | **dès 0,50 € HT/appel** | Prix plancher du marché, 1M+ appels/an | Densité extrême = tension qualité (c'est d'ailleurs notre angle partenaire) |
-| ~~Vohifa, Bionest~~ | — | — | **Introuvables** — à retirer de `TELESEC-TARGETS.md` ou re-vérifier l'orthographe | |
 
 ### 2.3 Script de défense anti-low-cost (à ajouter aux objections)
 
@@ -251,18 +250,19 @@ RH révisés utilisés partout · « forfait » (jamais « abonnement ») respec
 
 ## 5. Plan d'action priorisé
 
-| # | Action | Pourquoi maintenant | Effort |
+| # | Action | Pourquoi maintenant | Statut |
 |---|---|---|---|
-| 1 | **Corriger les 2 fuites MB** (`OUTREACH-SEQUENCE.md:389,549`, `OUTREACH-IT-N1:5,117`) | Chaque envoi Emelia expose la marge aux revendeurs | 15 min |
-| 2 | **Harmoniser 90 %** (OUTREACH ×2, index.html, OFFRE-MEDICAL, CHAPITRE) | Une promesse écrite à 95 % = avoirs en série | 15 min |
-| 3 | **Corriger le `<title>` d'index.html** (résultat, pas prix ; tuer le « à 40 % du coût ») | Claim faux + garde-fou violé, visible sur Google | 10 min |
-| 4 | **Publier le bloc « Continuité & Conformité »** (double FAI, groupe électrogène, CCT art. 46, zéro stockage) sur le site + one-pager | Les 2 différenciateurs les plus forts du marché sont invisibles | 1-2 h |
-| 5 | **Ajouter le script anti-low-cost malgache** (§2.3) aux objections des séquences | La comparaison à 0,50-1 €/appel arrivera dès les 1ers calls | 30 min |
-| 6 | **Acter la politique salariale premium** (1-1,2 M Ar) dans le prévisionnel et le discours recrutement | Anti-turnover = la promesse qualité devient tenable | décision |
-| 7 | **Nettoyer `TELESEC-TARGETS.md`** : retirer Vohifa/Bionest (introuvables), ajouter Telesecretaire-mlg, Stylrendez-vous ; qualifier le prix d'achat cible de Callmed avant tout E1 | Base de prospection fiable | 30 min |
-| 8 | **Caler une veille décret souveraineté HDS** (échéance septembre 2026) | Peut restreindre l'accès offshore encadré ; anticiper la réponse contractuelle | récurrent |
-| 9 | **Préparer le narratif anti-callbot** (« le niveau humain au-dessus de votre bot ») | Substitut principal à 3 ans | réflexion |
-| 10 | **Vérifier le tarif marginal site.js** (`MARGINAL_PER_100 = 95` → 1 045 € à 1 000 appels) ou masquer >900 appels derrière « devis » | Cohérence « prix fermes » | 15 min |
+| 1 | **Corriger les 2 fuites MB** (`OUTREACH-SEQUENCE.md`, `OUTREACH-IT-N1`) | Chaque envoi Emelia expose la marge aux revendeurs | ✅ fait 2026-06-10 |
+| 2 | **Harmoniser 90 %** (OUTREACH-SEQUENCE ×2, OUTREACH-cabinets ×3, ONEPAGER, index.html, OFFRE-MEDICAL, CHAPITRE, CRM script pitch) | Une promesse écrite à 95 % = avoirs en série | ✅ fait 2026-06-10 (9 occurrences) |
+| 3 | **Corriger le `<title>` d'index.html** (résultat, pas prix ; tuer le « à 40 % du coût ») | Claim faux + garde-fou violé, visible sur Google | ✅ fait 2026-06-10 |
+| 4 | **Publier le bloc « Continuité & Conformité »** (double FAI, groupe électrogène, CCT art. 46, zéro stockage) sur le site + one-pager | Les 2 différenciateurs les plus forts du marché sont invisibles | ✅ fait 2026-06-10 (index.html value stack + ONEPAGER) |
+| 5 | **Ajouter le script anti-low-cost malgache** (§2.3) aux objections des séquences | La comparaison à 0,50-1 €/appel arrivera dès les 1ers calls | ✅ fait 2026-06-10 (OUTREACH-cabinets + telesec-MB) |
+| 6 | **Acter la politique salariale premium** (1-1,2 M Ar) dans le prévisionnel et le discours recrutement | Anti-turnover = la promesse qualité devient tenable | ⬜ décision dirigeants (intégrée au prévisionnel) |
+| 7 | **Mettre à jour la note concurrentielle `TELESEC-TARGETS.md`** : corridor 0,50-1 €/appel, nouveaux acteurs, alerte prix d'achat Callmed avant tout E1 | Base de prospection fiable | ✅ fait 2026-06-10 |
+| 8 | **Caler une veille décret souveraineté HDS** (échéance septembre 2026) | Peut restreindre l'accès offshore encadré ; anticiper la réponse contractuelle | ⬜ récurrent |
+| 9 | **Préparer le narratif anti-callbot** (« le niveau humain au-dessus de votre bot ») | Substitut principal à 3 ans | ⬜ réflexion |
+| 10 | **Tarif marginal simulateur >900 appels** : affichage passé en « ≈ estimation » (disclaimer déjà présent) | Cohérence « prix fermes » | ✅ fait 2026-06-10 |
+| — | Bonus : « paient l'abonnement » → « paient le forfait » (langage client, `PRICING.md §7`) dans OUTREACH-cabinets + OFFRE-MEDICAL | Règle « jamais abonnement » côté client | ✅ fait 2026-06-10 |
 
 ---
 

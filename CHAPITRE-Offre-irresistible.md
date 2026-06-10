@@ -61,12 +61,12 @@ Décision explicite (l'utilisateur a écarté le remboursement total, jugé trop
 - **En régime seulement** : pas pendant l'onboarding (décroché pas encore stabilisé).
 - **Conditions de défense** : KPI mesuré sur le périmètre convenu, **hors débordement**
   au-delà du forfait, **hors coupure côté client**. Seuil et périmètre figés au cadrage.
-- **Repli défendable** : seuil 90 % si les premiers mois réels le justifient.
+- **Seuil retenu : 90 %** (95 % écarté — trop ambitieux en phase de démarrage, cf. `PRICING.md §7`).
 
 ### 3.4 KPI par niche (même mécanique, 20 % d'avoir)
 | Niche | KPI engagé |
 |---|---|
-| Télésecrétariat médical | **taux de décroché ≥ 95 %** (8h-20h) |
+| Télésecrétariat médical | **taux de décroché ≥ 90 %** (8h-20h) |
 | Support N1 SaaS | **SLA de première réponse** convenu |
 | Helpdesk IT N1 (ESN) | **SLA de prise en charge** convenu |
 | Bailleurs (débordement) | **taux de décroché** sur le périmètre convenu |
@@ -92,7 +92,7 @@ jours » (irréaliste = mensonger).
 ## 4. L'offre, en une phrase (médical)
 
 > « On décroche chaque appel patient, en français, intégré à votre agenda — vous ne gérez
-> rien. Mois pilote à −50 %, sans engagement ; et une fois en régime, ≥ 95 % de décroché,
+> rien. Mois pilote à −50 %, sans engagement ; et une fois en régime, ≥ 90 % de décroché,
 > sinon 20 % d'avoir. »
 
 ---

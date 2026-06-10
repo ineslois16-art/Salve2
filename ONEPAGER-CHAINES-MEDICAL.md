@@ -55,7 +55,7 @@ sans risque :
 | | Couvre la peur de… | Mécanique |
 |---|---|---|
 | **Mois pilote −50 %, sans engagement** | l'**entrée** (« et si ça ne convient pas ? ») | résiliable à tout moment, sur 1 site |
-| **Engagement de décroché en régime** | la **durée** (« et s'ils baissent en qualité ? ») | ≥ 95 % d'appels décrochés ; en deçà sur un mois, **20 % d'avoir** automatique |
+| **Engagement de décroché en régime** | la **durée** (« et s'ils baissent en qualité ? ») | ≥ 90 % d'appels décrochés ; en deçà sur un mois, **20 % d'avoir** automatique |
 
 *Conditions de l'engagement : appels présentés sur 8h-20h, hors débordement au-delà du
 volume contractuel, hors coupure côté centre. Seuil et périmètre figés au cadrage.*
@@ -64,10 +64,14 @@ volume contractuel, hors coupure côté centre. Seuil et périmètre figés au c
 
 ## Ce qui est inclus (value stack)
 
-**Secret médical** · **RGPD sous-traitant (art. 28)** · **comptes nommés, zéro download**
-(données chez votre hébergeur) · **intégration faite par nous** · **backup +1 agent /
-compte** (continuité) · **reporting mensuel** · **forfait, jamais à l'appel** · vous gardez
-la main sur les agendas.
+**Secret médical** · **RGPD sous-traitant (art. 28)**, transfert encadré (clauses art. 46) ·
+**comptes nommés, zéro download** (données chez votre hébergeur) · **intégration faite par
+nous** · **backup +1 agent / compte** (continuité) · **reporting mensuel** · **forfait,
+jamais à l'appel** · vous gardez la main sur les agendas.
+
+**Plan de continuité écrit** : double opérateur internet + secours 4G, groupe électrogène
+et onduleurs sur le plateau — l'accueil de vos centres ne dépend ni d'une ligne ni du
+réseau électrique local. Remis au cadrage, avant tout démarrage.
 
 ---
 

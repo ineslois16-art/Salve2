@@ -102,7 +102,7 @@ Bonjour Hichem,
 
 Vous vendez de l'infogérance helpdesk en marque blanche à vos partenaires revendeurs — j'ai vu votre offre dédiée sur le site.
 
-Salverys opère des techniciens N1 francophones natifs (Madagascar, UTC+3) sous l'enseigne de nos donneurs d'ordre. Process ITIL, disponibles dès 7h heure France, activation en 3 semaines. Tarif : 1 550-2 000 €/ETP/mois tout compris.
+Salverys opère des techniciens N1 francophones natifs (Madagascar, UTC+3) sous l'enseigne de nos donneurs d'ordre. Process ITIL, disponibles dès 7h heure France, activation en 3 semaines. Tarif par ETP calibré pour préserver votre marge revendeur — chiffrage en 15 min.
 
 Concrètement : vous gardez la relation client, vous prenez votre marge, on opère les agents. Vous pouvez vendre plus de sièges marque blanche sans recruter.
 
