@@ -26,6 +26,7 @@
   .check{display:flex;align-items:center;gap:8px;font-size:.85rem;margin-bottom:14px}
   .check input{accent-color:var(--sauge);width:16px;height:16px}
   .ctl .duo{display:grid;grid-template-columns:1fr 92px;gap:8px;margin-top:2px}
+  .ctl .trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:2px}
   .ctl select,.ctl input[type=number]{width:100%;padding:6px 8px;border:1px solid #d9d2c4;border-radius:8px;font-size:.85rem;background:#fff;color:var(--bleu)}
   .grp-sep{border-top:1px solid #eee;margin:8px 0 12px;padding-top:10px;font-size:.78rem;font-weight:600;color:var(--sauge);text-transform:uppercase;letter-spacing:.05em}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
@@ -98,6 +99,13 @@
           <select id="prospSel"><option>Emelia</option><option>Instantly</option></select>
           <input type="number" id="prospPrice" value="0" step="5" placeholder="€/mois">
         </div></div>
+      <div class="ctl"><label>Infra cold — domaines GWS <b id="vCold"></b></label>
+        <div class="trio">
+          <input type="number" id="coldDom" value="3" min="0" step="1" placeholder="domaines">
+          <input type="number" id="coldBox" value="2" min="1" step="1" placeholder="boîtes/dom">
+          <input type="number" id="coldPx" value="6" min="0" step="0.5" placeholder="€/boîte">
+        </div>
+        <div class="hint" id="coldHint"></div></div>
       <div class="ctl"><label>Logiciel VoIP <b id="vVoip"></b></label>
         <div class="duo">
           <select id="voipSel"><option>With Allo</option><option>Cloudtalk</option></select>
@@ -145,14 +153,18 @@ function simulate(){
         mixC=+$('mix').value/100, itQ=+$('it').value, itMB=+$('itmix').value/100,
         founders=$('founders').checked, churn=$('churn').checked,
         crmP=+$('crmPrice').value, prospP=+$('prospPrice').value, voipP=+$('voipPrice').value,
-        suiteP=+$('suitePrice').value;
-  const tools=crmP+prospP+voipP+suiteP;
+        suiteP=+$('suitePrice').value,
+        coldDom=+$('coldDom').value, coldBox=+$('coldBox').value, coldPx=+$('coldPx').value;
+  const coldInfra=coldDom*coldBox*coldPx;              // boîtes GWS dédiées au cold
+  const tools=crmP+prospP+voipP+suiteP+coldInfra;
 
   $('vCap').textContent=fmtK(cap); $('vFix').textContent=fmtE(fix);
   $('vMed').textContent=medRate; $('vMix').textContent=Math.round(mixC*100)+' %';
   $('vIt').textContent=itQ; $('vItMix').textContent=Math.round(itMB*100)+' %';
   $('vCrm').textContent=fmtE(crmP); $('vProsp').textContent=fmtE(prospP);
   $('vVoip').textContent=fmtE(voipP); $('vSuite').textContent=fmtE(suiteP);
+  $('vCold').textContent=fmtE(coldInfra);
+  $('coldHint').textContent=`${coldDom} domaine(s) × ${coldBox} boîte(s) = ${coldDom*coldBox} adresses · ~${coldDom*coldBox*40} mails/j chauffés`;
 
   const priceMed=590*mixC+350*(1-mixC), callsMed=500*mixC+250*(1-mixC);
   const priceIt=1500*itMB+2150*(1-itMB);
