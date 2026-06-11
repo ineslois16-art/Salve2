@@ -14,6 +14,18 @@ avec une équipe de **10 personnes**.
 ### Séquence de développement (toujours dans cet ordre)
 **Prospection → Équipe → Infrastructure**
 
+### Stratégie GTM (décision direction, 2026-06-10)
+**Objectif prioritaire : démarrer en MARQUE BLANCHE sur les 3 niches** (sous-traitance
+de donneurs d'ordre : télésecrétariats médicaux FR, éditeurs/prestataires support,
+ESN/MSP). Le direct (client final) vient en 2e temps. Toute priorisation de prospection,
+de copy ou de chiffrage doit refléter ce MB-first.
+
+### Modèle d'équipe (décision direction, 2026-06-10)
+Démarrage **100 % freelances**, payés **1,8-2 M Ar/mois chacun** (~2,5× le marché local),
+y compris les **2 managers** (1 médical, 1 IT). Objectif : **zéro turnover**. Démarrage à
+4 agents + 2 managers, montée à 8+ au rythme des contrats. Rentabilité vérifiée :
+`FINANCE-PREVISIONNEL.md` (v2).
+
 ### Avantage compétitif
 - Fuseau horaire compatible avec la France
 - Français langue maternelle

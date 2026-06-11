@@ -257,12 +257,19 @@ RH révisés utilisés partout · « forfait » (jamais « abonnement ») respec
 | 3 | **Corriger le `<title>` d'index.html** (résultat, pas prix ; tuer le « à 40 % du coût ») | Claim faux + garde-fou violé, visible sur Google | ✅ fait 2026-06-10 |
 | 4 | **Publier le bloc « Continuité & Conformité »** (double FAI, groupe électrogène, CCT art. 46, zéro stockage) sur le site + one-pager | Les 2 différenciateurs les plus forts du marché sont invisibles | ✅ fait 2026-06-10 (index.html value stack + ONEPAGER) |
 | 5 | **Ajouter le script anti-low-cost malgache** (§2.3) aux objections des séquences | La comparaison à 0,50-1 €/appel arrivera dès les 1ers calls | ✅ fait 2026-06-10 (OUTREACH-cabinets + telesec-MB) |
-| 6 | **Acter la politique salariale premium** (1-1,2 M Ar) dans le prévisionnel et le discours recrutement | Anti-turnover = la promesse qualité devient tenable | ⬜ décision dirigeants (intégrée au prévisionnel) |
+| 6 | **Politique de rémunération** — décision direction 2026-06-10 : **100 % freelances à 1,8-2 M Ar** (~2,5× marché), managers inclus, objectif zéro turnover. Rentabilité vérifiée (marges 65-82 %, point mort ~7 100 €) | Anti-turnover = la promesse qualité devient tenable | ✅ acté + prévisionnel v2 refait |
 | 7 | **Mettre à jour la note concurrentielle `TELESEC-TARGETS.md`** : corridor 0,50-1 €/appel, nouveaux acteurs, alerte prix d'achat Callmed avant tout E1 | Base de prospection fiable | ✅ fait 2026-06-10 |
-| 8 | **Caler une veille décret souveraineté HDS** (échéance septembre 2026) | Peut restreindre l'accès offshore encadré ; anticiper la réponse contractuelle | ⬜ récurrent |
-| 9 | **Préparer le narratif anti-callbot** (« le niveau humain au-dessus de votre bot ») | Substitut principal à 3 ans | ⬜ réflexion |
+| 8 | **Veille décret souveraineté HDS** — décision : simple rappel planifié (août 2026), exposition réduite par le GTM MB-first | Peut restreindre l'accès offshore encadré | ✅ rappel inscrit (`CONFORMITE-HDS-RGPD.md §4`) |
+| 9 | **Narratif anti-callbot** — décision : **hybride assumé** (« le niveau humain au-dessus de votre bot ») | Substitut principal à 3 ans | ✅ fait (`NARRATIF-HYBRIDE-CALLBOT.md` + objections) |
 | 10 | **Tarif marginal simulateur >900 appels** : affichage passé en « ≈ estimation » (disclaimer déjà présent) | Cohérence « prix fermes » | ✅ fait 2026-06-10 |
 | — | Bonus : « paient l'abonnement » → « paient le forfait » (langage client, `PRICING.md §7`) dans OUTREACH-cabinets + OFFRE-MEDICAL | Règle « jamais abonnement » côté client | ✅ fait 2026-06-10 |
+
+> **Décision GTM structurante (2026-06-10, postérieure au rapport)** : l'objectif
+> prioritaire est de **démarrer en marque blanche sur les 3 niches** — le direct vient en
+> 2e temps. Inscrite dans `CLAUDE.md` ; le prévisionnel v2 et le simulateur de trésorerie
+> sont alignés (mix MB 100 % par défaut, point mort ≈ 5 ETP placés ≈ 2-3 contrats
+> donneurs d'ordre). La lecture du rapport (notamment §3.1 « tenir les prix » médical
+> direct) reste valable pour le 2e temps.
 
 ---
 

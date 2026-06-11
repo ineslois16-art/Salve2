@@ -60,3 +60,20 @@ Pour Salverys :
 > hébergement), mais l'offshore est un **risque à documenter et à défendre**, pas à passer
 > sous silence. Vérifier l'évolution réglementaire (souveraineté sept. 2026) avant tout
 > engagement contractuel long.
+
+---
+
+## 4. Veille décret souveraineté — rappel planifié (décision 2026-06-10)
+
+**⏰ AOÛT 2026 — avant l'entrée en application de septembre : re-vérifier le texte
+d'application du décret du 24 mars 2026** (souveraineté HDS) et son impact sur l'accès
+distant depuis un pays tiers, **avant tout engagement contractuel long** côté médical.
+
+- Traitement retenu : **simple rappel** (pas d'avis juridique externe à ce stade).
+- **Pourquoi ce niveau de traitement suffit** : le GTM prioritaire est la **marque
+  blanche** (cf. `CLAUDE.md`) — le donneur d'ordre français porte la relation avec le
+  client final et sa propre conformité ; l'exposition réglementaire directe de Salverys
+  est réduite d'autant au démarrage. Le sujet redevient critique au moment du **direct
+  médical** (2e temps) et des contrats chaînes 3+ sites.
+- Si le texte d'application se durcit contre l'accès offshore : repli = VDI hébergé UE
+  + clauses contractuelles types renforcées (art. 46), à chiffrer à ce moment-là.
