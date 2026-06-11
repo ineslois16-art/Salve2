@@ -103,6 +103,11 @@
           <select id="voipSel"><option>With Allo</option><option>Cloudtalk</option></select>
           <input type="number" id="voipPrice" value="0" step="5" placeholder="€/mois">
         </div></div>
+      <div class="ctl"><label>Suite bureautique <b id="vSuite"></b></label>
+        <div class="duo">
+          <select id="suiteSel"><option>GWS</option><option>M365</option><option>M365 + GWS</option></select>
+          <input type="number" id="suitePrice" value="0" step="5" placeholder="€/mois">
+        </div></div>
     </div>
 
     <div class="card">
@@ -139,13 +144,15 @@ function simulate(){
   const cap=+$('cap').value, fix=+$('fix').value, medRate=+$('med').value,
         mixC=+$('mix').value/100, itQ=+$('it').value, itMB=+$('itmix').value/100,
         founders=$('founders').checked, churn=$('churn').checked,
-        crmP=+$('crmPrice').value, prospP=+$('prospPrice').value, voipP=+$('voipPrice').value;
-  const tools=crmP+prospP+voipP;
+        crmP=+$('crmPrice').value, prospP=+$('prospPrice').value, voipP=+$('voipPrice').value,
+        suiteP=+$('suitePrice').value;
+  const tools=crmP+prospP+voipP+suiteP;
 
   $('vCap').textContent=fmtK(cap); $('vFix').textContent=fmtE(fix);
   $('vMed').textContent=medRate; $('vMix').textContent=Math.round(mixC*100)+' %';
   $('vIt').textContent=itQ; $('vItMix').textContent=Math.round(itMB*100)+' %';
-  $('vCrm').textContent=fmtE(crmP); $('vProsp').textContent=fmtE(prospP); $('vVoip').textContent=fmtE(voipP);
+  $('vCrm').textContent=fmtE(crmP); $('vProsp').textContent=fmtE(prospP);
+  $('vVoip').textContent=fmtE(voipP); $('vSuite').textContent=fmtE(suiteP);
 
   const priceMed=590*mixC+350*(1-mixC), callsMed=500*mixC+250*(1-mixC);
   const priceIt=1500*itMB+2150*(1-itMB);
