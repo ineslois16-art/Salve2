@@ -22,7 +22,7 @@
 - **Facturation au forfait mensuel** (paliers par volume) — jamais à l'appel.
 - **Réassurance en deux temps** :
   1. **Mois pilote à −50 %, sans engagement** — juger sur ses vrais appels, résiliable.
-  2. **Engagement de décroché en régime** : ≥ 95 % d'appels décrochés (8h-20h) ; en deçà
+  2. **Engagement de décroché en régime** : ≥ 90 % d'appels décrochés (8h-20h) ; en deçà
      sur un mois, **20 % d'avoir** automatique. Pas de remboursement cash. Conditions :
      appels présentés, hors débordement, hors coupure côté cabinet.
 - **RGPD (sous-traitant art. 28)**, comptes nommés, zéro download.
@@ -129,7 +129,7 @@ Bonjour Dr {nom},
 La meilleure façon de juger une télésecrétaire, c'est de la **mesurer** sur vos vrais appels — pas de me croire sur parole. On met donc deux engagements concrets sur la table :
 
 1. **Mois pilote sans engagement** : on prend vos appels patients, intégrés à votre logiciel (Doctolib, Maiia, Médistory…), francophones, formés au secret médical. Si ça ne vous convient pas, vous arrêtez.
-2. **Une fois en régime, on vise ≥ 95 % d'appels décrochés (8h–20h).** Si on n'y arrive pas sur un mois, vous récupérez **20 % d'avoir** sur le mois suivant — automatiquement.
+2. **Une fois en régime, on vise ≥ 90 % d'appels décrochés (8h–20h).** Si on n'y arrive pas sur un mois, vous récupérez **20 % d'avoir** sur le mois suivant — automatiquement.
 
 Autrement dit : on met notre engagement sur la table, pas seulement notre prix.
 
@@ -239,9 +239,11 @@ Bonne continuation,
 | « J'ai déjà une secrétaire. » | On ne la remplace pas — on prend le débordement : les appels pendant les consultations, les absences, les congés, les pics. Votre secrétaire garde son rôle, on absorbe le reste. |
 | « Et le secret médical / la confidentialité ? » | Télésecrétaires formées au secret médical, **RGPD en sous-traitant (art. 28)**, comptes nommés et **zéro download** : les données restent chez votre hébergeur, jamais sur le poste de l'agent. On vous détaille exactement quelles données sont manipulées et comment, avant tout démarrage. |
 | « C'est en plus à gérer / à paramétrer. » | L'intégration à Doctolib ou Maiia se fait **de notre côté**, et le mois pilote sert justement à tester sans rien bousculer. Vous gardez la main sur vos agendas. |
-| « C'est trop cher pour mon cabinet. » | À partir de 350 €/mois — soit bien moins qu'un poste de secrétariat. Surtout, **2 à 3 RDV récupérés** sur des appels qui auraient été manqués paient l'abonnement. Et vous le vérifiez **en mois pilote sans engagement** avant de vous décider. |
-| « Comment je sais que vous décrochez vraiment ? » | C'est précisément pourquoi on **s'engage sur le décroché** : une fois en régime, ≥ 95 % d'appels décrochés sur 8h-20h, sinon **20 % d'avoir** sur le mois suivant. Vous le mesurez via notre reporting mensuel. |
+| « C'est trop cher pour mon cabinet. » | À partir de 350 €/mois — soit bien moins qu'un poste de secrétariat. Surtout, **2 à 3 RDV récupérés** sur des appels qui auraient été manqués paient le forfait. Et vous le vérifiez **en mois pilote sans engagement** avant de vous décider. |
+| « Comment je sais que vous décrochez vraiment ? » | C'est précisément pourquoi on **s'engage sur le décroché** : une fois en régime, ≥ 90 % d'appels décrochés sur 8h-20h, sinon **20 % d'avoir** sur le mois suivant. Vous le mesurez via notre reporting mensuel. |
 | « Les patients vont sentir que ce n'est pas le cabinet. » | Télésecrétaires francophones natives, formées à votre cabinet et à votre logiciel, qui répondent **sous votre marque**. Le mois pilote sans engagement vous permet de juger le ressenti patient avant de vous engager. |
+| « J'ai vu des offres à 0,50-1 € l'appel, vous êtes plus cher. » | Exact — et c'est volontaire. À 0,50 € l'appel, l'agent est payé au minimum local, tourne en 6 mois, et personne ne vous garantit le décroché. Nous, on s'engage **contractuellement** : ≥ 90 % d'appels décrochés, sinon 20 % d'avoir automatique. Plan de continuité écrit (double opérateur internet, groupe électrogène), conformité RGPD documentée, backup +1 agent. La vraie question n'est pas le prix de l'appel : c'est le prix du patient perdu quand le prestataire low-cost ne décroche pas. |
+| « On a déjà la prise de RDV en ligne / on va mettre un bot. » | Très bien — gardez-les. Le RDV en ligne absorbe les demandes simples ; nous, on décroche **les appels qui restent** : urgences, patients âgés, demandes complexes, débordement. Ce sont justement les appels qui coûtent le plus cher à perdre — et comme on travaille **dans votre Doctolib**, les deux se complètent sans rien changer à vos outils. (cf. `NARRATIF-HYBRIDE-CALLBOT.md`) |
 
 ---
 

@@ -98,7 +98,7 @@ Bonjour Roger,
 
 Vous proposez du centre de services N1/N2 à vos clients DSI. La question que j'imagine que certains posent : est-ce que la couverture s'étend au créneau 7h-9h ou au week-end ?
 
-Salverys (Madagascar, UTC+3) : techniciens francophones natifs, ITIL, formés sur vos outils et scripts. On couvre nativement le matin tôt heure France et les week-ends. 1 550-2 000 €/ETP/mois, activation en 3 semaines.
+Salverys (Madagascar, UTC+3) : techniciens francophones natifs, ITIL, formés sur vos outils et scripts. On couvre nativement le matin tôt heure France et les week-ends. Tarif ETP cadré en 15 min selon le volume — activation en 3 semaines.
 
 L'idée n'est pas de remplacer vos équipes — c'est d'élargir les plages que vous proposez à vos clients sans recruter en CDI France sur des créneaux difficiles.
 

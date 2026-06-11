@@ -101,7 +101,7 @@ Bonjour {{firstName}},
 
 Cyllene propose des services managés 24/7 — ça implique des créneaux de nuit et de week-end difficiles à couvrir sans astreintes coûteuses ou recrutement CDI supplémentaire.
 
-Salverys (Madagascar, UTC+3) : agents francophones natifs, ITIL, vos scripts, votre marque. On couvre nativement le créneau 7h-9h heure France — et les nuits selon votre besoin. Activation en 3 semaines, 1 550-2 000 €/ETP/mois tout compris.
+Salverys (Madagascar, UTC+3) : agents francophones natifs, ITIL, vos scripts, votre marque. On couvre nativement le créneau 7h-9h heure France — et les nuits selon votre besoin. Activation en 3 semaines, à un coût par ETP qui laisse votre marge intacte — chiffrage en 15 min.
 
 Pas de substitution à vos équipes : uniquement les créneaux que vous ne voulez pas mettre en CDI France.
 

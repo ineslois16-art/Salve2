@@ -22,7 +22,7 @@ de patients, et vous ne gérez rien »**.
 > agenda — vous ne gérez rien. »
 
 **Recadrage du prix** : le client compare 350 € à un *salaire*. On le recadre contre le
-**CA récupéré** — 2 à 3 RDV sauvés d'appels qui auraient été manqués paient l'abonnement.
+**CA récupéré** — 2 à 3 RDV sauvés d'appels qui auraient été manqués paient le forfait.
 À ce moment, 350 € n'est plus un coût, c'est un investissement à ROI évident.
 
 ---
@@ -38,13 +38,13 @@ qu'on ne connaît pas encore.
    engagement de paiement filtre les non-sérieux et protège notre capacité (10 agents).
 
 2. **Engagement de décroché — une fois en régime.**
-   L'intégration stabilisée, on vise **≥ 95 % d'appels décrochés** sur 8h-20h. Si le seuil
+   L'intégration stabilisée, on vise **≥ 90 % d'appels décrochés** sur 8h-20h. Si le seuil
    n'est pas tenu sur un mois, **20 % d'avoir** sur le mois suivant, **automatique**.
    - **Pas de remboursement cash** : un avoir plafonné prouve qu'on mise notre argent sur
      le résultat, sans menacer la trésorerie ni faire fuir le client.
    - **Conditions** : appels **présentés** sur 8h-20h, **hors débordement** au-delà du
      forfait, **hors coupure côté cabinet** (ligne/logiciel). Seuil et périmètre figés au
-     cadrage. Repli défendable **90 %** si besoin.
+     cadrage. (95 % écarté — trop ambitieux en phase de démarrage, cf. `PRICING.md §7`.)
 
 > **Pourquoi ce double dispositif gagne** : le pilote enlève le risque d'*entrée*
 > (« et si ça ne me convient pas ? »), l'engagement de décroché enlève le risque de

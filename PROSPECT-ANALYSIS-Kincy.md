@@ -97,7 +97,7 @@ Bonjour Karim,
 
 Je sais que vous couvrez la supervision nuit France depuis Papeete — c'est une solution élégante. Il reste un créneau non couvert nativement : 7h-9h heure France (= 21h-23h à Papeete, en dehors des heures ouvrées locales).
 
-Salverys (Madagascar, UTC+3) : agents francophones natifs, ITIL, vos outils. 7h-9h France = 10h-12h chez nous — c'est notre créneau de pleine production. 1 550-2 000 €/ETP/mois, sans astreinte, activation 3 semaines.
+Salverys (Madagascar, UTC+3) : agents francophones natifs, ITIL, vos outils. 7h-9h France = 10h-12h chez nous — c'est notre créneau de pleine production. Sans astreinte, activation 3 semaines — tarif ETP cadré en 15 min selon le volume.
 
 Même logique que Papeete, même qualité linguistique, sur le seul créneau que votre modèle actuel ne couvre pas facilement.
 

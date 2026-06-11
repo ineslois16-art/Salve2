@@ -19,15 +19,29 @@
 
 ## Note concurrentielle — le marché offshore médical FR est déjà actif
 
+> Mise à jour 2026-06-10 (benchmark web — détail dans `EVALUATION-STRATEGIQUE-2026-06.md` §2).
+
 Des acteurs proposent déjà du télésecrétariat médical francophone depuis Madagascar et l'île Maurice :
-- **Nosycom** (Madagascar) — spécialiste médical francophone
-- **Procontact** (Madagascar) — BPO généraliste avec pôle médical
-- **Buroservices** (Madagascar) — secrétariat médical et juridique
+- **Serenity Center** (Madagascar) — le plus proche de notre niche ; facturation à l'heure (base 40 h/sem) ou à la performance
+- **Téléservices / Télésecrétariat-Madagascar** (Tana + Maurice) — à l'appel, claim « -40 à -60 % », amplitude 8h-20h + sam. matin
+- **Nosycom** (Madagascar) — spécialiste médical francophone depuis 2013
+- **Telesecretaire-mlg** — 0,98 €/appel affiché
+- **Stylrendez-vous** — dès 0,70 € TTC/appel, abo min. 30 €/mois
+- **TMM, ProCare Call** (Madagascar) — petits acteurs, horaires étendus
 - **Optiserv** (Maurice) — permanence téléphonique santé
-- **Serenity Center** (Madagascar) — télésecrétariat médical
+- **Procontact, Buroservices** (Madagascar) — BPO généralistes avec pôle médical/juridique
+
+**Corridor de prix offshore constaté : 0,50-1 €/appel.** Aucun de ces acteurs ne communique
+sur un engagement de décroché chiffré, la continuité électrique ou la conformité RGPD art. 46
+— c'est notre terrain de différenciation (script anti-low-cost dans `OUTREACH-cabinets-medicaux.md`).
+
+**⚠️ Callmed (cible #1 ci-dessous) vend dès 0,50 € HT/appel** — sa base opérationnelle est
+peut-être déjà offshore. Conséquence : un partenariat de débordement n'est viable que sur les
+créneaux que son plateau ne couvre pas (nuit, week-end), à un prix de gros sous sa propre
+grille. **Qualifier son prix d'achat cible dès le 1er échange**, sinon tunnel de négociation perdant.
 
 **Conséquence :** qualifier systématiquement dès le 1er échange :
-> *"Avez-vous déjà un partenaire offshore / un plateau délocalisé ?"*
+> *"Avez-vous déjà un partenaire offshore / un plateau délocalisé ? À quel prix d'achat ?"*
 
 Si la réponse est oui, l'angle est la **qualité et la redondance**, pas la découverte.
 Si la réponse est non, l'angle est la **capacité sans CapEx**.

@@ -113,7 +113,7 @@
       const INTERNAL_SECRETARY = 2200; // secrétaire interne au cabinet, charges comprises (cf. comparatif)
       const perDay = Math.round(st.calls / (st.days * 4.33));
 
-      $('price-monthly').textContent = euro(price);
+      $('price-monthly').textContent = (custom ? '≈ ' : '') + euro(price);
       $('calls-monthly').textContent = st.calls.toLocaleString('fr-FR');
       $('calls-perday').textContent = '≈ ' + perDay;
       $('coverage').textContent = st.days + ' j · ' + (st.schedule > 1 ? '8h–22h' : '8h–20h');

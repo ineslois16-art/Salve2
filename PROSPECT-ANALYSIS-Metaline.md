@@ -106,7 +106,7 @@ Bonjour Alexandre,
 
 Metaline a 75 postes support ouverts sur Indeed en ce moment. Le recrutement CDI en France ne suit pas le volume — ça se voit.
 
-Nous sommes Salverys, BPO à Madagascar : agents francophones natifs, process ITIL, UTC+3 — on couvre le créneau 7h-9h France sans supplément. Tarif 1 550-2 000 €/ETP/mois, activation en 3 semaines.
+Nous sommes Salverys, BPO à Madagascar : agents francophones natifs, process ITIL, UTC+3 — on couvre le créneau 7h-9h France sans supplément. Tarif ETP cadré en 15 min selon le volume, activation en 3 semaines.
 
 Pas de substitution à vos équipes : uniquement l'overflow que vous ne pouvez pas absorber aujourd'hui.
 

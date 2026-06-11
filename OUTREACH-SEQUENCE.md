@@ -237,7 +237,7 @@ Jusqu'ici je vous ai parlé fonctionnement et coût. L'autre sujet pour {{struct
 
 Notre modèle est marque blanche : équipe française d'origine, sous votre nom, vos process, votre ton. Le patient pense parler à votre secrétariat.
 
-Pour limiter le risque, deux garde-fous : un 1er mois à -50 %, sans engagement, sur un périmètre réduit (un site, certains créneaux) ; et une fois en régime, on s'engage sur le décroché — sous 95 % d'appels pris sur un mois, 20 % d'avoir le mois suivant. Vous jugez la qualité avant d'élargir, et on met notre argent sur le résultat.
+Pour limiter le risque, deux garde-fous : un 1er mois à -50 %, sans engagement, sur un périmètre réduit (un site, certains créneaux) ; et une fois en régime, on s'engage sur le décroché — sous 90 % d'appels pris sur un mois, 20 % d'avoir le mois suivant. Vous jugez la qualité avant d'élargir, et on met notre argent sur le résultat.
 
 Si l'email n'est pas le plus simple, on peut aussi en parler par WhatsApp au +33 6 48 91 84 50.
 
@@ -252,7 +252,7 @@ Ouvert à en parler ?
 
 #### Variantes A/B
 **Ligne d'ouverture A (marque) :** « Jusqu'ici je vous ai parlé fonctionnement et coût. L'autre point, c'est l'image… »
-**Ligne d'ouverture B (risque) :** « Une objection légitime : et si la qualité ne suit pas ? D'où notre approche : 1er mois à -50 %, sans engagement, plus un engagement de décroché en régime (sous 95 %, 20 % d'avoir). »
+**Ligne d'ouverture B (risque) :** « Une objection légitime : et si la qualité ne suit pas ? D'où notre approche : 1er mois à -50 %, sans engagement, plus un engagement de décroché en régime (sous 90 %, 20 % d'avoir). »
 
 ---
 
@@ -386,7 +386,7 @@ Bonjour {{firstName}},
 
 Recruter un Customer Support Specialist FR en CDI prend 60 à 90 jours et 35-40 k€ chargés par an, pour un poste qui tourne ~18 mois. Pendant ce temps, les tickets N1 s'empilent et le NPS prend.
 
-Chez Salverys, on opère une équipe française d'origine, formée à {{outil_ticketing}}, qui traite votre N1 sous le nom de {{structure}} : tickets, chat in-app, téléphone, escalade cadrée vers vos équipes produit. Dès 1 525 € par agent dédié et par mois en marque blanche.
+Chez Salverys, on opère une équipe française d'origine, formée à {{outil_ticketing}}, qui traite votre N1 sous le nom de {{structure}} : tickets, chat in-app, téléphone, escalade cadrée vers vos équipes produit. Environ 40 % de moins qu'une embauche équivalente en France — chiffrage précis sous 24 h selon votre volume.
 
 Ça vaudrait un échange de 15 min cette semaine ?
 
@@ -546,7 +546,7 @@ Bonne continuation à vous et à l'équipe.
 | Objection | Réponse courte |
 |---|---|
 | « Nos users vont sentir que c'est externalisé » | Équipe française d'origine, sous votre nom, vos macros, vos process. Le user voit votre marque — Salverys n'apparaît jamais. |
-| « C'est combien ? » | 1 525-1 700 €/agent/mois en marque blanche, 2 100-2 400 €/agent en direct. -40 % d'un CDI N1 FR chargé. |
+| « C'est combien ? » | Selon configuration (volume, amplitude, canaux) — devis sous 24 h après un premier cadrage. Repère : environ -40 % d'un CDI N1 FR chargé (38-46 k€/an). |
 | « Nos tickets sont trop techniques pour du N1 externalisé » | C'est exactement le périmètre cadré : N1 sur catégories simples, escalade automatique vers votre N2 sur le reste. Vous gardez la complexité. |
 | « On a déjà un Customer Support Manager » | Pas pour le remplacer — pour absorber le N1 répétitif et lui rendre du temps sur la qualité, l'onboarding, la voice of customer. |
 | « Et la formation à notre produit ? » | Onboarding 5-10 jours sur votre base de connaissance + macros. Backup agent inclus pour absorber le turnover de votre côté **et** du nôtre. |

@@ -2,7 +2,7 @@
 **Niche :** ESN / MSP France (50-300 personnes) — partenariat sous-traitance  
 **Outil d'envoi :** Emelia (mail-merge CSV)  
 **Date :** 2026-05-31  
-**Source de vérité tarifaire :** PRICING.md (1 550-2 000 €/ETP/mois en marque blanche)
+**Source de vérité tarifaire :** PRICING.md §3 (grille marque blanche **interne — jamais de chiffre dans les emails**, le prix se donne en cadrage)
 
 ---
 
@@ -114,7 +114,7 @@ Bonjour {{firstName}},
 
 Repère rapide : un technicien helpdesk N1 en CDI France, en coût complet (salaire + charges + formation + turnover), tourne autour de 36 à 44 k€/an équivalent temps plein. Et le recrutement prend 2 à 3 mois sur un marché tendu.
 
-Chez Salverys, un ETP N1 en marque blanche pour une ESN revient à 1 550-2 000 € par mois. Pas de charges, pas de turnover, pilote activable en 3 semaines.
+Chez Salverys, un ETP N1 dédié en marque blanche revient à une fraction de ce coût complet — assez pour préserver votre marge de revente. Pas de charges, pas de turnover, pilote activable en 3 semaines. Chiffrage exact en 15 min selon volume et amplitude.
 
 Pas de demande — juste un repère utile pour {{esn_nom}} si vous arbitrez capacité vs recrutement sur 2026.
 
@@ -229,5 +229,5 @@ Statuts de progression :
 
 ---
 
-*Séquence alignée avec PRICING.md (tarif marque blanche : 1 550-2 000 €/ETP/mois)*  
+*Séquence alignée avec PRICING.md §3 (tarif marque blanche : interne — à donner en cadrage uniquement, jamais en cold email)*  
 *Format identique au master playbook OUTREACH-SEQUENCE.md*
