@@ -4,41 +4,25 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Salverys — Espace client</title>
+<title>Salverys — Espaces partenaires</title>
 <link rel="stylesheet" href="assets/site.css" />
 <style>
-  .ec-wrap { max-width: 860px; margin: 0 auto; padding: 48px 20px 80px; }
-  .ec-lock { max-width: 420px; margin: 10vh auto 0; text-align: center; }
-  .ec-lock h1 { font-size: 26px; margin-bottom: 8px; }
-  .ec-lock p { color: var(--text-soft); font-size: 14.5px; margin-bottom: 22px; }
-  .ec-lock input[type="password"] {
-    width: 100%; padding: 13px 16px; font-size: 16px; border: 1.5px solid var(--line, #d8ded8);
-    border-radius: 10px; margin-bottom: 12px; box-sizing: border-box;
+  .eh-wrap { max-width: 880px; margin: 0 auto; padding: 56px 20px 90px; text-align: center; }
+  .eh-wrap h1 { font-size: 30px; margin-bottom: 10px; }
+  .eh-wrap > p { color: var(--text-soft); max-width: 560px; margin: 0 auto 36px; }
+  .eh-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .eh-card {
+    display: block; padding: 26px 20px; border: 1.5px solid var(--line, #d8ded8);
+    border-radius: 14px; text-decoration: none; color: inherit; background: #fff;
+    transition: transform .15s ease, box-shadow .15s ease;
   }
-  .ec-error { color: #b3261e; font-size: 13.5px; min-height: 18px; margin-top: 10px; }
-  .ec-actions { display: flex; gap: 12px; justify-content: flex-end; margin: 18px 0 26px; }
-  .ec-doc h1 { font-size: 28px; margin: 8px 0 10px; }
-  .ec-doc h2 { font-size: 19px; margin: 30px 0 10px; }
-  .ec-doc .ec-lead { font-size: 16px; color: var(--text-soft); }
-  .ec-doc ul { padding-left: 20px; } .ec-doc li { margin: 6px 0; }
-  .ec-confidentiel {
-    background: #fff6e8; border: 1px solid #e8c98a; color: #7a5410; border-radius: 8px;
-    padding: 8px 14px; font-size: 12.5px; font-weight: 600; letter-spacing: .3px;
-    text-transform: uppercase; margin-bottom: 22px;
-  }
-  .ec-table { width: 100%; border-collapse: collapse; margin: 12px 0 6px; font-size: 15px; }
-  .ec-table th, .ec-table td { border: 1px solid var(--line, #d8ded8); padding: 9px 12px; text-align: left; }
-  .ec-table th { background: var(--soft, #f2f5f2); }
-  .ec-note { font-size: 13px; color: var(--text-soft); }
-  .ec-cta { margin-top: 30px; padding: 16px 18px; background: var(--soft, #f2f5f2); border-radius: 10px; }
-  @media print {
-    .nav, .footer, .ec-actions, .ec-lock { display: none !important; }
-    .ec-wrap { padding: 0; max-width: none; }
-    .ec-doc { font-size: 12px; }
-    .ec-doc h1 { font-size: 20px; } .ec-doc h2 { font-size: 15px; margin-top: 18px; }
-    .ec-table { font-size: 12px; }
-    a { color: inherit; text-decoration: none; }
-  }
+  .eh-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.08); }
+  .eh-card .eh-ico { font-size: 26px; }
+  .eh-card h2 { font-size: 17px; margin: 10px 0 6px; }
+  .eh-card p { font-size: 13.5px; color: var(--text-soft); margin: 0; }
+  .eh-lock { display: inline-block; margin-top: 14px; font-size: 12.5px; font-weight: 600; color: var(--accent, #6F8770); }
+  .eh-note { margin-top: 30px; font-size: 13px; color: var(--text-soft); }
+  @media (max-width: 720px) { .eh-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -46,92 +30,48 @@
 <header class="nav">
   <div class="container nav-inner">
     <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-salverys.svg" alt="Salverys" /></a>
-    <nav class="nav-links"><a href="index.html">Accueil</a><a href="espace-candidat.html">Nous rejoindre</a></nav>
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="espace-client.html" class="active">Espaces partenaires</a>
+      <a href="espace-candidat.html">Nous rejoindre</a>
+    </nav>
+    <button class="nav-burger" aria-label="Menu">☰</button>
   </div>
 </header>
 
-<div class="ec-wrap">
+<div class="eh-wrap">
+  <h1>Espaces partenaires</h1>
+  <p>Conditions et grilles marque blanche, par métier. Chaque espace est protégé par un
+  code d'accès remis lors du cadrage, sous NDA.</p>
 
-  <div class="ec-lock" id="ec-lock">
-    <h1>Espace client</h1>
-    <p>Réservé aux partenaires Salverys. Le code d'accès vous a été remis lors du cadrage.</p>
-    <form id="ec-form">
-      <input type="password" id="ec-pass" placeholder="Code d'accès" autocomplete="current-password" autofocus />
-      <button type="submit" class="btn btn-primary" style="display:block;margin:0 auto;padding:13px 44px;">Déverrouiller</button>
-      <div class="ec-error" id="ec-error"></div>
-    </form>
+  <div class="eh-grid">
+    <a class="eh-card" href="espace-client-medical.html">
+      <div class="eh-ico">🩺</div>
+      <h2>Télésecrétariat médical</h2>
+      <p>Débordement &amp; créneaux étendus pour télésecrétariats français.</p>
+      <span class="eh-lock">🔒 Accéder</span>
+    </a>
+    <a class="eh-card" href="espace-client-support.html">
+      <div class="eh-ico">💬</div>
+      <h2>Support N1 SaaS</h2>
+      <p>Positions dédiées pour éditeurs &amp; prestataires support.</p>
+      <span class="eh-lock">🔒 Accéder</span>
+    </a>
+    <a class="eh-card" href="espace-client-helpdesk.html">
+      <div class="eh-ico">🖥️</div>
+      <h2>Helpdesk IT N1</h2>
+      <p>Techniciens ITIL en marque blanche pour ESN &amp; MSP.</p>
+      <span class="eh-lock">🔒 Accéder</span>
+    </a>
   </div>
 
-  <div id="ec-content" hidden>
-    <div class="ec-actions">
-      <button class="btn btn-outline" id="ec-print">Imprimer / PDF de cadrage</button>
-      <button class="btn btn-outline" id="ec-logout">Verrouiller</button>
-    </div>
-    <div id="mb-content"></div>
-  </div>
-
+  <p class="eh-note">Pas encore de code d'accès ? Écrivez-nous : <a href="mailto:valerien@salverys.fr">valerien@salverys.fr</a></p>
 </div>
 
 <footer class="footer">
-  <div class="container"><div class="footer-meta"><span>© Salverys — espace partenaires</span><span>Document confidentiel</span></div></div>
+  <div class="container"><div class="footer-meta"><span>© Salverys — espaces partenaires</span><span>Documents confidentiels</span></div></div>
 </footer>
 
-<script>
-(function () {
-  'use strict';
-  /* Payload chiffré AES-256-GCM, clé dérivée PBKDF2-SHA256 — généré par tools/espace-client-build.mjs */
-  var VAULT = {"salt":"fshcAncyYjOSzICUQLAjyw==","iv":"2uEJ7avSaGaXhMaS","iter":310000,"data":"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"};
-
-  var b64 = function (s) { var bin = atob(s), u = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; };
-  var $ = function (id) { return document.getElementById(id); };
-  var SS_KEY = 'salverys_ec_pw';
-
-  function show(html) {
-    $('mb-content').innerHTML = html;
-    var d = document.getElementById('ec-date');
-    if (d) d.textContent = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
-    $('ec-lock').hidden = true;
-    $('ec-content').hidden = false;
-  }
-
-  async function unlock(pw) {
-    var enc = new TextEncoder();
-    var km = await crypto.subtle.importKey('raw', enc.encode(pw), 'PBKDF2', false, ['deriveKey']);
-    var key = await crypto.subtle.deriveKey(
-      { name: 'PBKDF2', salt: b64(VAULT.salt), iterations: VAULT.iter, hash: 'SHA-256' },
-      km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
-    var plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(VAULT.iv) }, key, b64(VAULT.data));
-    return new TextDecoder().decode(plain);
-  }
-
-  $('ec-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var pw = $('ec-pass').value;
-    $('ec-error').textContent = '';
-    unlock(pw).then(function (html) {
-      try { sessionStorage.setItem(SS_KEY, pw); } catch (_) {}
-      show(html);
-    }).catch(function () {
-      $('ec-error').textContent = 'Code d’accès incorrect.';
-    });
-  });
-
-  $('ec-print').addEventListener('click', function () { window.print(); });
-  $('ec-logout').addEventListener('click', function () {
-    try { sessionStorage.removeItem(SS_KEY); } catch (_) {}
-    location.reload();
-  });
-
-  /* Déverrouillage auto si déjà ouvert dans cette session */
-  try {
-    var saved = sessionStorage.getItem(SS_KEY);
-    if (saved) unlock(saved).then(show).catch(function () { sessionStorage.removeItem(SS_KEY); });
-  } catch (_) {}
-
-  if (!window.isSecureContext) {
-    $('ec-error').textContent = 'Cette page nécessite HTTPS (ou localhost).';
-  }
-})();
-</script>
+<script src="assets/site.js"></script>
 </body>
 </html>
