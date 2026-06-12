@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Salverys — Espace client</title>
+<link rel="stylesheet" href="assets/site.css" />
+<style>
+  .ec-wrap { max-width: 860px; margin: 0 auto; padding: 48px 20px 80px; }
+  .ec-lock { max-width: 420px; margin: 10vh auto 0; text-align: center; }
+  .ec-lock h1 { font-size: 26px; margin-bottom: 8px; }
+  .ec-lock p { color: var(--text-soft); font-size: 14.5px; margin-bottom: 22px; }
+  .ec-lock input[type="password"] {
+    width: 100%; padding: 13px 16px; font-size: 16px; border: 1.5px solid var(--line, #d8ded8);
+    border-radius: 10px; margin-bottom: 12px; box-sizing: border-box;
+  }
+  .ec-error { color: #b3261e; font-size: 13.5px; min-height: 18px; margin-top: 10px; }
+  .ec-actions { display: flex; gap: 12px; justify-content: flex-end; margin: 18px 0 26px; }
+  .ec-doc h1 { font-size: 28px; margin: 8px 0 10px; }
+  .ec-doc h2 { font-size: 19px; margin: 30px 0 10px; }
+  .ec-doc .ec-lead { font-size: 16px; color: var(--text-soft); }
+  .ec-doc ul { padding-left: 20px; } .ec-doc li { margin: 6px 0; }
+  .ec-confidentiel {
+    background: #fff6e8; border: 1px solid #e8c98a; color: #7a5410; border-radius: 8px;
+    padding: 8px 14px; font-size: 12.5px; font-weight: 600; letter-spacing: .3px;
+    text-transform: uppercase; margin-bottom: 22px;
+  }
+  .ec-table { width: 100%; border-collapse: collapse; margin: 12px 0 6px; font-size: 15px; }
+  .ec-table th, .ec-table td { border: 1px solid var(--line, #d8ded8); padding: 9px 12px; text-align: left; }
+  .ec-table th { background: var(--soft, #f2f5f2); }
+  .ec-note { font-size: 13px; color: var(--text-soft); }
+  .ec-cta { margin-top: 30px; padding: 16px 18px; background: var(--soft, #f2f5f2); border-radius: 10px; }
+  @media print {
+    .nav, .footer, .ec-actions, .ec-lock { display: none !important; }
+    .ec-wrap { padding: 0; max-width: none; }
+    .ec-doc { font-size: 12px; }
+    .ec-doc h1 { font-size: 20px; } .ec-doc h2 { font-size: 15px; margin-top: 18px; }
+    .ec-table { font-size: 12px; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-salverys.svg" alt="Salverys" /></a>
+    <nav class="nav-links"><a href="index.html">Accueil</a></nav>
+  </div>
+</header>
+
+<div class="ec-wrap">
+
+  <div class="ec-lock" id="ec-lock">
+    <h1>Espace client</h1>
+    <p>Réservé aux partenaires Salverys. Le code d'accès vous a été remis lors du cadrage.</p>
+    <form id="ec-form">
+      <input type="password" id="ec-pass" placeholder="Code d'accès" autocomplete="current-password" autofocus />
+      <button type="submit" class="btn btn-primary" style="width:100%;">Déverrouiller</button>
+      <div class="ec-error" id="ec-error"></div>
+    </form>
+  </div>
+
+  <div id="ec-content" hidden>
+    <div class="ec-actions">
+      <button class="btn btn-outline" id="ec-print">Imprimer / PDF de cadrage</button>
+      <button class="btn btn-outline" id="ec-logout">Verrouiller</button>
+    </div>
+    <div id="mb-content"></div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container"><div class="footer-meta"><span>© Salverys — espace partenaires</span><span>Document confidentiel</span></div></div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  /* Payload chiffré AES-256-GCM, clé dérivée PBKDF2-SHA256 — généré par tools/espace-client-build.mjs */
+  var VAULT = {"salt":"nbekXV3FSxWaQVS/MObjFA==","iv":"US40p0GNkaQHR3fJ","iter":310000,"data":"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"};
+
+  var b64 = function (s) { var bin = atob(s), u = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; };
+  var $ = function (id) { return document.getElementById(id); };
+  var SS_KEY = 'salverys_ec_pw';
+
+  function show(html) {
+    $('mb-content').innerHTML = html;
+    var d = document.getElementById('ec-date');
+    if (d) d.textContent = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+    $('ec-lock').hidden = true;
+    $('ec-content').hidden = false;
+  }
+
+  async function unlock(pw) {
+    var enc = new TextEncoder();
+    var km = await crypto.subtle.importKey('raw', enc.encode(pw), 'PBKDF2', false, ['deriveKey']);
+    var key = await crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt: b64(VAULT.salt), iterations: VAULT.iter, hash: 'SHA-256' },
+      km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+    var plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(VAULT.iv) }, key, b64(VAULT.data));
+    return new TextDecoder().decode(plain);
+  }
+
+  $('ec-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var pw = $('ec-pass').value;
+    $('ec-error').textContent = '';
+    unlock(pw).then(function (html) {
+      try { sessionStorage.setItem(SS_KEY, pw); } catch (_) {}
+      show(html);
+    }).catch(function () {
+      $('ec-error').textContent = 'Code d’accès incorrect.';
+    });
+  });
+
+  $('ec-print').addEventListener('click', function () { window.print(); });
+  $('ec-logout').addEventListener('click', function () {
+    try { sessionStorage.removeItem(SS_KEY); } catch (_) {}
+    location.reload();
+  });
+
+  /* Déverrouillage auto si déjà ouvert dans cette session */
+  try {
+    var saved = sessionStorage.getItem(SS_KEY);
+    if (saved) unlock(saved).then(show).catch(function () { sessionStorage.removeItem(SS_KEY); });
+  } catch (_) {}
+
+  if (!window.isSecureContext) {
+    $('ec-error').textContent = 'Cette page nécessite HTTPS (ou localhost).';
+  }
+})();
+</script>
+</body>
+</html>
