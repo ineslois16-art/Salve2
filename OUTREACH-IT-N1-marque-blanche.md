@@ -140,7 +140,7 @@ Concrètement : vos scripts, vos outils ITSM (ServiceNow, Jira SM, Freshservice 
 
 Le créneau qui casse le plus souvent : 7h-9h du matin, avant que vos équipes Paris arrivent. À UTC+3 (Madagascar), c'est 9h-11h pour nous — pleine heure de bureau, sans supplément nuit ni astreinte.
 
-Notre direction vient d'une structure de 1 000 collaborateurs. Les process ITIL, le reporting, les escalades — tout est documenté avant le premier ticket.
+Les process ITIL, le reporting, les escalades — tout est documenté avant le premier ticket.
 
 Vous pouvez tester notre réactivité directement sur salverys.fr
 

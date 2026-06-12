@@ -49,15 +49,15 @@ minimum local et tourne en 6 mois — votre qualité part avec lui.
   sur votre compte dans la durée.
 - **Engagement de service contractuel** : taux de décroché ou SLA convenu au cadrage ;
   en deçà sur un mois, **20 % d'avoir automatique** — on met notre argent sur le résultat.
-- **Plan de continuité écrit**, remis avant tout démarrage : double opérateur internet
-  + secours 4G, groupe électrogène et onduleurs. Votre service ne dépend ni d'une ligne
-  ni du réseau électrique local.
+- **Plan de continuité écrit**, remis avant tout démarrage : agents équipés en double
+  connexion (fibre + 4G) et hub de repli alimenté (groupe électrogène, onduleurs).
+  Votre service ne dépend ni d'une ligne ni du réseau électrique local.
 - **Backup +1 agent par compte** : pas de jour d'arrêt sur absence.
 - **Conformité documentée** : sous-traitant RGPD (art. 28, DPA), transfert encadré
   (clauses art. 46), comptes nommés, **zéro donnée stockée chez nous** — on travaille
   dans vos outils.
-- **Direction issue d'une structure de 1 000 collaborateurs** : QA, double écoute,
-  reporting hebdo, escalades — documentés avant le premier appel/ticket.
+- **Cadrage qualité dès J1** : QA, double écoute, reporting hebdo, escalades —
+  documentés avant le premier appel/ticket.
 
 ---
 
