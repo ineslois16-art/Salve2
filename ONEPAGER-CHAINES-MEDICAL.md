@@ -69,9 +69,9 @@ volume contractuel, hors coupure côté centre. Seuil et périmètre figés au c
 nous** · **backup +1 agent / compte** (continuité) · **reporting mensuel** · **forfait,
 jamais à l'appel** · vous gardez la main sur les agendas.
 
-**Plan de continuité écrit** : double opérateur internet + secours 4G, groupe électrogène
-et onduleurs sur le plateau — l'accueil de vos centres ne dépend ni d'une ligne ni du
-réseau électrique local. Remis au cadrage, avant tout démarrage.
+**Plan de continuité écrit** : agents en double connexion (fibre + 4G), hub de repli
+alimenté (groupe électrogène, onduleurs) — l'accueil de vos centres ne dépend ni d'une
+ligne ni du réseau électrique local. Remis au cadrage, avant tout démarrage.
 
 ---
 

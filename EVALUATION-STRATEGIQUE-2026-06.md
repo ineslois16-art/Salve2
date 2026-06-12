@@ -39,7 +39,7 @@ Le secteur : 230+ entreprises, 40 000+ emplois, croissance >15 %/an. Trois étag
 
 ### 1.2 Où est le trou — et pourquoi Salverys est dessus
 
-**Le créneau inoccupé : « qualité de direction ex-1000 collaborateurs, taille d'atelier ».**
+**Le créneau inoccupé : « process de grand plateau, taille d'atelier ».**
 Personne à Madagascar ne combine : (a) ciblage 1-5 ETP exigeants, (b) process documentés
 (backup +1 agent, QA, reporting), (c) engagement de service chiffré (90 % décroché, avoir
 20 %), (d) conformité packagée. La stratégie actuelle (promesse-résultat, réassurance en
@@ -110,7 +110,7 @@ direct** : voir politique salariale §3.4.
 > « Exact — et c'est volontaire. À 0,50 € l'appel, l'agent est payé au minimum local,
 > tourne en 6 mois, et personne ne vous garantit un taux de décroché. Nous, on s'engage
 > contractuellement : ≥ 90 % d'appels décrochés, sinon 20 % d'avoir automatique. Plan de
-> continuité écrit (double opérateur internet, groupe électrogène), conformité RGPD
+> continuité écrit (double connexion par agent, hub de repli alimenté), conformité RGPD
 > documentée (clauses art. 46, zéro donnée stockée chez nous), backup +1 agent. La
 > question n'est pas le prix de l'appel, c'est le prix du patient perdu quand le
 > prestataire à 0,50 € ne décroche pas. »
@@ -278,8 +278,8 @@ RH révisés utilisés partout · « forfait » (jamais « abonnement ») respec
 ### Risques (par probabilité × impact)
 
 1. **Électricité / instabilité (élevé)** — crise JIRAMA + crise politique fin 2025.
-   Mitigation : groupe électrogène + onduleurs + double FAI + **plan de continuité écrit
-   vendu comme un atout** (action 4).
+   Mitigation : agents en double connexion (fibre + 4G) + hub de repli alimenté (groupe
+   électrogène, onduleurs) + **plan de continuité écrit vendu comme un atout** (action 4).
 2. **Décret souveraineté HDS, sept. 2026 (moyen, impact fort)** — l'hébergement UE est
    déjà obligatoire ; si l'accès depuis pays tiers se durcit, le modèle « zéro stockage
    local + CCT » est la seule architecture défendable. Veille active (action 8).

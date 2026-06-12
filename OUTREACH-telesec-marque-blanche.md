@@ -167,7 +167,7 @@ Je vous laisse y penser — content d'en parler si c'est un sujet chez {entrepri
 
 Bonjour {prenom},
 
-En offshore marque blanche, la vraie question c'est la qualité — pas le prix. Notre équipe vient d'une structure de 1 000 collaborateurs : on sait cadrer décroché, script, double écoute et reporting hebdo.
+En offshore marque blanche, la vraie question c'est la qualité — pas le prix. Chez nous tout est cadré avant le premier appel : décroché, script, double écoute et reporting hebdo.
 
 Concrètement, on propose un pilote : 200 à 500 appels/mois sur vos créneaux de débordement, KPIs mesurés (taux de décroché, temps moyen, satisfaction), sans engagement. Et une fois en régime, on s'engage sur le décroché : sous le seuil convenu sur un mois, 20 % d'avoir le mois suivant.
 
@@ -275,8 +275,8 @@ Bonne continuation,
 | « On gère déjà tout en interne en France. » | Justement — on ne remplace pas vos équipes FR. On absorbe ce qu'elles ne couvrent pas rentablement : nuits, week-ends, pics, congés. Vous gardez la main sur les agendas et la relation client. |
 | « L'offshore, mes clients médecins n'aiment pas. » | C'est de la marque blanche : vos clients ne voient que vous. Français natif, fuseau Paris, double écoute qualité. On peut le cantonner d'abord à un volume limité de débordement. |
 | « Comment je sais que la qualité suivra ? » | Pilote 200-500 appels/mois, KPIs hebdo (décroché, temps moyen, satisfaction). Si ça ne tient pas vos standards, vous arrêtez — sans engagement. Et en régime, on s'engage sur le décroché : sous le seuil convenu, 20 % d'avoir. On met notre argent sur le résultat. |
-| « On a déjà essayé l'offshore, ça s'est mal passé. » | Compréhensible. La différence : direction issue d'une structure de 1 000 collaborateurs, cadrage qualité (script, double écoute, reporting) et démarrage en pilote mesuré, pas en bascule totale. |
-| « D'autres prestataires malgaches sont moins chers (0,50-1 €/appel). » | Exact, et c'est volontaire. À ce prix, l'agent est payé au minimum local et tourne en 6 mois — votre qualité de marque part avec lui. Nous, on paie nos agents au-dessus du marché pour les garder, on s'engage contractuellement sur le décroché (avoir automatique en deçà), avec plan de continuité écrit (double opérateur internet, groupe électrogène) et backup +1 agent. La question n'est pas le prix de l'appel : c'est le coût du client que vous perdez quand le prestataire à 0,50 € ne décroche pas sous votre marque. |
+| « On a déjà essayé l'offshore, ça s'est mal passé. » | Compréhensible. La différence : cadrage qualité documenté (script, double écoute, reporting) et démarrage en pilote mesuré, pas en bascule totale. |
+| « D'autres prestataires malgaches sont moins chers (0,50-1 €/appel). » | Exact, et c'est volontaire. À ce prix, l'agent est payé au minimum local et tourne en 6 mois — votre qualité de marque part avec lui. Nous, on paie nos agents au-dessus du marché pour les garder, on s'engage contractuellement sur le décroché (avoir automatique en deçà), avec plan de continuité écrit (double connexion par agent, hub de repli alimenté) et backup +1 agent. La question n'est pas le prix de l'appel : c'est le coût du client que vous perdez quand le prestataire à 0,50 € ne décroche pas sous votre marque. |
 | « L'IA / les callbots vont absorber ce marché. » | L'IA absorbe le RDV simple — raison de plus de nous sous-traiter le trafic **humain** restant (urgences, patients âgés, demandes complexes, débordement) à coût malgache, plutôt que de payer un plateau France pour des appels que le bot vous enlève déjà. (cf. `NARRATIF-HYBRIDE-CALLBOT.md`) |
 
 ---
