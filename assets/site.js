@@ -215,7 +215,7 @@
     const CFG = Object.assign({
       baseDirect: 2100, frBench: 3200,
     }, window.SIM_CONFIG || {});
-    const PROD = 0.85, FR_PEN = 1.35, BAND = 0.10; // ±10 % autour de l'estimation
+    const PROD = 0.85, FR_PEN = 1.35, BAND = 0.05; // ±5 % autour de l'estimation
     const st = {
       posts: 1, hours: 35,
       service: 1.0, serviceTier: 'dedicated', channels: 1.0, language: 1.0, schedule: 1.0,
