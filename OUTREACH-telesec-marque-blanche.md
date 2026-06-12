@@ -71,6 +71,27 @@
 
 **Positionnement à ne JAMAIS perdre de vue :** on ne se présente PAS comme une alternative aux télésec FR (leurs clients médecins ne nous connaissent pas). On est leur **bras offshore en marque blanche** — leurs clients ne voient que leur marque.
 
+**Prix (rappel interne)** : jamais de chiffre en email. La grille à l'appel **par créneau**
+(jour / soir-samedi / pics réservés, `PRICING.md §1.b`) se présente **au cadrage** uniquement.
+Qualifier le **prix de vente final** du partenaire dès le 1er échange (alerte Callmed,
+`EVALUATION-STRATEGIQUE-2026-06.md §1.4`).
+
+---
+
+## Lead magnet — audit de débordement (avant E1, prospects prioritaires)
+
+> Variante partenaire de l'audit de décroché : **10 appels tests** répartis sur les
+> créneaux de débordement (12h-14h, après 18h, samedi matin) chez **2-3 clients publics
+> du prospect** (cabinets affichés en référence sur son site). Constat factuel : décroché
+> ou non, temps d'attente.
+
+- **Usage en accroche** (remplace le trigger si plus fort) : « Bonjour {prenom}, samedi
+  matin, X de nos 10 appels tests chez vos clients publics ont sonné dans le vide —
+  c'est exactement le créneau qu'on absorbe en marque blanche, sous votre nom. »
+- **Ton** : factuel et allié (« voilà où on peut vous renforcer »), jamais accusateur —
+  on parle à quelqu'un dont c'est le métier.
+- ~15 min par prospect, à faire faire par un agent en banc. Réserver au top 10.
+
 ---
 
 ## Séquence 5 emails
@@ -137,6 +158,10 @@ Je vous laisse y penser — content d'en parler si c'est un sujet chez {entrepri
 
 **Objet A :** `comment on cadre la qualité en marque blanche`
 **Objet B :** `pilote sans engagement pour {entreprise}`
+**Objet C :** `un décroché garanti par contrat — sinon on vous crédite`
+
+> L'Objet C met la garantie (différenciateur n°1, qu'aucun offshore low-cost ne peut
+> écrire) directement dans l'objet. À tester en A/B.
 
 ---
 
