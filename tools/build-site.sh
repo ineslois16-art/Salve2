@@ -11,6 +11,9 @@ PUBLIC_PAGES=(
   simulateur-informatique.html
   simulateur-helpdesk-it.html
   espace-client.html
+  espace-client-medical.html
+  espace-client-support.html
+  espace-client-helpdesk.html
   espace-candidat.html
   suivi-candidature.html
 )

@@ -155,9 +155,11 @@ où le dégressif **achète du volume** au lieu d'être concédé en négociatio
   on ne baisse rien. Plancher inchangé (coût + ~20 % ≈ 540 €).
 - Aligné sur le point mort (`FINANCE-PREVISIONNEL.md §4` : ~5 ETP placés) : le palier 5+
   est conçu pour qu'un seul donneur d'ordre type Metaline/Thelem puisse l'atteindre.
-- **Canal de remise** : espace client protégé du site (`espace-client.html`, page
-  chiffrée, mot de passe donné au cadrage) ou impression « PDF de cadrage » depuis cette
-  page — procédure dans `ESPACE-CLIENT-CANDIDAT.md`. Idem pour la grille télésec §1.b.
+- **Canal de remise** : espaces partenaires protégés du site, **un par niche avec son
+  propre mot de passe** (`espace-client-support.html` / `espace-client-helpdesk.html` /
+  `espace-client-medical.html` pour la grille télésec §1.b — pages chiffrées, mot de
+  passe donné au cadrage) ou impression « PDF de cadrage » depuis la page — procédure
+  dans `ESPACE-CLIENT-CANDIDAT.md`.
 
 - **À l'heure** : ~12-15 €/h (direct) · ~8-11 €/h (marque blanche).
 - **À l'interaction** : ~2,5-4 €/ticket N1 (direct) · ~1,8-2,8 € (marque blanche).

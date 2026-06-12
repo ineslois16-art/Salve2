@@ -4,9 +4,9 @@
   command = "bash tools/build-site.sh"
   publish = "_site"
 
-# L'espace client ne doit être ni indexé ni mis en cache par des intermédiaires.
+# Les espaces partenaires ne doivent être ni indexés ni mis en cache par des intermédiaires.
 [[headers]]
-  for = "/espace-client.html"
+  for = "/espace-client*.html"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
     Cache-Control = "no-store"
