@@ -19,6 +19,7 @@
       <a href="simulateur-salverys.html" class="active">Télésecrétariat médical</a>
       <a href="simulateur-informatique.html">Support Applicatif &amp; Métier</a>
       <a href="simulateur-helpdesk-it.html">Helpdesk IT N1</a>
+      <a href="espace-candidat.html">Nous rejoindre</a>
       <a href="#simulator" class="nav-cta">Simuler mon forfait</a>
     </nav>
     <a href="#simulator" class="nav-cta">Simuler mon forfait</a>
@@ -92,18 +93,15 @@
 
         <div class="control-group">
           <div class="control-label">
-            <span class="control-label-text">Jours couverts / semaine</span>
-            <span class="control-value" id="days-value">5 j</span>
+            <span class="control-label-text">Options d'amplitude</span>
+            <span class="control-value">base : 5 j/7 · 8h–20h</span>
           </div>
-          <div class="slider-wrap"><input type="range" id="days" min="5" max="7" value="5" step="1" /></div>
-        </div>
-
-        <div class="control-group">
-          <div class="control-label"><span class="control-label-text">Plage horaire</span></div>
-          <div class="pill-group" data-group="schedule">
-            <button class="pill active" data-value="day" data-multiplier="1.0">Journée 8h–20h</button>
-            <button class="pill" data-value="evening" data-multiplier="1.10">+ Soirée 20h–22h</button>
+          <div class="pill-group" data-group="addons" data-multi>
+            <button class="pill" data-addon="soiree" data-price="120">+ Soirée 20h–22h · +120 €</button>
+            <button class="pill" data-addon="samedi-matin" data-price="90" data-excl="samedi-complet">+ Samedi matin · +90 €</button>
+            <button class="pill" data-addon="samedi-complet" data-price="150" data-excl="samedi-matin">+ Samedi complet · +150 €</button>
           </div>
+          <div style="margin-top:8px;font-size:12.5px;color:var(--text-soft);">Dimanche / 7 j-7 : sur devis.</div>
         </div>
 
         <div class="control-group">
@@ -127,10 +125,11 @@
             Une secrétaire au cabinet : <span class="old">2 200 €+/mois</span> charges comprises
           </div>
           <div class="savings-badge" id="savings-badge">−84 % vs une secrétaire interne</div>
+          <div class="result-strikethrough">Mise en service : <span class="old">490 €</span> — <b>offerte</b></div>
         </div>
 
         <div class="result-grid">
-          <div class="result-stat"><div class="result-stat-label">Appels traités / mois</div><div class="result-stat-value" id="calls-monthly">250</div></div>
+          <div class="result-stat"><div class="result-stat-label">Coût / jour ouvré</div><div class="result-stat-value" id="price-per-day">≈ 16 €</div></div>
           <div class="result-stat"><div class="result-stat-label">Appels pris / jour</div><div class="result-stat-value" id="calls-perday">≈ 12</div></div>
           <div class="result-stat"><div class="result-stat-label">Couverture</div><div class="result-stat-value" id="coverage">5 j · 8h–20h</div></div>
           <div class="result-stat"><div class="result-stat-label">Économie / mois</div><div class="result-stat-value accent" id="savings-monthly">1 850 €</div></div>
@@ -201,6 +200,10 @@
         <a href="#contact" class="pkg-cta">Passer à Intensif</a>
       </div>
     </div>
+    <p style="text-align:center;margin-top:26px;font-size:13.5px;color:var(--text-soft);">
+      <b>Options d'amplitude</b> (tous forfaits) : samedi matin +90 € · soirée 20h–22h +120 € · samedi complet +150 € · dimanche/7 j-7 sur devis.
+      <b>Mise en service : <span style="text-decoration:line-through;">490 €</span> — offerte.</b>
+    </p>
   </div>
 </section>
 
