@@ -115,12 +115,20 @@ img { display: block; max-width: 100%; }
 .nav-links { display: flex; gap: 24px; margin-left: 14px; flex: 1; }
 .nav-links a { font-size: 14.5px; font-weight: 600; color: var(--text-soft); padding: 8px 0; position: relative; }
 .nav-links a::after { content:""; position:absolute; left:0; right:100%; bottom:2px; height:2px; background: var(--accent); transition: right .25s var(--ease); }
+.nav-links a[href="simulateur-salverys.html"]::after { background: #6F8770; }
+.nav-links a[href="simulateur-informatique.html"]::after { background: #FCE27C; }
+.nav-links a[href="simulateur-helpdesk-it.html"]::after { background: #D20073; }
 .nav-links a:hover { color: var(--primary); }
 .nav-links a:hover::after, .nav-links a.active::after { right: 0; }
 .nav-links a.active { color: var(--primary); }
 .nav-cta { background: var(--cta); color: var(--cta-text); padding: 11px 20px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 700; white-space: nowrap; transition: transform .15s, box-shadow .2s; }
 .nav-cta:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
 .nav-links .nav-cta { display: none; }
+.nav-links .nav-rejoin { display: none; }
+.nav-rejoin-standalone { font-size: 14.5px; font-weight: 600; color: var(--text-soft); padding: 8px 0; position: relative; white-space: nowrap; }
+.nav-rejoin-standalone::after { content:""; position:absolute; left:0; right:100%; bottom:2px; height:2px; background: var(--accent); transition: right .25s var(--ease); }
+.nav-rejoin-standalone:hover { color: var(--primary); }
+.nav-rejoin-standalone:hover::after { right: 0; }
 .nav-burger { display: none; background: none; border: 0; font-size: 26px; color: var(--primary); cursor: pointer; }
 @media (max-width: 780px) {
   .nav-links { position: fixed; inset: 70px 0 auto 0; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 24px 20px; transform: translateY(-130%); transition: transform .3s var(--ease); }
@@ -131,6 +139,9 @@ img { display: block; max-width: 100%; }
   .nav-inner > .nav-cta { display: none; }
   .nav-links .nav-cta { display: block; margin-top: 12px; padding: 13px 20px; border-bottom: 0; text-align: center; color: var(--cta-text); }
   .nav-links .nav-cta::after { content: none; }
+  .nav-rejoin-standalone { display: none; }
+  .nav-links .nav-rejoin { display: block; }
+  .nav-links .nav-rejoin::after { content: none; }
 }
 
 /* ================= BUTTONS ================= */
@@ -160,7 +171,7 @@ img { display: block; max-width: 100%; }
 .theme-it .eyebrow { background: var(--accent-tint); color: var(--primary); }
 .hero h1 { font-family: 'Georgia', serif; font-size: clamp(38px, 5.4vw, 62px); font-weight: 600; line-height: 1.05; letter-spacing: -.02em; color: var(--primary); margin-bottom: 22px; }
 .theme-it .hero h1 { font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -.03em; }
-.hero h1 .hl { color: var(--accent); position: relative; white-space: nowrap; }
+.hero h1 .hl { color: #fff; background: var(--accent); padding: 0 10px; border-radius: 8px; line-height: 1; display: inline-block; white-space: nowrap; }
 .theme-it .hero h1 .hl { color: inherit; background: var(--accent); padding: 0 10px; border-radius: 8px; line-height: 1; display: inline-block; }
 .theme-helpdesk .hero h1 .hl { color: #fff; background: #D20073; padding: 0 10px; border-radius: 8px; line-height: 1; display: inline-block; }
 .hero p.lead { font-size: 19px; color: var(--text-soft); max-width: 540px; margin-bottom: 30px; }
