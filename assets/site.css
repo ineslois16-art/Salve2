@@ -156,8 +156,8 @@ img { display: block; max-width: 100%; }
 .btn-outline:hover { background: var(--primary); color: #fff; }
 .btn-it { background: linear-gradient(120deg, #FCE27C 0%, #FCE27C 42%, #FFF0B3 50%, #FCE27C 58%, #FCE27C 100%); background-size: 260% 100%; background-position: 100% 0; color: #013C58; box-shadow: 0 6px 20px -8px rgba(252,226,124,.55), var(--shadow-md); transition: transform .18s var(--ease), box-shadow .25s, background-position .7s var(--ease); }
 .btn-it:hover { transform: translateY(-2px); background-position: 0 0; box-shadow: 0 14px 30px -8px rgba(252,226,124,.7), var(--shadow-lg); }
-.btn-helpdesk { background: linear-gradient(120deg, #1A5F7A 0%, #1A5F7A 42%, #2E7C99 50%, #1A5F7A 58%, #1A5F7A 100%); background-size: 260% 100%; background-position: 100% 0; color: #fff; box-shadow: 0 6px 20px -8px rgba(26,95,122,.55), var(--shadow-md); transition: transform .18s var(--ease), box-shadow .25s, background-position .7s var(--ease); }
-.btn-helpdesk:hover { transform: translateY(-2px); background-position: 0 0; box-shadow: 0 14px 30px -8px rgba(26,95,122,.7), var(--shadow-lg); }
+.btn-helpdesk { background: linear-gradient(120deg, #D20073 0%, #D20073 42%, #E8408A 50%, #D20073 58%, #D20073 100%); background-size: 260% 100%; background-position: 100% 0; color: #fff; box-shadow: 0 6px 20px -8px rgba(210,0,115,.55), var(--shadow-md); transition: transform .18s var(--ease), box-shadow .25s, background-position .7s var(--ease); }
+.btn-helpdesk:hover { transform: translateY(-2px); background-position: 0 0; box-shadow: 0 14px 30px -8px rgba(210,0,115,.7), var(--shadow-lg); }
 
 /* ================= HERO ================= */
 .hero { position: relative; overflow: hidden; padding: 72px 0 84px; }
