@@ -606,14 +606,6 @@ input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; background: v
   .form-row  { grid-template-columns: 1fr; }
 }
 
-/* ===== Bouton Espace Client (nav) ===== */
-.nav-btn-ec { border: 1.5px solid var(--accent); color: var(--primary); background: transparent; padding: 9px 18px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 700; white-space: nowrap; transition: background .15s, transform .15s, box-shadow .2s; }
-.nav-btn-ec:hover { background: var(--accent-tint); transform: translateY(-1px); }
-@media (max-width: 780px) {
-  .nav-links .nav-btn-ec { margin-top: 8px; padding: 13px 20px; border-bottom: 0; text-align: center; }
-  .nav-links .nav-btn-ec::after { content: none; }
-}
-
 /* ===== Colonnes de contenu (2 feat-body sans image) ===== */
 .feat-col-card { background: var(--bg-soft); border-radius: var(--radius-lg); padding: 32px; }
 
